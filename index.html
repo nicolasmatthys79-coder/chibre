@@ -212,7 +212,7 @@ function makeRounds(){
 }
 function render(){
  makeAnnouncements("A");makeAnnouncements("B");makeRounds();
- const nA=document.getElementById("nameA").value||"Équipe A",nB=document.getElementById("nameB").value||"Équipe B";
+ const nA=document.getElementById("nameA").value||"Équipe Nous",nB=document.getElementById("nameB").value||"Équipe Eux";
  document.getElementById("labelA").textContent=nA;document.getElementById("labelB").textContent=nB;
  const aa=annTotal("A"),ab=annTotal("B");
  document.getElementById("sumAnnA").textContent=aa*factor();document.getElementById("sumAnnB").textContent=ab*factor();
@@ -241,7 +241,7 @@ function resetAll(){
  if(!confirm("Effacer tous les points et toutes les annonces ?"))return;
  winnerShownFor=null;
  document.getElementById("winToast").classList.remove("show");
- state={nameA:document.getElementById("nameA").value||"Équipe A",nameB:document.getElementById("nameB").value||"Équipe B",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{}};
+ state={nameA:document.getElementById("nameA").value||"Équipe Nous",nameB:document.getElementById("nameB").value||"Équipe Eux",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{}};
  save();render();
 }
 document.getElementById("nameA").addEventListener("input",()=>{save();render()});
