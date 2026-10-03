@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#174c3c">
+<meta name="description" content="Feuille de score Chibre installable sur téléphone Android.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<title>Chibre — Feuille de score</title>
+<style>
+:root{--bg:#f3f0e8;--paper:#fffdf8;--ink:#17211b;--muted:#6c746f;--line:#d8d4c8;--a:#174c3c;--b:#7b2d26;--softa:#e8f1ed;--softb:#f5e9e7}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.app{max-width:1160px;margin:auto;padding:18px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+h1{margin:0;font:700 clamp(30px,5vw,46px) Georgia,serif;letter-spacing:-.03em}button,input{font:inherit}button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 12px 32px rgba(35,31,23,.07)}
+.head{display:grid;grid-template-columns:1fr 1fr}.team{padding:18px}.team.a{background:var(--softa)}.team.b{background:var(--softb);text-align:right}
+.team small{display:block;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em}.name{border:0;background:transparent;font-size:22px;font-weight:900;width:100%;outline:none}.b .name{text-align:right}
+.total{font:700 42px Georgia,serif;margin-top:5px}.a .total{color:var(--a)}.b .total{color:var(--b)}
+.layout{display:grid;grid-template-columns:210px 1fr 210px;gap:12px;margin-top:12px}.ann,.rounds{padding:15px}
+h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-template-columns:1fr 38px 42px 38px;gap:6px;align-items:center;padding:7px 0;border-top:1px solid #ece8df}
+.annrow:first-of-type{border-top:0}.annrow button{padding:0;height:36px;font-size:19px}.count{text-align:center;font-weight:900}.annsum{display:flex;justify-content:space-between;border-top:2px solid var(--line);padding-top:12px;margin-top:8px;font-weight:900}
+.rhead,.round{display:grid;grid-template-columns:52px 1fr 38px 1fr;gap:8px;align-items:center}.rhead{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:800;padding-bottom:7px}
+.round{padding:7px 0;border-top:1px solid #ece8df}.num{width:34px;height:34px;border-radius:50%;background:#efebe2;display:grid;place-items:center;font-weight:900}
+.score{width:100%;height:42px;border:1px solid var(--line);border-radius:10px;text-align:center;font-size:18px;font-weight:900;background:white}.score:focus{outline:2px solid #b58a38;outline-offset:1px}
+.eq{text-align:center;color:#999;font-weight:900}.info{padding:13px 16px;margin-top:12px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.status{font-weight:900;color:var(--ink)}
+
+.win-toast{position:fixed;z-index:9999;left:50%;top:50%;transform:translate(-50%,-50%);width:min(760px,calc(100% - 30px));padding:42px 30px;border:5px solid #b58a38;border-radius:24px;background:#fffdf8;color:#17211b;text-align:center;font:900 clamp(30px,6vw,58px) Georgia,serif;line-height:1.12;box-shadow:0 22px 70px rgba(0,0,0,.38);display:none}
+.win-toast.show{display:block;animation:winnerBlink .65s steps(2,end) infinite}
+@keyframes winnerBlink{0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)}50%{opacity:.38;transform:translate(-50%,-50%) scale(1.035)}}
+@media(prefers-reduced-motion:reduce){.win-toast.show{animation:none}}
+
+@media(max-width:800px){.layout{grid-template-columns:1fr}.rounds{order:1}.ann{order:2}.ann.b{order:3}.app{padding:9px}}
+
+/* Android / téléphone */
+@media(max-width:600px){
+ body{background:#f3f0e8}
+ .app{padding:8px}
+ header{margin-bottom:8px;align-items:flex-start}
+ h1{font-size:34px}
+ header button{min-height:46px;padding:10px 14px}
+ .head{grid-template-columns:1fr 1fr}
+ .team{padding:12px 10px}
+ .name{font-size:18px}
+ .total{font-size:34px}
+ .layout{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+ .rounds{order:1;padding:12px 8px}
+ .ann.a{order:2}.ann.b{order:3}
+ .rhead,.round{grid-template-columns:42px minmax(0,1fr) 24px minmax(0,1fr);gap:5px}
+ .round{padding:6px 0}
+ .num{width:34px;height:34px}
+ .score{height:50px;font-size:21px;border-radius:12px}
+ .ann{padding:13px}
+ .annrow{grid-template-columns:1fr 50px 48px 50px;gap:7px;padding:7px 0}
+ .annrow button{height:48px;font-size:25px;border-radius:12px}
+ .count{font-size:19px}
+ .info{font-size:12px;padding:10px 12px}
+ .win-toast{width:calc(100% - 20px);padding:34px 18px;font-size:clamp(30px,10vw,48px)}
+}
+
+</style>
+</head>
+<body>
+<div id="winToast" class="win-toast" role="status" aria-live="assertive"></div>
+<div class="app">
+<header>
+ <div><h1>Chibre</h1><div style="color:var(--muted)">Feuille de score • 12 donnes maximum</div></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button onclick="window.print()">Imprimer</button><button onclick="resetAll()">Nouvelle partie</button></div>
+</header>
+
+<section class="card" style="margin-bottom:12px">
+ <div style="padding:12px 16px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line)">
+   <strong>Mode de partie</strong>
+   <button id="mode1000" onclick="setMode(1000)">1000 • normal</button>
+   <button id="mode1500" onclick="setMode(1500)">1500 • pique double ×2</button>
+ </div>
+ <div class="head">
+  <div class="team a"><small>Équipe A</small><input class="name" id="nameA" value="Équipe A"><div class="total" id="totalA">0</div></div>
+  <div class="team b"><small>Équipe B</small><input class="name" id="nameB" value="Équipe B"><div class="total" id="totalB">0</div></div>
+ </div>
+</section>
+
+<div class="layout">
+ <aside class="card ann a"><h2>Annonces A</h2><div id="annA"></div><div class="annsum"><span>Annonces</span><span id="sumAnnA">0</span></div></aside>
+ <main class="card rounds"><h2>Points des donnes</h2><div class="rhead"><span>Donne</span><span id="labelA">A</span><span></span><span id="labelB">B</span></div><div id="rounds"></div></main>
+ <aside class="card ann b"><h2>Annonces B</h2><div id="annB"></div><div class="annsum"><span>Annonces</span><span id="sumAnnB">0</span></div></aside>
+</div>
+
+<section class="card info"><span>Une saisie calcule automatiquement l'autre équipe : <b>156 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><span class="status" id="status">0 / 12 donnes</span></section>
+</div>
+
+<script>
+"use strict";
+const MAX=156, NROUNDS=12;
+const announcements=[
+ {key:"20",label:"20",value:20},
+ {key:"50",label:"50",value:50},
+ {key:"100",label:"100",value:100},
+ {key:"150",label:"150",value:150},
+ {key:"200",label:"200",value:200},
+ {key:"match",label:"MATCH",value:256}
+];
+let state={
+ nameA:"Équipe A",nameB:"Équipe B",mode:1000,
+ rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),
+ annA:{},annB:{}
+};
+let winnerShownFor=null;
+
+function showWinner(name,total,threshold){
+ const key=state.mode+"|"+name+"|"+threshold;
+ if(winnerShownFor===key) return;
+ winnerShownFor=key;
+ const toast=document.getElementById("winToast");
+ toast.textContent="🏆 "+name+" gagne !  "+total+" points";
+ toast.classList.add("show");
+
+}
+
+
+function load(){
+ try{
+  const x=JSON.parse(localStorage.getItem("chibre_clean_v1"));
+  if(x && Array.isArray(x.rounds) && x.rounds.length===NROUNDS) state=x;
+ }catch(e){}
+ document.getElementById("nameA").value=state.nameA||"Équipe A";
+ document.getElementById("nameB").value=state.nameB||"Équipe B";
+}
+function save(){
+ state.nameA=document.getElementById("nameA").value||"Équipe A";
+ state.nameB=document.getElementById("nameB").value||"Équipe B";
+ localStorage.setItem("chibre_clean_v1",JSON.stringify(state));
+}
+function factor(){ return state.mode===1500 ? 2 : 1; }
+function setMode(mode){
+ state.mode=mode===1500?1500:1000;
+ save(); render();
+}
+function setRound(i,team,raw){
+ const r=state.rounds[i];
+ if(raw===""){r.a=null;r.b=null;save();render();return}
+ let n=parseInt(raw,10);
+ if(Number.isNaN(n)) return;
+ n=Math.max(0,Math.min(MAX,n));
+ if(team==="a"){r.a=n;r.b=MAX-n}else{r.b=n;r.a=MAX-n}
+ save();render();
+}
+function changeAnn(team,key,delta){
+ const obj=team==="A"?state.annA:state.annB;
+
+ // MATCH correspond à une donne complète : on l'inscrit sur la prochaine ligne libre.
+ if(key==="match"){
+   if(delta>0){
+     const idx=state.rounds.findIndex(r=>r.a===null && r.b===null);
+     if(idx===-1){ alert("Les 12 donnes sont déjà remplies."); return; }
+     if(team==="A"){
+       state.rounds[idx].a=256;
+       state.rounds[idx].b=0;
+     }else{
+       state.rounds[idx].a=0;
+       state.rounds[idx].b=256;
+     }
+     obj[key]=(obj[key]||0)+1;
+   }else{
+     // Retire le dernier MATCH de cette équipe et libère sa ligne.
+     for(let i=state.rounds.length-1;i>=0;i--){
+       const r=state.rounds[i];
+       if((team==="A" && r.a===256 && r.b===0) || (team==="B" && r.b===256 && r.a===0)){
+         r.a=null; r.b=null;
+         obj[key]=Math.max(0,(obj[key]||0)-1);
+         break;
+       }
+     }
+   }
+   save();render();return;
+ }
+
+ obj[key]=Math.max(0,(obj[key]||0)+delta);
+ save();render();
+}
+function annTotal(team){
+ const obj=team==="A"?state.annA:state.annB;
+ return announcements.reduce((sum,x)=>x.key==="match" ? sum : sum+(obj[x.key]||0)*x.value,0);
+}
+function roundTotal(team){
+ return state.rounds.reduce((sum,r)=>sum+(r[team]===null?0:r[team]),0);
+}
+function makeAnnouncements(team){
+ const obj=team==="A"?state.annA:state.annB;
+ const root=document.getElementById("ann"+team);
+ root.innerHTML="";
+ announcements.forEach(x=>{
+  const row=document.createElement("div");row.className="annrow";
+  const label=document.createElement("strong");label.textContent=x.label;
+  const minus=document.createElement("button");minus.textContent="−";minus.onclick=()=>changeAnn(team,x.key,-1);
+  const count=document.createElement("span");count.className="count";count.textContent=obj[x.key]||0;
+  const plus=document.createElement("button");plus.textContent="+";plus.onclick=()=>changeAnn(team,x.key,1);
+  row.append(label,minus,count,plus);root.appendChild(row);
+ });
+}
+function makeRounds(){
+ const root=document.getElementById("rounds");root.innerHTML="";
+ state.rounds.forEach((r,i)=>{
+  const row=document.createElement("div");row.className="round";
+  const num=document.createElement("span");num.className="num";num.textContent=i+1;
+  const a=document.createElement("input");a.className="score";a.type="number";a.min=0;a.max=256;a.inputMode="numeric";a.value=r.a===null?"":r.a;a.placeholder="—";a.onchange=()=>setRound(i,"a",a.value);
+  const eq=document.createElement("span");eq.className="eq";eq.textContent="+";
+  const b=document.createElement("input");b.className="score";b.type="number";b.min=0;b.max=256;b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
+  row.append(num,a,eq,b);root.appendChild(row);
+ });
+}
+function render(){
+ makeAnnouncements("A");makeAnnouncements("B");makeRounds();
+ const nA=document.getElementById("nameA").value||"Équipe A",nB=document.getElementById("nameB").value||"Équipe B";
+ document.getElementById("labelA").textContent=nA;document.getElementById("labelB").textContent=nB;
+ const aa=annTotal("A"),ab=annTotal("B");
+ document.getElementById("sumAnnA").textContent=aa*factor();document.getElementById("sumAnnB").textContent=ab*factor();
+ const f=factor();
+ const totalA=(roundTotal("a")+aa)*f;
+ const totalB=(roundTotal("b")+ab)*f;
+ document.getElementById("totalA").textContent=totalA;
+ document.getElementById("totalB").textContent=totalB;
+
+ const threshold=state.mode===1500?1500:1000;
+ if(totalA>=threshold || totalB>=threshold){
+   if(totalA>totalB) showWinner(nA,totalA,threshold);
+   else if(totalB>totalA) showWinner(nB,totalB,threshold);
+ }
+ else if(!winnerShownFor){
+   document.getElementById("winToast").classList.remove("show");
+ }
+
+ const m1000=document.getElementById("mode1000"),m1500=document.getElementById("mode1500");
+ m1000.style.background=state.mode===1000?"#17211b":"#fff"; m1000.style.color=state.mode===1000?"#fff":"#17211b";
+ m1500.style.background=state.mode===1500?"#17211b":"#fff"; m1500.style.color=state.mode===1500?"#fff":"#17211b";
+ const played=state.rounds.filter(r=>r.a!==null).length;
+ document.getElementById("status").textContent=played+" / 12 donnes";
+}
+function resetAll(){
+ if(!confirm("Effacer tous les points et toutes les annonces ?"))return;
+ winnerShownFor=null;
+ document.getElementById("winToast").classList.remove("show");
+ state={nameA:document.getElementById("nameA").value||"Équipe A",nameB:document.getElementById("nameB").value||"Équipe B",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{}};
+ save();render();
+}
+document.getElementById("nameA").addEventListener("input",()=>{save();render()});
+document.getElementById("nameB").addEventListener("input",()=>{save();render()});
+load();render();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+}
+</script>
+</body></html>

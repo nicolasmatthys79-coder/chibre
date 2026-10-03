@@ -1,0 +1,12 @@
+CHIBRE PWA
+
+Contenu:
+- index.html : application
+- manifest.webmanifest : installation Android/PWA
+- sw.js : fonctionnement hors connexion
+- icon-192.png / icon-512.png : icônes
+
+IMPORTANT:
+Une PWA doit être publiée sur un site HTTPS (ou localhost pour les tests).
+Après publication, ouvrez l'adresse dans Chrome Android puis choisissez
+"Installer l'application" ou "Ajouter à l'écran d'accueil".
