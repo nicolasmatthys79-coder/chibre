@@ -102,7 +102,7 @@ const announcements=[
  {key:"match",label:"MATCH",value:256}
 ];
 let state={
- nameA:"Équipe A",nameB:"Équipe B",mode:1000,
+ nameA:"",nameB:"",mode:1000,
  rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),
  annA:{},annB:{}
 };
@@ -124,12 +124,12 @@ function load(){
   const x=JSON.parse(localStorage.getItem("chibre_clean_v1"));
   if(x && Array.isArray(x.rounds) && x.rounds.length===NROUNDS) state=x;
  }catch(e){}
- document.getElementById("nameA").value=state.nameA||"Équipe A";
- document.getElementById("nameB").value=state.nameB||"Équipe B";
+ document.getElementById("nameA").value=state.nameA||"";
+ document.getElementById("nameB").value=state.nameB||"";
 }
 function save(){
- state.nameA=document.getElementById("nameA").value||"Équipe A";
- state.nameB=document.getElementById("nameB").value||"Équipe B";
+ state.nameA=document.getElementById("nameA").value||"";
+ state.nameB=document.getElementById("nameB").value||"";
  localStorage.setItem("chibre_clean_v1",JSON.stringify(state));
 }
 function factor(){ return state.mode===1500 ? 2 : 1; }
