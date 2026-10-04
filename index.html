@@ -374,7 +374,8 @@ function clearHistory(){
   openHistory();
 }
 function resetAll(){
- if(!confirm("Effacer tous les points et toutes les annonces ?"))return;
+ if(!confirm("Terminer cette partie et commencer une nouvelle partie ?"))return;
+ saveGameToHistory();
  winnerShownFor=null;
  document.getElementById("winToast").classList.remove("show");
  state={nameA:document.getElementById("nameA").value||"Équipe Nous",nameB:document.getElementById("nameB").value||"Équipe Eux",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{}};
