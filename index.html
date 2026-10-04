@@ -9,7 +9,7 @@
 <link rel="icon" href="icon-192.png">
 <title>Chibre — Feuille de score</title>
 <style>
-:root{--bg:#f3f0e8;--paper:#fffdf8;--ink:#17211b;--muted:#6c746f;--line:#d8d4c8;--a:#174c3c;--b:#7b2d26;--softa:#c8e6d5;--softb:#f5e9e7}
+:root{--bg:#f3f0e8;--paper:#fffdf8;--ink:#17211b;--muted:#6c746f;--line:#d8d4c8;--a:#174c3c;--b:#7b2d26;--softa:#c8e6d5;--softb:#e6a8a3}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
 .app{max-width:1160px;margin:auto;padding:18px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 h1{margin:0;font:700 clamp(30px,5vw,46px) Georgia,serif;letter-spacing:-.03em}button,input{font:inherit}button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}
@@ -19,7 +19,7 @@ h1{margin:0;font:700 clamp(30px,5vw,46px) Georgia,serif;letter-spacing:-.03em}bu
 .total{font:700 42px Georgia,serif;margin-top:5px}.a .total{color:var(--a)}.b .total{color:var(--b)}
 .layout{display:grid;grid-template-columns:210px 1fr 210px;gap:12px;margin-top:12px}.ann,.rounds{padding:15px}
 .ann.a{background:#c8e6d5}
-.ann.b{background:#f5e9e7}
+.ann.b{background:#e6a8a3}
 h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-template-columns:1fr 38px 42px 38px;gap:6px;align-items:center;padding:7px 0;border-top:1px solid #ece8df}
 .annrow:first-of-type{border-top:0}.annrow button{padding:0;height:36px;font-size:19px}.count{text-align:center;font-weight:900}.annsum{display:flex;justify-content:space-between;border-top:2px solid var(--line);padding-top:12px;margin-top:8px;font-weight:900}
 .rhead,.round{display:grid;grid-template-columns:52px 1fr 38px 1fr;gap:8px;align-items:center}.rhead{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:800;padding-bottom:7px}
@@ -386,7 +386,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
           <div style="
             width:${largeurB}%;
   height:100%;
-  background:${game.totalB>game.totalA ? "#f1c9c5" : "white"};
+  background:${game.totalB>game.totalA ? "#e6a8a3" : "white"};
   border:2px solid #000;
   display:flex;
   align-items:center;
