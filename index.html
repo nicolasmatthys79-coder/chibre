@@ -207,7 +207,7 @@ function makeRounds(){
   const row=document.createElement("div");row.className="round";
   const num=document.createElement("span");num.className="num";num.textContent=i+1;
   const a=document.createElement("input");a.className="score";a.type="number";a.min=0;a.max=256;a.inputMode="numeric";a.value=r.a===null?"":r.a;a.placeholder="—";a.onchange=()=>setRound(i,"a",a.value);
-  const eq=document.createElement("span");eq.className="eq";eq.textContent="+";
+  const eq=document.createElement("span");eq.className="eq";eq.textContent=":";
   const b=document.createElement("input");b.className="score";b.type="number";b.min=0;b.max=256;b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
   row.append(num,a,eq,b);root.appendChild(row);
  });
