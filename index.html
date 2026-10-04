@@ -336,23 +336,62 @@ function openHistory(){
     box.style.padding="16px";
     box.style.marginBottom="12px";
 
-    box.innerHTML=`
+        box.innerHTML=`
       <strong>Partie ${history.length-index}</strong><br>
       <small>${game.date}</small>
-
-      <div style="font-size:20px;font-weight:900;margin-top:12px">
-        ${game.nameA} : ${game.totalA} points
-      </div>
-
-      <div style="font-size:20px;font-weight:900">
-        ${game.nameB} : ${game.totalB} points
-      </div>
 
       <div style="margin-top:10px">
         🏆 Gagnant : <strong>${winner}</strong>
       </div>
 
       <div>Mode : ${game.mode} points</div>
+
+      <div style="margin-top:18px;padding-top:14px;border-top:1px solid #d8d4c8">
+
+        <div style="font-weight:900;margin-bottom:5px">
+          ${game.nameA}
+        </div>
+
+        <div style="height:42px;background:#efebe2;border-radius:10px;overflow:hidden">
+          <div style="
+            width:${largeurA}%;
+            height:100%;
+            background:#c8e6d5;
+            display:flex;
+            align-items:center;
+            justify-content:flex-end;
+            padding-right:10px;
+            font-size:18px;
+            font-weight:900;
+            color:#174c3c;
+            min-width:65px">
+            ${game.totalA} pts
+          </div>
+        </div>
+
+
+        <div style="font-weight:900;margin-top:14px;margin-bottom:5px">
+          ${game.nameB}
+        </div>
+
+        <div style="height:42px;background:#efebe2;border-radius:10px;overflow:hidden">
+          <div style="
+            width:${largeurB}%;
+            height:100%;
+            background:#f1c9c5;
+            display:flex;
+            align-items:center;
+            justify-content:flex-end;
+            padding-right:10px;
+            font-size:18px;
+            font-weight:900;
+            color:#7b2d26;
+            min-width:65px">
+            ${game.totalB} pts
+          </div>
+        </div>
+
+      </div>
     `;
 
     list.appendChild(box);
