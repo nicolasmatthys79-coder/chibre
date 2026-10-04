@@ -327,7 +327,9 @@ function openHistory(){
       game.totalA>game.totalB ? game.nameA :
       game.totalB>game.totalA ? game.nameB :
       "Égalité";
-
+const meilleurScore=Math.max(game.totalA,game.totalB,1);
+    const largeurA=(game.totalA/meilleurScore)*100;
+    const largeurB=(game.totalB/meilleurScore)*100;
     const box=document.createElement("div");
 
     box.style.background="#fffdf8";
