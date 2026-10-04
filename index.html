@@ -263,6 +263,116 @@ function render(){
  const played=state.rounds.filter(r=>r.a!==null).length;
  document.getElementById("status").textContent=played+" / 12 donnes";
 }
+ function saveGameToHistory(){
+
+  const aa=annTotal("A");
+  const ab=annTotal("B");
+  const f=factor();
+
+  const totalA=(roundTotal("a")+aa)*f;
+  const totalB=(roundTotal("b")+ab)*f;
+
+  const played=state.rounds.filter(r=>r.a!==null).length;
+
+  if(played===0 && totalA===0 && totalB===0) return;
+
+  const nameA=document.getElementById("nameA").value || "Nous";
+  const nameB=document.getElementById("nameB").value || "Eux";
+
+  let history=[];
+
+  try{
+    history=JSON.parse(localStorage.getItem("chibre_history")) || [];
+  }catch(e){
+    history=[];
+  }
+
+  history.unshift({
+    date:new Date().toLocaleString("fr-CH"),
+    nameA:nameA,
+    nameB:nameB,
+    totalA:totalA,
+    totalB:totalB,
+    mode:state.mode
+  });
+
+  localStorage.setItem("chibre_history",JSON.stringify(history));
+}
+
+
+function openHistory(){
+
+  document.getElementById("historyPage").style.display="block";
+
+  let history=[];
+
+  try{
+    history=JSON.parse(localStorage.getItem("chibre_history")) || [];
+  }catch(e){
+    history=[];
+  }
+
+  const list=document.getElementById("historyList");
+
+  if(history.length===0){
+    list.innerHTML="<p>Aucune partie enregistrée.</p>";
+    return;
+  }
+
+  list.innerHTML="";
+
+  history.forEach((game,index)=>{
+
+    const winner =
+      game.totalA>game.totalB ? game.nameA :
+      game.totalB>game.totalA ? game.nameB :
+      "Égalité";
+
+    const box=document.createElement("div");
+
+    box.style.background="#fffdf8";
+    box.style.border="1px solid #d8d4c8";
+    box.style.borderRadius="16px";
+    box.style.padding="16px";
+    box.style.marginBottom="12px";
+
+    box.innerHTML=`
+      <strong>Partie ${history.length-index}</strong><br>
+      <small>${game.date}</small>
+
+      <div style="font-size:20px;font-weight:900;margin-top:12px">
+        ${game.nameA} : ${game.totalA} points
+      </div>
+
+      <div style="font-size:20px;font-weight:900">
+        ${game.nameB} : ${game.totalB} points
+      </div>
+
+      <div style="margin-top:10px">
+        🏆 Gagnant : <strong>${winner}</strong>
+      </div>
+
+      <div>Mode : ${game.mode} points</div>
+    `;
+
+    list.appendChild(box);
+  });
+}
+
+
+function closeHistory(){
+  document.getElementById("historyPage").style.display="none";
+}
+
+
+function clearHistory(){
+
+  if(!confirm("Effacer définitivement tout l'historique des parties ?"))
+    return;
+
+  localStorage.removeItem("chibre_history");
+  openHistory();
+}
 function resetAll(){
  if(!confirm("Effacer tous les points et toutes les annonces ?"))return;
  winnerShownFor=null;
