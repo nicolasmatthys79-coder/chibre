@@ -168,7 +168,7 @@ function setRound(i,team,raw){
  if(raw===""){r.a=null;r.b=null;save();render();return}
  let n=parseInt(raw,10);
  if(Number.isNaN(n)) return;
- n=.max(0,Math.min(MAX,n));
+ n=Math.max(0,Math.min(MAX,n));
  if(team==="a"){r.a=n;r.b=MAX-n}else{r.b=n;r.a=MAX-n}
  save();render();
 }
