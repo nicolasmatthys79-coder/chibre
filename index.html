@@ -294,6 +294,8 @@ function render(){
     nameB:nameB,
     totalA:totalA,
     totalB:totalB,
+   annA:aa*f,
+   annB:ab*f,
     mode:state.mode
   });
 
@@ -373,7 +375,9 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
           </div>
         </div>
 
-
+<div style="margin-top:5px;font-size:14px;font-weight:700">
+  Annonces : ${game.annA || 0} pts
+  </div>
         <div style="font-weight:900;margin-top:14px;margin-bottom:5px">
           ${game.nameB}
         </div>
