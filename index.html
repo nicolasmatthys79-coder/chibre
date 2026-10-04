@@ -125,7 +125,7 @@ const announcements=[
  {key:"100",label:"100",value:100},
  {key:"150",label:"150",value:150},
  {key:"200",label:"200",value:200},
- {key:"match",label:"MATCH",value:256}
+ {key:"match",label:"Match!",value:256}
 ];
 let state={
  nameA:"",nameB:"",mode:1000,
@@ -168,7 +168,7 @@ function setRound(i,team,raw){
  if(raw===""){r.a=null;r.b=null;save();render();return}
  let n=parseInt(raw,10);
  if(Number.isNaN(n)) return;
- n=Math.max(0,Math.min(MAX,n));
+ n=.max(0,Math.min(MAX,n));
  if(team==="a"){r.a=n;r.b=MAX-n}else{r.b=n;r.a=MAX-n}
  save();render();
 }
