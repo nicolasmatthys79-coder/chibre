@@ -91,7 +91,27 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 
 <section class="card info"><span>Une saisie calcule automatiquement l'autre équipe : <b>156 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><span class="status" id="status">0 / 12 donnes</span></section>
 </div>
+<!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
+<div id="historyPage"
+      style="display:none;position:fixed;z-index:10000;inset:0;
+      background:#f3f0e8;overflow:auto;padding:20px">
+
+   <div style="max-width:800px;margin:auto">
+
+     <h1>Historique des parties</h1>
+
+     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+       <button onclick="closeHistory()">Retour au jeu</button>
+       <button onclick="clearHistory()">Effacer tous les résumés</button>
+     </div>
+
+     <div id="historyList"></div>
+
+   </div>
+ </div>
+
+ <!-- FIN DE LA PAGE HISTORIQUE -->
 <script>
 "use strict";
 const MAX=156, NROUNDS=12;
