@@ -68,7 +68,11 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 <div class="app">
 <header>
  <div><h1>Chibre Suisse</h1><div style="color:var(--muted)">Feuille de score • 12 donnes maximum</div></div>
- <div style="display:flex;gap:8px;flex-wrap:wrap"><button onclick="window.print()">Imprimer</button><button onclick="resetAll()">Nouvelle partie</button></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap">
+  <button onclick="window.print()">Imprimer</button>
+  <button onclick="resetAll()">Nouvelle partie</button>
+  <button onclick="openHistory()">Historique</button>
+</div>
 </header>
 
 <section class="card" style="margin-bottom:12px">
