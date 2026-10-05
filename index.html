@@ -67,12 +67,30 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 <div id="winToast" class="win-toast" role="status" aria-live="assertive"></div>
 <div class="app">
 <header>
- <div><h1>Chibre Suisse</h1><div style="color:var(--muted)">Feuille de score • 12 donnes maximum</div></div>
+ <div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <h1>Chibre Suisse</h1>
+
+    <button onclick="shareApp()" title="Partager" aria-label="Partager"
+      style="border:0;background:transparent;padding:5px;cursor:pointer">
+      <svg width="28" height="28" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line>
+        <line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line>
+      </svg>
+    </button>
+
+  </div>
+  <div style="color:var(--muted)">Feuille de score • 12 donnes maximum</div>
+</div>
  <div style="display:flex;gap:8px;flex-wrap:wrap">
   <button onclick="window.print()">Imprimer</button>
   <button onclick="resetAll()">Nouvelle partie</button>
   <button onclick="openHistory()">Historique</button>
-  <button onclick="shareApp()" title="Partager" aria-label="Partager">↗</button>
 </div>
 </header>
 
