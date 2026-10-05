@@ -433,15 +433,33 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
 function closeHistory(){
   document.getElementById("historyPage").style.display="none";
 }
-
-
 function clearHistory(){
-
   if(!confirm("Effacer définitivement tout l'historique des parties ?"))
     return;
 
   localStorage.removeItem("chibre_history");
   openHistory();
+}
+
+async function shareApp(){
+  const data={
+    title:"Chibre Suisse",
+    text:"Feuille de score Chibre Suisse",
+    url:window.location.href
+  };
+
+  if(navigator.share){
+    try{
+      await navigator.share(data);
+    }catch(e){}
+  }else{
+    try{
+      await navigator.clipboard.writeText(window.location.href);
+      alert("Lien copié !");
+    }catch(e){
+      alert("Le partage n'est pas disponible sur cet appareil.");
+    }
+  }
 }
 function resetAll(){
  if(!confirm("Terminer cette partie et commencer une nouvelle partie ?"))return;
