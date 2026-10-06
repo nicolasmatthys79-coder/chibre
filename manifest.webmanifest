@@ -1,15 +1,26 @@
 {
-  "name": "Chibre — Feuille de score",
-  "short_name": "Chibre",
-  "description": "Feuille de score pour le Chibre suisse.",
+  "id": "./",
+  "name": "Chibre Suisse — Version trois",
+  "short_name": "Chibre Suisse",
+  "description": "Feuille de score du chibre suisse — Version trois.",
+  "lang": "fr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f3f0e8",
   "theme_color": "#174c3c",
-  "orientation": "portrait-primary",
   "icons": [
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
   ]
 }

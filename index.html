@@ -7,7 +7,7 @@
 <meta name="description" content="Feuille de score Chibre installable sur téléphone Android.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
-<title>Chibre — Feuille de score</title>
+<title>Chibre Suisse — Version trois</title>
 <style>
 :root{--bg:#f3f0e8;--paper:#fffdf8;--ink:#17211b;--muted:#6c746f;--line:#d8d4c8;--a:#174c3c;--b:#7b2d26;--softa:#c8e6d5;--softb:#f5e9e7}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
@@ -61,10 +61,31 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  .win-toast{width:calc(100% - 20px);padding:34px 18px;font-size:clamp(30px,10vw,48px)}
 }
 
+
+/* Version trois : suppression individuelle des résumés */
+.history-delete{position:absolute;top:8px;right:8px;width:44px;height:44px;padding:0;border:0;background:transparent;color:var(--b);font-size:28px;line-height:1}
+.history-delete:hover{background:var(--softb)}
+.history-delete:focus-visible{outline:2px solid var(--b);outline-offset:2px}
+@media print{.history-delete{display:none}}
+
+
+.delete-dialog{width:min(360px,calc(100% - 32px));padding:26px;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.delete-dialog::backdrop{background:rgba(23,33,27,.45)}
+.delete-dialog h2{margin:0 0 22px;text-align:center}
+.delete-dialog .actions{display:flex;justify-content:center;gap:12px}
+.delete-dialog button{min-width:100px;min-height:44px}
+.delete-dialog .yes{background:var(--b);border-color:var(--b);color:#fff}
 </style>
 </head>
 <body>
 <div id="winToast" class="win-toast" role="status" aria-live="assertive"></div>
+<dialog id="deleteDialog" class="delete-dialog" aria-labelledby="deleteTitle">
+  <h2 id="deleteTitle">Supprimer cette partie ?</h2>
+  <form method="dialog" class="actions">
+    <button value="no" autofocus>Non</button>
+    <button value="yes" class="yes">Oui</button>
+  </form>
+</dialog>
 <div class="app">
 <header>
  <div>
@@ -85,7 +106,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
     </button>
 
   </div>
-  <div style="color:var(--muted)">Feuille de score • 12 donnes maximum</div>
+  <div style="color:var(--muted)">Feuille de score • 12 donnes maximum • Version trois</div>
 </div>
  <div style="display:flex;gap:8px;flex-wrap:wrap">
   <button onclick="window.print()">Imprimer</button>
@@ -321,6 +342,12 @@ function render(){
 }
 
 
+function escapeHistoryText(value){
+  return String(value ?? "").replace(/[&<>"']/g,char=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[char]));
+}
+
 function openHistory(){
 
   document.getElementById("historyPage").style.display="block";
@@ -358,13 +385,16 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
     box.style.borderRadius="16px";
     box.style.padding="16px";
     box.style.marginBottom="12px";
+    box.style.position="relative";
 
         box.innerHTML=`
-      <strong>Partie ${history.length-index}</strong><br>
-      <small>${game.date}</small>
+      <div style="padding-right:44px">
+        <strong>Partie ${history.length-index}</strong><br>
+        <small>${escapeHistoryText(game.date)}</small>
+      </div>
 
       <div style="margin-top:10px">
-        🏆 Gagnant : <strong>${winner}</strong>
+        🏆 Gagnant : <strong>${escapeHistoryText(winner)}</strong>
       </div>
 
       <div>Mode : ${game.mode} points</div>
@@ -372,7 +402,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
       <div style="margin-top:18px;padding-top:14px;border-top:1px solid #d8d4c8">
 
         <div style="font-weight:900;margin-bottom:5px">
-          ${game.nameA}
+          ${escapeHistoryText(game.nameA)}
         </div>
 
         <div style="height:42px;background:#efebe2;border-radius:10px;overflow:hidden">
@@ -397,7 +427,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
   Annonces : ${game.annA || 0} pts
   </div>
         <div style="font-weight:900;margin-top:14px;margin-bottom:5px">
-          ${game.nameB}
+          ${escapeHistoryText(game.nameB)}
         </div>
 
         <div style="height:42px;background:#efebe2;border-radius:10px;overflow:hidden">
@@ -424,6 +454,24 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
       </div>
     `;
 
+    const deleteButton=document.createElement("button");
+    deleteButton.type="button";
+    deleteButton.className="history-delete";
+    deleteButton.textContent="×";
+    deleteButton.title="Supprimer cette partie";
+    deleteButton.setAttribute("aria-label",`Supprimer la partie ${history.length-index}`);
+    deleteButton.onclick=()=>{
+      const dialog=document.getElementById("deleteDialog");
+      dialog.returnValue="no";
+      dialog.onclose=()=>{
+        if(dialog.returnValue!=="yes") return;
+        history.splice(index,1);
+        localStorage.setItem("chibre_history",JSON.stringify(history));
+        openHistory();
+      };
+      dialog.showModal();
+    };
+    box.appendChild(deleteButton);
     list.appendChild(box);
   });
 }
