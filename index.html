@@ -200,18 +200,18 @@ function changeAnn(team,key,delta){
      const idx=state.rounds.findIndex(r=>r.a===null && r.b===null);
      if(idx===-1){ alert("Les 12 donnes sont déjà remplies."); return; }
      if(team==="A"){
-       state.rounds[idx].a=256;
+       state.rounds[idx].a=257;
        state.rounds[idx].b=0;
      }else{
        state.rounds[idx].a=0;
-       state.rounds[idx].b=256;
+       state.rounds[idx].b=257;
      }
      obj[key]=(obj[key]||0)+1;
    }else{
      // Retire le dernier MATCH de cette équipe et libère sa ligne.
      for(let i=state.rounds.length-1;i>=0;i--){
        const r=state.rounds[i];
-       if((team==="A" && r.a===256 && r.b===0) || (team==="B" && r.b===256 && r.a===0)){
+       if((team==="A" && r.a===257 && r.b===0) || (team==="B" && r.b===257 && r.a===0)){
          r.a=null; r.b=null;
          obj[key]=Math.max(0,(obj[key]||0)-1);
          break;
@@ -249,9 +249,9 @@ function makeRounds(){
  state.rounds.forEach((r,i)=>{
   const row=document.createElement("div");row.className="round";
   const num=document.createElement("span");num.className="num";num.textContent=i+1;
-  const a=document.createElement("input");a.className="score";a.type="number";a.min=0;a.max=256;a.inputMode="numeric";a.value=r.a===null?"":r.a;a.placeholder="—";a.onchange=()=>setRound(i,"a",a.value);
+  const a=document.createElement("input");a.className="score";a.type="number";a.min=0;a.max=257;a.inputMode="numeric";a.value=r.a===null?"":r.a;a.placeholder="—";a.onchange=()=>setRound(i,"a",a.value);
   const eq=document.createElement("span");eq.className="eq";eq.textContent=":";
-  const b=document.createElement("input");b.className="score";b.type="number";b.min=0;b.max=256;b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
+  const b=document.createElement("input");b.className="score";b.type="number";b.min=0;b.max=257;b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
   row.append(num,a,eq,b);root.appendChild(row);
  });
 }
