@@ -1,12 +1,25 @@
-CHIBRE PWA
+CHIBRE SUISSE — FICHIERS POUR LE SERVEUR
 
-Contenu:
-- index.html : application
-- manifest.webmanifest : installation Android/PWA
-- sw.js : fonctionnement hors connexion
-- icon-192.png / icon-512.png : icônes
+Transférez ces cinq fichiers ensemble dans le dossier actuel de votre site :
+- index.html
+- manifest.webmanifest
+- sw.js
+- icon-192.png
+- icon-512.png
 
-IMPORTANT:
-Une PWA doit être publiée sur un site HTTPS (ou localhost pour les tests).
-Après publication, ouvrez l'adresse dans Chrome Android puis choisissez
-"Installer l'application" ou "Ajouter à l'écran d'accueil".
+Remplacez les anciens fichiers portant les mêmes noms. Les fichiers doivent
+être côte à côte, sans sous-dossier supplémentaire. Le fichier LISEZ-MOI.txt
+est une notice et n’est pas nécessaire au fonctionnement.
+
+Conservez la même adresse du site pour retrouver l’historique enregistré
+sur chaque appareil. Ne supprimez pas les données du navigateur.
+Après transfert, rechargez le site. La version du cache hors connexion
+a été mise à jour pour cette livraison.
+
+Modifications incluses :
+- Saisie de 0 à 157 ou de 257 pour un match.
+- 257 donne 0 à l’autre équipe et compte un match automatiquement.
+- Correction et effacement des donnes : compteur ajusté automatiquement.
+- Historique : nombre de match à côté des annonces pour chaque équipe.
+- « Match » sans S, quel que soit le nombre.
+- Anciennes parties : « — » si le compteur n’avait pas été enregistré.

@@ -1,5 +1,5 @@
 "use strict";
-const CACHE="chibre-version-trois-v4";
+const CACHE="chibre-version-trois-v6-match-20261008";
 const FILES=["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()));

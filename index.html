@@ -132,7 +132,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  <aside class="card ann b"><h2>Annonces Eux</h2><div id="annB"></div><div class="annsum"><span>Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span>Une saisie calcule automatiquement l'autre équipe : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><span class="status" id="status">0 / 12 donnes</span></section>
+<section class="card info"><span>Saisies autorisées : <b>0 à 157, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><span class="status" id="status">0 / 12 donnes</span></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -206,10 +206,13 @@ function setMode(mode){
 function setRound(i,team,raw){
  const r=state.rounds[i];
  if(raw===""){r.a=null;r.b=null;save();render();return}
- let n=parseInt(raw,10);
- if(Number.isNaN(n)) return;
- n=Math.max(0,Math.min(MAX,n));
- if(team==="a"){r.a=n;r.b=MAX-n}else{r.b=n;r.a=MAX-n}
+ const n=Number(raw);
+ if(!Number.isInteger(n) || n<0 || (n>MAX && n!==257)){
+   alert("Saisissez un nombre entier entre 0 et 157, ou 257 pour un match.");
+   render();return;
+ }
+ const other=n===257?0:MAX-n;
+ if(team==="a"){r.a=n;r.b=other}else{r.b=n;r.a=other}
  save();render();
 }
 function changeAnn(team,key,delta){
@@ -227,14 +230,14 @@ function changeAnn(team,key,delta){
        state.rounds[idx].a=0;
        state.rounds[idx].b=257;
      }
-     obj[key]=(obj[key]||0)+1;
+
    }else{
      // Retire le dernier MATCH de cette équipe et libère sa ligne.
      for(let i=state.rounds.length-1;i>=0;i--){
        const r=state.rounds[i];
        if((team==="A" && r.a===257 && r.b===0) || (team==="B" && r.b===257 && r.a===0)){
          r.a=null; r.b=null;
-         obj[key]=Math.max(0,(obj[key]||0)-1);
+
          break;
        }
      }
@@ -244,6 +247,10 @@ function changeAnn(team,key,delta){
 
  obj[key]=Math.max(0,(obj[key]||0)+delta);
  save();render();
+}
+function matchCount(team){
+ const key=team==="A"?"a":"b";
+ return state.rounds.filter(r=>r[key]===257).length;
 }
 function annTotal(team){
  const obj=team==="A"?state.annA:state.annB;
@@ -260,7 +267,7 @@ function makeAnnouncements(team){
   const row=document.createElement("div");row.className="annrow";
   const label=document.createElement("strong");label.textContent=x.label;
   const minus=document.createElement("button");minus.textContent="−";minus.onclick=()=>changeAnn(team,x.key,-1);
-  const count=document.createElement("span");count.className="count";count.textContent=obj[x.key]||0;
+  const count=document.createElement("span");count.className="count";count.textContent=x.key==="match"?matchCount(team):(obj[x.key]||0);
   const plus=document.createElement("button");plus.textContent="+";plus.onclick=()=>changeAnn(team,x.key,1);
   row.append(label,minus,count,plus);root.appendChild(row);
  });
@@ -335,6 +342,8 @@ function render(){
     totalB:totalB,
    annA:aa*f,
    annB:ab*f,
+   matchesA:matchCount("A"),
+   matchesB:matchCount("B"),
     mode:state.mode
   });
 
@@ -424,7 +433,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
         </div>
 
 <div style="margin-top:5px;font-size:14px;font-weight:700">
-  Annonces : ${game.annA || 0} pts
+  Annonces : ${game.annA || 0} pts · Match : ${escapeHistoryText(game.matchesA ?? "—")}
   </div>
         <div style="font-weight:900;margin-top:14px;margin-bottom:5px">
           ${escapeHistoryText(game.nameB)}
@@ -448,7 +457,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
           </div>
         </div>
         <div style="margin-top:5px;font-size:14px;font-weight:700">
-  Annonces : ${game.annB || 0} pts
+  Annonces : ${game.annB || 0} pts · Match : ${escapeHistoryText(game.matchesB ?? "—")}
 </div>
 
       </div>
