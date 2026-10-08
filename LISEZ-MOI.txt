@@ -1,7 +1,8 @@
 CHIBRE SUISSE — FICHIERS POUR LE SERVEUR
 
-Transférez ces cinq fichiers ensemble dans le dossier actuel de votre site :
+Transférez ces six fichiers ensemble dans le dossier actuel de votre site :
 - index.html
+- comment-ca-marche.html
 - manifest.webmanifest
 - sw.js
 - icon-192.png
@@ -23,3 +24,5 @@ Modifications incluses :
 - Historique : nombre de match à côté des annonces pour chaque équipe.
 - « Match » sans S, quel que soit le nombre.
 - Anciennes parties : « — » si le compteur n’avait pas été enregistré.
+
+- Lien « comment ça marche ? » en bas du jeu et page d’aide accessible hors connexion.

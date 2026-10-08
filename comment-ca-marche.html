@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#174c3c">
+<title>Comment ça marche ? — Chibre Suisse</title>
+<link rel="icon" href="icon-192.png">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f3f0e8;color:#17211b;font-family:system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6}
+main{max-width:760px;margin:auto;padding:24px 18px 40px}
+h1,h2{font-family:Georgia,serif;line-height:1.2}
+h1{font-size:clamp(30px,6vw,42px);margin:20px 0}
+h2{font-size:23px;margin:28px 0 10px}
+article{background:#fffdf8;border:1px solid #d8d4c8;border-radius:18px;padding:10px 24px 24px}
+a{color:#174c3c;text-underline-offset:4px}
+.back{display:inline-block;padding:10px 0;min-height:44px}
+li{margin:8px 0}
+@media(max-width:600px){main{padding:12px 12px 28px}article{padding:8px 16px 20px}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./index.html">← Retour au jeu</a>
+<h1>Comment ça marche ?</h1>
+<article>
+<h2>Commencer une partie</h2>
+<p>Inscrivez les noms des joueurs dans les équipes « Nous » et « Eux », puis choisissez le mode de jeu. La feuille permet de saisir jusqu’à 12 donnes.</p>
+<ul>
+<li><strong>1000 · normal :</strong> les points des donnes et des annonces sont comptés une fois. L’objectif est de 1000 points.</li>
+<li><strong>1500 · pique double :</strong> dans cette application, tous les points des donnes et des annonces sont doublés. L’objectif est de 1500 points.</li>
+</ul>
+<h2>Inscrire les points d’une donne</h2>
+<p>Saisissez les points d’une seule équipe, puis validez ou quittez la case. L’autre équipe est calculée automatiquement : <strong>157 moins les points saisis</strong>. Par exemple, si Nous marque 100, Eux reçoit 57.</p>
+<p>Vous pouvez inscrire un nombre entier de <strong>0 à 157</strong>, ou <strong>257 pour un match</strong>. Les valeurs de 158 à 256 ne sont pas acceptées.</p>
+<p>Pour corriger une donne, modifiez l’une des deux cases. Pour l’effacer, videz une case et validez : les deux scores de cette donne seront effacés.</p>
+<h2>Compter un match</h2>
+<p>Une saisie de <strong>257</strong> donne <strong>0 à l’autre équipe</strong> et ajoute automatiquement un match au compteur de l’équipe qui l’a fait. Une saisie de 157 donne aussi 0 à l’adversaire, mais ne compte pas comme un match.</p>
+<p>Vous pouvez aussi utiliser le bouton <strong>+</strong> de la ligne « Match » : il inscrit 257 sur la prochaine donne libre. Le bouton <strong>−</strong> retire le dernier match de cette équipe et libère sa donne.</p>
+<p>Le compteur suit les donnes : corriger ou effacer un 257 ajuste automatiquement le nombre de match. Les 257 points sont déjà inclus dans les points des donnes ; ils ne sont pas ajoutés une seconde fois aux annonces.</p>
+<h2>Ajouter les annonces</h2>
+<p>Dans « Annonces Nous » ou « Annonces Eux », utilisez <strong>+</strong> et <strong>−</strong> pour compter les annonces de 20, 50, 100, 150 ou 200 points. Le total des annonces s’ajoute aux points des donnes.</p>
+<h2>Voir les totaux et terminer une partie</h2>
+<p>Les totaux se mettent à jour automatiquement. Lorsqu’une équipe atteint l’objectif et possède le total le plus élevé, un message annonce sa victoire.</p>
+<p>Pour enregistrer la partie dans l’historique et recommencer, appuyez sur <strong>« Nouvelle partie »</strong>, puis confirmez. Une partie contenant des scores ou des annonces est enregistrée, même si l’objectif n’a pas encore été atteint. Une partie entièrement vide n’est pas enregistrée. Les noms des équipes et le mode choisi sont conservés.</p>
+<h2>Consulter l’historique</h2>
+<p>Le bouton <strong>« Historique »</strong> affiche les parties enregistrées avec leur date, les équipes, leurs scores et le mode de jeu. Sous chaque équipe, vous retrouvez les points d’annonces et le nombre de match.</p>
+<p>Pour les anciennes parties dont le nombre de match n’avait pas été enregistré, un tiret « — » apparaît. Le gagnant affiché dans l’historique est l’équipe qui a le plus de points ; une égalité est indiquée si les totaux sont identiques.</p>
+<p>La croix d’une partie permet de la supprimer après confirmation. <strong>« Effacer historique »</strong> supprime toutes les parties enregistrées après confirmation.</p>
+<h2>Sauvegarde, partage et impression</h2>
+<p>La partie en cours et l’historique sont sauvegardés dans le navigateur de cet appareil. Ils ne sont pas synchronisés avec d’autres appareils. Effacer les données du navigateur peut supprimer ces sauvegardes.</p>
+<p>Le bouton de partage à côté du titre partage l’adresse de l’application, ou copie le lien si cette fonction est disponible. Il ne partage pas vos parties enregistrées.</p>
+<p><strong>« Imprimer »</strong> ouvre l’impression de la feuille de score. Dans l’historique, <strong>« Imprimer historique »</strong> permet d’imprimer les parties affichées.</p>
+<h2>Installer l’application sur le téléphone</h2>
+<p>Ouvrez d’abord la page du jeu Chibre Suisse à son adresse sur le site, avec une connexion Internet. L’installation se fait depuis cette page, et non depuis cette page d’aide.</p>
+<p><strong>Sur Android :</strong> ouvrez le jeu dans Chrome, appuyez sur le menu <strong>⋮</strong>, puis sur <strong>« Ajouter à l’écran d’accueil »</strong> et <strong>« Installer »</strong> si cette option apparaît. Confirmez l’installation. Selon votre version de Chrome, le menu peut aussi proposer directement <strong>« Installer l’application »</strong>.</p>
+<p><strong>Sur iPhone :</strong> ouvrez le jeu dans Safari, appuyez sur le bouton <strong>Partager</strong> (le carré avec une flèche vers le haut), puis choisissez <strong>« Sur l’écran d’accueil »</strong>. Si l’option <strong>« Ouvrir comme app web »</strong> apparaît, activez-la, puis appuyez sur <strong>« Ajouter »</strong>.</p>
+<p>L’icône <strong>Chibre Suisse</strong> apparaît sur l’écran d’accueil : touchez-la pour lancer le jeu comme une application. Ouvrez-la une première fois avec une connexion Internet afin de charger les fichiers nécessaires au fonctionnement hors connexion.</p>
+<p>Les intitulés des menus peuvent varier selon la version de votre téléphone. Retrouvez les étapes officielles dans les aides <a href="https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&amp;hl=fr" target="_blank" rel="noopener noreferrer">Google Chrome</a> et <a href="https://support.apple.com/fr-fr/guide/iphone/iphea86e5236/ios" target="_blank" rel="noopener noreferrer">Apple pour iPhone</a>.</p>
+</article>
+<a class="back" href="./index.html">← Retour au jeu</a>
+</main>
+</body>
+</html>

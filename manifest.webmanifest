@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Chibre Suisse — Version trois",
+  "name": "Chibre Suisse",
   "short_name": "Chibre Suisse",
-  "description": "Feuille de score du chibre suisse — Version trois.",
+  "description": "Feuille de score du chibre suisse.",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",
