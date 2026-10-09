@@ -66,7 +66,10 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 .history-delete{position:absolute;top:8px;right:8px;width:44px;height:44px;padding:0;border:0;background:transparent;color:var(--b);font-size:28px;line-height:1}
 .history-delete:hover{background:var(--softb)}
 .history-delete:focus-visible{outline:2px solid var(--b);outline-offset:2px}
-@media print{.history-delete{display:none}}
+.history-share{position:absolute;top:56px;right:8px;width:44px;height:44px;padding:0;border:0;background:transparent;color:var(--a);display:grid;place-items:center}
+.history-share:hover{background:var(--softa)}
+.history-share:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+@media print{.history-delete,.history-share{display:none}}
 
 
 .delete-dialog{width:min(360px,calc(100% - 32px));padding:26px;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.25)}
@@ -141,7 +144,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  <aside class="card ann b"><h2>Annonces Eux</h2><div id="annB"></div><div class="annsum"><span>Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span>Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html">comment ça marche ?</a><span class="app-version">V3.4</span></div></section>
+<section class="card info"><span>Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html">comment ça marche ?</a><span class="app-version">V3.6</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -421,7 +424,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
         <small>${escapeHistoryText(game.date)}</small>
       </div>
 
-      <div style="margin-top:10px">
+      <div style="margin-top:10px;padding-right:44px">
         ${winnerLabel}
       </div>
 
@@ -500,6 +503,14 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
       dialog.showModal();
     };
     box.appendChild(deleteButton);
+    const shareButton=document.createElement("button");
+    shareButton.type="button";
+    shareButton.className="history-share";
+    shareButton.title="Partager cette partie";
+    shareButton.setAttribute("aria-label",`Partager la partie ${history.length-index}`);
+    shareButton.innerHTML='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>';
+    shareButton.onclick=()=>shareHistoryGame(game,history.length-index);
+    box.appendChild(shareButton);
     list.appendChild(box);
   });
 }
@@ -516,6 +527,22 @@ function clearHistory(){
   openHistory();
 }
 
+function historyShareText(game,number){
+ const winner=game.winnerTeam==="A"?game.nameA:game.winnerTeam==="B"?game.nameB:null;
+ return ["Chibre Suisse — Partie "+number,game.date,"Mode : "+game.mode+" points",
+   game.nameA+" : "+game.totalA+" pts · Annonces : "+(game.annA||0)+" pts · Match : "+(game.matchesA??"—"),
+   game.nameB+" : "+game.totalB+" pts · Annonces : "+(game.annB||0)+" pts · Match : "+(game.matchesB??"—"),
+   winner?"Gagnant : "+winner:(Object.prototype.hasOwnProperty.call(game,"winnerTeam")?"Partie terminée avant l’objectif":"Gagnant non enregistré")].join("\n");
+}
+async function shareHistoryGame(game,number){
+ const text=historyShareText(game,number);
+ if(navigator.share){
+   try{await navigator.share({title:"Chibre Suisse — Partie "+number,text});return;}
+   catch(error){if(error.name==="AbortError") return;}
+ }
+ try{await navigator.clipboard.writeText(text);alert("Résumé de la partie copié !");}
+ catch(error){window.prompt("Copiez le résumé de la partie :",text);}
+}
 async function shareApp(){
   const data={
     title:"Chibre Suisse",
