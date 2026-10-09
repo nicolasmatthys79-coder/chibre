@@ -18,7 +18,7 @@ Après transfert, rechargez le site. La version du cache hors connexion
 a été mise à jour pour cette livraison.
 
 Modifications incluses :
-- Saisie de 0 à 157 ou de 257 pour un match.
+- Saisie de 2 à 155 ou de 257 pour un match.
 - 257 donne 0 à l’autre équipe et compte un match automatiquement.
 - Correction et effacement des donnes : compteur ajusté automatiquement.
 - Historique : nombre de match à côté des annonces pour chaque équipe.
