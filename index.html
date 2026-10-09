@@ -202,7 +202,17 @@ function load(){
  document.getElementById("nameA").value=state.nameA||"";
  document.getElementById("nameB").value=state.nameB||"";
 }
+function recordWinner(preferredTeam){
+ if(state.winnerTeam) return;
+ const threshold=state.mode===1500?1500:1000;
+ const reachedA=(roundTotal("a")+annTotal("A"))*factor()>=threshold;
+ const reachedB=(roundTotal("b")+annTotal("B"))*factor()>=threshold;
+ if(reachedA && !reachedB) state.winnerTeam="A";
+ else if(reachedB && !reachedA) state.winnerTeam="B";
+ else if(reachedA && reachedB && preferredTeam) state.winnerTeam=preferredTeam;
+}
 function save(){
+ recordWinner();
  state.nameA=document.getElementById("nameA").value||"";
  state.nameB=document.getElementById("nameB").value||"";
  localStorage.setItem("chibre_clean_v1",JSON.stringify(state));
@@ -222,6 +232,7 @@ function setRound(i,team,raw){
  }
  const other=n===257?0:MAX-n;
  if(team==="a"){r.a=n;r.b=other}else{r.b=n;r.a=other}
+ recordWinner(team.toUpperCase());
  save();render();
 }
 function changeAnn(team,key,delta){
@@ -251,10 +262,12 @@ function changeAnn(team,key,delta){
        }
      }
    }
+   recordWinner(team);
    save();render();return;
  }
 
  obj[key]=Math.max(0,(obj[key]||0)+delta);
+ recordWinner(team);
  save();render();
 }
 function matchCount(team){
@@ -305,13 +318,10 @@ function render(){
  document.getElementById("totalB").textContent=totalB;
 
  const threshold=state.mode===1500?1500:1000;
- if(totalA>=threshold || totalB>=threshold){
-   if(totalA>totalB) showWinner(nA,totalA,threshold);
-   else if(totalB>totalA) showWinner(nB,totalB,threshold);
- }
- else if(!winnerShownFor){
-   document.getElementById("winToast").classList.remove("show");
- }
+ recordWinner();
+ if(state.winnerTeam==="A") showWinner(nA,totalA,threshold);
+ else if(state.winnerTeam==="B") showWinner(nB,totalB,threshold);
+ else document.getElementById("winToast").classList.remove("show");
 
  const m1000=document.getElementById("mode1000"),m1500=document.getElementById("mode1500");
  m1000.style.background=state.mode===1000?"#17211b":"#fff"; m1000.style.color=state.mode===1000?"#fff":"#17211b";
@@ -352,6 +362,7 @@ function render(){
    annB:ab*f,
    matchesA:matchCount("A"),
    matchesB:matchCount("B"),
+    winnerTeam:state.winnerTeam || null,
     mode:state.mode
   });
 
@@ -388,10 +399,10 @@ function openHistory(){
 
   history.forEach((game,index)=>{
 
-    const winner =
-      game.totalA>game.totalB ? game.nameA :
-      game.totalB>game.totalA ? game.nameB :
-      "Égalité";
+    const winner=game.winnerTeam==="A"?game.nameA:
+      game.winnerTeam==="B"?game.nameB:null;
+    const winnerLabel=winner?"🏆 Gagnant : <strong>"+escapeHistoryText(winner)+"</strong>":
+      (Object.prototype.hasOwnProperty.call(game,"winnerTeam")?"Partie terminée avant l’objectif":"Gagnant non enregistré");
 const meilleurScore=Math.max(game.totalA,game.totalB,1);
     const largeurA=(game.totalA/meilleurScore)*100;
     const largeurB=(game.totalB/meilleurScore)*100;
@@ -411,7 +422,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
       </div>
 
       <div style="margin-top:10px">
-        🏆 Gagnant : <strong>${escapeHistoryText(winner)}</strong>
+        ${winnerLabel}
       </div>
 
       <div>Mode : ${game.mode} points</div>
@@ -426,7 +437,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
           <div style="
             width:${largeurA}%;
   height:100%;
-  background:${game.totalA>game.totalB ? "#c8e6d5" : "white"};
+  background:${game.winnerTeam==="A" ? "#c8e6d5" : "white"};
   border:2px solid #000;
   display:flex;
   align-items:center;
@@ -451,7 +462,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
           <div style="
             width:${largeurB}%;
   height:100%;
-  background:${game.totalB>game.totalA ? "#f1c9c5" : "white"};
+  background:${game.winnerTeam==="B" ? "#f1c9c5" : "white"};
   border:2px solid #000;
   display:flex;
   align-items:center;
