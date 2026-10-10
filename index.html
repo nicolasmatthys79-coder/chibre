@@ -21,6 +21,7 @@ h1{margin:0;font:700 clamp(30px,5vw,46px) Georgia,serif;letter-spacing:-.03em}bu
 .ann.a{background:#c8e6d5}
 .ann.b{background:#f5e9e7}
 h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-template-columns:minmax(0,1fr) 38px 32px 38px;gap:4px;align-items:center;padding:7px 0;border-top:1px solid #ece8df}
+.ann h2{overflow-wrap:anywhere}
 .annrow>strong{min-width:0}.annrow:first-of-type{border-top:0}.annrow button{padding:0;height:36px;font-size:19px}.count{text-align:center;font-weight:900}.annsum{display:flex;justify-content:space-between;border-top:2px solid var(--line);padding-top:12px;margin-top:8px;font-weight:900}
 .rhead,.round{display:grid;grid-template-columns:52px 1fr 38px 1fr;gap:8px;align-items:center}.rhead{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:800;padding-bottom:7px}
 .round{padding:7px 0;border-top:1px solid #ece8df}.num{width:34px;height:34px;border-radius:50%;background:#efebe2;display:grid;place-items:center;font-weight:900}
@@ -35,6 +36,8 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 
 @media(max-width:800px){.layout{grid-template-columns:1fr}.rounds{order:1}.ann{order:2}.ann.b{order:3}.app{padding:9px}}
 
+.header-actions{display:flex;gap:8px;flex-wrap:wrap}
+
 /* Android / téléphone */
 @media(max-width:600px){
  .win-toast.show{animation:none}
@@ -43,6 +46,8 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  header{margin-bottom:8px;align-items:flex-start}
  h1{font-size:34px}
  header button{min-height:46px;padding:10px 14px}
+ .header-actions{display:grid;grid-template-columns:1fr 1.4fr 1.1fr;width:100%;gap:6px}
+ .header-actions button{padding:10px 6px;font-size:14px;white-space:nowrap;min-width:0}
  .head{grid-template-columns:1fr 1fr}
  .team{padding:12px 10px}
  .name{font-size:18px}
@@ -121,7 +126,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
   </div>
   <div style="color:var(--muted)">Feuille de score • 12 donnes maximum</div>
 </div>
- <div style="display:flex;gap:8px;flex-wrap:wrap">
+ <div class="header-actions">
   <button onclick="window.print()">Imprimer</button>
   <button onclick="resetAll()">Nouvelle partie</button>
   <button onclick="openHistory()">Historique</button>
@@ -140,12 +145,12 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 </section>
 
 <div class="layout">
- <aside class="card ann a"><h2>Annonces Nous</h2><div id="annA"></div><div class="annsum"><span>Annonces</span><span id="sumAnnA">0</span></div></aside>
+ <aside class="card ann a"><h2 id="annTitleA">Annonces Nous</h2><div id="annA"></div><div class="annsum"><span>Annonces</span><span id="sumAnnA">0</span></div></aside>
  <main class="card rounds"><h2>Points des donnes</h2><div class="rhead"><span>Donne</span><span id="labelA">A</span><span></span><span id="labelB">B</span></div><div id="rounds"></div></main>
- <aside class="card ann b"><h2>Annonces Eux</h2><div id="annB"></div><div class="annsum"><span>Annonces</span><span id="sumAnnB">0</span></div></aside>
+ <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span>Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span>Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html">comment ça marche ?</a><span class="app-version">V3.9</span></div></section>
+<section class="card info"><span>Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html">comment ça marche ?</a><span class="app-version">V3.11</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -313,6 +318,8 @@ function render(){
  makeAnnouncements("A");makeAnnouncements("B");makeRounds();
  const nA=document.getElementById("nameA").value||"Équipe Nous",nB=document.getElementById("nameB").value||"Équipe Eux";
  document.getElementById("labelA").textContent=nA;document.getElementById("labelB").textContent=nB;
+ document.getElementById("annTitleA").textContent="Annonces "+(document.getElementById("nameA").value.trim()||"Nous");
+ document.getElementById("annTitleB").textContent="Annonces "+(document.getElementById("nameB").value.trim()||"Eux");
  const aa=annTotal("A"),ab=annTotal("B");
  document.getElementById("sumAnnA").textContent=aa*factor();document.getElementById("sumAnnB").textContent=ab*factor();
  const f=factor();
