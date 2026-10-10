@@ -92,30 +92,39 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 .info-actions .help-link{grid-column:2;margin:auto;white-space:nowrap}
 .info-actions .app-version{grid-column:3;justify-self:end;white-space:nowrap;font-size:13px}
 @media(max-width:600px){.info-actions{flex-basis:100%}}
-.help-link{grid-column:1;justify-self:center}.info .status{grid-column:2}}
+
 .help-link{display:inline-block;padding:10px 8px;min-height:44px;font-size:13px;color:inherit;text-decoration:none}
 .info .help-link:link,.info .help-link:visited,.info .help-link:hover,.info .help-link:active{color:var(--muted)}
 .help-link:hover{text-decoration:underline}
 .help-link:focus-visible{outline:2px solid var(--a);outline-offset:2px}
 .round-locked .score{background:#e5e5e5;color:#8a8a8a;border-color:#d1d1d1;cursor:not-allowed}.round-locked .num{background:#e5e5e5;color:#8a8a8a}
+
+.language-picker{position:relative;display:inline-block;vertical-align:middle}
+.language-flag{border:0;background:transparent;padding:4px;font-size:30px;min-width:44px;min-height:44px;line-height:1;cursor:pointer}
+.language-choices{position:absolute;top:100%;right:0;z-index:11000;min-width:190px;padding:6px;background:#fffdf8;color:#17211b;border:1px solid #d8d4c8;border-radius:12px;box-shadow:0 8px 24px #0002;font-family:system-ui,sans-serif}
+.language-choices[hidden]{display:none}
+.language-choices button{display:block;width:100%;text-align:left;border:0;border-radius:8px;background:transparent;font:500 16px system-ui,sans-serif;min-height:44px;padding:8px;cursor:pointer}
+.language-choices button:hover,.language-choices button[aria-pressed="true"]{background:#c8e6d5}
+@media(max-width:600px){.header-actions{grid-template-columns:auto auto auto}.header-actions button{font-size:clamp(11px,3.4vw,14px);padding:10px 4px}}
+@media print{.language-picker{display:none}}
 </style>
 </head>
 <body>
 <div id="winToast" class="win-toast" role="status" aria-live="assertive"></div>
 <dialog id="deleteDialog" class="delete-dialog" aria-labelledby="deleteTitle">
-  <h2 id="deleteTitle">Supprimer cette partie ?</h2>
+  <h2 id="deleteTitle" data-i18n="delete_question">Supprimer cette partie ?</h2>
   <form method="dialog" class="actions">
-    <button value="no" autofocus>Non</button>
-    <button value="yes" class="yes">Oui</button>
+    <button value="no" autofocus data-i18n="no">Non</button>
+    <button value="yes" class="yes" data-i18n="yes">Oui</button>
   </form>
 </dialog>
 <div class="app">
 <header>
  <div>
   <div style="display:flex;align-items:center;gap:10px">
-    <h1>Chibre <span role="img" aria-label="Drapeau suisse">🇨🇭</span></h1>
+    <h1>Chibre <span class="language-picker"><button type="button" id="languageFlag" class="language-flag" aria-label="Choisir la langue" aria-expanded="false" aria-controls="languageChoices">🇨🇭</button><span id="languageChoices" class="language-choices" hidden><button type="button" data-language="fr" aria-pressed="true">Français</button><button type="button" data-language="de" aria-pressed="false">Deutsch</button><button type="button" data-language="it" aria-pressed="false">Italiano</button><button type="button" data-language="rm" aria-pressed="false">Rumantsch</button></span></span></h1>
 
-    <button onclick="shareApp()" title="Partager" aria-label="Partager"
+    <button onclick="shareApp()" title="Partager" aria-label="Partager" data-i18n-title="share" data-i18n-aria-label="share"
       style="border:0;background:transparent;padding:5px;cursor:pointer">
       <svg width="28" height="28" viewBox="0 0 24 24"
            fill="none" stroke="currentColor" stroke-width="2"
@@ -129,33 +138,33 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
     </button>
 
   </div>
-  <div style="color:var(--muted)">Feuille de score • 12 donnes maximum</div>
+  <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score • 12 donnes maximum</div>
 </div>
  <div class="header-actions">
-  <button onclick="window.print()">Imprimer</button>
-  <button onclick="resetAll()">Nouvelle partie</button>
-  <button onclick="openHistory()">Historique</button>
+  <button onclick="window.print()" data-i18n="print">Imprimer</button>
+  <button onclick="resetAll()" data-i18n="new">Nouvelle partie</button>
+  <button onclick="openHistory()" data-i18n="history">Historique</button>
 </div>
 </header>
 
 <section class="card" style="margin-bottom:12px">
  <div style="padding:12px 16px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line)">
-   <button id="mode1000" onclick="setMode(1000)">1000 • normal</button>
-   <button id="mode1500" onclick="setMode(1500)">1500 • pique double </button>
+   <button id="mode1000" onclick="setMode(1000)" data-i18n="normal">1000 • normal</button>
+   <button id="mode1500" onclick="setMode(1500)" data-i18n="double">1500 • pique double </button>
  </div>
  <div class="head">
-  <div class="team a"><small>Équipe Nous</small><input class="name" id="nameA" placeholder="Mettez vos noms"><div class="total" id="totalA">0</div></div>
-  <div class="team b"><small>Équipe Eux</small><input class="name" id="nameB" placeholder="Mettez vos noms"><div class="total" id="totalB">0</div></div>
+  <div class="team a"><small data-i18n="team_a">Équipe Nous</small><input class="name" id="nameA" placeholder="Mettez vos noms" data-i18n-placeholder="names"><div class="total" id="totalA">0</div></div>
+  <div class="team b"><small data-i18n="team_b">Équipe Eux</small><input class="name" id="nameB" placeholder="Mettez vos noms" data-i18n-placeholder="names"><div class="total" id="totalB">0</div></div>
  </div>
 </section>
 
 <div class="layout">
- <aside class="card ann a"><h2 id="annTitleA">Annonces Nous</h2><div id="annA"></div><div class="annsum"><span>Annonces</span><span id="sumAnnA">0</span></div></aside>
- <main class="card rounds"><h2>Points des donnes</h2><div class="rhead"><span>Donne</span><span id="labelA">A</span><span></span><span id="labelB">B</span></div><div id="rounds"></div></main>
- <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span>Annonces</span><span id="sumAnnB">0</span></div></aside>
+ <aside class="card ann a"><h2 id="annTitleA" data-i18n="ann">Annonces Nous</h2><div id="annA"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnA">0</span></div></aside>
+ <main class="card rounds"><h2 data-i18n="round_points">Points des donnes</h2><div class="rhead"><span data-i18n="round">Donne</span><span id="labelA">A</span><span></span><span id="labelB">B</span></div><div id="rounds"></div></main>
+ <aside class="card ann b"><h2 id="annTitleB" data-i18n="ann">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span>Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html">comment ça marche ?</a><span class="app-version">V3.19</span></div></section>
+<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.20</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -165,12 +174,12 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 
    <div style="max-width:800px;margin:auto">
 
-     <h1>Historique des parties</h1>
+     <h1 data-i18n="history_title">Historique des parties</h1>
 
      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
-       <button onclick="closeHistory()">Retour au jeu</button>
-       <button onclick="clearHistory()">Effacer historique</button>
-      <button onclick="window.print()">🖨️ Imprimer historique</button>
+       <button onclick="closeHistory()" data-i18n="back">Retour au jeu</button>
+       <button onclick="clearHistory()" data-i18n="clear">Effacer historique</button>
+      <button onclick="window.print()" data-i18n="print_history">🖨️ Imprimer historique</button>
      </div>
 
      <div id="historyList"></div>
@@ -179,6 +188,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
+<script src="./i18n.js"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -202,7 +212,7 @@ function showWinner(name,total,threshold){
  if(winnerShownFor===key) return;
  winnerShownFor=key;
  const toast=document.getElementById("winToast");
- toast.textContent="🏆 "+name+" ont gagné !  "+total+" points";
+ toast.textContent=t("win",{name,total});
  toast.classList.add("show");
 
 }
@@ -242,7 +252,7 @@ function setRound(i,team,raw){
  if(raw===""){state.rounds.slice(i).forEach(r=>{r.a=null;r.b=null});save();render();return}
  const n=Number(raw);
  if(!Number.isInteger(n) || (n!==257 && (n<2 || n>MAX-2))){
-   alert("Saisissez un nombre entier entre 2 et 155, ou 257 pour un match.");
+   alert(t("validation"));
    render();return;
  }
  const other=n===257?0:MAX-n;
@@ -257,7 +267,7 @@ function changeAnn(team,key,delta){
  if(key==="match"){
    if(delta>0){
      const idx=state.rounds.findIndex(r=>r.a===null && r.b===null);
-     if(idx===-1){ alert("Les 12 donnes sont déjà remplies."); return; }
+     if(idx===-1){ alert(t("full")); return; }
      if(team==="A"){
        state.rounds[idx].a=257;
        state.rounds[idx].b=0;
@@ -302,16 +312,16 @@ function makeAnnouncements(team){
  root.innerHTML="";
  announcements.forEach(x=>{
   const row=document.createElement("div");row.className="annrow";
-  const label=document.createElement("strong");label.textContent=x.label;
+  const label=document.createElement("strong");label.textContent=x.key==="match"?t("match"):x.label;
   if(x.key==="150" || x.key==="200"){
     const rank=x.key==="150"?"9":"J";
-    const rankName=x.key==="150"?"Neuf":"Valet";
+    const rankName=t(x.key==="150"?"nine":"jack");
     label.className="ann-label-cards";
     const cards=document.createElement("span");cards.className="nine-cards";
-    const suits=[{symbol:"♠",name:"Pique (le plus fort)",red:false},{symbol:"♥",name:"Cœur",red:true},{symbol:"♦",name:"Carreau",red:true},{symbol:"♣",name:"Trèfle (le plus faible)",red:false}];
+    const suits=[{symbol:"♠",name:t("spade"),red:false},{symbol:"♥",name:t("heart"),red:true},{symbol:"♦",name:t("diamond"),red:true},{symbol:"♣",name:t("club"),red:false}];
     suits.forEach(suit=>{
       const card=document.createElement("span");card.className="nine-card"+(suit.red?" red":"");
-      card.title=rankName+" de "+suit.name;card.setAttribute("aria-label",rankName+" de "+suit.name);
+      card.title=t("card_title",{rank:rankName,suit:suit.name});card.setAttribute("aria-label",card.title);
       card.innerHTML="<span>"+rank+"</span><span aria-hidden='true'>"+suit.symbol+"</span>";
       cards.appendChild(card);
     });
@@ -320,6 +330,8 @@ function makeAnnouncements(team){
   const minus=document.createElement("button");minus.textContent="−";minus.onclick=()=>changeAnn(team,x.key,-1);
   const count=document.createElement("span");count.className="count";count.textContent=x.key==="match"?matchCount(team):(obj[x.key]||0);
   const plus=document.createElement("button");plus.textContent="+";plus.onclick=()=>changeAnn(team,x.key,1);
+  minus.setAttribute("aria-label",t("decrease",{value:x.key==="match"?t("match"):x.value,team:teamName(team)}));
+  plus.setAttribute("aria-label",t("increase",{value:x.key==="match"?t("match"):x.value,team:teamName(team)}));
   row.append(label,minus,count,plus);root.appendChild(row);
  });
 }
@@ -334,16 +346,16 @@ function makeRounds(){
   const locked=state.rounds.slice(0,i).some(previous=>previous.a===null || previous.b===null);
   a.disabled=locked;b.disabled=locked;
   if(locked) row.classList.add("round-locked");
-  a.setAttribute("aria-label","Donne "+(i+1)+" Nous");b.setAttribute("aria-label","Donne "+(i+1)+" Eux");
+  a.setAttribute("aria-label",t("round_label",{number:i+1,team:teamName("A")}));b.setAttribute("aria-label",t("round_label",{number:i+1,team:teamName("B")}));
   row.append(num,a,eq,b);root.appendChild(row);
  });
 }
 function render(){
  makeAnnouncements("A");makeAnnouncements("B");makeRounds();
- const nA=document.getElementById("nameA").value||"Équipe Nous",nB=document.getElementById("nameB").value||"Équipe Eux";
+ const nA=teamName("A"),nB=teamName("B");
  document.getElementById("labelA").textContent=nA;document.getElementById("labelB").textContent=nB;
- document.getElementById("annTitleA").textContent="Annonces "+(document.getElementById("nameA").value.trim()||"Nous");
- document.getElementById("annTitleB").textContent="Annonces "+(document.getElementById("nameB").value.trim()||"Eux");
+ document.getElementById("annTitleA").textContent=t("ann_title",{name:teamName("A")});
+ document.getElementById("annTitleB").textContent=t("ann_title",{name:teamName("B")});
  const aa=annTotal("A"),ab=annTotal("B");
  document.getElementById("sumAnnA").textContent=aa*factor();document.getElementById("sumAnnB").textContent=ab*factor();
  const f=factor();
@@ -376,8 +388,8 @@ function render(){
 
   if(played===0 && totalA===0 && totalB===0) return;
 
-  const nameA=document.getElementById("nameA").value || "Nous";
-  const nameB=document.getElementById("nameB").value || "Eux";
+  const nameA=teamName("A");
+  const nameB=teamName("B");
 
   let history=[];
 
@@ -389,6 +401,9 @@ function render(){
 
   history.unshift({
     date:new Date().toLocaleString("fr-CH"),
+    timestamp:Date.now(),
+    nameADefault:!document.getElementById("nameA").value.trim(),
+    nameBDefault:!document.getElementById("nameB").value.trim(),
     nameA:nameA,
     nameB:nameB,
     totalA:totalA,
@@ -426,7 +441,7 @@ function openHistory(){
   const list=document.getElementById("historyList");
 
   if(history.length===0){
-    list.innerHTML="<p>Aucune partie enregistrée.</p>";
+    list.innerHTML="<p>"+escapeHistoryText(t("empty"))+"</p>";
     return;
   }
 
@@ -434,10 +449,10 @@ function openHistory(){
 
   history.forEach((game,index)=>{
 
-    const winner=game.winnerTeam==="A"?game.nameA:
-      game.winnerTeam==="B"?game.nameB:null;
-    const winnerLabel=winner?"🏆 Gagnant : <strong>"+escapeHistoryText(winner)+"</strong>":
-      (Object.prototype.hasOwnProperty.call(game,"winnerTeam")?"Partie terminée avant l’objectif":"Gagnant non enregistré");
+    const winner=game.winnerTeam==="A"?gameName(game,"A"):
+      game.winnerTeam==="B"?gameName(game,"B"):null;
+    const winnerLabel=winner?"🏆 "+escapeHistoryText(t("winner"))+" : <strong>"+escapeHistoryText(winner)+"</strong>":
+      (Object.prototype.hasOwnProperty.call(game,"winnerTeam")?t("unfinished"):t("unknown"));
 const meilleurScore=Math.max(game.totalA,game.totalB,1);
     const largeurA=(game.totalA/meilleurScore)*100;
     const largeurB=(game.totalB/meilleurScore)*100;
@@ -452,20 +467,20 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
 
         box.innerHTML=`
       <div style="padding-right:44px">
-        <strong>Partie ${history.length-index}</strong><br>
-        <small>${escapeHistoryText(game.date)}</small>
+        <strong>${escapeHistoryText(t("part"))} ${history.length-index}</strong><br>
+        <small>${escapeHistoryText(gameDate(game))}</small>
       </div>
 
       <div style="margin-top:10px;padding-right:44px">
         ${winnerLabel}
       </div>
 
-      <div>Mode : ${game.mode} points</div>
+      <div>${escapeHistoryText(t("mode"))} : ${game.mode} ${escapeHistoryText(t("points"))}</div>
 
       <div style="margin-top:18px;padding-top:14px;border-top:1px solid #d8d4c8">
 
         <div style="font-weight:900;margin-bottom:5px">
-          ${escapeHistoryText(game.nameA)}
+          ${escapeHistoryText(gameName(game,"A"))}
         </div>
 
         <div style="height:42px;background:#efebe2;border-radius:10px;overflow:hidden">
@@ -482,15 +497,15 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
   font-weight:900;
   color:#000;
   min-width:65px">
-  ${game.totalA} pts
+  ${game.totalA} ${escapeHistoryText(t("pts"))}
           </div>
         </div>
 
 <div style="margin-top:5px;font-size:14px;font-weight:700">
-  Annonces : ${game.annA || 0} pts · Match : ${escapeHistoryText(game.matchesA ?? "—")}
+  ${escapeHistoryText(t("ann"))} : ${game.annA || 0} ${escapeHistoryText(t("pts"))} · ${escapeHistoryText(t("match"))} : ${escapeHistoryText(game.matchesA ?? "—")}
   </div>
         <div style="font-weight:900;margin-top:14px;margin-bottom:5px">
-          ${escapeHistoryText(game.nameB)}
+          ${escapeHistoryText(gameName(game,"B"))}
         </div>
 
         <div style="height:42px;background:#efebe2;border-radius:10px;overflow:hidden">
@@ -507,11 +522,11 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
   font-weight:900;
   color:#000;
   min-width:65px">
-  ${game.totalB} pts
+  ${game.totalB} ${escapeHistoryText(t("pts"))}
           </div>
         </div>
         <div style="margin-top:5px;font-size:14px;font-weight:700">
-  Annonces : ${game.annB || 0} pts · Match : ${escapeHistoryText(game.matchesB ?? "—")}
+  ${escapeHistoryText(t("ann"))} : ${game.annB || 0} ${escapeHistoryText(t("pts"))} · ${escapeHistoryText(t("match"))} : ${escapeHistoryText(game.matchesB ?? "—")}
 </div>
 
       </div>
@@ -521,8 +536,8 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
     deleteButton.type="button";
     deleteButton.className="history-delete";
     deleteButton.textContent="×";
-    deleteButton.title="Supprimer cette partie";
-    deleteButton.setAttribute("aria-label",`Supprimer la partie ${history.length-index}`);
+    deleteButton.title=t("delete_part");
+    deleteButton.setAttribute("aria-label",t("delete_number",{number:history.length-index}));
     deleteButton.onclick=()=>{
       const dialog=document.getElementById("deleteDialog");
       dialog.returnValue="no";
@@ -538,8 +553,8 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
     const shareButton=document.createElement("button");
     shareButton.type="button";
     shareButton.className="history-share";
-    shareButton.title="Partager cette partie";
-    shareButton.setAttribute("aria-label",`Partager la partie ${history.length-index}`);
+    shareButton.title=t("share_part");
+    shareButton.setAttribute("aria-label",t("share_number",{number:history.length-index}));
     shareButton.innerHTML='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>';
     shareButton.onclick=()=>shareHistoryGame(game,history.length-index);
     box.appendChild(shareButton);
@@ -552,7 +567,7 @@ function closeHistory(){
   document.getElementById("historyPage").style.display="none";
 }
 function clearHistory(){
-  if(!confirm("Effacer définitivement tout l'historique des parties ?"))
+  if(!confirm(t("clear_question")))
     return;
 
   localStorage.removeItem("chibre_history");
@@ -560,25 +575,23 @@ function clearHistory(){
 }
 
 function historyShareText(game,number){
- const winner=game.winnerTeam==="A"?game.nameA:game.winnerTeam==="B"?game.nameB:null;
- return ["Chibre Suisse — Partie "+number,game.date,"Mode : "+game.mode+" points",
-   game.nameA+" : "+game.totalA+" pts · Annonces : "+(game.annA||0)+" pts · Match : "+(game.matchesA??"—"),
-   game.nameB+" : "+game.totalB+" pts · Annonces : "+(game.annB||0)+" pts · Match : "+(game.matchesB??"—"),
-   winner?"Gagnant : "+winner:(Object.prototype.hasOwnProperty.call(game,"winnerTeam")?"Partie terminée avant l’objectif":"Gagnant non enregistré")].join("\n");
+ const winner=game.winnerTeam==="A"?gameName(game,"A"):game.winnerTeam==="B"?gameName(game,"B"):null;
+ const teamLine=team=>gameName(game,team)+" : "+game["total"+team]+" "+t("pts")+" · "+t("ann")+" : "+(game["ann"+team]||0)+" "+t("pts")+" · "+t("match")+" : "+(game["matches"+team]??"—");
+ return ["Chibre — "+t("part")+" "+number,gameDate(game),t("mode")+" : "+game.mode+" "+t("points"),teamLine("A"),teamLine("B"),winner?t("winner")+" : "+winner:(Object.hasOwn(game,"winnerTeam")?t("unfinished"):t("unknown"))].join("\n");
 }
 async function shareHistoryGame(game,number){
  const text=historyShareText(game,number);
  if(navigator.share){
-   try{await navigator.share({title:"Chibre Suisse — Partie "+number,text});return;}
+   try{await navigator.share({title:"Chibre — "+t("part")+" "+number,text});return;}
    catch(error){if(error.name==="AbortError") return;}
  }
- try{await navigator.clipboard.writeText(text);alert("Résumé de la partie copié !");}
- catch(error){window.prompt("Copiez le résumé de la partie :",text);}
+ try{await navigator.clipboard.writeText(text);alert(t("summary_copied"));}
+ catch(error){window.prompt(t("copy_summary"),text);}
 }
 async function shareApp(){
   const data={
-    title:"Chibre Suisse",
-    text:"Feuille de score Chibre Suisse",
+    title:"Chibre",
+    text:t("share_description"),
     url:window.location.href
   };
 
@@ -589,23 +602,23 @@ async function shareApp(){
   }else{
     try{
       await navigator.clipboard.writeText(window.location.href);
-      alert("Lien copié !");
+      alert(t("link_copied"));
     }catch(e){
-      alert("Le partage n'est pas disponible sur cet appareil.");
+      alert(t("share_unavailable"));
     }
   }
 }
 function resetAll(){
- if(!confirm("Terminer cette partie et commencer une nouvelle partie ?"))return;
+ if(!confirm(t("reset_question")))return;
  saveGameToHistory();
  winnerShownFor=null;
  document.getElementById("winToast").classList.remove("show");
- state={nameA:document.getElementById("nameA").value||"Équipe Nous",nameB:document.getElementById("nameB").value||"Équipe Eux",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{}};
+ state={nameA:document.getElementById("nameA").value||"",nameB:document.getElementById("nameB").value||"",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{}};
  save();render();
 }
 document.getElementById("nameA").addEventListener("input",()=>{save();render()});
 document.getElementById("nameB").addEventListener("input",()=>{save();render()});
-load();render();
+load();applyLanguage();render();
 </script>
 <script>
 if ("serviceWorker" in navigator) {

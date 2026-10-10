@@ -18,48 +18,35 @@ a{color:#174c3c;text-underline-offset:4px}
 .back{display:inline-block;padding:10px 0;min-height:44px}
 li{margin:8px 0}
 @media(max-width:600px){main{padding:12px 12px 28px}article{padding:8px 16px 20px}}
+
+.language-picker{position:relative;display:inline-block;vertical-align:middle}
+.language-flag{border:0;background:transparent;padding:4px;font-size:30px;min-width:44px;min-height:44px;line-height:1;cursor:pointer}
+.language-choices{position:absolute;top:100%;right:0;z-index:11000;min-width:190px;padding:6px;background:#fffdf8;color:#17211b;border:1px solid #d8d4c8;border-radius:12px;box-shadow:0 8px 24px #0002;font-family:system-ui,sans-serif}
+.language-choices[hidden]{display:none}
+.language-choices button{display:block;width:100%;text-align:left;border:0;border-radius:8px;background:transparent;font:500 16px system-ui,sans-serif;min-height:44px;padding:8px;cursor:pointer}
+.language-choices button:hover,.language-choices button[aria-pressed="true"]{background:#c8e6d5}
+@media(max-width:600px){.header-actions{grid-template-columns:auto auto auto}.header-actions button{font-size:clamp(11px,3.4vw,14px);padding:10px 4px}}
+@media print{.language-picker{display:none}}
 </style>
 </head>
 <body>
 <main>
-<a class="back" href="./index.html">← Retour au jeu</a>
-<h1>Comment ça marche ?</h1>
+<a class="back" href="./index.html" data-i18n="back">Retour au jeu</a>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><h1 data-i18n="help_title">Comment ça marche ?</h1><span class="language-picker"><button type="button" id="languageFlag" class="language-flag" aria-label="Choisir la langue" aria-expanded="false" aria-controls="languageChoices">🇨🇭</button><span id="languageChoices" class="language-choices" hidden><button type="button" data-language="fr" aria-pressed="true">Français</button><button type="button" data-language="de" aria-pressed="false">Deutsch</button><button type="button" data-language="it" aria-pressed="false">Italiano</button><button type="button" data-language="rm" aria-pressed="false">Rumantsch</button></span></span></div>
 <article>
-<h2>Commencer une partie</h2>
-<p>Inscrivez les noms des joueurs dans les équipes « Nous » et « Eux », puis choisissez le mode de jeu. La feuille permet de saisir jusqu’à 12 donnes.</p>
-<ul>
-<li><strong>1000 · normal :</strong> les points des donnes et des annonces sont comptés une fois. L’objectif est de 1000 points.</li>
-<li><strong>1500 · pique double :</strong> dans cette application, tous les points des donnes et des annonces sont doublés. L’objectif est de 1500 points.</li>
-</ul>
-<h2>Inscrire les points d’une donne</h2>
-<p>Saisissez les points d’une seule équipe, puis validez ou quittez la case. L’autre équipe est calculée automatiquement : <strong>157 moins les points saisis</strong>. Par exemple, si Nous marque 100, Eux reçoit 57.</p>
-<p>Vous pouvez inscrire un nombre entier de <strong>2 à 155</strong>, ou <strong>257 pour un match</strong>. Chaque équipe doit recevoir au moins 2 points dans une donne normale. Les saisies de 0, 1 et de 156 à 256 ne sont pas acceptées ; le 0 est réservé au score calculé automatiquement pour l’équipe qui subit un match.</p>
-<p>Remplissez les donnes dans l’ordre : seule la première ligne vide est accessible. Les lignes suivantes restent grisées jusqu’à ce que la précédente soit remplie. Les donnes déjà remplies restent modifiables. Pour effacer une donne, videz une case et validez : cette donne et toutes les suivantes seront effacées pour conserver une saisie dans l’ordre.</p>
-<h2>Compter un match</h2>
-<p>Une saisie de <strong>257</strong> donne <strong>0 à l’autre équipe</strong> et ajoute automatiquement un match au compteur de l’équipe qui l’a fait. Si une équipe remporte tous les points de la donne, c’est un match : inscrivez 257, et non 157.</p>
-<p>Vous pouvez aussi utiliser le bouton <strong>+</strong> de la ligne « Match » : il inscrit 257 sur la prochaine donne libre. Le bouton <strong>−</strong> retire le dernier match de cette équipe et efface sa donne ainsi que les donnes suivantes pour conserver une saisie dans l’ordre.</p>
-<p>Le compteur suit les donnes : corriger ou effacer un 257 ajuste automatiquement le nombre de match. Les 257 points sont déjà inclus dans les points des donnes ; ils ne sont pas ajoutés une seconde fois aux annonces.</p>
-<h2>Ajouter les annonces</h2>
-<p>Dans « Annonces Nous » ou « Annonces Eux », utilisez <strong>+</strong> et <strong>−</strong> pour compter les annonces de 20, 50, 100, 150 ou 200 points. Le total des annonces s’ajoute aux points des donnes.</p>
-<h2>Voir les totaux et terminer une partie</h2>
-<p>Les totaux se mettent à jour automatiquement. La première équipe qui atteint ou dépasse l’objectif (1000 ou 1500 points selon le mode) gagne : un message annonce sa victoire. Le gagnant est conservé pour la partie, même si d’autres points sont ensuite ajoutés. Il n’y a pas d’égalité.</p>
-<p>Pour enregistrer la partie dans l’historique et recommencer, appuyez sur <strong>« Nouvelle partie »</strong>, puis confirmez. Une partie contenant des scores ou des annonces est enregistrée, même si l’objectif n’a pas encore été atteint. Une partie entièrement vide n’est pas enregistrée. Les noms des équipes et le mode choisi sont conservés.</p>
-<h2>Consulter l’historique</h2>
-<p>Le bouton <strong>« Historique »</strong> affiche les parties enregistrées avec leur date, les équipes, leurs scores et le mode de jeu. Sous chaque équipe, vous retrouvez les points d’annonces et le nombre de match.</p>
-<p>Pour les anciennes parties dont le nombre de match n’avait pas été enregistré, un tiret « — » apparaît. Le gagnant affiché dans l’historique est la première équipe qui a atteint l’objectif. Si vous arrêtez une partie avant l’objectif, aucun gagnant n’est désigné. Pour les anciennes parties, si le premier gagnant n’avait pas été enregistré, l’historique indique « Gagnant non enregistré ».</p>
-<p>L’icône de partage sous la croix permet de partager le résumé de cette partie (scores, annonces et nombre de match). Si le partage n’est pas disponible, le résumé peut être copié. La croix d’une partie permet de la supprimer après confirmation. <strong>« Effacer historique »</strong> supprime toutes les parties enregistrées après confirmation.</p>
-<h2>Sauvegarde, partage et impression</h2>
-<p>La partie en cours et l’historique sont sauvegardés dans le navigateur de cet appareil. Ils ne sont pas synchronisés avec d’autres appareils. Effacer les données du navigateur peut supprimer ces sauvegardes.</p>
-<p>Le bouton de partage à côté du titre partage l’adresse de l’application, ou copie le lien si cette fonction est disponible. Il ne partage pas vos parties enregistrées.</p>
-<p><strong>« Imprimer »</strong> ouvre l’impression de la feuille de score. Dans l’historique, <strong>« Imprimer historique »</strong> permet d’imprimer les parties affichées.</p>
-<h2>Installer l’application sur le téléphone</h2>
-<p>Ouvrez d’abord la page du jeu Chibre Suisse à son adresse sur le site, avec une connexion Internet. L’installation se fait depuis cette page, et non depuis cette page d’aide.</p>
-<p><strong>Sur Android :</strong> ouvrez le jeu dans Chrome, appuyez sur le menu <strong>⋮</strong>, puis sur <strong>« Ajouter à l’écran d’accueil »</strong> et <strong>« Installer »</strong> si cette option apparaît. Confirmez l’installation. Selon votre version de Chrome, le menu peut aussi proposer directement <strong>« Installer l’application »</strong>.</p>
-<p><strong>Sur iPhone :</strong> ouvrez le jeu dans Safari, appuyez sur le bouton <strong>Partager</strong> (le carré avec une flèche vers le haut), puis choisissez <strong>« Sur l’écran d’accueil »</strong>. Si l’option <strong>« Ouvrir comme app web »</strong> apparaît, activez-la, puis appuyez sur <strong>« Ajouter »</strong>.</p>
-<p>L’icône <strong>Chibre Suisse</strong> apparaît sur l’écran d’accueil : touchez-la pour lancer le jeu comme une application. Ouvrez-la une première fois avec une connexion Internet afin de charger les fichiers nécessaires au fonctionnement hors connexion.</p>
-<p>Les intitulés des menus peuvent varier selon la version de votre téléphone. Retrouvez les étapes officielles dans les aides <a href="https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&amp;hl=fr" target="_blank" rel="noopener noreferrer">Google Chrome</a> et <a href="https://support.apple.com/fr-fr/guide/iphone/iphea86e5236/ios" target="_blank" rel="noopener noreferrer">Apple pour iPhone</a>.</p>
-</article>
-<a class="back" href="./index.html">← Retour au jeu</a>
+<section><h2 data-i18n="help_start_title">Commencer une partie</h2><p data-i18n="help_start_body">Inscrivez les noms des joueurs dans « Nous » et « Eux », puis choisissez le mode. La feuille contient 12 donnes. En mode 1000 normal, les points des donnes et des annonces comptent une fois ; l’objectif est de 1000 points. En mode 1500 pique double, cette application double tous les points des donnes et des annonces ; l’objectif est de 1500 points.</p></section>
+<section><h2 data-i18n="help_scores_title">Inscrire les points d’une donne</h2><p data-i18n="help_scores_body">Saisissez les points d’une équipe, puis validez ou quittez la case. L’autre score vaut 157 moins les points saisis : par exemple, 100 pour Nous donne 57 pour Eux. Les valeurs autorisées sont les entiers de 2 à 155, ou 257 pour un match. Chaque équipe a au moins 2 points dans une donne normale. Les saisies de 0, 1 et de 156 à 256 sont refusées ; 0 est calculé automatiquement pour l’équipe qui subit un match.</p></section>
+<section><h2 data-i18n="help_order_title">Remplir les donnes dans l’ordre</h2><p data-i18n="help_order_body">Seule la première ligne vide est accessible. Les lignes suivantes restent grisées jusqu’à ce que la précédente soit remplie. Les lignes déjà remplies restent modifiables. Pour corriger une donne, modifiez une case. Pour l’effacer, videz une case et validez : cette donne et toutes les suivantes sont effacées pour conserver l’ordre.</p></section>
+<section><h2 data-i18n="help_match_title">Compter un match</h2><p data-i18n="help_match_body">257 donne 0 à l’autre équipe et ajoute un match au compteur. Si une équipe remporte tous les points de la donne, inscrivez 257, pas 157. Le + de « Match » inscrit 257 sur la prochaine ligne libre. Le − retire le dernier match de cette équipe et efface sa donne ainsi que les suivantes. Corriger ou effacer un 257 ajuste le compteur. Les 257 points sont inclus dans les donnes et ne sont pas ajoutés une deuxième fois aux annonces.</p></section>
+<section><h2 data-i18n="help_ann_title">Ajouter les annonces</h2><p data-i18n="help_ann_body">Utilisez + et − dans les annonces de chaque équipe pour compter les annonces de 20, 50, 100, 150 ou 200 points. Leur total s’ajoute aux points des donnes. Les petites cartes neuf et J servent de repères visuels pour les annonces de 150 et 200.</p></section>
+<section><h2 data-i18n="help_finish_title">Terminer une partie</h2><p data-i18n="help_finish_body">Les totaux se mettent à jour automatiquement. La première équipe qui atteint ou dépasse 1000 ou 1500 selon le mode gagne. Le gagnant reste enregistré même si des points sont ajoutés ensuite. Il n’y a pas d’égalité. « Nouvelle partie », après confirmation, enregistre la partie et remet les scores à zéro. Une partie contenant des scores ou des annonces est enregistrée même avant l’objectif ; une partie vide ne l’est pas. Les noms et le mode sont conservés.</p></section>
+<section><h2 data-i18n="help_history_title">Consulter l’historique</h2><p data-i18n="help_history_body">« Historique » affiche les parties, leurs dates, les équipes, les scores, le mode, les points d’annonces et le nombre de match. Pour les anciennes parties sans compteur enregistré, « — » apparaît. Le gagnant est la première équipe arrivée à l’objectif. Une partie arrêtée avant l’objectif n’a pas de gagnant. Si le gagnant n’avait pas été enregistré, « Gagnant non enregistré » apparaît. La croix supprime une partie après confirmation ; « Effacer historique » supprime toutes les parties après confirmation. L’icône sous la croix partage le résumé avec scores, annonces et match ; sinon, vous pouvez le copier.</p></section>
+<section><h2 data-i18n="help_save_title">Sauvegarde, partage et impression</h2><p data-i18n="help_save_body">La partie en cours et l’historique sont sauvegardés dans le navigateur de cet appareil, sans synchronisation avec les autres appareils. Effacer les données du navigateur peut supprimer ces sauvegardes. Le partage à côté du titre partage ou copie l’adresse du programme, sans partager les parties enregistrées. « Imprimer » imprime la feuille ; « Imprimer historique » imprime les parties affichées.</p></section>
+<section><h2 data-i18n="help_install_title">Installer sur le téléphone</h2><p data-i18n="help_install_body">Ouvrez la page du jeu sur le site avec une connexion Internet, puis installez depuis cette page, pas depuis l’aide. Sur Android, dans Chrome, ouvrez ⋮, puis « Ajouter à l’écran d’accueil » et « Installer », ou directement « Installer l’application » selon la version. Sur iPhone, dans Safari, utilisez Partager (carré avec flèche), puis « Sur l’écran d’accueil » ; activez « Ouvrir comme app web » si proposé et touchez « Ajouter ». Touchez ensuite l’icône Chibre Suisse pour lancer le jeu. Ouvrez-la une première fois avec Internet pour charger les fichiers hors connexion. Les intitulés varient selon la version du téléphone.</p></section>
+<section><h2 data-i18n="help_language_title">Choisir la langue</h2><p data-i18n="help_language_body">Le drapeau suisse ouvre le choix Français, Deutsch, Italiano ou Rumantsch. La langue est mémorisée pour ce navigateur et s’applique au jeu, à l’aide, aux messages et aux résumés partagés. Les noms des participants ne sont pas traduits. Le romanche utilisé est le rumantsch grischun.</p></section>
+<p><span data-i18n="official">Instructions officielles :</span> <a data-official="google" href="https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&amp;hl=fr" target="_blank" rel="noopener noreferrer">Google Chrome</a> · <a data-official="apple" href="https://support.apple.com/fr-fr/guide/iphone/iphea86e5236/ios" target="_blank" rel="noopener noreferrer">Apple</a></p></article>
+<a class="back" href="./index.html" data-i18n="back">Retour au jeu</a>
 </main>
+<script src="./i18n.js"></script>
 </body>
 </html>
