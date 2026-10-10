@@ -1,4 +1,4 @@
-CHIBRE SUISSE — V3.20 — FICHIERS POUR LE SERVEUR
+CHIBRE SUISSE — V3.22 — FICHIERS POUR LE SERVEUR
 
 Transférez ces sept fichiers ensemble dans le dossier actuel de votre site :
 - index.html

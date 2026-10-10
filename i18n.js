@@ -30,6 +30,20 @@ function applyLanguage(){
  const meta=document.querySelector('meta[name="description"]');if(meta)meta.content=t("app_description");
  const links=document.querySelectorAll("a[data-official]");links.forEach(el=>{const url=new URL(el.href);if(el.dataset.official==="google")url.searchParams.set("hl",currentLanguage==="rm"?"de":currentLanguage);else url.pathname="/"+(currentLanguage==="rm"?"de-ch":currentLanguage==="de"?"de-ch":currentLanguage==="it"?"it-ch":"fr-ch")+"/guide/iphone/iphea86e5236/ios";el.href=url.href;});
 }
+function languageMenuPosition(viewWidth,viewHeight,button,menuHeight){
+ const width=Math.min(190,Math.max(0,viewWidth-16));
+ const left=Math.max(8,Math.min(button.right-width,viewWidth-width-8));
+ const top=Math.max(8,Math.min(button.bottom+6,viewHeight-menuHeight-8));
+ return {left,top,width};
+}
+function positionLanguageMenu(){
+ const menu=document.getElementById("languageChoices"),flag=document.getElementById("languageFlag");
+ if(!menu||!flag||menu.hidden) return;
+ if(window.innerWidth<=600){
+  const pos=languageMenuPosition(window.innerWidth,window.innerHeight,flag.getBoundingClientRect(),menu.offsetHeight);
+  menu.style.left=pos.left+"px";menu.style.top=pos.top+"px";menu.style.width=pos.width+"px";
+ }else{menu.style.left="";menu.style.top="";menu.style.width="";}
+}
 function closeLanguageMenu(){const menu=document.getElementById("languageChoices"),flag=document.getElementById("languageFlag");if(menu)menu.hidden=true;if(flag)flag.setAttribute("aria-expanded","false");}
 function setLanguage(lang){
  if(!Object.hasOwn(TRANSLATIONS,lang)) return;
@@ -40,8 +54,11 @@ function setLanguage(lang){
 document.addEventListener("DOMContentLoaded",()=>{
  applyLanguage();
  const flag=document.getElementById("languageFlag"),menu=document.getElementById("languageChoices");
- if(flag)flag.addEventListener("click",()=>{menu.hidden=!menu.hidden;flag.setAttribute("aria-expanded",String(!menu.hidden));});
+ if(flag)flag.addEventListener("click",()=>{menu.hidden=!menu.hidden;flag.setAttribute("aria-expanded",String(!menu.hidden));positionLanguageMenu();});
  document.querySelectorAll("[data-language]").forEach(button=>button.addEventListener("click",()=>{setLanguage(button.dataset.language);if(flag)flag.focus();}));
  document.addEventListener("click",event=>{if(!event.target.closest(".language-picker"))closeLanguageMenu();});
  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&menu&&!menu.hidden){closeLanguageMenu();flag.focus();}});
 });
+
+window.addEventListener("resize",positionLanguageMenu);
+window.addEventListener("scroll",positionLanguageMenu,true);
