@@ -1,4 +1,4 @@
-CHIBRE SUISSE — V3.18 — FICHIERS POUR LE SERVEUR
+CHIBRE SUISSE — V3.19 — FICHIERS POUR LE SERVEUR
 
 Transférez ces six fichiers ensemble dans le dossier actuel de votre site :
 - index.html
@@ -26,3 +26,5 @@ Modifications incluses :
 - Anciennes parties : « — » si le compteur n’avait pas été enregistré.
 
 - Lien « comment ça marche ? » en bas du jeu et page d’aide accessible hors connexion.
+
+- Saisie des donnes dans l’ordre ; les lignes suivantes sont grisées.
