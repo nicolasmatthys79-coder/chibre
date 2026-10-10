@@ -22,6 +22,10 @@ h1{margin:0;font:700 clamp(30px,5vw,46px) Georgia,serif;letter-spacing:-.03em}bu
 .ann.b{background:#f5e9e7}
 h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-template-columns:minmax(0,1fr) 38px 32px 38px;gap:4px;align-items:center;padding:7px 0;border-top:1px solid #ece8df}
 .ann h2{overflow-wrap:anywhere}
+.ann-label-cards{display:flex;align-items:center;flex-wrap:wrap;column-gap:10px;row-gap:6px}
+.nine-cards{display:inline-flex;gap:3px;flex-wrap:wrap;max-width:100%}
+.nine-card{display:flex;flex-direction:column;align-items:center;justify-content:center;width:23px;height:32px;flex:0 0 23px;border:1px solid #d8d4c8;border-radius:3px;background:#fff;color:#17211b;font-size:11px;line-height:1.1;font-weight:700}
+.nine-card.red{color:#b52f32}
 .annrow>strong{min-width:0}.annrow:first-of-type{border-top:0}.annrow button{padding:0;height:36px;font-size:19px}.count{text-align:center;font-weight:900}.annsum{display:flex;justify-content:space-between;border-top:2px solid var(--line);padding-top:12px;margin-top:8px;font-weight:900}
 .rhead,.round{display:grid;grid-template-columns:52px 1fr 38px 1fr;gap:8px;align-items:center}.rhead{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:800;padding-bottom:7px}
 .round{padding:7px 0;border-top:1px solid #ece8df}.num{width:34px;height:34px;border-radius:50%;background:#efebe2;display:grid;place-items:center;font-weight:900}
@@ -150,7 +154,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span>Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span>Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html">comment ça marche ?</a><span class="app-version">V3.11</span></div></section>
+<section class="card info"><span>Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html">comment ça marche ?</a><span class="app-version">V3.16</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -297,6 +301,20 @@ function makeAnnouncements(team){
  announcements.forEach(x=>{
   const row=document.createElement("div");row.className="annrow";
   const label=document.createElement("strong");label.textContent=x.label;
+  if(x.key==="150" || x.key==="200"){
+    const rank=x.key==="150"?"9":"J";
+    const rankName=x.key==="150"?"Neuf":"Valet";
+    label.className="ann-label-cards";
+    const cards=document.createElement("span");cards.className="nine-cards";
+    const suits=[{symbol:"♠",name:"Pique (le plus fort)",red:false},{symbol:"♥",name:"Cœur",red:true},{symbol:"♦",name:"Carreau",red:true},{symbol:"♣",name:"Trèfle (le plus faible)",red:false}];
+    suits.forEach(suit=>{
+      const card=document.createElement("span");card.className="nine-card"+(suit.red?" red":"");
+      card.title=rankName+" de "+suit.name;card.setAttribute("aria-label",rankName+" de "+suit.name);
+      card.innerHTML="<span>"+rank+"</span><span aria-hidden='true'>"+suit.symbol+"</span>";
+      cards.appendChild(card);
+    });
+    label.appendChild(cards);
+  }
   const minus=document.createElement("button");minus.textContent="−";minus.onclick=()=>changeAnn(team,x.key,-1);
   const count=document.createElement("span");count.className="count";count.textContent=x.key==="match"?matchCount(team):(obj[x.key]||0);
   const plus=document.createElement("button");plus.textContent="+";plus.onclick=()=>changeAnn(team,x.key,1);
