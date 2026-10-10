@@ -107,7 +107,8 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 .language-choices{position:absolute;top:100%;right:0;z-index:11000;min-width:190px;padding:6px;background:#fffdf8;color:#17211b;border:1px solid #d8d4c8;border-radius:12px;box-shadow:0 8px 24px #0002;font-family:system-ui,sans-serif}
 .language-choices[hidden]{display:none}
 .language-choices button{display:block;width:100%;text-align:left;border:0;border-radius:8px;background:transparent;font:500 16px system-ui,sans-serif;min-height:44px;padding:8px;cursor:pointer}
-.language-choices button:hover,.language-choices button[aria-pressed="true"]{background:#c8e6d5}
+.language-choices button[aria-pressed="true"]{background:#c8e6d5}
+@media(hover:hover) and (pointer:fine){.language-choices button:hover:not([aria-pressed="true"]){background:#efebe2}}
 @media(max-width:600px){.header-actions{grid-template-columns:auto auto auto}.header-actions button{font-size:clamp(11px,3.4vw,14px);padding:10px 4px}}
 @media(max-width:600px){.language-choices{position:fixed;left:8px;right:auto;top:70px;width:190px;min-width:0;max-width:calc(100vw - 16px);box-sizing:border-box}.language-picker{flex-shrink:0}}
 @media print{.language-picker{display:none}}
@@ -168,7 +169,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  <aside class="card ann b"><h2 id="annTitleB" data-i18n="ann">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.23</span></div></section>
+<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.24</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -192,7 +193,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js"></script>
+<script src="./i18n.js?v=3.24"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;

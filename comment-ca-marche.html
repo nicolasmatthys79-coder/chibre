@@ -24,7 +24,8 @@ li{margin:8px 0}
 .language-choices{position:absolute;top:100%;right:0;z-index:11000;min-width:190px;padding:6px;background:#fffdf8;color:#17211b;border:1px solid #d8d4c8;border-radius:12px;box-shadow:0 8px 24px #0002;font-family:system-ui,sans-serif}
 .language-choices[hidden]{display:none}
 .language-choices button{display:block;width:100%;text-align:left;border:0;border-radius:8px;background:transparent;font:500 16px system-ui,sans-serif;min-height:44px;padding:8px;cursor:pointer}
-.language-choices button:hover,.language-choices button[aria-pressed="true"]{background:#c8e6d5}
+.language-choices button[aria-pressed="true"]{background:#c8e6d5}
+@media(hover:hover) and (pointer:fine){.language-choices button:hover:not([aria-pressed="true"]){background:#efebe2}}
 @media(max-width:600px){.header-actions{grid-template-columns:auto auto auto}.header-actions button{font-size:clamp(11px,3.4vw,14px);padding:10px 4px}}
 @media(max-width:600px){.language-choices{position:fixed;left:8px;right:auto;top:70px;width:190px;min-width:0;max-width:calc(100vw - 16px);box-sizing:border-box}.language-picker{flex-shrink:0}}
 @media print{.language-picker{display:none}}
@@ -48,6 +49,6 @@ li{margin:8px 0}
 <p><span data-i18n="official">Instructions officielles :</span> <a data-official="google" href="https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&amp;hl=fr" target="_blank" rel="noopener noreferrer">Google Chrome</a> · <a data-official="apple" href="https://support.apple.com/fr-fr/guide/iphone/iphea86e5236/ios" target="_blank" rel="noopener noreferrer">Apple</a></p></article>
 <a class="back" href="./index.html" data-i18n="back">Retour au jeu</a>
 </main>
-<script src="./i18n.js"></script>
+<script src="./i18n.js?v=3.24"></script>
 </body>
 </html>
