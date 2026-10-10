@@ -1,4 +1,4 @@
-CHIBRE SUISSE — V3.24 — FICHIERS POUR LE SERVEUR
+CHIBRE SUISSE — V3.26 — FICHIERS POUR LE SERVEUR
 
 Transférez ces sept fichiers ensemble dans le dossier actuel de votre site :
 - index.html
@@ -31,3 +31,5 @@ Modifications incluses :
 - Saisie des donnes dans l’ordre ; les lignes suivantes sont grisées.
 
 - Langues : Français, Deutsch, Italiano, Rumantsch (rumantsch grischun), English.
+
+- 8 donnes initiales, puis ajout progressif jusqu’à 12 sans gagnant.

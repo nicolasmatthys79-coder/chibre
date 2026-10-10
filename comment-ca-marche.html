@@ -29,14 +29,24 @@ li{margin:8px 0}
 @media(max-width:600px){.header-actions{grid-template-columns:auto auto auto}.header-actions button{font-size:clamp(11px,3.4vw,14px);padding:10px 4px}}
 @media(max-width:600px){.language-choices{position:fixed;left:8px;right:auto;top:70px;width:190px;min-width:0;max-width:calc(100vw - 16px);box-sizing:border-box}.language-picker{flex-shrink:0}}
 @media print{.language-picker{display:none}}
+.language-dialog{width:min(380px,calc(100% - 32px));padding:24px;border:1px solid #d8d4c8;border-radius:18px;background:#fffdf8;color:#17211b;box-sizing:border-box}
+.language-dialog::backdrop{background:rgba(23,33,27,.45)}
+.language-dialog h2{text-align:center;font:700 22px Georgia,serif;margin:0 0 22px;overflow-wrap:anywhere}
+.language-dialog form{display:flex;justify-content:center;gap:12px}
+.language-dialog button{min-width:90px;min-height:44px;border:1px solid #d8d4c8;border-radius:10px;background:#fff;color:#17211b;font:700 16px system-ui;padding:10px 16px;cursor:pointer}
+.language-dialog button[value="yes"]{background:#174c3c;border-color:#174c3c;color:#fff}
 </style>
 </head>
 <body>
+<dialog id="languageDialog" class="language-dialog" aria-labelledby="languageQuestion">
+<h2 id="languageQuestion"></h2>
+<form method="dialog"><button value="no" data-i18n="no" autofocus>Non</button><button value="yes" data-i18n="yes">Oui</button></form>
+</dialog>
 <main>
 <a class="back" href="./index.html" data-i18n="back">Retour au jeu</a>
 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><h1 data-i18n="help_title">Comment ça marche ?</h1><span class="language-picker"><button type="button" id="languageFlag" class="language-flag" aria-label="Choisir la langue" aria-expanded="false" aria-controls="languageChoices">🇨🇭</button><span id="languageChoices" class="language-choices" hidden><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></span></span></div>
 <article>
-<section><h2 data-i18n="help_start_title">Commencer une partie</h2><p data-i18n="help_start_body">Inscrivez les noms des joueurs dans « Nous » et « Eux », puis choisissez le mode. La feuille contient 12 donnes. En mode 1000 normal, les points des donnes et des annonces comptent une fois ; l’objectif est de 1000 points. En mode 1500 pique double, cette application double tous les points des donnes et des annonces ; l’objectif est de 1500 points.</p></section>
+<section><h2 data-i18n="help_start_title">Commencer une partie</h2><p data-i18n="help_start_body">Inscrivez les noms des joueurs dans « Nous » et « Eux », puis choisissez le mode. La feuille affiche 8 donnes au départ. Si toutes les lignes affichées sont remplies et qu’aucune équipe n’a gagné, une nouvelle ligne apparaît, jusqu’à un maximum de 12 donnes. En mode 1000 normal, les points des donnes et des annonces comptent une fois ; l’objectif est de 1000 points. En mode 1500 pique double, cette application double tous les points des donnes et des annonces ; l’objectif est de 1500 points.</p></section>
 <section><h2 data-i18n="help_scores_title">Inscrire les points d’une donne</h2><p data-i18n="help_scores_body">Saisissez les points d’une équipe, puis validez ou quittez la case. L’autre score vaut 157 moins les points saisis : par exemple, 100 pour Nous donne 57 pour Eux. Les valeurs autorisées sont les entiers de 2 à 155, ou 257 pour un match. Chaque équipe a au moins 2 points dans une donne normale. Les saisies de 0, 1 et de 156 à 256 sont refusées ; 0 est calculé automatiquement pour l’équipe qui subit un match.</p></section>
 <section><h2 data-i18n="help_order_title">Remplir les donnes dans l’ordre</h2><p data-i18n="help_order_body">Seule la première ligne vide est accessible. Les lignes suivantes restent grisées jusqu’à ce que la précédente soit remplie. Les lignes déjà remplies restent modifiables. Pour corriger une donne, modifiez une case. Pour l’effacer, videz une case et validez : cette donne et toutes les suivantes sont effacées pour conserver l’ordre.</p></section>
 <section><h2 data-i18n="help_match_title">Compter un match</h2><p data-i18n="help_match_body">257 donne 0 à l’autre équipe et ajoute un match au compteur. Si une équipe remporte tous les points de la donne, inscrivez 257, pas 157. Le + de « Match » inscrit 257 sur la prochaine ligne libre. Le − retire le dernier match de cette équipe et efface sa donne ainsi que les suivantes. Corriger ou effacer un 257 ajuste le compteur. Les 257 points sont inclus dans les donnes et ne sont pas ajoutés une deuxième fois aux annonces.</p></section>
@@ -49,6 +59,6 @@ li{margin:8px 0}
 <p><span data-i18n="official">Instructions officielles :</span> <a data-official="google" href="https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&amp;hl=fr" target="_blank" rel="noopener noreferrer">Google Chrome</a> · <a data-official="apple" href="https://support.apple.com/fr-fr/guide/iphone/iphea86e5236/ios" target="_blank" rel="noopener noreferrer">Apple</a></p></article>
 <a class="back" href="./index.html" data-i18n="back">Retour au jeu</a>
 </main>
-<script src="./i18n.js?v=3.24"></script>
+<script src="./i18n.js?v=3.26"></script>
 </body>
 </html>
