@@ -59,6 +59,11 @@ li{margin:8px 0}
 <p><span data-i18n="official">Instructions officielles :</span> <a data-official="google" href="https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&amp;hl=fr" target="_blank" rel="noopener noreferrer">Google Chrome</a> · <a data-official="apple" href="https://support.apple.com/fr-fr/guide/iphone/iphea86e5236/ios" target="_blank" rel="noopener noreferrer">Apple</a></p></article>
 <a class="back" href="./index.html" data-i18n="back">Retour au jeu</a>
 </main>
-<script src="./i18n.js?v=3.26"></script>
+<script src="./i18n.js?v=3.27"></script>
+<script>
+if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
+ window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(error=>console.warn("Offline setup:",error)));
+}
+</script>
 </body>
 </html>

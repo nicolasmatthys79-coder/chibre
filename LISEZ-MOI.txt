@@ -1,4 +1,4 @@
-CHIBRE SUISSE — V3.26 — FICHIERS POUR LE SERVEUR
+CHIBRE SUISSE — V3.27 — FICHIERS POUR LE SERVEUR
 
 Transférez ces sept fichiers ensemble dans le dossier actuel de votre site :
 - index.html
@@ -33,3 +33,6 @@ Modifications incluses :
 - Langues : Français, Deutsch, Italiano, Rumantsch (rumantsch grischun), English.
 
 - 8 donnes initiales, puis ajout progressif jusqu’à 12 sans gagnant.
+
+Ouvrez une première fois le site HTTPS avec Internet et attendez son chargement.
+Le jeu, l’aide et les langues sont alors mis en cache pour une utilisation hors ligne.
