@@ -33,7 +33,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 .annrow>strong{min-width:0}.annrow:first-of-type{border-top:0}.annrow button{padding:0;height:36px;font-size:19px}.count{text-align:center;font-weight:900}.annsum{display:flex;justify-content:space-between;border-top:2px solid var(--line);padding-top:12px;margin-top:8px;font-weight:900}
 .rhead,.round{display:grid;grid-template-columns:52px 1fr 38px 1fr;gap:8px;align-items:center}.rhead{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:800;padding-bottom:7px}
 .round{padding:7px 0;border-top:1px solid #ece8df}.num{width:34px;height:34px;border-radius:50%;background:#efebe2;display:grid;place-items:center;font-weight:900}
-.score{width:100%;height:42px;border:1px solid var(--line);border-radius:10px;text-align:center;font-size:18px;font-weight:900;background:white}.score:focus{outline:2px solid #b58a38;outline-offset:1px}
+.score{width:100%;height:50px;border:1px solid var(--line);border-radius:10px;text-align:center;font-size:18px;font-weight:900;background:white}.score:focus{outline:2px solid #b58a38;outline-offset:1px}
 .eq{text-align:center;color:#999;font-weight:900}.info{padding:13px 16px;margin-top:12px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .status{font-weight:900;color:var(--ink)}
 
@@ -69,7 +69,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  .rhead,.round{grid-template-columns:42px minmax(0,1fr) 24px minmax(0,1fr);gap:5px}
  .round{padding:6px 0}
  .num{width:34px;height:34px}
- .score{height:50px;font-size:21px;border-radius:12px}
+ .score{height:60px;font-size:22px;border-radius:12px}
  .ann{padding:13px}
  .annrow{grid-template-columns:minmax(0,1fr) 50px 48px 50px;gap:7px;padding:7px 0}
  .annrow button{height:48px;font-size:25px;border-radius:12px}
@@ -122,9 +122,62 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 .language-dialog form{display:flex;justify-content:center;gap:12px}
 .language-dialog button{min-width:90px;min-height:44px;border:1px solid #d8d4c8;border-radius:10px;background:#fff;color:#17211b;font:700 16px system-ui;padding:10px 16px;cursor:pointer}
 .language-dialog button[value="yes"]{background:#174c3c;border-color:#174c3c;color:#fff}
+
+
+.slate-dialog{position:fixed;inset:0;width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;border:12px solid #89582f;background:#151a18;color:#f4f0e4;box-sizing:border-box}
+.slate-dialog::backdrop{background:#151a18}
+.slate-close{position:absolute;right:4px;top:4px;width:44px;height:44px;border:0;background:transparent;color:#f4f0e4;font-size:30px;z-index:1;padding:0}
+.slate-content{height:100%;overflow:auto;padding:12px 8px 8px;box-sizing:border-box}
+.head{position:relative}
+
+.slate-open{overflow:hidden}
+.slate-content{display:flex;flex-direction:column}
+.slate-content h2{font:700 20px Georgia,serif;margin:0 48px 4px 0;color:inherit}
+.slate-legend{font-size:13px;margin:0 0 8px;color:inherit}
+.slate-halves{flex:1;display:grid;grid-template-rows:1fr 1fr;min-height:0}
+.slate-half{display:flex;flex-direction:column;min-height:0;padding:4px 0;gap:4px}
+.slate-half>div:last-child{flex:1;min-height:0}
+.slate-team-line{flex-shrink:0}
+.slate-half.opposite{transform:rotate(180deg);border-top:1px solid #f4f0e455}
+.slate-team-line{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font:700 clamp(16px,3vw,28px) Georgia,serif}
+.slate-team-line span:first-child{overflow-wrap:anywhere;min-width:0}.slate-team-line span:last-child{white-space:nowrap}
+.slate-half svg{display:block;width:100%;height:100%;min-height:0;overflow:visible}
+
+
+.slate-hit{cursor:pointer}.slate-hit:focus path{stroke:#f4f0e455}.slate-hit:focus{outline:none}
+@media(hover:hover){.slate-hit:hover path{stroke:#f4f0e422}}
+#slateManualForm,#slateAnnForm{display:block}.slate-ann-button{cursor:pointer}.slate-ann-button:focus rect{stroke-width:4}.slate-hit:focus rect{stroke:#f4f0e4;stroke-width:2}
+.slate-edit-button{cursor:pointer}.slate-edit-button:focus{outline:2px solid #fff;outline-offset:2px}
+.slate-new-game{position:absolute;right:54px;top:8px;z-index:1;padding:7px 10px;min-height:36px;border:1px solid #f4f0e477;border-radius:7px;background:#151a18;color:#f4f0e4;font-size:12px}
+.slate-content h2{margin-right:205px}
+@media(max-width:600px){.slate-content h2{font-size:17px;min-height:36px;margin-right:190px}.slate-new-game{font-size:11px;padding:7px 8px}}
+.header-actions .slate-mode-button{line-height:1.15;text-align:center;white-space:normal;border:3px solid #89582f}
+.ann-picker{width:min(460px,calc(100% - 24px));padding:20px}.ann-picker-row{display:grid;grid-template-columns:minmax(0,1fr) 44px 28px 44px;gap:6px;align-items:center;padding:7px 0;border-bottom:1px solid #d8d4c8}.ann-picker-row button{min-width:0;width:44px;min-height:44px;padding:0;font-size:22px}.ann-picker-row>span:first-child{font-size:14px;overflow-wrap:anywhere}.ann-picker-row button:disabled{opacity:.35;cursor:default}
+.slate-toolbar{display:flex;gap:8px;justify-content:flex-end;margin:4px 0 6px;flex-shrink:0}.slate-toolbar .slate-new-game{position:static;min-height:36px}.slate-content h2{margin-right:48px;min-height:24px}.history-slate-badge{display:inline-block;margin:4px 0;padding:3px 8px;border-radius:5px;background:#17211b;color:#fffdf8;font-size:12px}
 </style>
 </head>
 <body>
+<dialog id="annPickerDialog" class="language-dialog ann-picker" aria-labelledby="annPickerTitle"><h2 id="annPickerTitle"></h2><div id="annPickerRows"></div><p id="annPickerTotal" aria-live="polite"></p><form method="dialog"><button value="cancel" data-i18n="cancel">Annuler</button><button type="button" value="yes" onclick="confirmAnnPicker()">OK</button></form></dialog>
+<dialog id="slateManualDialog" class="language-dialog" aria-labelledby="slateManualTitle">
+<h2 id="slateManualTitle"></h2><form id="slateManualForm">
+<label for="slateManualValue" data-i18n="manual_value">Points à ajouter</label>
+<input id="slateManualValue" type="number" inputmode="numeric" min="2" max="257" step="1" required style="display:block;width:100%;min-height:48px;margin:10px 0;font:inherit;padding:8px;box-sizing:border-box">
+<p id="slateManualError" role="alert" style="color:#7b2d26"></p>
+<div style="display:flex;justify-content:center;gap:12px"><button type="button" onclick="document.getElementById('slateManualDialog').close()" data-i18n="cancel">Annuler</button><button id="slateManualSubmit" type="submit" value="yes" data-i18n="add_points">Ajouter</button></div>
+</form></dialog>
+<dialog id="slateAnnDialog" class="language-dialog" aria-labelledby="slateAnnTitle">
+<h2 id="slateAnnTitle"></h2><form id="slateAnnForm">
+<label for="slateAnnValue" data-i18n="ann_value">Points à ajouter</label>
+<input id="slateAnnValue" type="number" inputmode="numeric" min="1" step="1" required style="display:block;width:100%;min-height:48px;margin:10px 0;font:inherit;padding:8px;box-sizing:border-box">
+<p id="slateAnnError" role="alert" style="color:#7b2d26"></p>
+<div style="display:flex;justify-content:center;gap:12px"><button type="button" onclick="document.getElementById('slateAnnDialog').close()" data-i18n="cancel">Annuler</button><button id="slateAnnSubmit" type="submit" value="yes" data-i18n="add_points">Ajouter</button></div>
+</form></dialog>
+<dialog id="slateDialog" class="slate-dialog" aria-labelledby="slateTitle">
+
+<button type="button" class="slate-close" onclick="closeSlate()" data-i18n-aria-label="slate_close" aria-label="Fermer l’ardoise">×</button>
+<div class="slate-content"><h2 id="slateTitle" data-i18n="slate_title">Ardoise de chibre</h2><div class="slate-toolbar"><button type="button" class="slate-new-game" onclick="resetAll();renderSlate()" data-i18n="new">Nouvelle partie</button><button type="button" class="slate-new-game" onclick="openSlateHistory()" data-i18n="history">Historique</button></div>
+<div class="slate-halves"><section class="slate-half opposite"><div class="slate-team-line"><span id="slateNameB"></span><span id="slateTotalB"></span></div><div id="slatePointsB"></div></section>
+<section class="slate-half"><div class="slate-team-line"><span id="slateNameA"></span><span id="slateTotalA"></span></div><div id="slatePointsA"></div></section></div></div></dialog>
 <dialog id="languageDialog" class="language-dialog" aria-labelledby="languageQuestion">
 <h2 id="languageQuestion"></h2>
 <form method="dialog"><button value="no" data-i18n="no" autofocus>Non</button><button value="yes" data-i18n="yes">Oui</button></form>
@@ -160,7 +213,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
 </div>
  <div class="header-actions">
-  <button onclick="window.print()" data-i18n="print">Imprimer</button>
+  <button type="button" id="slateToggle" class="slate-mode-button" onclick="openSlate()" data-i18n-html="slate_mode_button" data-i18n-title="slate_open" data-i18n-aria-label="slate_open">Mode<br>ardoise</button>
   <button onclick="resetAll()" data-i18n="new">Nouvelle partie</button>
   <button onclick="openHistory()" data-i18n="history">Historique</button>
 </div>
@@ -183,7 +236,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  <aside class="card ann b"><h2 id="annTitleB" data-i18n="ann">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.29</span></div></section>
+<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.49</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -207,7 +260,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=3.29"></script>
+<script src="./i18n.js?v=3.49"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -318,14 +371,14 @@ function changeAnn(team,key,delta){
 }
 function matchCount(team){
  const key=team==="A"?"a":"b";
- return state.rounds.filter(r=>r[key]===257).length;
+ return state.rounds.filter(r=>r[key]===257).length+(state.slateMatches?.[key]||0);
 }
 function annTotal(team){
  const obj=team==="A"?state.annA:state.annB;
- return announcements.reduce((sum,x)=>x.key==="match" ? sum : sum+(obj[x.key]||0)*x.value,0);
+ return announcements.reduce((sum,x)=>x.key==="match" ? sum : sum+(obj[x.key]||0)*x.value,0)+(state.slateAnnouncements?.[team]||0);
 }
 function roundTotal(team){
- return state.rounds.reduce((sum,r)=>sum+(r[team]===null?0:r[team]),0);
+ return state.rounds.reduce((sum,r)=>sum+(r[team]===null?0:r[team]),0)+(state.slatePoints?.[team]||0);
 }
 function makeAnnouncements(team){
  const obj=team==="A"?state.annA:state.annB;
@@ -439,6 +492,7 @@ function render(){
   history.unshift({
     date:new Date().toLocaleString("fr-CH"),
     timestamp:Date.now(),
+    usedSlate:!!(state.usedSlate || state.slatePoints || state.slateAnnouncements),
     nameADefault:!document.getElementById("nameA").value.trim(),
     nameBDefault:!document.getElementById("nameB").value.trim(),
     nameA:nameA,
@@ -504,7 +558,8 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
 
         box.innerHTML=`
       <div style="padding-right:44px">
-        <strong>${escapeHistoryText(t("part"))} ${history.length-index}</strong><br>
+        <strong>${escapeHistoryText(t("part"))} ${history.length-index}</strong>
+        ${game.usedSlate?" <span class=\"history-slate-badge\">"+escapeHistoryText(t("slate_game"))+"</span>":""}<br>
         <small>${escapeHistoryText(gameDate(game))}</small>
       </div>
 
@@ -602,6 +657,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
 
 function closeHistory(){
   document.getElementById("historyPage").style.display="none";
+  if(historyFromSlate){historyFromSlate=false;openSlate();}
 }
 function clearHistory(){
   if(!confirm(t("clear_question")))
@@ -655,6 +711,173 @@ function resetAll(){
 }
 document.getElementById("nameA").addEventListener("input",()=>{save();render()});
 document.getElementById("nameB").addEventListener("input",()=>{save();render()});
+function slateBreakdown(total){
+ const value=Math.max(0,Math.floor(Number(total)||0));
+ const hundreds=Math.floor(value/100),afterHundreds=value%100;
+ const fifties=Math.floor(afterHundreds/50),afterFifties=afterHundreds%50;
+ const twenties=Math.floor(afterFifties/20),remainder=afterFifties%20;
+ return {hundreds,fifties,twenties,remainder};
+}
+function slateSvg(total,team){
+ const points=slateBreakdown(total);
+ const line=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
+ function tallies(count,y){
+  let marks="";const step=Math.min(18,430/Math.max(1,count+Math.floor(count/5)));
+  for(let i=0;i<count;i++){
+   const group=Math.floor(i/5),slot=i%5,start=90+group*6*step;
+   marks+=slot===4?line(start-3,y+15,start+3*step+3,y-15):line(start+slot*step,y-15,start+slot*step,y+15);
+  }
+  return marks;
+ }
+ const accessible=t("slate_readout",{total,hundreds:points.hundreds,fifties:points.fifties,twenties:points.twenties,remainder:points.remainder});
+ return `<svg viewBox="0 0 600 400" preserveAspectRatio="none" role="group" aria-label="${escapeHistoryText(accessible)}" xmlns="http://www.w3.org/2000/svg">
+ ${team?`<g class="slate-hit" role="button" tabindex="0" aria-label="${escapeHistoryText(t("manual_title",{team:teamName(team)}))}" onclick="openSlateManual('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateManual('${team}');}"><rect x="60" y="30" width="480" height="340" fill="transparent" pointer-events="all"/></g>`:""}
+ <g pointer-events="none" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M65 55 H535 L65 345 H535" opacity=".65"/>${tallies(points.hundreds,55)}${points.fifties?line(284,184,316,216):""}${tallies(points.twenties,345)}</g>
+ <g pointer-events="none" fill="currentColor" font-family="Georgia,serif" font-size="20"><text x="12" y="62">100</text><text x="310" y="170">50</text><text x="20" y="352">20</text><text x="475" y="225" font-size="40">${points.remainder}</text></g><path d="M65 55 H535 L65 345 H535" fill="none" stroke="transparent" stroke-width="18" vector-effect="non-scaling-stroke" pointer-events="stroke"/>${team?`<g class="slate-ann-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("ann_manual_title",{team:teamName(team)}))}" onclick="openSlateAnnPicker('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateAnnPicker('${team}');}"><rect x="8" y="170" width="60" height="60" rx="4" fill="#151a18" stroke="currentColor" stroke-width="2"/><text x="38" y="212" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="36">A</text></g>`:""}${team?`<g class="slate-edit-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("slate_edit",{team:teamName(team)}))}" onclick="openSlateEdit('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateEdit('${team}');}"><rect x="267.5" y="355" width="65" height="45" fill="transparent"/><text x="300" y="378" text-anchor="middle" dominant-baseline="central" transform="rotate(90 300 378)" fill="#ffffff" font-family="system-ui,sans-serif" font-size="42">↶</text></g>`:""}</svg>`;
+}
+let slateEditContext=null;
+function slateTransaction(team,value,kind){
+ state.usedSlate=true;
+ const key=team.toLowerCase(),other=key==="a"?"b":"a";
+ const previous=slateEditContext?.team===team?slateEditContext.entry:null;
+ if(previous){
+  if(previous.kind==="points"){
+   state.slatePoints[key]-=previous.rawValue;state.slatePoints[other]-=previous.rawOther;
+   if(previous.match)state.slateMatches[key]=Math.max(0,(state.slateMatches[key]||0)-1);
+  }else state.slateAnnouncements[team]-=previous.rawValue;
+ }
+ const entry={kind,value,rawValue:value/factor(),rawOther:kind==="points"?(value===257?0:MAX-value)/factor():0,match:kind==="points"&&value===257};
+ if(kind==="points"){
+  if(!state.slatePoints)state.slatePoints={a:0,b:0};
+  state.slatePoints[key]=(state.slatePoints[key]||0)+entry.rawValue;
+  state.slatePoints[other]=(state.slatePoints[other]||0)+entry.rawOther;
+  if(entry.match){if(!state.slateMatches)state.slateMatches={a:0,b:0};state.slateMatches[key]=(state.slateMatches[key]||0)+1;}
+ }else{
+  if(!state.slateAnnouncements)state.slateAnnouncements={A:0,B:0};
+  state.slateAnnouncements[team]=(state.slateAnnouncements[team]||0)+entry.rawValue;
+ }
+ if(!state.slateLastEntries)state.slateLastEntries={};state.slateLastEntries[team]=entry;
+ slateEditContext=null;
+ if(previous && state.winnerTeam){
+  const winner=state.winnerTeam;
+  if((roundTotal(winner.toLowerCase())+annTotal(winner))*factor()<state.mode){state.winnerTeam=null;winnerShownFor=null;}
+ }
+ recordWinner(team);save();render();renderSlate();
+}
+function slateAdd(team,value){
+ if(!["A","B"].includes(team)||!Number.isSafeInteger(value)||(value!==257&&(value<2||value>155)))return;
+ slateTransaction(team,value,"points");
+}
+function openSlateEdit(team){
+ const entry=state.slateLastEntries?.[team];if(!entry)return;
+ if(entry.selection){openSlateAnnPicker(team,true);return;}
+ const kind=entry.kind==="points"?"Manual":"Ann";
+ if(kind==="Manual")openSlateManual(team);else openSlateAnn(team);
+ slateEditContext={team,entry};
+ document.getElementById("slate"+kind+"Value").value=entry.value;
+ document.getElementById("slate"+kind+"Title").textContent=t("slate_edit",{team:teamName(team)});
+ document.getElementById("slate"+kind+"Submit").textContent=t("update");
+}
+let slateManualTeam=null;
+function openSlateManual(team){
+ if(!["A","B"].includes(team))return;
+ slateEditContext=null;document.getElementById("slateManualSubmit").textContent=t("add_points");
+ slateManualTeam=team;
+ document.getElementById("slateManualTitle").textContent=t("manual_title",{team:teamName(team)});
+ document.getElementById("slateManualValue").value="";
+ document.getElementById("slateManualError").textContent="";
+ document.getElementById("slateManualDialog").showModal();
+ document.getElementById("slateManualValue").focus();
+}
+document.getElementById("slateManualForm").addEventListener("submit",event=>{
+ event.preventDefault();
+ const raw=document.getElementById("slateManualValue").value;
+ const value=Number(raw);
+ if(!raw.trim()||!Number.isSafeInteger(value)||(value!==257&&(value<2||value>155))){document.getElementById("slateManualError").textContent=t("manual_invalid");return;}
+ slateAdd(slateManualTeam,value);document.getElementById("slateManualDialog").close();
+});
+let slateAnnTeam=null;
+function openSlateAnn(team){
+ if(!["A","B"].includes(team))return;
+ slateEditContext=null;document.getElementById("slateAnnSubmit").textContent=t("add_points");
+ slateAnnTeam=team;
+ document.getElementById("slateAnnTitle").textContent=t("ann_manual_title",{team:teamName(team)});
+ document.getElementById("slateAnnValue").value="";
+ document.getElementById("slateAnnError").textContent="";
+ document.getElementById("slateAnnDialog").showModal();document.getElementById("slateAnnValue").focus();
+}
+function slateAddAnnouncement(team,value){
+ if(!["A","B"].includes(team)||!Number.isSafeInteger(value)||value<=0)return;
+ slateTransaction(team,value,"announcements");
+}
+document.getElementById("slateAnnForm").addEventListener("submit",event=>{
+ event.preventDefault();const raw=document.getElementById("slateAnnValue").value;const value=Number(raw);
+ if(!raw.trim()||!Number.isSafeInteger(value)||value<=0){document.getElementById("slateAnnError").textContent=t("ann_invalid");return;}
+ slateAddAnnouncement(slateAnnTeam,value);document.getElementById("slateAnnDialog").close();
+});
+document.getElementById("slateManualDialog").addEventListener("close",()=>{slateEditContext=null;});
+document.getElementById("slateAnnDialog").addEventListener("close",()=>{slateEditContext=null;});
+let annPickerTeam=null,annPickerDraft={},annPickerEditing=false;
+const annPickerValues=[20,50,100,150,200];
+function annPickerAmount(){return annPickerValues.reduce((sum,value)=>sum+(annPickerDraft[value]||0)*value,0);}
+function renderAnnPicker(){
+ const root=document.getElementById("annPickerRows");root.innerHTML="";
+ const labels={20:t("cards_20"),50:t("cards_50"),100:t("cards_100")+" / "+t("four_kind"),150:t("four_nines"),200:t("four_jacks")};
+ annPickerValues.forEach(value=>{
+  const row=document.createElement("div");row.className="ann-picker-row";
+  const label=document.createElement("span");label.textContent=value+" · "+labels[value];
+  const minus=document.createElement("button");minus.type="button";minus.textContent="−";minus.disabled=!(annPickerDraft[value]>0);
+  minus.setAttribute("aria-label",t("decrease",{value,team:teamName(annPickerTeam)}));minus.onclick=()=>{annPickerDraft[value]=Math.max(0,(annPickerDraft[value]||0)-1);renderAnnPicker();};
+  const count=document.createElement("span");count.textContent=annPickerDraft[value]||0;count.className="count";
+  const plus=document.createElement("button");plus.type="button";plus.textContent="+";plus.setAttribute("aria-label",t("increase",{value,team:teamName(annPickerTeam)}));plus.onclick=()=>{annPickerDraft[value]=(annPickerDraft[value]||0)+1;renderAnnPicker();};
+  row.append(label,minus,count,plus);root.appendChild(row);
+ });
+ document.getElementById("annPickerTotal").textContent=t("ann")+" : "+annPickerAmount()+" "+t("pts");
+}
+function openSlateAnnPicker(team,editing=false){
+ if(!["A","B"].includes(team))return;
+ annPickerTeam=team;annPickerEditing=editing;slateEditContext=null;
+ const entry=state.slateLastEntries?.[team];
+ annPickerDraft=editing&&entry?.selection?{...entry.selection}:{};
+ document.getElementById("annPickerTitle").textContent=t("ann_manual_title",{team:teamName(team)});
+ renderAnnPicker();document.getElementById("annPickerDialog").showModal();
+}
+function confirmAnnPicker(){
+ const value=annPickerAmount();
+ if(value>0){
+  if(annPickerEditing)slateEditContext={team:annPickerTeam,entry:state.slateLastEntries[annPickerTeam]};
+  slateAddAnnouncement(annPickerTeam,value);
+  state.slateLastEntries[annPickerTeam].selection={...annPickerDraft};save();
+ }else if(annPickerEditing){
+  const entry=state.slateLastEntries[annPickerTeam];
+  state.slateAnnouncements[annPickerTeam]-=entry.rawValue;
+  delete state.slateLastEntries[annPickerTeam];
+  if(state.winnerTeam&&(roundTotal(state.winnerTeam.toLowerCase())+annTotal(state.winnerTeam))*factor()<state.mode){state.winnerTeam=null;winnerShownFor=null;}
+  recordWinner();save();render();renderSlate();
+ }
+ slateEditContext=null;document.getElementById("annPickerDialog").close();
+}
+function renderSlate(){
+ ["A","B"].forEach(team=>{
+  const total=(roundTotal(team.toLowerCase())+annTotal(team))*factor();
+  document.getElementById("slateName"+team).textContent=teamName(team);
+  document.getElementById("slatePoints"+team).innerHTML=slateSvg(total,team);
+  document.getElementById("slateTotal"+team).textContent=total+" "+t("points");
+ });
+}
+let historyFromSlate=false;
+function openSlateHistory(){
+ historyFromSlate=true;closeSlate();openHistory();
+}
+function openSlate(){
+ renderSlate();const dialog=document.getElementById("slateDialog");
+ dialog.showModal();document.documentElement.classList.add("slate-open");
+}
+function closeSlate(){document.getElementById("slateDialog").close();}
+document.getElementById("slateDialog").addEventListener("close",()=>{
+ document.documentElement.classList.remove("slate-open");document.getElementById("slateToggle").focus();
+});
+
 load();applyLanguage();render();
 </script>
 <script>
