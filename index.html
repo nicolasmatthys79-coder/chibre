@@ -162,6 +162,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 .slate-name-edit{display:block;min-width:0;max-width:75%;min-height:44px;padding:0 4px;border:0;border-radius:0;background:transparent;color:inherit;font:inherit;text-align:left;overflow-wrap:anywhere;white-space:normal;cursor:pointer}.slate-name-edit:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .slate-halves{position:relative}.slate-double-toggle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;padding:7px 12px;border:1px solid #f4f0e477;border-radius:7px;background:#151a18;color:#f4f0e4;font-size:13px;min-height:36px;white-space:nowrap}.slate-double-toggle[aria-pressed="true"]{border-color:#c8e6d5;color:#c8e6d5}
 .annrow button:disabled{opacity:.35;cursor:default}.slate-ann-button[aria-disabled="true"]{opacity:.35;cursor:default}
+.ann-picker-card-label{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.ann-picker .nine-cards{flex-wrap:nowrap}
 </style>
 </head>
 <body>
@@ -246,7 +247,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  <aside class="card ann b"><h2 id="annTitleB" data-i18n="ann">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.70</span></div></section>
+<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.71</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -270,7 +271,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=3.70"></script>
+<script src="./i18n.js?v=3.71"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -882,6 +883,18 @@ function renderAnnPicker(){
  annPickerValues.forEach(value=>{
   const row=document.createElement("div");row.className="ann-picker-row";
   const label=document.createElement("span");label.textContent=value+" · "+labels[value];
+  if(value===150||value===200){
+   label.className="ann-picker-card-label";label.textContent=String(value);
+   const cards=document.createElement("span");cards.className="nine-cards";
+   const rank=value===150?"9":"J",rankName=t(value===150?"nine":"jack");
+   [{symbol:"♠",key:"spade",red:false},{symbol:"♥",key:"heart",red:true},{symbol:"♦",key:"diamond",red:true},{symbol:"♣",key:"club",red:false}].forEach(suit=>{
+    const card=document.createElement("span");card.className="nine-card"+(suit.red?" red":"");
+    const description=t("card_title",{rank:rankName,suit:t(suit.key)});card.title=description;card.setAttribute("aria-label",description);
+    const number=document.createElement("span");number.textContent=rank;number.setAttribute("aria-hidden","true");
+    const symbol=document.createElement("span");symbol.textContent=suit.symbol;symbol.setAttribute("aria-hidden","true");
+    card.append(number,symbol);cards.appendChild(card);
+   });label.appendChild(cards);
+  }
   const minus=document.createElement("button");minus.type="button";minus.textContent="−";minus.disabled=!(annPickerDraft[value]>0);
   minus.setAttribute("aria-label",t("decrease",{value,team:teamName(annPickerTeam)}));minus.onclick=()=>{annPickerDraft[value]=Math.max(0,(annPickerDraft[value]||0)-1);renderAnnPicker();};
   const count=document.createElement("span");count.textContent=annPickerDraft[value]||0;count.className="count";
