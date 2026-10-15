@@ -154,9 +154,17 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 .header-actions .slate-mode-button{line-height:1.15;text-align:center;white-space:normal;border:3px solid #89582f}
 .ann-picker{width:min(460px,calc(100% - 24px));padding:20px}.ann-picker-row{display:grid;grid-template-columns:minmax(0,1fr) 44px 28px 44px;gap:6px;align-items:center;padding:7px 0;border-bottom:1px solid #d8d4c8}.ann-picker-row button{min-width:0;width:44px;min-height:44px;padding:0;font-size:22px}.ann-picker-row>span:first-child{font-size:14px;overflow-wrap:anywhere}.ann-picker-row button:disabled{opacity:.35;cursor:default}
 .slate-toolbar{display:flex;gap:8px;justify-content:flex-end;margin:4px 0 6px;flex-shrink:0}.slate-toolbar .slate-new-game{position:static;min-height:36px}.slate-content h2{margin-right:48px;min-height:24px}.history-slate-badge{display:inline-block;margin:4px 0;padding:3px 8px;border-radius:5px;background:#17211b;color:#fffdf8;font-size:12px}
+@media(min-width:801px){
+ .slate-half>div:last-child{container-type:size;display:flex;align-items:center;justify-content:center}
+ .slate-half svg{width:min(100%,150cqh);height:auto;aspect-ratio:3 / 2;max-height:100%}
+}
+.slate-toolbar{align-items:center;flex-wrap:nowrap;gap:6px;margin:0 44px 8px 0}.slate-toolbar #slateTitle{flex:1;min-width:0;margin:0;min-height:0;font-size:clamp(20px,5.2vw,28px)}.slate-toolbar .slate-new-game{flex-shrink:0;white-space:nowrap;padding:7px 6px;font-size:clamp(10px,2.7vw,12px)}
+.slate-name-edit{display:block;min-width:0;max-width:75%;min-height:44px;padding:0 4px;border:0;border-radius:0;background:transparent;color:inherit;font:inherit;text-align:left;overflow-wrap:anywhere;white-space:normal;cursor:pointer}.slate-name-edit:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.slate-halves{position:relative}.slate-double-toggle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;padding:7px 12px;border:1px solid #f4f0e477;border-radius:7px;background:#151a18;color:#f4f0e4;font-size:13px;min-height:36px;white-space:nowrap}.slate-double-toggle[aria-pressed="true"]{border-color:#c8e6d5;color:#c8e6d5}
 </style>
 </head>
 <body>
+<dialog id="slateNameDialog" class="language-dialog" aria-labelledby="slateNameTitle"><h2 id="slateNameTitle" data-i18n="edit_name">Modifier les noms</h2><form id="slateNameForm" style="display:block"><label for="slateNameValue" data-i18n="names">Mettez vos noms</label><input id="slateNameValue" type="text" autocomplete="off" style="display:block;width:100%;min-height:48px;margin:10px 0;padding:8px;font:inherit;box-sizing:border-box"><div style="display:flex;justify-content:center;gap:12px"><button type="button" onclick="document.getElementById('slateNameDialog').close()" data-i18n="cancel">Annuler</button><button type="submit" value="yes">OK</button></div></form></dialog>
 <dialog id="annPickerDialog" class="language-dialog ann-picker" aria-labelledby="annPickerTitle"><h2 id="annPickerTitle"></h2><div id="annPickerRows"></div><p id="annPickerTotal" aria-live="polite"></p><form method="dialog"><button value="cancel" data-i18n="cancel">Annuler</button><button type="button" value="yes" onclick="confirmAnnPicker()">OK</button></form></dialog>
 <dialog id="slateManualDialog" class="language-dialog" aria-labelledby="slateManualTitle">
 <h2 id="slateManualTitle"></h2><form id="slateManualForm">
@@ -175,9 +183,10 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 <dialog id="slateDialog" class="slate-dialog" aria-labelledby="slateTitle">
 
 <button type="button" class="slate-close" onclick="closeSlate()" data-i18n-aria-label="slate_close" aria-label="Fermer l’ardoise">×</button>
-<div class="slate-content"><h2 id="slateTitle" data-i18n="slate_title">Ardoise de chibre</h2><div class="slate-toolbar"><button type="button" class="slate-new-game" onclick="resetAll();renderSlate()" data-i18n="new">Nouvelle partie</button><button type="button" class="slate-new-game" onclick="openSlateHistory()" data-i18n="history">Historique</button></div>
-<div class="slate-halves"><section class="slate-half opposite"><div class="slate-team-line"><span id="slateNameB"></span><span id="slateTotalB"></span></div><div id="slatePointsB"></div></section>
-<section class="slate-half"><div class="slate-team-line"><span id="slateNameA"></span><span id="slateTotalA"></span></div><div id="slatePointsA"></div></section></div></div></dialog>
+<div class="slate-content"><div class="slate-toolbar"><h2 id="slateTitle" data-i18n="slate_title">Ardoise</h2><button type="button" class="slate-new-game" onclick="resetAll();renderSlate()" data-i18n="new">Nouvelle partie</button><button type="button" class="slate-new-game" onclick="openSlateHistory()" data-i18n="history">Historique</button></div>
+<div class="slate-halves"><section class="slate-half opposite"><div class="slate-team-line"><button type="button" id="slateNameB" class="slate-name-edit" onclick="openSlateName('B')" data-i18n-title="edit_name" title="Modifier les noms"></button><span id="slateTotalB"></span></div><div id="slatePointsB"></div></section>
+<button type="button" id="slateDoubleToggle" class="slate-double-toggle" onclick="toggleSlateDouble()" aria-pressed="false"></button>
+<section class="slate-half"><div class="slate-team-line"><button type="button" id="slateNameA" class="slate-name-edit" onclick="openSlateName('A')" data-i18n-title="edit_name" title="Modifier les noms"></button><span id="slateTotalA"></span></div><div id="slatePointsA"></div></section></div></div></dialog>
 <dialog id="languageDialog" class="language-dialog" aria-labelledby="languageQuestion">
 <h2 id="languageQuestion"></h2>
 <form method="dialog"><button value="no" data-i18n="no" autofocus>Non</button><button value="yes" data-i18n="yes">Oui</button></form>
@@ -213,7 +222,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
 </div>
  <div class="header-actions">
-  <button type="button" id="slateToggle" class="slate-mode-button" onclick="openSlate()" data-i18n-html="slate_mode_button" data-i18n-title="slate_open" data-i18n-aria-label="slate_open">Mode<br>ardoise</button>
+  <button type="button" id="slateToggle" class="slate-mode-button" onclick="openSlate()" data-i18n-html="slate_mode_button" data-i18n-title="slate_open" data-i18n-aria-label="slate_open">Ardoise</button>
   <button onclick="resetAll()" data-i18n="new">Nouvelle partie</button>
   <button onclick="openHistory()" data-i18n="history">Historique</button>
 </div>
@@ -236,7 +245,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  <aside class="card ann b"><h2 id="annTitleB" data-i18n="ann">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.49</span></div></section>
+<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.68</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -260,7 +269,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=3.49"></script>
+<script src="./i18n.js?v=3.68"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -718,8 +727,17 @@ function slateBreakdown(total){
  const twenties=Math.floor(afterFifties/20),remainder=afterFifties%20;
  return {hundreds,fifties,twenties,remainder};
 }
+function slateDisplayBreakdown(total,team){
+ let raw=state.slateFiftyPoints?.[team];
+ if(raw===undefined){const last=state.slateLastEntries?.[team];raw=last?.selection?((last.selection[50]||0)+(last.selection[150]||0))*50*(last.rawValue/last.value):0;}
+ const amount=(((state[team==="A"?"annA":"annB"]?.[50]||0)+(state[team==="A"?"annA":"annB"]?.[150]||0))*50+(raw||0))*factor();
+ const fifties=Math.min(Math.floor(total/50),Math.floor(amount/50));
+ const twentyAmount=((state[team==="A"?"annA":"annB"]?.[20]||0)*20+(state.slateTwentyPoints?.[team]||0))*factor();
+ const twenties=Math.min(Math.floor((total-fifties*50)/20),Math.floor(twentyAmount/20));
+ const points=slateBreakdown(total-fifties*50-twenties*20);points.fifties+=fifties;points.twenties+=twenties;return points;
+}
 function slateSvg(total,team){
- const points=slateBreakdown(total);
+ const points=team?slateDisplayBreakdown(total,team):slateBreakdown(total);
  const line=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
  function tallies(count,y){
   let marks="";const step=Math.min(18,430/Math.max(1,count+Math.floor(count/5)));
@@ -729,24 +747,53 @@ function slateSvg(total,team){
   }
   return marks;
  }
+ let fiftyMarks="";
+ for(let i=0;i<points.fifties;i++){
+  const group=Math.floor(i/5),slot=i%5;
+  const groupCount=Math.ceil(points.fifties/5);
+  const slots=groupCount*5+1;
+  const groupCenter=group*5+2.5;
+  const position=(groupCenter+(slot-1.5)*0.55)/slots;
+  const x=535-470*position,y=55+290*position;
+  const length=Math.hypot(470,290),dx=18*290/length,dy=18*470/length;
+  if(slot===4){
+   const start=(groupCenter-1.5*0.55)/slots,end=(groupCenter+1.5*0.55)/slots;
+   fiftyMarks+=line(535-470*start-dx,55+290*start-dy,535-470*end+dx,55+290*end+dy);
+  }else fiftyMarks+=line(x-dx,y-dy,x+dx,y+dy);
+ }
  const accessible=t("slate_readout",{total,hundreds:points.hundreds,fifties:points.fifties,twenties:points.twenties,remainder:points.remainder});
  return `<svg viewBox="0 0 600 400" preserveAspectRatio="none" role="group" aria-label="${escapeHistoryText(accessible)}" xmlns="http://www.w3.org/2000/svg">
  ${team?`<g class="slate-hit" role="button" tabindex="0" aria-label="${escapeHistoryText(t("manual_title",{team:teamName(team)}))}" onclick="openSlateManual('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateManual('${team}');}"><rect x="60" y="30" width="480" height="340" fill="transparent" pointer-events="all"/></g>`:""}
- <g pointer-events="none" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M65 55 H535 L65 345 H535" opacity=".65"/>${tallies(points.hundreds,55)}${points.fifties?line(284,184,316,216):""}${tallies(points.twenties,345)}</g>
- <g pointer-events="none" fill="currentColor" font-family="Georgia,serif" font-size="20"><text x="12" y="62">100</text><text x="310" y="170">50</text><text x="20" y="352">20</text><text x="475" y="225" font-size="40">${points.remainder}</text></g><path d="M65 55 H535 L65 345 H535" fill="none" stroke="transparent" stroke-width="18" vector-effect="non-scaling-stroke" pointer-events="stroke"/>${team?`<g class="slate-ann-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("ann_manual_title",{team:teamName(team)}))}" onclick="openSlateAnnPicker('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateAnnPicker('${team}');}"><rect x="8" y="170" width="60" height="60" rx="4" fill="#151a18" stroke="currentColor" stroke-width="2"/><text x="38" y="212" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="36">A</text></g>`:""}${team?`<g class="slate-edit-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("slate_edit",{team:teamName(team)}))}" onclick="openSlateEdit('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateEdit('${team}');}"><rect x="267.5" y="355" width="65" height="45" fill="transparent"/><text x="300" y="378" text-anchor="middle" dominant-baseline="central" transform="rotate(90 300 378)" fill="#ffffff" font-family="system-ui,sans-serif" font-size="42">↶</text></g>`:""}</svg>`;
+ <g pointer-events="none" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M65 55 H535 L65 345 H535" opacity=".65"/>${tallies(points.hundreds,55)}${fiftyMarks}${tallies(points.twenties,345)}</g>
+ <g pointer-events="none" fill="currentColor" font-family="Georgia,serif" font-size="20"><text x="12" y="62">100</text><text x="310" y="170">50</text><text x="20" y="352">20</text><text x="475" y="225" font-size="40">${points.remainder}</text></g><path d="M65 55 H535 L65 345 H535" fill="none" stroke="transparent" stroke-width="18" vector-effect="non-scaling-stroke" pointer-events="stroke"/>${team?`<g class="slate-ann-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("ann_manual_title",{team:teamName(team)}))}" onclick="openSlateAnnPicker('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateAnnPicker('${team}');}"><rect x="8" y="170" width="60" height="60" rx="4" fill="#151a18" stroke="currentColor" stroke-width="2"/><text x="38" y="212" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="36">${escapeHistoryText(t("ann_symbol"))}</text></g>`:""}${team?`<g class="slate-edit-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("slate_edit",{team:teamName(team)}))}" onclick="openSlateEdit('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateEdit('${team}');}"><rect x="267.5" y="355" width="65" height="45" fill="transparent"/><text x="300" y="378" text-anchor="middle" dominant-baseline="central" transform="rotate(90 300 378)" fill="#ffffff" font-family="system-ui,sans-serif" font-size="42">↶</text></g>`:""}</svg>`;
 }
 let slateEditContext=null;
+function slateCompletedRounds(){
+ if(Number.isInteger(state.slateRoundCount))return state.slateRoundCount;
+ const total=((state.slatePoints?.a||0)+(state.slatePoints?.b||0))*factor();
+ const matches=(state.slateMatches?.a||0)+(state.slateMatches?.b||0);
+ return Math.max(0,Math.round((total-matches*100)/157));
+}
+function nextSlateRound(){return state.rounds.filter(r=>r.a!==null && r.b!==null).length+slateCompletedRounds()+1;}
 function slateTransaction(team,value,kind){
  state.usedSlate=true;
  const key=team.toLowerCase(),other=key==="a"?"b":"a";
  const previous=slateEditContext?.team===team?slateEditContext.entry:null;
+ const roundNumber=kind==="points"?(previous?.roundNumber||nextSlateRound()):null;
+ if(kind==="points"&&!previous)state.slateRoundCount=slateCompletedRounds()+1;
+ if(!state.slateFiftyPoints){state.slateFiftyPoints={A:0,B:0};["A","B"].forEach(t=>{const last=state.slateLastEntries?.[t];if(last?.selection?.[50]){const raw=last.selection[50]*50*(last.rawValue/last.value);state.slateFiftyPoints[t]=raw;if(last.fiftyRaw===undefined)last.fiftyRaw=raw;}});}
+ if(!state.slateTwentyPoints)state.slateTwentyPoints={A:0,B:0};
  if(previous){
+  state.slateTwentyPoints[team]=Math.max(0,(state.slateTwentyPoints[team]||0)-(previous.twentyRaw||0));
+  const otherTeam=team==="A"?"B":"A";
+  state.slateTwentyPoints[otherTeam]=Math.max(0,(state.slateTwentyPoints[otherTeam]||0)-(previous.otherTwentyRaw||0));
+  if(previous.fiftyRaw)state.slateFiftyPoints[team]=Math.max(0,state.slateFiftyPoints[team]-previous.fiftyRaw);
   if(previous.kind==="points"){
    state.slatePoints[key]-=previous.rawValue;state.slatePoints[other]-=previous.rawOther;
    if(previous.match)state.slateMatches[key]=Math.max(0,(state.slateMatches[key]||0)-1);
   }else state.slateAnnouncements[team]-=previous.rawValue;
  }
- const entry={kind,value,rawValue:value/factor(),rawOther:kind==="points"?(value===257?0:MAX-value)/factor():0,match:kind==="points"&&value===257};
+ const entry={kind,value,rawValue:value,rawOther:kind==="points"?(value===257?0:MAX-value):0,match:kind==="points"&&value===257};
  if(kind==="points"){
   if(!state.slatePoints)state.slatePoints={a:0,b:0};
   state.slatePoints[key]=(state.slatePoints[key]||0)+entry.rawValue;
@@ -756,6 +803,12 @@ function slateTransaction(team,value,kind){
   if(!state.slateAnnouncements)state.slateAnnouncements={A:0,B:0};
   state.slateAnnouncements[team]=(state.slateAnnouncements[team]||0)+entry.rawValue;
  }
+ entry.twentyRaw=value===20?entry.rawValue:0;
+ entry.otherTwentyRaw=kind==="points"&&value===137?entry.rawOther:0;
+ state.slateTwentyPoints[team]=(state.slateTwentyPoints[team]||0)+entry.twentyRaw;
+ const otherTeam=team==="A"?"B":"A";
+ state.slateTwentyPoints[otherTeam]=(state.slateTwentyPoints[otherTeam]||0)+entry.otherTwentyRaw;
+ if(roundNumber!==null)entry.roundNumber=roundNumber;
  if(!state.slateLastEntries)state.slateLastEntries={};state.slateLastEntries[team]=entry;
  slateEditContext=null;
  if(previous && state.winnerTeam){
@@ -775,15 +828,15 @@ function openSlateEdit(team){
  if(kind==="Manual")openSlateManual(team);else openSlateAnn(team);
  slateEditContext={team,entry};
  document.getElementById("slate"+kind+"Value").value=entry.value;
- document.getElementById("slate"+kind+"Title").textContent=t("slate_edit",{team:teamName(team)});
+ document.getElementById("slate"+kind+"Title").textContent=kind==="Manual"&&entry.roundNumber?t("edit_round",{number:entry.roundNumber,team:teamName(team)}):t("slate_edit",{team:teamName(team)});
  document.getElementById("slate"+kind+"Submit").textContent=t("update");
 }
 let slateManualTeam=null;
 function openSlateManual(team){
  if(!["A","B"].includes(team))return;
- slateEditContext=null;document.getElementById("slateManualSubmit").textContent=t("add_points");
+ slateEditContext=null;document.getElementById("slateManualSubmit").textContent=t("add_round",{number:nextSlateRound(),team:teamName(team)});
  slateManualTeam=team;
- document.getElementById("slateManualTitle").textContent=t("manual_title",{team:teamName(team)});
+ document.getElementById("slateManualTitle").textContent=t("add_round",{number:nextSlateRound(),team:teamName(team)});
  document.getElementById("slateManualValue").value="";
  document.getElementById("slateManualError").textContent="";
  document.getElementById("slateManualDialog").showModal();
@@ -847,17 +900,43 @@ function confirmAnnPicker(){
  if(value>0){
   if(annPickerEditing)slateEditContext={team:annPickerTeam,entry:state.slateLastEntries[annPickerTeam]};
   slateAddAnnouncement(annPickerTeam,value);
-  state.slateLastEntries[annPickerTeam].selection={...annPickerDraft};save();
+  const twentyRaw=(annPickerDraft[20]||0)*20;
+  state.slateTwentyPoints[annPickerTeam]+=(twentyRaw-(state.slateLastEntries[annPickerTeam].twentyRaw||0));
+  state.slateLastEntries[annPickerTeam].twentyRaw=twentyRaw;
+  const fiftyRaw=((annPickerDraft[50]||0)+(annPickerDraft[150]||0))*50;
+  state.slateFiftyPoints[annPickerTeam]=(state.slateFiftyPoints[annPickerTeam]||0)+fiftyRaw;
+  state.slateLastEntries[annPickerTeam].fiftyRaw=fiftyRaw;
+  state.slateLastEntries[annPickerTeam].selection={...annPickerDraft};save();renderSlate();
  }else if(annPickerEditing){
   const entry=state.slateLastEntries[annPickerTeam];
   state.slateAnnouncements[annPickerTeam]-=entry.rawValue;
+  if(state.slateTwentyPoints)state.slateTwentyPoints[annPickerTeam]=Math.max(0,(state.slateTwentyPoints[annPickerTeam]||0)-(entry.twentyRaw||0));
+  if(entry.fiftyRaw&&state.slateFiftyPoints)state.slateFiftyPoints[annPickerTeam]=Math.max(0,state.slateFiftyPoints[annPickerTeam]-entry.fiftyRaw);
   delete state.slateLastEntries[annPickerTeam];
   if(state.winnerTeam&&(roundTotal(state.winnerTeam.toLowerCase())+annTotal(state.winnerTeam))*factor()<state.mode){state.winnerTeam=null;winnerShownFor=null;}
   recordWinner();save();render();renderSlate();
  }
  slateEditContext=null;document.getElementById("annPickerDialog").close();
 }
+let slateNameTeam=null;
+function openSlateName(team){
+ if(!["A","B"].includes(team))return;
+ slateNameTeam=team;
+ const input=document.getElementById("slateNameValue");input.value=document.getElementById("name"+team).value;
+ document.getElementById("slateNameDialog").showModal();input.focus();input.select();
+}
+document.getElementById("slateNameForm").addEventListener("submit",event=>{
+ event.preventDefault();if(!slateNameTeam)return;
+ document.getElementById("name"+slateNameTeam).value=document.getElementById("slateNameValue").value.trim();
+ save();winnerShownFor=null;render();renderSlate();document.getElementById("slateNameDialog").close();
+});
+function toggleSlateDouble(){
+ setMode(state.mode===1500?1000:1500);renderSlate();
+}
 function renderSlate(){
+ const toggle=document.getElementById("slateDoubleToggle");
+ toggle.textContent=t("double_toggle")+" "+(state.mode===1500?"ON":"OFF");
+ toggle.setAttribute("aria-pressed",String(state.mode===1500));
  ["A","B"].forEach(team=>{
   const total=(roundTotal(team.toLowerCase())+annTotal(team))*factor();
   document.getElementById("slateName"+team).textContent=teamName(team);
