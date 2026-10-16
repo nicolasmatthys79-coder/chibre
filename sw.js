@@ -1,6 +1,6 @@
 "use strict";
-const CACHE="chibre-v4.46-20261016";
-const FILES=["./","./index.html","./comment-ca-marche.html","./i18n.js?v=4.46","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
+const CACHE="chibre-v4.47-20261016";
+const FILES=["./","./index.html","./comment-ca-marche.html","./i18n.js?v=4.47","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 self.addEventListener("install",event=>{
  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES.map(file=>new Request(file,{cache:"reload"})))).then(()=>self.skipWaiting()));
 });

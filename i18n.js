@@ -111,7 +111,7 @@ const TRANSLATIONS={
     "ann_symbol": "A",
     "edit_name": "Modifier les noms",
     "add_round": "Ajouter à {team} — donne {number} ?",
-    "edit_round": "Modifier la donne {number} — {team}",
+    "edit_round": "Modifier le pli {number} — {team}",
     "double_toggle": "♠ ♠",
     "help_slate_use_title": "Corriger",
     "help_slate_use_body": "Seule la dernière donne remplie est modifiable. Sur la feuille, touchez sa valeur pour la remplacer. Sur l’ardoise, ↶ rouvre la dernière saisie de l’équipe : points ou annonces. Une correction de points recalcule aussi l’adversaire ; une correction d’annonces ne touche que l’équipe choisie. OK remplace l’ancienne saisie ; Annuler ne change rien.",
