@@ -65,7 +65,7 @@ const TRANSLATIONS={
     "help_start_title": "Commencer",
     "help_start_body": "Entrez les noms et choisissez 1000 points (normal) ou 1500 (♠ ♠ : points et annonces doublés). La première équipe à l’objectif gagne. Touchez le nom d’une équipe pour ouvrir la fenêtre de modification, sur la feuille comme sur l’ardoise. OK enregistre le nouveau nom ; Annuler conserve l’ancien. Le panneau des totaux est compact pour laisser plus de place aux donnes. Les noms longs passent automatiquement à la ligne dans leur rectangle, sans réduire la police. L’interface utilise une police uniforme ; le titre Chibre conserve sa police. Le bouton 1000 sélectionne la partie simple. Sur ordinateur, la feuille utilise toute la hauteur de la fenêtre.",
     "help_scores_title": "Points et match",
-    "help_scores_body": "Saisissez 2 à 155 pour l’une des équipes : l’autre reçoit automatiquement le complément à 157. Match inscrit 257 contre 0 : ce sont les points de la donne, sans compter de cartes d’annonces. Les annonces restent acquises ; leurs compteurs repartent à zéro après la donne. Remplissez les lignes dans l’ordre : 8 au départ, jusqu’à 12 si nécessaire. Les cases de points sont compactes pour afficher davantage de donnes à l’écran. Touchez une valeur de donne pour sélectionner tout le nombre et le remplacer directement. Sur smartphone, la feuille adapte la hauteur des huit premières donnes à l’espace disponible avant les annonces. Les totaux utilisent une police plus arrondie, avec des chiffres alignés en hauteur.",
+    "help_scores_body": "Saisissez 2 à 155 pour l’une des équipes : l’autre reçoit automatiquement le complément à 157. Match inscrit 257 contre 0 : ce sont les points de la donne, sans compter de cartes d’annonces. Les annonces restent acquises ; leurs compteurs repartent à zéro après la donne. Remplissez les lignes dans l’ordre : 8 au départ, jusqu’à 12 si nécessaire. Les cases de points sont compactes pour afficher davantage de donnes à l’écran. Touchez une valeur de donne pour sélectionner tout le nombre et le remplacer directement. Sur smartphone, la feuille adapte la hauteur des huit premières donnes à l’espace disponible avant les annonces. Les totaux utilisent une police plus arrondie, avec des chiffres alignés en hauteur. Dans le menu, « Qui fait l’atout ? » affiche un pique à glisser vers l’équipe verte ou rose. Sa case de points est colorée ; l’indication alterne automatiquement après chaque donne. Touchez à nouveau cette option pour la masquer. Le choix initial est verrouillé dès que la première donne est validée ; l’alternance reste automatique jusqu’à la nouvelle partie. Dans le menu, ✓ indique que l’aide à l’atout est active et ✕ qu’elle est désactivée. Touchez la ligne pour changer son état.",
     "help_order_title": "Remplir les donnes dans l’ordre",
     "help_order_body": "Seule la première ligne vide est accessible. Les lignes suivantes restent grisées jusqu’à ce que la précédente soit remplie. Les lignes déjà remplies restent modifiables. Pour corriger une donne, modifiez une case. Pour l’effacer, videz une case et validez : cette donne et toutes les suivantes sont effacées pour conserver l’ordre. Si la correction de la dernière donne atteint ou dépasse l’objectif de 1000 points, ou 1500 en pique double, le panneau du vainqueur apparaît à nouveau, même s’il avait été fermé. Cela s’applique à la feuille classique et à l’ardoise.",
     "help_match_title": "Compter un match",
@@ -79,7 +79,7 @@ const TRANSLATIONS={
     "help_save_title": "Sauvegarde, partage et impression",
     "help_save_body": "La partie en cours et l’historique sont sauvegardés dans le navigateur de cet appareil, sans synchronisation avec les autres appareils. Effacer les données du navigateur peut supprimer ces sauvegardes. Le partage à côté du titre partage ou copie l’adresse du programme, sans partager les parties enregistrées. « Ardoise » ouvre l’ardoise en plein écran ; « Imprimer historique » imprime les parties affichées.",
     "help_install_title": "Langue, téléphone et sauvegarde",
-    "help_install_body": "Le drapeau propose cinq langues. Pour installer le jeu : menu Chrome → Installer / Ajouter à l’écran d’accueil sur Android ; Partager → Sur l’écran d’accueil dans Safari sur iPhone. Après un premier chargement complet du site HTTPS avec Internet, le jeu fonctionne hors ligne. Les sauvegardes restent dans ce navigateur ; effacer ses données peut les supprimer.",
+    "help_install_body": "Le menu à droite du partage donne accès aux langues : ⋮ sur smartphone, Menu sur ordinateur. La rubrique Langue propose Français, Deutsch, Italiano, Rumantsch et English. Le drapeau près du titre est décoratif. Pour installer le jeu : menu Chrome → Installer / Ajouter à l’écran d’accueil sur Android ; Partager → Sur l’écran d’accueil dans Safari sur iPhone. Après un premier chargement complet du site HTTPS avec Internet, le jeu fonctionne hors ligne. Les sauvegardes restent dans ce navigateur ; effacer ses données peut les supprimer. Sur ordinateur, le bouton Menu se trouve à droite d’Historique. Sur smartphone, Partager dans le menu permet d’envoyer le lien de l’application. Sur smartphone, touchez Langue dans le menu pour afficher les langues disponibles.",
     "help_language_title": "Choisir la langue",
     "help_language_body": "Le drapeau suisse ouvre le choix Français, Deutsch, Italiano, Rumantsch ou English. La langue est mémorisée pour ce navigateur et s’applique au jeu, à l’aide, aux messages et aux résumés partagés. Les noms des participants ne sont pas traduits. Le romanche utilisé est le rumantsch grischun. Chaque langue est accompagnée de son drapeau. Un changement demande confirmation : Oui applique la langue choisie et Non conserve la langue actuelle.",
     "official": "Instructions officielles :",
@@ -126,7 +126,10 @@ const TRANSLATIONS={
     "help_round_options_title": "Afficher les numéros de donne",
     "help_round_options_body": "Dans l’ardoise, touchez le titre « Ardoise » pour ouvrir le menu « Numéro de donne ON/OFF ». Choisissez ON pour afficher les numéros ou OFF pour les masquer. OK applique et mémorise le choix puis ferme le menu ; Annuler ferme sans changement. Après chaque donne validée, son numéro apparaît dans une colonne à droite de chaque équipe, sous le nom et le total, répartie sur la hauteur de la demi-ardoise. Le dernier numéro est souligné. Les annonces et les corrections ne créent pas de nouvelle donne.",
     "edit_announcement": "Modifier annonce ?",
-    "announcement_total": "Total annonces"
+    "announcement_total": "Total annonces",
+    "menu": "Menu",
+    "language_menu": "Langue",
+    "trump_guide": "Qui fait l’atout ?"
   },
   "de": {
     "choose": "Sprache wählen",
@@ -193,7 +196,7 @@ const TRANSLATIONS={
     "help_start_title": "Start",
     "help_start_body": "Namen eingeben und 1000 Punkte (normal) oder 1500 wählen (♠ ♠: Punkte und Weis doppelt). Das erste Team am Ziel gewinnt. Tippen Sie auf einen Teamnamen, um ihn im Fenster zu ändern, auf dem Blatt wie auf der Tafel. OK speichert den neuen Namen; Abbrechen behält den bisherigen. Der kompakte Summenbereich lässt mehr Platz für die Runden. Lange Namen werden im Feld automatisch umgebrochen, ohne die Schrift zu verkleinern. Die Oberfläche verwendet eine einheitliche Schrift; der Titel Chibre behält seine Schrift. Die Taste 1000 wählt das einfache Spiel. Auf dem Computer nutzt das Blatt die gesamte Fensterhöhe.",
     "help_scores_title": "Punkte und Match",
-    "help_scores_body": "Für ein Team 2 bis 155 eingeben: Das andere erhält die Ergänzung zu 157. Match trägt 257 zu 0 als Rundenpunkte ein und verbraucht keine Weiskarten. Weis bleibt gutgeschrieben; die Zähler werden nach der Runde zurückgesetzt. Runden der Reihe nach ausfüllen: zunächst 8, bei Bedarf bis zu 12. Die kompakten Punktefelder zeigen mehr Runden auf dem Bildschirm. Tippen Sie auf einen Rundenwert, um die ganze Zahl auszuwählen und direkt zu ersetzen. Auf dem Smartphone passt das Blatt die Höhe der ersten acht Runden an den verfügbaren Platz vor den Meldungen an. Die Summen verwenden eine rundere Schrift mit gleich hohen Ziffern.",
+    "help_scores_body": "Für ein Team 2 bis 155 eingeben: Das andere erhält die Ergänzung zu 157. Match trägt 257 zu 0 als Rundenpunkte ein und verbraucht keine Weiskarten. Weis bleibt gutgeschrieben; die Zähler werden nach der Runde zurückgesetzt. Runden der Reihe nach ausfüllen: zunächst 8, bei Bedarf bis zu 12. Die kompakten Punktefelder zeigen mehr Runden auf dem Bildschirm. Tippen Sie auf einen Rundenwert, um die ganze Zahl auszuwählen und direkt zu ersetzen. Auf dem Smartphone passt das Blatt die Höhe der ersten acht Runden an den verfügbaren Platz vor den Meldungen an. Die Summen verwenden eine rundere Schrift mit gleich hohen Ziffern. Im Menü zeigt „Wer macht Trumpf?“ ein verschiebbares Pik. Zur grünen oder rosa Mannschaft ziehen: Ihr Punktefeld wird markiert. Nach jeder Runde wechselt die Markierung. Erneutes Auswählen blendet sie aus. Sobald die erste Runde bestätigt ist, wird die Startwahl gesperrt; der automatische Wechsel bleibt bis zum neuen Spiel aktiv. Im Menü zeigt ✓ die aktive Trumpfhilfe an, ✕ die deaktivierte. Antippen schaltet sie um.",
     "help_order_title": "Runden der Reihe nach ausfüllen",
     "help_order_body": "Nur die erste leere Zeile ist freigegeben. Die folgenden Zeilen bleiben grau, bis die vorherige ausgefüllt ist. Bereits ausgefüllte Zeilen können weiterhin geändert werden. Zum Korrigieren ändern Sie ein Feld. Zum Löschen leeren Sie ein Feld und bestätigen: Diese Runde und alle folgenden werden gelöscht, damit die Reihenfolge erhalten bleibt. Erreicht oder überschreitet die Korrektur der letzten Runde das Ziel von 1000 Punkten oder 1500 bei Pik doppelt, erscheint die Gewinnmeldung erneut, auch wenn sie zuvor geschlossen wurde. Dies gilt für das Punkteblatt und die Tafel.",
     "help_match_title": "Einen Match zählen",
@@ -207,7 +210,7 @@ const TRANSLATIONS={
     "help_save_title": "Speichern, Teilen und Drucken",
     "help_save_body": "Die laufende Partie und der Verlauf werden im Browser dieses Geräts gespeichert und nicht mit anderen Geräten synchronisiert. Das Löschen der Browserdaten kann diese gespeicherten Daten entfernen. Das Teilen-Symbol neben dem Titel teilt oder kopiert die Adresse der App, nicht die gespeicherten Partien. «Tafel» öffnet die Tafel bildschirmfüllend; «Verlauf drucken» druckt die angezeigten Partien.",
     "help_install_title": "Sprache, Telefon und Speicherung",
-    "help_install_body": "Die Flagge bietet fünf Sprachen. Android: Chrome-Menü → Installieren / Zum Startbildschirm hinzufügen. iPhone: Safari → Teilen → Zum Home-Bildschirm. Nach vollständigem erstmaligem Laden der HTTPS-Seite mit Internet funktioniert das Spiel offline. Daten bleiben in diesem Browser und können beim Löschen der Browserdaten verloren gehen.",
+    "help_install_body": "Das Menü rechts neben Teilen bietet die Sprachwahl: ⋮ auf dem Smartphone, Menü auf dem Computer. Sprache bietet Français, Deutsch, Italiano, Rumantsch und English. Die Flagge neben dem Titel ist dekorativ. Android: Chrome-Menü → Installieren / Zum Startbildschirm hinzufügen. iPhone: Safari → Teilen → Zum Home-Bildschirm. Nach vollständigem erstmaligem Laden der HTTPS-Seite mit Internet funktioniert das Spiel offline. Daten bleiben in diesem Browser und können beim Löschen der Browserdaten verloren gehen. Auf dem Computer steht Menü rechts neben Verlauf. Auf dem Smartphone lässt sich der App-Link über Teilen im Menü senden. Auf dem Smartphone im Menü auf Sprache tippen, um die verfügbaren Sprachen anzuzeigen.",
     "help_language_title": "Sprache wählen",
     "help_language_body": "Die Schweizer Flagge öffnet die Auswahl Français, Deutsch, Italiano, Rumantsch oder English. Die Sprache wird in diesem Browser gespeichert und für das Spiel, die Hilfe, Meldungen und geteilte Zusammenfassungen verwendet. Die Namen der Teilnehmenden werden nicht übersetzt. Die romanische Fassung verwendet Rumantsch Grischun. Jede Sprache wird mit einer Flagge angezeigt. Ein Wechsel muss bestätigt werden: Ja übernimmt die gewählte Sprache, Nein behält die aktuelle Sprache bei.",
     "official": "Offizielle Anleitungen:",
@@ -254,7 +257,10 @@ const TRANSLATIONS={
     "help_round_options_title": "Rundennummern anzeigen",
     "help_round_options_body": "Tippen Sie auf den Tafeltitel, um das Menü «Rundennummer ON/OFF» zu öffnen. ON zeigt die Nummern, OFF blendet sie aus. OK übernimmt und speichert die Auswahl und schliesst das Menü; Abbrechen schliesst es ohne Änderung. Nach jeder bestätigten Runde erscheint ihre Nummer rechts bei beiden Teams unter Namen und Summe, über die Höhe der halben Tafel verteilt. Die letzte Nummer ist unterstrichen. Weis und Korrekturen erzeugen keine neue Runde.",
     "edit_announcement": "Weis ändern?",
-    "announcement_total": "Total Weis"
+    "announcement_total": "Total Weis",
+    "menu": "Menü",
+    "language_menu": "Sprache",
+    "trump_guide": "Wer macht Trumpf?"
   },
   "it": {
     "choose": "Scegli la lingua",
@@ -321,7 +327,7 @@ const TRANSLATIONS={
     "help_start_title": "Iniziare",
     "help_start_body": "Inserisci i nomi e scegli 1000 punti (normale) o 1500 (♠ ♠: punti e annunci raddoppiati). Vince la prima squadra che raggiunge l’obiettivo. Tocca il nome di una squadra per aprire la finestra di modifica, sul foglio o sulla lavagna. OK salva il nuovo nome; Annulla mantiene quello precedente. Il pannello dei totali è compatto per lasciare più spazio alle mani. I nomi lunghi vanno automaticamente a capo nel riquadro, senza ridurre il carattere. L’interfaccia usa un carattere uniforme; il titolo Chibre mantiene il suo carattere. Il pulsante 1000 seleziona la partita semplice. Sul computer il foglio occupa tutta l’altezza della finestra.",
     "help_scores_title": "Punti e match",
-    "help_scores_body": "Inserisci da 2 a 155 per una squadra: l’altra riceve il complemento a 157. Match registra 257 a 0 come punti della mano, senza consumare carte degli annunci. Gli annunci restano acquisiti; i contatori si azzerano dopo la mano. Compila le mani in ordine: 8 iniziali, fino a 12 se necessario. Le caselle dei punti sono compatte per mostrare più mani sullo schermo. Tocca il valore di una mano per selezionare tutto il numero e sostituirlo direttamente. Sullo smartphone il foglio adatta l’altezza delle prime otto mani allo spazio disponibile prima degli annunci. I totali usano un carattere più arrotondato, con cifre allineate in altezza.",
+    "help_scores_body": "Inserisci da 2 a 155 per una squadra: l’altra riceve il complemento a 157. Match registra 257 a 0 come punti della mano, senza consumare carte degli annunci. Gli annunci restano acquisiti; i contatori si azzerano dopo la mano. Compila le mani in ordine: 8 iniziali, fino a 12 se necessario. Le caselle dei punti sono compatte per mostrare più mani sullo schermo. Tocca il valore di una mano per selezionare tutto il numero e sostituirlo direttamente. Sullo smartphone il foglio adatta l’altezza delle prime otto mani allo spazio disponibile prima degli annunci. I totali usano un carattere più arrotondato, con cifre allineate in altezza. Nel menu, «Chi fa atout?» mostra una picche da trascinare verso la squadra verde o rosa. La sua casella viene colorata; l’indicazione alterna dopo ogni mano. Seleziona di nuovo per nasconderla. Dopo la prima mano confermata, la scelta iniziale viene bloccata; l’alternanza resta automatica fino alla nuova partita. Nel menu, ✓ indica che l’aiuto per l’atout è attivo e ✕ che è disattivato. Tocca la riga per cambiare stato.",
     "help_order_title": "Compilare le mani in ordine",
     "help_order_body": "Solo la prima riga vuota è attiva. Le righe successive restano grigie finché la precedente non è compilata. Le righe già compilate restano modificabili. Per correggere una mano, modificate una casella. Per cancellarla, svuotate una casella e confermate: questa mano e tutte le successive vengono cancellate per mantenere l’ordine. Se la correzione dell’ultima mano raggiunge o supera 1000 punti, oppure 1500 con picche doppie, il pannello del vincitore riappare anche se era stato chiuso. Questo vale per il segnapunti e la lavagna.",
     "help_match_title": "Contare un match",
@@ -335,7 +341,7 @@ const TRANSLATIONS={
     "help_save_title": "Salvataggio, condivisione e stampa",
     "help_save_body": "La partita in corso e la cronologia vengono salvate nel browser di questo dispositivo, senza sincronizzazione con altri dispositivi. Cancellare i dati del browser può eliminare questi salvataggi. Il pulsante di condivisione accanto al titolo condivide o copia l’indirizzo del programma, senza condividere le partite salvate. «Lavagna» apre la lavagna a schermo intero; «Stampa cronologia» stampa le partite visualizzate.",
     "help_install_title": "Lingua, telefono e salvataggio",
-    "help_install_body": "La bandiera propone cinque lingue. Android: menu Chrome → Installa / Aggiungi a schermata Home. iPhone: Safari → Condividi → Aggiungi alla schermata Home. Dopo un primo caricamento completo del sito HTTPS con Internet, il gioco funziona offline. I dati restano in questo browser; cancellarne i dati può eliminarli.",
+    "help_install_body": "Il menu a destra della condivisione permette di scegliere la lingua: ⋮ sul telefono, Menu sul computer. Lingua propone Français, Deutsch, Italiano, Rumantsch ed English. La bandiera accanto al titolo è decorativa. Android: menu Chrome → Installa / Aggiungi a schermata Home. iPhone: Safari → Condividi → Aggiungi alla schermata Home. Dopo un primo caricamento completo del sito HTTPS con Internet, il gioco funziona offline. I dati restano in questo browser; cancellarne i dati può eliminarli. Sul computer il pulsante Menu si trova a destra di Cronologia. Sul telefono, Condividi nel menu permette di inviare il link dell’applicazione. Sul telefono, tocca Lingua nel menu per mostrare le lingue disponibili.",
     "help_language_title": "Scegliere la lingua",
     "help_language_body": "La bandiera svizzera apre la scelta Français, Deutsch, Italiano, Rumantsch o English. La lingua viene memorizzata in questo browser e si applica al gioco, alla guida, ai messaggi e ai riepiloghi condivisi. I nomi dei partecipanti non vengono tradotti. La versione romancia usa il rumantsch grischun. Ogni lingua è accompagnata dalla sua bandiera. Il cambio richiede conferma: Sì applica la lingua scelta e No conserva quella attuale.",
     "official": "Istruzioni ufficiali:",
@@ -382,7 +388,10 @@ const TRANSLATIONS={
     "help_round_options_title": "Mostrare i numeri delle mani",
     "help_round_options_body": "Nella lavagna, toccate il titolo per aprire il menu «Numero della mano ON/OFF». ON mostra i numeri, OFF li nasconde. OK applica e memorizza la scelta e chiude il menu; Annulla lo chiude senza modifiche. Dopo ogni mano confermata, il numero appare in una colonna a destra di ciascuna squadra, sotto nome e totale, distribuita sull’altezza della mezza lavagna. L’ultimo numero è sottolineato. Annunci e correzioni non creano una nuova mano.",
     "edit_announcement": "Modificare l’annuncio?",
-    "announcement_total": "Totale annunci"
+    "announcement_total": "Totale annunci",
+    "menu": "Menu",
+    "language_menu": "Lingua",
+    "trump_guide": "Chi fa atout?"
   },
   "rm": {
     "choose": "Tscherner la lingua",
@@ -449,7 +458,7 @@ const TRANSLATIONS={
     "help_start_title": "Cumenzar",
     "help_start_body": "Endatai ils nums e tschernì 1000 puncts (normal) u 1500 (♠ ♠: puncts ed annunzias dubels). L’emprima equipa che cuntanscha la finamira gudogna. Tutgai il num d’in’equipa per avrir la fanestra da modificaziun, en il formular u sin la tavla. OK memorisescha il nov num; Interrumper mantegna il vegl. Il panel dals totals è cumpact per laschar dapli spazi a las rundas. Nums lungs vegnan repartids automaticamain sin pliras lingias en lur champ, senza reducir la scrittira. L’interfatscha dovra ina scrittira unifurma; il titel Chibre mantegna sia scrittira. Il buttun 1000 tscherna il gieu simpel. Sin il computer dovra il formular l’entira autezza da la fanestra.",
     "help_scores_title": "Puncts e match",
-    "help_scores_body": "Endatai 2 fin 155 per in’equipa: l’autra survegn il cumplement a 157. Match noda 257 a 0 sco puncts da la runda, senza duvrar chartas d’annunzias. Las annunzias restan quintadas; ils contaders vegnan mess a nulla suenter la runda. Empleni las rundas en urden: 8 a l’entschatta, fin 12 sche necessari. Ils champs da puncts èn cumpacts per mussar dapli rundas sin il visur. Tutgai ina valur da runda per selecziunar l’entir dumber ed al remplazzar directamain. Sin il telefon adattescha il formular l’autezza da las emprimas otg rundas al spazi disponibel avant las annunzias. Ils totals dovran ina scrittira pli radunda, cun cifras da la medema autezza.",
+    "help_scores_body": "Endatai 2 fin 155 per in’equipa: l’autra survegn il cumplement a 157. Match noda 257 a 0 sco puncts da la runda, senza duvrar chartas d’annunzias. Las annunzias restan quintadas; ils contaders vegnan mess a nulla suenter la runda. Empleni las rundas en urden: 8 a l’entschatta, fin 12 sche necessari. Ils champs da puncts èn cumpacts per mussar dapli rundas sin il visur. Tutgai ina valur da runda per selecziunar l’entir dumber ed al remplazzar directamain. Sin il telefon adattescha il formular l’autezza da las emprimas otg rundas al spazi disponibel avant las annunzias. Ils totals dovran ina scrittira pli radunda, cun cifras da la medema autezza. En il menu mussa «Tgi fa trumf?» in pic da spustar vers l’equipa verda u rosa. Ses champ vegn colurà; l’indicaziun mida suenter mintga runda. Tschernì danovamain per zuppentar ella. Suenter la conferma da l’emprima runda è la tscherna iniziala bloccada; l’alternanza resta automatica fin al nov gieu. En il menu inditgescha ✓ che l’agid per trumf è activ e ✕ ch’el è deactivà. Tutgai la lingia per midar il stadi.",
     "help_order_title": "Emplenir las rundas en successiun",
     "help_order_body": "Sulettamain l’emprima lingia vida è accessibla. Las lingias suandantas restan grischas fin che la precedenta è emplenida. Las lingias gia emplenidas pon vinavant vegnir midadas. Per curreger ina runda, midai in champ. Per stizzar ella, laschai in champ vid e confermai: questa runda e tut las suandantas vegnan stizzadas per mantegnair la successiun. Sche la correctura da la davosa runda cuntanscha u surpassa 1000 puncts u 1500 cun palas dubel, cumpara il panel dal victur danovamain, er sch’el era serrà. Quai vala per il fegl da puncts e per la tavla.",
     "help_match_title": "Dumbrar in match",
@@ -463,7 +472,7 @@ const TRANSLATIONS={
     "help_save_title": "Memorisar, cundivider e stampar",
     "help_save_body": "La partida actuala e la cronologia vegnan memorisadas en il navigatur da quest apparat, senza sincronisaziun cun auters apparats. Stizzar las datas dal navigatur po allontanar questas datas memorisadas. Il buttun da cundivider sper il titel cundivida u copiescha l’adressa dal program, betg las partidas memorisadas. «Tavla» avra la tavla sin l’entir ecran; «Stampar la cronologia» stampa las partidas mussadas.",
     "help_install_title": "Lingua, telefon e memorisar",
-    "help_install_body": "La bandiera porscha tschintg linguas. Android: menu Chrome → Installar / Agiuntar al visur inizial. iPhone: Safari → Parter → Agiuntar al visur inizial. Suenter l’emprima chargiada cumpletta da la pagina HTTPS cun internet funcziuna il gieu offline. Las datas restan en quest navigatur; stizzar sias datas po las allontanar.",
+    "help_install_body": "Il menu a dretga da Parter porscha las linguas: ⋮ sin il telefon, Menu sin il computer. Lingua porscha Français, Deutsch, Italiano, Rumantsch ed English. La bandiera sper il titel è decorativa. Android: menu Chrome → Installar / Agiuntar al visur inizial. iPhone: Safari → Parter → Agiuntar al visur inizial. Suenter l’emprima chargiada cumpletta da la pagina HTTPS cun internet funcziuna il gieu offline. Las datas restan en quest navigatur; stizzar sias datas po las allontanar. Sin il computer stat Menu a dretga da l’istorgia. Sin il telefon permetta Parter en il menu da trametter la colliaziun da l’applicaziun. Sin il telefon tutgai Lingua en il menu per mussar las linguas disponiblas.",
     "help_language_title": "Tscherner la lingua",
     "help_language_body": "La bandiera svizra avra la selecziun Français, Deutsch, Italiano, Rumantsch u English. La lingua vegn memorisada en quest navigatur e duvrada per il gieu, l’agid, ils messadis e las resumaziuns cundivididas. Ils nums da las persunas participadas na vegnan betg translatads. La versiun rumantscha dovra rumantsch grischun. Mintga lingua vegn mussada cun sia bandiera. Ina midada dumonda ina conferma: Gea surpiglia la lingua tschernida e Na mantegna la lingua actuala.",
     "official": "Instrucziuns uffizialas:",
@@ -510,7 +519,10 @@ const TRANSLATIONS={
     "help_round_options_title": "Mussar ils numers da las rundas",
     "help_round_options_body": "Tutgai il titel da la tavla per avrir il menu «Numer da la runda ON/OFF». ON mussa ils numers, OFF zuppenta els. OK surpiglia e memorisescha la selecziun e serra il menu; Interrumper serra senza midar. Suenter mintga runda confermada cumpara ses numer en ina colonna a dretga da mintga equipa, sut il num ed il total, repartida sur l’autezza da la mesa tavla. Il davos numer è suttastritgà. Annunzias e correcturas na creeschan betg ina nova runda.",
     "edit_announcement": "Midar l’annunzia?",
-    "announcement_total": "Total annunzias"
+    "announcement_total": "Total annunzias",
+    "menu": "Menu",
+    "language_menu": "Lingua",
+    "trump_guide": "Tgi fa trumf?"
   },
   "en": {
     "choose": "Choose a language",
@@ -577,7 +589,7 @@ const TRANSLATIONS={
     "help_start_title": "Start",
     "help_start_body": "Enter names and choose 1000 points (normal) or 1500 (♠ ♠: points and announcements doubled). The first team to reach the target wins. Tap a team name to open the editing window on either the sheet or slate. OK saves the new name; Cancel keeps the previous one. The compact totals panel leaves more room for rounds. Long names automatically wrap inside their field without reducing the font size. The interface uses one font; the Chibre title keeps its original font. The 1000 button selects the standard game. On desktop, the sheet uses the full window height.",
     "help_scores_title": "Points and match",
-    "help_scores_body": "Enter 2 to 155 for either team: the other receives the remainder out of 157. Match records 257 against 0 as round points and uses no announcement cards. Announcements remain credited; their counters reset after the round. Fill rounds in order: 8 initially, up to 12 if needed. Compact score fields leave room for more rounds on screen. Tap a round score to select the entire number and replace it directly. On phones, the sheet adjusts the first eight rounds to fill the available space before announcements. Totals use a more rounded font, with digits aligned to the same height.",
+    "help_scores_body": "Enter 2 to 155 for either team: the other receives the remainder out of 157. Match records 257 against 0 as round points and uses no announcement cards. Announcements remain credited; their counters reset after the round. Fill rounds in order: 8 initially, up to 12 if needed. Compact score fields leave room for more rounds on screen. Tap a round score to select the entire number and replace it directly. On phones, the sheet adjusts the first eight rounds to fill the available space before announcements. Totals use a more rounded font, with digits aligned to the same height. In the menu, “Who chooses trumps?” shows a spade you can drag towards the green or pink team. Its score field is highlighted; the indicator alternates after each round. Select the option again to hide it. Once the first round is confirmed, the initial choice is locked; automatic alternation continues until a new game. In the menu, ✓ means the trump guide is active and ✕ means it is off. Tap the row to toggle it.",
     "help_order_title": "Fill in rounds in order",
     "help_order_body": "Only the first empty row is available. Later rows stay grey until the preceding row is filled in. Completed rows can still be edited. To correct a round, change one field. To clear it, empty one field and confirm: that round and all later rounds are cleared to keep the rounds in order. If correcting the last round reaches or exceeds 1000 points, or 1500 in double spades mode, the winner panel appears again even if it was previously closed. This applies to both the score sheet and the slate.",
     "help_match_title": "Count a match",
@@ -591,7 +603,7 @@ const TRANSLATIONS={
     "help_save_title": "Saving, sharing and printing",
     "help_save_body": "The current game and history are saved in this device’s browser, without syncing to other devices. Clearing browser data may delete these saved games. Sharing next to the title shares or copies the application’s address, without sharing saved games. “Slate” opens the full-screen slate; “Print history” prints the displayed games.",
     "help_install_title": "Language, phone and storage",
-    "help_install_body": "The flag offers five languages. Android: Chrome menu → Install / Add to Home screen. iPhone: Safari → Share → Add to Home Screen. After fully loading the HTTPS site once online, the game works offline. Saves stay in this browser; clearing browser data may delete them.",
+    "help_install_body": "The menu to the right of Share provides language selection: ⋮ on phones, Menu on desktop. Language offers Français, Deutsch, Italiano, Rumantsch and English. The flag beside the title is decorative. Android: Chrome menu → Install / Add to Home screen. iPhone: Safari → Share → Add to Home Screen. After fully loading the HTTPS site once online, the game works offline. Saves stay in this browser; clearing browser data may delete them. On desktop, Menu is to the right of History. On phones, Share in the menu lets you send the application link. On phones, tap Language in the menu to show the available languages.",
     "help_language_title": "Choose a language",
     "help_language_body": "The Swiss flag opens the language menu: Français, Deutsch, Italiano, Rumantsch or English. The language is remembered in this browser and applies to the game, help, messages and shared summaries. Players’ names are not translated. The Romansh version uses Rumantsch Grischun. Each language has a flag. Switching languages asks for confirmation: Yes applies the selected language and No keeps the current language.",
     "official": "Official instructions:",
@@ -638,7 +650,10 @@ const TRANSLATIONS={
     "help_round_options_title": "Showing round numbers",
     "help_round_options_body": "On the slate, tap its title to open the “Round number ON/OFF” menu. ON shows the numbers and OFF hides them. OK applies and remembers your choice and closes the menu; Cancel closes it without changes. After each confirmed round, its number appears in a column to the right of each team, below the name and total, spread over that half of the slate. The latest number is underlined. Melds and corrections do not create a new round.",
     "edit_announcement": "Edit meld?",
-    "announcement_total": "Announcement total"
+    "announcement_total": "Announcement total",
+    "menu": "Menu",
+    "language_menu": "Language",
+    "trump_guide": "Who chooses trumps?"
   }
 };
 let currentLanguage="fr";
@@ -666,7 +681,7 @@ function applyLanguage(){
   document.querySelectorAll("[data-i18n-"+attr+"]").forEach(el=>el.setAttribute(attr,t(el.getAttribute("data-i18n-"+attr))));
  }
  document.querySelectorAll("[data-language]").forEach(el=>el.setAttribute("aria-pressed",String(el.dataset.language===currentLanguage)));
- const flag=document.getElementById("languageFlag");if(flag)flag.setAttribute("aria-label",t("choose"));
+ const flag=getLanguageTrigger();if(flag)flag.setAttribute("aria-label",t("choose"));
  document.title=document.querySelector("article")?t("help_title")+" — Chibre":"Chibre";
  const meta=document.querySelector('meta[name="description"]');if(meta)meta.content=t("app_description");
  const links=document.querySelectorAll("a[data-official]");links.forEach(el=>{const url=new URL(el.href);if(el.dataset.official==="google")url.searchParams.set("hl",currentLanguage==="rm"?"de":currentLanguage);else url.pathname="/"+(currentLanguage==="rm"?"de-ch":currentLanguage==="de"?"de-ch":currentLanguage==="it"?"it-ch":currentLanguage==="en"?"en-gb":"fr-ch")+"/guide/iphone/iphea86e5236/ios";el.href=url.href;});
@@ -677,15 +692,16 @@ function languageMenuPosition(viewWidth,viewHeight,button,menuHeight){
  const top=Math.max(8,Math.min(button.bottom+6,viewHeight-menuHeight-8));
  return {left,top,width};
 }
+function getLanguageTrigger(){return document.getElementById("menuToggle")||document.getElementById("languageFlag");}
 function positionLanguageMenu(){
- const menu=document.getElementById("languageChoices"),flag=document.getElementById("languageFlag");
+ const menu=document.getElementById("languageChoices"),flag=getLanguageTrigger();
  if(!menu||!flag||menu.hidden) return;
  if(window.innerWidth<=600){
   const pos=languageMenuPosition(window.innerWidth,window.innerHeight,flag.getBoundingClientRect(),menu.offsetHeight);
   menu.style.left=pos.left+"px";menu.style.top=pos.top+"px";menu.style.width=pos.width+"px";
  }else{menu.style.left="";menu.style.top="";menu.style.width="";}
 }
-function closeLanguageMenu(){const menu=document.getElementById("languageChoices"),flag=document.getElementById("languageFlag");if(menu)menu.hidden=true;if(flag)flag.setAttribute("aria-expanded","false");}
+function closeLanguageMenu(){const menu=document.getElementById("languageChoices"),flag=getLanguageTrigger();if(menu)menu.hidden=true;const list=document.getElementById("languageList");if(list)list.classList.remove("is-open");const toggle=document.querySelector(".language-submenu-toggle");if(toggle)toggle.setAttribute("aria-expanded","false");if(flag)flag.setAttribute("aria-expanded","false");}
 function setLanguage(lang){
  if(!Object.hasOwn(TRANSLATIONS,lang)) return;
  currentLanguage=lang;try{localStorage.setItem("chibre_language",lang);}catch(error){}
@@ -699,12 +715,12 @@ function requestLanguageChange(lang){
  document.getElementById("languageQuestion").textContent=t("language_question",{language:names[lang]});
  dialog.returnValue="no";
  closeLanguageMenu();
- dialog.onclose=()=>{if(dialog.returnValue==="yes")setLanguage(lang);const flag=document.getElementById("languageFlag");if(flag)flag.focus();};
+ dialog.onclose=()=>{if(dialog.returnValue==="yes")setLanguage(lang);const flag=getLanguageTrigger();if(flag)flag.focus();};
  dialog.showModal();
 }
 document.addEventListener("DOMContentLoaded",()=>{
  applyLanguage();
- const flag=document.getElementById("languageFlag"),menu=document.getElementById("languageChoices");
+ const flag=getLanguageTrigger(),menu=document.getElementById("languageChoices");
  if(flag)flag.addEventListener("click",()=>{menu.hidden=!menu.hidden;flag.setAttribute("aria-expanded",String(!menu.hidden));positionLanguageMenu();});
  document.querySelectorAll("[data-language]").forEach(button=>button.addEventListener("click",()=>{requestLanguageChange(button.dataset.language);}));
  document.addEventListener("click",event=>{if(!event.target.closest(".language-picker"))closeLanguageMenu();});

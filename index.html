@@ -287,6 +287,24 @@ h1{font-family:Georgia,serif}
  .ann-label-description:has(.ann-alternative){display:flex;flex-wrap:nowrap;align-items:baseline;column-gap:4px;white-space:nowrap}
  .ann-label-description:has(.ann-alternative) .ann-description,.ann-label-description:has(.ann-alternative) .ann-alternative{flex-basis:auto;padding-left:0;font-size:15px;white-space:nowrap}
 }
+
+.app-menu-toggle{min-height:40px;padding:6px 12px;font-size:16px}
+.menu-dots{display:none}.language-menu-title{padding:8px 10px;font-weight:700;font-size:16px;border-bottom:1px solid #d8d4c8}
+@media(max-width:600px){.menu-word{display:none}.menu-dots{display:block;font:700 28px Arial;line-height:1}.app-menu-toggle{border:0;background:transparent;padding:4px 8px;min-width:32px}.title-row .share-app-button{margin-left:auto}.title-row .app-menu{flex-shrink:0}.title-row{gap:5px!important}}
+
+.language-choices .menu-share{display:none}@media(max-width:600px){.language-choices .menu-share{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #d8d4c8;border-radius:0;margin-top:6px;padding-top:12px}}
+
+@media(max-width:600px){.language-list:not(.is-open){display:none}}
+
+@media(max-width:600px){.title-row .share-app-button{display:none}.title-row .app-menu{margin-left:auto}}
+
+.language-choices .language-submenu-toggle{display:flex;align-items:center;justify-content:space-between;gap:6px}.menu-language-flags{font-size:15px;white-space:nowrap;letter-spacing:-1px}
+
+#trumpGuide{padding:5px 12px}#trumpGuide[hidden]{display:none}.trump-track{position:relative;max-width:170px;height:36px;margin:auto;border:1px solid #d8d4c8;border-radius:9px;background:linear-gradient(to right,#c8e6d5 50%,#edc6cd 50%);touch-action:none;cursor:ew-resize}.trump-track button{position:absolute;left:3px;top:3px;width:48px;height:28px;padding:0;font-size:25px;line-height:1;background:#fffdf8;border-radius:6px;touch-action:none}.trump-track button.right{left:calc(100% - 51px)}.rounds .score.trump-green{background:#c8e6d5;border-color:#174c3c}.rounds .score.trump-pink{background:#edc6cd;border-color:#a84058}
+
+.trump-track.locked{cursor:default}.trump-track.locked button{opacity:1;cursor:default}
+
+.language-choices .trump-menu-choice{display:flex;justify-content:space-between;align-items:center;gap:8px}#trumpGuideStatus{font-weight:700;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -330,7 +348,7 @@ h1{font-family:Georgia,serif}
 <header>
  <div>
   <div class="title-row" style="display:flex;align-items:center;gap:10px">
-    <h1>Chibre <span class="language-picker"><button type="button" id="languageFlag" class="language-flag" aria-label="Choisir la langue" aria-expanded="false" aria-controls="languageChoices">🇨🇭</button><span id="languageChoices" class="language-choices" hidden><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></span></span></h1>
+    <h1>Chibre <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
     <button class="share-app-button" onclick="shareApp()" title="Partager" aria-label="Partager" data-i18n-title="share" data-i18n-aria-label="share"
       style="border:0;background:transparent;padding:5px;cursor:pointer">
@@ -344,6 +362,7 @@ h1{font-family:Georgia,serif}
         <line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line>
       </svg>
     </button>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait l’atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
 
   </div>
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
@@ -360,6 +379,7 @@ h1{font-family:Georgia,serif}
    <button id="mode1000" onclick="setMode(1000)">1000</button>
    <button id="mode1500" onclick="setMode(1500)" data-i18n="double">1500 • ♠ ♠</button>
  </div>
+ <div id="trumpGuide" hidden><div class="trump-track" id="trumpTrack"><button type="button" id="trumpMarker" aria-label="Choisir une équipe" draggable="false">♠</button></div></div>
  <div class="head">
   <div class="team a"><textarea class="name" id="nameA" readonly role="button" aria-haspopup="dialog" data-i18n-aria-label="edit_name" onclick="openSlateName('A')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateName('A');}" style="cursor:pointer" placeholder="Mettez vos noms" data-i18n-placeholder="names" rows="1"></textarea><div class="total" id="totalA">0</div></div>
   <div class="team b"><textarea class="name" id="nameB" readonly role="button" aria-haspopup="dialog" data-i18n-aria-label="edit_name" onclick="openSlateName('B')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateName('B');}" style="cursor:pointer" placeholder="Mettez vos noms" data-i18n-placeholder="names" rows="1"></textarea><div class="total" id="totalB">0</div></div>
@@ -372,7 +392,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V4.6</span></div></section>
+<section class="card info"><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V4.17</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -396,7 +416,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.6"></script>
+<script src="./i18n.js?v=4.17"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -638,6 +658,18 @@ function visibleRoundCount(){
  state.rounds.forEach((round,index)=>{if(round.a!==null || round.b!==null)lastFilled=index+1;});
  return Math.min(NROUNDS,Math.max(8,lastFilled+(state.winnerTeam?0:1)));
 }
+function toggleLanguageList(){
+ const list=document.getElementById("languageList"),button=document.querySelector(".language-submenu-toggle");
+ const open=list.classList.toggle("is-open");button.setAttribute("aria-expanded",String(open));positionLanguageMenu();
+}
+function positionAppMenu(){
+ const menu=document.querySelector(".app-menu"),actions=document.querySelector(".header-actions"),title=document.querySelector(".title-row");
+ if(!menu||!actions||!title)return;
+ const parent=window.innerWidth>600?actions:title;
+ if(menu.parentElement!==parent)parent.appendChild(menu);
+}
+window.addEventListener("resize",positionAppMenu);
+positionAppMenu();
 function fitTeamNames(){
  for(const id of ["nameA","nameB"]){
   const el=document.getElementById(id);if(!el||!el.clientWidth)continue;
@@ -654,6 +686,30 @@ function fitRoundSheet(){
  sheet.style.setProperty("--visible-rounds",visibleRoundCount());
 }
 window.addEventListener("resize",()=>requestAnimationFrame(fitRoundSheet));
+function trumpTeam(){
+ const count=state.rounds.filter(r=>r.a!==null&&r.b!==null).length;
+ return ((state.trumpStart||"a")==="a")===(count%2===0)?"a":"b";
+}
+function toggleTrumpGuide(){state.trumpGuide=!state.trumpGuide;save();render();}
+function trumpChoiceLocked(){return state.rounds.some(r=>r.a!==null&&r.b!==null);}
+function chooseTrump(team){
+ if(trumpChoiceLocked())return;
+ const count=state.rounds.filter(r=>r.a!==null&&r.b!==null).length;
+ state.trumpStart=count%2?(team==="a"?"b":"a"):team;save();render();
+}
+function renderTrumpGuide(){
+ const guide=document.getElementById("trumpGuide"),marker=document.getElementById("trumpMarker");
+ const status=document.getElementById("trumpGuideStatus");status.textContent=state.trumpGuide?"✓":"✕";status.parentElement.setAttribute("aria-pressed",String(!!state.trumpGuide));
+ guide.hidden=!state.trumpGuide;marker.classList.toggle("right",trumpTeam()==="b");
+ marker.disabled=trumpChoiceLocked();document.getElementById("trumpTrack").classList.toggle("locked",trumpChoiceLocked());
+}
+const trumpTrack=document.getElementById("trumpTrack");
+let trumpDragging=false;
+trumpTrack.addEventListener("pointerdown",event=>{if(trumpChoiceLocked())return;trumpDragging=true;trumpTrack.setPointerCapture(event.pointerId);event.preventDefault();});
+trumpTrack.addEventListener("pointermove",event=>{if(!trumpDragging)return;const box=trumpTrack.getBoundingClientRect();document.getElementById("trumpMarker").classList.toggle("right",event.clientX>box.left+box.width/2);});
+trumpTrack.addEventListener("pointerup",event=>{if(!trumpDragging)return;trumpDragging=false;const box=trumpTrack.getBoundingClientRect();chooseTrump(event.clientX>box.left+box.width/2?"b":"a");});
+trumpTrack.addEventListener("pointercancel",()=>{trumpDragging=false;renderTrumpGuide();});
+document.getElementById("trumpMarker").addEventListener("keydown",event=>{if(event.key==="ArrowLeft"||event.key==="ArrowRight"){event.preventDefault();chooseTrump(event.key==="ArrowLeft"?"a":"b");}});
 function makeRounds(){
  const root=document.getElementById("rounds");root.innerHTML="";
  state.rounds.slice(0,visibleRoundCount()).forEach((r,i)=>{
@@ -662,6 +718,7 @@ function makeRounds(){
   const a=document.createElement("input");a.className="score";a.type="text";a.pattern="[0-9]*";a.onfocus=()=>a.select();a.onclick=()=>a.select();a.inputMode="numeric";a.value=r.a===null?"":r.a;a.placeholder="—";a.onchange=()=>setRound(i,"a",a.value);
   const eq=document.createElement("span");eq.className="eq";eq.textContent=":";
   const b=document.createElement("input");b.className="score";b.type="text";b.pattern="[0-9]*";b.onfocus=()=>b.select();b.onclick=()=>b.select();b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
+  if(state.trumpGuide&&r.a===null&&r.b===null&&i===state.rounds.findIndex(round=>round.a===null&&round.b===null)){(trumpTeam()==="a"?a:b).classList.add(trumpTeam()==="a"?"trump-green":"trump-pink");}
   const locked=state.rounds.slice(0,i).some(previous=>previous.a===null || previous.b===null);
   const victoryLocked=(!!state.winnerTeam&&i!==lastCompletedRound())||i<lastCompletedRound();
   a.disabled=locked||victoryLocked;b.disabled=locked||victoryLocked;
@@ -673,7 +730,7 @@ function makeRounds(){
 function render(){
  syncScrollLock();
  recordWinner();
- makeAnnouncements("A");makeAnnouncements("B");makeRounds();
+ makeAnnouncements("A");makeAnnouncements("B");makeRounds();renderTrumpGuide();
  requestAnimationFrame(()=>{fitRoundSheet();fitTeamNames();});
  const nA=teamName("A"),nB=teamName("B");
  document.getElementById("labelA").textContent=nA;document.getElementById("labelB").textContent=nB;
