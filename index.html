@@ -398,7 +398,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V4.23</span></div></section>
+<section class="card info"><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V4.24</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -422,7 +422,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.23"></script>
+<script src="./i18n.js?v=4.24"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -1024,7 +1024,7 @@ function startNewGame(){
  dismissedWinner=null;
  winnerShownFor=null;
  document.getElementById("winToast").classList.remove("show");
- state={nameA:document.getElementById("nameA").value||"",nameB:document.getElementById("nameB").value||"",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{},trumpPending:true};
+ state={nameA:document.getElementById("nameA").value||"",nameB:document.getElementById("nameB").value||"",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{},trumpGuide:!!state.trumpGuide,trumpPending:true};
  save();render();
  if(document.getElementById("slateDialog").open)renderSlate();
 }
