@@ -23,8 +23,8 @@ const TRANSLATIONS={
     "round": "Donne",
     "round_label": "Donne {number} {team}",
     "match": "Match",
-    "help": "Comment ça marche ?",
-    "help_title": "Comment ça marche ?",
+    "help": "Comment ça marche ?",
+    "help_title": "Comment ça marche ?",
     "share": "Partager",
     "delete_question": "Supprimer cette partie ?",
     "yes": "Oui",
@@ -65,13 +65,13 @@ const TRANSLATIONS={
     "help_start_title": "Commencer",
     "help_start_body": "Choisissez 1000 points ou 1500 (♠ ♠ : points et annonces doublés). Si « Qui fait Atout ? » est activé, choisissez la première équipe au premier clic sur des points ou une annonce. L’atout alterne ensuite à chaque donne.",
     "help_scores_title": "Saisir une donne",
-    "help_scores_body": "Entrez 2 à 155 pour une équipe : l’autre reçoit automatiquement 157 moins ce nombre. Match inscrit 257 contre 0 et ne compte pas comme une annonce. Remplissez les donnes dans l’ordre. Après validation, les compteurs d’annonces repartent à zéro ; leurs points restent acquis. La feuille et l’ardoise partagent les mêmes scores. Sur l’ardoise, touchez la zone noire pour saisir.",
+    "help_scores_body": "Entrez 2 à 155 pour une équipe : l’autre reçoit automatiquement 157 moins ce nombre. Match inscrit 257 contre 0 et ne compte pas comme une annonce. Après validation, les compteurs d’annonces repartent à zéro ; leurs points restent acquis. La feuille et l’ardoise partagent les mêmes scores. Sur l’ardoise, touchez la zone noire pour saisir.",
     "help_order_title": "Remplir les donnes dans l’ordre",
     "help_order_body": "Seule la première ligne vide est accessible. Les lignes suivantes restent grisées jusqu’à ce que la précédente soit remplie. Les lignes déjà remplies restent modifiables. Pour corriger une donne, modifiez une case. Pour l’effacer, videz une case et validez : cette donne et toutes les suivantes sont effacées pour conserver l’ordre. Si la correction de la dernière donne atteint ou dépasse l’objectif de 1000 points, ou 1500 en pique double, le panneau du vainqueur apparaît à nouveau, même s’il avait été fermé. Cela s’applique à la feuille classique et à l’ardoise.",
     "help_match_title": "Compter un match",
     "help_match_body": "257 donne 0 à l’autre équipe et ajoute un match au compteur. Si une équipe remporte tous les points de la donne, inscrivez 257, pas 157. Le + de « Match » inscrit 257 sur la prochaine ligne libre. Le − retire le dernier match de cette équipe et efface sa donne ainsi que les suivantes. Corriger ou effacer un 257 ajuste le compteur. Les 257 points sont inclus dans les donnes et ne sont pas ajoutés une deuxième fois aux annonces.",
     "help_ann_title": "Annonces avant les points",
-    "help_ann_body": "20 = 3 cartes ; 50 = 4 ; 100 = 5 cartes ou carré ; 150 = quatre neuf ; 200 = quatre valets. Utilisez + et −, ou A sur l’ardoise puis OK. Maximum par équipe et par donne : 18 cartes, 6 annonces de 20, 4 de 50, 3 de 100, une de 150 et une de 200. La ligne de 100 compte actuellement 5 cartes, même pour un carré. Les annonces ne donnent aucun point à l’adversaire.",
+    "help_ann_body": "20 points = 3 cartes ; 50 = 4 cartes ; 100 = 5 cartes ou carré ; 150 = quatre neuf ; 200 = quatre valets. Utilisez + et −, ou A sur l’ardoise puis OK. Les annonces ne donnent aucun point à l’adversaire.",
     "help_finish_title": "Gagner",
     "help_finish_body": "La première équipe à atteindre ou dépasser l’objectif gagne, y compris avec des annonces avant la donne. Les nouveaux ajouts sont alors bloqués. Fermez le panneau avec × pour corriger la dernière donne si nécessaire. Nouvelle partie enregistre le résultat et remet les scores à zéro.",
     "help_history_title": "Consulter l’historique",
@@ -133,7 +133,9 @@ const TRANSLATIONS={
     "help_trump_title": "Qui fait Atout ?",
     "help_trump_body": "Dans le menu ⋮ sur smartphone ou Menu sur ordinateur, activez l’option : ✓ activée, ✕ désactivée. Glissez le pique vers l’équipe verte ou rose avant la première donne. Sa prochaine case de points est colorée ; sur l’ardoise, ses prénoms sont encadrés. Après chaque donne, l’indication passe automatiquement à l’autre équipe. Le choix est verrouillé après la première donne. Nouvelle partie conserve l’activation ; le premier clic sur des points ou une annonce demande qui commence. Retrouvez cette aide dans le même menu.",
     "help_update_title": "Mises à jour et hors ligne",
-    "help_update_body": " Au lancement et au retour dans l’application, une connexion Internet permet de vérifier la version du site et de charger une nouvelle version. Sans connexion, la version déjà enregistrée reste utilisable ; la partie est conservée."
+    "help_update_body": " Au lancement et au retour dans l’application, une connexion Internet permet de vérifier la version du site et de charger une nouvelle version. Sans connexion, la version déjà enregistrée reste utilisable ; la partie est conservée.",
+    "help_home_title": "Ajouter à l’écran d’accueil",
+    "help_home_body": "Ouvrez le site du jeu sur votre téléphone. Sur Android, dans Chrome : menu ⋮ → Ajouter à l’écran d’accueil ou Installer l’application. Sur iPhone, dans Safari : Partager → Sur l’écran d’accueil → Ajouter. L’icône du jeu apparaît ensuite à côté de vos applications."
   },
   "de": {
     "choose": "Sprache wählen",
@@ -200,13 +202,13 @@ const TRANSLATIONS={
     "help_start_title": "Start",
     "help_start_body": "1000 Punkte oder 1500 wählen (♠ ♠: Punkte und Weis doppelt). Ist die Trumpfhilfe aktiv, beim ersten Antippen von Punkten oder Meldungen das Startteam wählen. Danach wechselt Trumpf nach jeder Runde.",
     "help_scores_title": "Runde eintragen",
-    "help_scores_body": "Für ein Team 2 bis 155 eingeben: Das andere erhält 157 minus diese Zahl. Match trägt 257 zu 0 ein und zählt nicht als Weis. Runden der Reihe nach ausfüllen. Danach werden die Weiszähler zurückgesetzt; gutgeschriebene Punkte bleiben erhalten. Blatt und Tafel teilen dieselben Punkte. Auf der Tafel die schwarze Fläche antippen.",
+    "help_scores_body": "Für ein Team 2 bis 155 eingeben: Das andere erhält 157 minus diese Zahl. Match trägt 257 zu 0 ein und zählt nicht als Weis. Danach werden die Weiszähler zurückgesetzt; gutgeschriebene Punkte bleiben erhalten. Blatt und Tafel teilen dieselben Punkte. Auf der Tafel die schwarze Fläche antippen.",
     "help_order_title": "Runden der Reihe nach ausfüllen",
     "help_order_body": "Nur die erste leere Zeile ist freigegeben. Die folgenden Zeilen bleiben grau, bis die vorherige ausgefüllt ist. Bereits ausgefüllte Zeilen können weiterhin geändert werden. Zum Korrigieren ändern Sie ein Feld. Zum Löschen leeren Sie ein Feld und bestätigen: Diese Runde und alle folgenden werden gelöscht, damit die Reihenfolge erhalten bleibt. Erreicht oder überschreitet die Korrektur der letzten Runde das Ziel von 1000 Punkten oder 1500 bei Pik doppelt, erscheint die Gewinnmeldung erneut, auch wenn sie zuvor geschlossen wurde. Dies gilt für das Punkteblatt und die Tafel.",
     "help_match_title": "Einen Match zählen",
     "help_match_body": "257 ergibt 0 für das andere Team und erhöht den Match-Zähler. Gewinnt ein Team alle Punkte einer Runde, geben Sie 257 ein, nicht 157. Das + bei «Match» trägt 257 in die nächste freie Zeile ein. Das − entfernt den letzten Match dieses Teams und löscht dessen Runde sowie alle folgenden. Beim Ändern oder Löschen von 257 wird der Zähler angepasst. Die 257 Punkte sind bereits in den Runden enthalten und werden nicht nochmals als Weis addiert.",
     "help_ann_title": "Weis vor den Punkten",
-    "help_ann_body": "20 = 3 Karten; 50 = 4; 100 = 5 Karten oder vier Gleiche; 150 = vier Neuner; 200 = vier Buben. + und − verwenden oder W auf der Tafel, dann OK. Je Team und Runde: höchstens 18 Karten, 6 Weis zu 20, 4 zu 50, 3 zu 100, einer zu 150 und einer zu 200. Die Zeile 100 zählt derzeit immer 5 Karten. Weis gibt der Gegenseite keine Punkte.",
+    "help_ann_body": "20 Punkte = 3 Karten; 50 = 4 Karten; 100 = 5 Karten oder vier Gleiche; 150 = vier Neuner; 200 = vier Buben. + und − verwenden oder W auf der Tafel, dann OK. Weis gibt der Gegenseite keine Punkte.",
     "help_finish_title": "Gewinnen",
     "help_finish_body": "Das erste Team am oder über dem Ziel gewinnt, auch durch Weis vor der Runde. Neue Einträge sind dann gesperrt. Das Fenster mit × schliessen, um bei Bedarf die letzte Runde zu korrigieren. Neues Spiel speichert das Ergebnis und setzt die Punkte zurück.",
     "help_history_title": "Den Verlauf ansehen",
@@ -268,7 +270,9 @@ const TRANSLATIONS={
     "help_trump_title": "Wer macht Trumpf?",
     "help_trump_body": "Im Menü ⋮ auf dem Smartphone oder Menü auf dem Computer aktivieren: ✓ aktiv, ✕ inaktiv. Vor der ersten Runde das Pik zum grünen oder rosa Team ziehen. Dessen nächstes Punktefeld wird markiert; auf der Tafel erhalten die Namen einen Rahmen. Nach jeder Runde wechselt die Markierung automatisch. Nach der ersten Runde ist die Startwahl gesperrt. Neues Spiel behält die Aktivierung bei; beim ersten Antippen von Punkten oder Meldungen wird nach dem Startteam gefragt. Diese Hilfe steht im selben Menü.",
     "help_update_title": "Updates und offline",
-    "help_update_body": " Beim Start und bei der Rückkehr zur App wird online die Version der Website geprüft und eine neue Version geladen. Offline bleibt die gespeicherte Version nutzbar; das Spiel bleibt erhalten."
+    "help_update_body": " Beim Start und bei der Rückkehr zur App wird online die Version der Website geprüft und eine neue Version geladen. Offline bleibt die gespeicherte Version nutzbar; das Spiel bleibt erhalten.",
+    "help_home_title": "Zum Startbildschirm hinzufügen",
+    "help_home_body": "Öffnen Sie die Spielwebsite auf dem Telefon. Android, Chrome: Menü ⋮ → Zum Startbildschirm hinzufügen oder App installieren. iPhone, Safari: Teilen → Zum Home-Bildschirm → Hinzufügen. Das Spielsymbol erscheint neben Ihren Apps."
   },
   "it": {
     "choose": "Scegli la lingua",
@@ -335,13 +339,13 @@ const TRANSLATIONS={
     "help_start_title": "Iniziare",
     "help_start_body": "Scegli 1000 punti o 1500 (♠ ♠: punti e annunci raddoppiati). Se l’aiuto per l’atout è attivo, scegli la prima squadra al primo tocco su punti o annunci. L’atout alterna dopo ogni mano.",
     "help_scores_title": "Inserire una mano",
-    "help_scores_body": "Inserisci da 2 a 155 per una squadra: l’altra riceve 157 meno il numero inserito. Match registra 257 a 0 e non è un annuncio. Compila le mani in ordine. I contatori degli annunci si azzerano dopo la mano; i punti restano acquisiti. Foglio e lavagna condividono i punteggi. Sulla lavagna tocca il nero per inserire.",
+    "help_scores_body": "Inserisci da 2 a 155 per una squadra: l’altra riceve 157 meno il numero inserito. Match registra 257 a 0 e non è un annuncio. I contatori degli annunci si azzerano dopo la mano; i punti restano acquisiti. Foglio e lavagna condividono i punteggi. Sulla lavagna tocca il nero per inserire.",
     "help_order_title": "Compilare le mani in ordine",
     "help_order_body": "Solo la prima riga vuota è attiva. Le righe successive restano grigie finché la precedente non è compilata. Le righe già compilate restano modificabili. Per correggere una mano, modificate una casella. Per cancellarla, svuotate una casella e confermate: questa mano e tutte le successive vengono cancellate per mantenere l’ordine. Se la correzione dell’ultima mano raggiunge o supera 1000 punti, oppure 1500 con picche doppie, il pannello del vincitore riappare anche se era stato chiuso. Questo vale per il segnapunti e la lavagna.",
     "help_match_title": "Contare un match",
     "help_match_body": "257 assegna 0 all’altra squadra e aggiunge un match al contatore. Se una squadra conquista tutti i punti della mano, inserite 257, non 157. Il + di «Match» inserisce 257 nella prossima riga libera. Il − rimuove l’ultimo match di quella squadra e cancella la sua mano e quelle successive. Correggere o cancellare un 257 aggiorna il contatore. I 257 punti sono inclusi nelle mani e non vengono aggiunti una seconda volta agli annunci.",
     "help_ann_title": "Annunci prima dei punti",
-    "help_ann_body": "20 = 3 carte; 50 = 4; 100 = 5 carte o poker; 150 = quattro nove; 200 = quattro fanti. Usa + e −, oppure A sulla lavagna, poi OK. Per squadra e mano: massimo 18 carte, 6 annunci da 20, 4 da 50, 3 da 100, uno da 150 e uno da 200. La riga 100 conta attualmente sempre 5 carte. Gli annunci non assegnano punti agli avversari.",
+    "help_ann_body": "20 punti = 3 carte; 50 = 4 carte; 100 = 5 carte o poker; 150 = quattro nove; 200 = quattro fanti. Usa + e −, oppure A sulla lavagna, poi OK. Gli annunci non assegnano punti agli avversari.",
     "help_finish_title": "Vincere",
     "help_finish_body": "Vince la prima squadra che raggiunge o supera l’obiettivo, anche con annunci prima della mano. Nuovi inserimenti sono bloccati. Chiudi il pannello con × per correggere l’ultima mano se necessario. Nuova partita salva il risultato e azzera i punteggi.",
     "help_history_title": "Consultare la cronologia",
@@ -403,7 +407,9 @@ const TRANSLATIONS={
     "help_trump_title": "Chi fa atout?",
     "help_trump_body": "Attiva l’opzione nel menu ⋮ sul telefono o Menu sul computer: ✓ attiva, ✕ disattiva. Prima della prima mano trascina la picche verso la squadra verde o rosa. La sua prossima casella viene colorata; sulla lavagna i nomi sono incorniciati. Dopo ogni mano l’indicazione passa all’altra squadra. La scelta iniziale si blocca dopo la prima mano. Nuova partita conserva l’attivazione; al primo tocco su punti o annunci viene chiesto chi comincia. Questa guida si trova nello stesso menu.",
     "help_update_title": "Aggiornamenti e offline",
-    "help_update_body": " All’avvio e al ritorno nell’app, con Internet viene verificata la versione sul sito e caricata quella nuova. Senza connessione resta disponibile la versione salvata; la partita è conservata."
+    "help_update_body": " All’avvio e al ritorno nell’app, con Internet viene verificata la versione sul sito e caricata quella nuova. Senza connessione resta disponibile la versione salvata; la partita è conservata.",
+    "help_home_title": "Aggiungere alla schermata Home",
+    "help_home_body": "Apri il sito del gioco sul telefono. Android, Chrome: menu ⋮ → Aggiungi a schermata Home oppure Installa app. iPhone, Safari: Condividi → Aggiungi alla schermata Home → Aggiungi. L’icona del gioco apparirà accanto alle tue applicazioni."
   },
   "rm": {
     "choose": "Tscherner la lingua",
@@ -470,13 +476,13 @@ const TRANSLATIONS={
     "help_start_title": "Cumenzar",
     "help_start_body": "Tschernì 1000 puncts u 1500 (♠ ♠: puncts ed annunzias dubels). Sche l’agid per trumf è activ, tschernì l’emprima equipa cun tutgar puncts u annunzias. Trumf mida suenter mintga runda.",
     "help_scores_title": "Endatar ina runda",
-    "help_scores_body": "Endatai 2 fin 155 per in’equipa: l’autra survegn 157 minus quest dumber. Match noda 257 a 0 e na quinta betg sco annunzia. Empleni las rundas en urden. Ils contaders d’annunzias vegnan mess a nulla suenter la runda; ils puncts restan quintads. Formular e tavla dovran ils medems puncts. Sin la tavla tutgai il nair per endatar.",
+    "help_scores_body": "Endatai 2 fin 155 per in’equipa: l’autra survegn 157 minus quest dumber. Match noda 257 a 0 e na quinta betg sco annunzia. Ils contaders d’annunzias vegnan mess a nulla suenter la runda; ils puncts restan quintads. Formular e tavla dovran ils medems puncts. Sin la tavla tutgai il nair per endatar.",
     "help_order_title": "Emplenir las rundas en successiun",
     "help_order_body": "Sulettamain l’emprima lingia vida è accessibla. Las lingias suandantas restan grischas fin che la precedenta è emplenida. Las lingias gia emplenidas pon vinavant vegnir midadas. Per curreger ina runda, midai in champ. Per stizzar ella, laschai in champ vid e confermai: questa runda e tut las suandantas vegnan stizzadas per mantegnair la successiun. Sche la correctura da la davosa runda cuntanscha u surpassa 1000 puncts u 1500 cun palas dubel, cumpara il panel dal victur danovamain, er sch’el era serrà. Quai vala per il fegl da puncts e per la tavla.",
     "help_match_title": "Dumbrar in match",
     "help_match_body": "257 dat 0 a l’autra equipa ed agiunta in match al dumbrader. Sche in’equipa gudogna tut ils puncts d’ina runda, endatai 257 e betg 157. Il + tar «Match» endatescha 257 en la proxima lingia libra. Il − allontanescha il davos match da questa equipa e stizza sia runda e las suandantas. Curreger u stizzar in 257 adatta il dumbrader. Ils 257 puncts èn gia inclus en las rundas e na vegnan betg agiuntads ina segunda giada a las annunzias.",
     "help_ann_title": "Annunzias avant ils puncts",
-    "help_ann_body": "20 = 3 chartas; 50 = 4; 100 = 5 chartas u quatter da la medema valur; 150 = quatter novs; 200 = quatter buobs. Duvrai + e −, u A sin la tavla, lura OK. Per equipa e runda: maximalmain 18 chartas, 6 annunzias da 20, 4 da 50, 3 da 100, ina da 150 ed ina da 200. La lingia 100 quinta actualmain adina 5 chartas. Annunzias na dattan nagins puncts a l’adversari.",
+    "help_ann_body": "20 puncts = 3 chartas; 50 = 4 chartas; 100 = 5 chartas u quatter da la medema valur; 150 = quatter novs; 200 = quatter buobs. Duvrai + e −, u A sin la tavla, lura OK. Annunzias na dattan nagins puncts a l’adversari.",
     "help_finish_title": "Gudagnar",
     "help_finish_body": "L’emprima equipa che cuntanscha u surpassa la finamira gudogna, era cun annunzias avant la runda. Novas endataziuns èn lura bloccadas. Serrai il panel cun × per curreger l’ultima runda sche necessari. Nov gieu memorisescha il resultat e metta ils puncts a nulla.",
     "help_history_title": "Consultar la cronologia",
@@ -538,7 +544,9 @@ const TRANSLATIONS={
     "help_trump_title": "Tgi fa trumf?",
     "help_trump_body": "Activai l’opziun en il menu ⋮ sin il telefon u Menu sin il computer: ✓ activa, ✕ deactiva. Avant l’emprima runda spustai il pic vers l’equipa verda u rosa. Ses proxim champ da puncts vegn colurà; sin la tavla èn ses nums en in rom. Suenter mintga runda mida l’indicaziun automaticamain a l’autra equipa. La tscherna iniziala è bloccada suenter l’emprima runda. Nov gieu mantegna l’activaziun; cun tutgar puncts u annunzias vegn dumandà tgi che cumenza. Quest agid è en il medem menu.",
     "help_update_title": "Actualisaziuns ed offline",
-    "help_update_body": " Tar l’avertura ed il return en l’app vegn la versiun dal website controllada cun internet e chargiada ina nova versiun. Senza connexiun resta la versiun memorisada utilisabla; il gieu vegn mantegnì."
+    "help_update_body": " Tar l’avertura ed il return en l’app vegn la versiun dal website controllada cun internet e chargiada ina nova versiun. Senza connexiun resta la versiun memorisada utilisabla; il gieu vegn mantegnì.",
+    "help_home_title": "Agiuntar al visur inizial",
+    "help_home_body": "Avri la pagina dal gieu sin il telefon. Android, Chrome: menu ⋮ → Agiuntar al visur inizial u Installar l’applicaziun. iPhone, Safari: Parter → Agiuntar al visur inizial → Agiuntar. L’icona dal gieu cumpara sper vossas applicaziuns."
   },
   "en": {
     "choose": "Choose a language",
@@ -605,13 +613,13 @@ const TRANSLATIONS={
     "help_start_title": "Start",
     "help_start_body": "Choose 1000 points or 1500 (♠ ♠: points and announcements doubled). If the trump guide is enabled, choose the starting team when you first tap points or announcements. Trumps then alternate after each round.",
     "help_scores_title": "Enter a round",
-    "help_scores_body": "Enter 2 to 155 for either team: the other receives 157 minus that number. Match records 257 against 0 and is not an announcement. Fill rounds in order. Announcement counters reset after the round; earned points remain credited. The sheet and slate share scores. On the slate, tap the black area to enter points.",
+    "help_scores_body": "Enter 2 to 155 for either team: the other receives 157 minus that number. Match records 257 against 0 and is not an announcement. Announcement counters reset after the round; earned points remain credited. The sheet and slate share scores. On the slate, tap the black area to enter points.",
     "help_order_title": "Fill in rounds in order",
     "help_order_body": "Only the first empty row is available. Later rows stay grey until the preceding row is filled in. Completed rows can still be edited. To correct a round, change one field. To clear it, empty one field and confirm: that round and all later rounds are cleared to keep the rounds in order. If correcting the last round reaches or exceeds 1000 points, or 1500 in double spades mode, the winner panel appears again even if it was previously closed. This applies to both the score sheet and the slate.",
     "help_match_title": "Count a match",
     "help_match_body": "257 gives the other team 0 and adds one match to the counter. If a team wins all the points in a round, enter 257, not 157. The + next to “Match” enters 257 on the next empty row. The − removes that team’s last match and clears its round and all later rounds. Editing or clearing a 257 updates the counter. The 257 points are included in the round scores and are not added again as melds.",
     "help_ann_title": "Announcements before points",
-    "help_ann_body": "20 = 3 cards; 50 = 4; 100 = 5 cards or four of a kind; 150 = four nines; 200 = four jacks. Use + and −, or M on the slate, then OK. Per team and round: at most 18 cards, 6 announcements of 20, 4 of 50, 3 of 100, one of 150 and one of 200. The 100 row currently always counts as 5 cards. Announcements give opponents no points.",
+    "help_ann_body": "20 points = 3 cards; 50 = 4 cards; 100 = 5 cards or four of a kind; 150 = four nines; 200 = four jacks. Use + and −, or M on the slate, then OK. Announcements give opponents no points.",
     "help_finish_title": "Win",
     "help_finish_body": "The first team to reach or exceed the target wins, including through announcements before a round. New entries are then blocked. Close the panel with × to correct the last round if needed. New game saves the result and resets scores.",
     "help_history_title": "View game history",
@@ -673,7 +681,9 @@ const TRANSLATIONS={
     "help_trump_title": "Who chooses trumps?",
     "help_trump_body": "Enable the option in ⋮ on phones or Menu on desktop: ✓ on, ✕ off. Before the first round, drag the spade towards the green or pink team. Its next score field is highlighted; on the slate, its names are framed. After each round the indicator switches teams automatically. The initial choice locks after the first round. New game keeps the setting; the first tap on points or announcements asks who starts. This help is available in the same menu.",
     "help_update_title": "Updates and offline",
-    "help_update_body": " On launch and when returning to the app, an Internet connection allows it to check the hosted version and load an update. Offline, the saved version remains available and your game is kept."
+    "help_update_body": " On launch and when returning to the app, an Internet connection allows it to check the hosted version and load an update. Offline, the saved version remains available and your game is kept.",
+    "help_home_title": "Add to your home screen",
+    "help_home_body": "Open the game website on your phone. Android, Chrome: menu ⋮ → Add to Home screen or Install app. iPhone, Safari: Share → Add to Home Screen → Add. The game icon then appears alongside your apps."
   }
 };
 let currentLanguage="fr";
@@ -743,7 +753,10 @@ document.addEventListener("DOMContentLoaded",()=>{
  const flag=getLanguageTrigger(),menu=document.getElementById("languageChoices");
  if(flag)flag.addEventListener("click",()=>{menu.hidden=!menu.hidden;flag.setAttribute("aria-expanded",String(!menu.hidden));positionLanguageMenu();});
  document.querySelectorAll("[data-language]").forEach(button=>button.addEventListener("click",()=>{requestLanguageChange(button.dataset.language);}));
- document.addEventListener("click",event=>{if(!event.target.closest(".language-picker"))closeLanguageMenu();});
+ document.addEventListener("pointerdown",event=>{
+  const trigger=getLanguageTrigger();
+  if(menu&&!menu.hidden&&!menu.contains(event.target)&&!trigger?.contains(event.target))closeLanguageMenu();
+ },true);
  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&menu&&!menu.hidden){closeLanguageMenu();flag.focus();}});
 });
 

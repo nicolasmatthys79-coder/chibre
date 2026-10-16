@@ -313,6 +313,34 @@ h1{font-family:Georgia,serif}
 .language-choices .menu-help{display:block;padding:8px;border-radius:8px;min-height:44px;color:inherit;text-decoration:none;font:500 16px Arial,sans-serif}.language-choices .menu-help:hover{background:#efebe2}.info{padding:6px 12px}
 
 .language-choices .menu-share{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #d8d4c8;border-radius:0;margin-top:6px;padding-top:12px}
+
+@media(max-width:600px){
+ .head.with-trump-guide{grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);align-items:stretch}
+ .head #trumpGuide{display:flex;align-items:center;justify-content:center;padding:0 3px;background:var(--paper)}
+ .head #trumpGuide[hidden]{display:none}
+ .head .trump-track{width:66px;max-width:66px;height:32px;margin:0}
+ .head .trump-track button{width:27px;height:24px;top:3px;left:2px;font-size:22px}
+ .head .trump-track button.right{left:calc(100% - 29px)}
+ .head.with-trump-guide .team{padding-left:7px;padding-right:7px}
+}
+
+@media(max-width:600px){
+ .head.with-trump-guide{grid-template-columns:minmax(0,1fr) 96px minmax(0,1fr);background:linear-gradient(to right,var(--softa) 50%,var(--softb) 50%)}
+ .head.with-trump-guide #trumpGuide{background:transparent;padding:0 4px}
+ .head .trump-track{width:88px;max-width:88px}
+ .head .trump-track button{width:36px}
+ .head .trump-track button.right{left:calc(100% - 38px)}
+}
+
+.trump-track button{font-size:30px}@media(max-width:600px){.head .trump-track button{font-size:29px;line-height:24px}}
+
+@media(max-width:600px){
+ .head.with-trump-guide{position:relative;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .head.with-trump-guide #trumpGuide{position:absolute;left:50%;bottom:7px;transform:translateX(-50%);width:96px;z-index:1}
+ .head.with-trump-guide .team{padding-left:10px;padding-right:10px}
+ .head.with-trump-guide .total{max-width:calc(100% - 42px)}
+ .head.with-trump-guide .team.b .total{margin-left:auto}
+}
 </style>
 </head>
 <body>
@@ -361,7 +389,7 @@ h1{font-family:Georgia,serif}
     <h1>Chibre <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
     
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
 
   </div>
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
@@ -391,7 +419,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><span class="app-version">V4.31</span></div></section>
+<section class="card info"><div class="info-actions"><span class="app-version">V4.40</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -415,7 +443,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.31"></script>
+<script src="./i18n.js?v=4.40"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -709,7 +737,16 @@ function chooseTrump(team){
  const count=state.rounds.filter(r=>r.a!==null&&r.b!==null).length;
  state.trumpStart=count%2?(team==="a"?"b":"a"):team;save();render();
 }
+function positionTrumpGuide(){
+ const guide=document.getElementById("trumpGuide"),head=document.querySelector(".head"),right=document.querySelector(".head .team.b");
+ if(!guide||!head||!right)return;
+ if(window.innerWidth<=600){if(guide.parentElement!==head)head.insertBefore(guide,right);}
+ else if(guide.parentElement===head)head.parentElement.insertBefore(guide,head);
+ head.classList.toggle("with-trump-guide",!!state.trumpGuide&&window.innerWidth<=600);
+}
+window.addEventListener("resize",positionTrumpGuide);
 function renderTrumpGuide(){
+ positionTrumpGuide();
  const guide=document.getElementById("trumpGuide"),marker=document.getElementById("trumpMarker");
  const status=document.getElementById("trumpGuideStatus");status.textContent=state.trumpGuide?"✓":"✕";status.parentElement.setAttribute("aria-pressed",String(!!state.trumpGuide));
  guide.hidden=!state.trumpGuide;marker.classList.toggle("right",trumpTeam()==="b");
@@ -1380,7 +1417,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.31";
+ const APP_VERSION="4.40";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;
