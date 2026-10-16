@@ -211,6 +211,21 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  .ann-label-description:has(.ann-alternative) .ann-description{grid-column:2;grid-row:1}
  .ann-label-description:has(.ann-alternative) .ann-alternative{grid-column:2;grid-row:2;padding-left:10px;text-align:left}
 }
+
+@media(max-width:800px){
+ .ann-label-description{column-gap:5px;justify-content:flex-start}
+ .ann-description{margin-left:0;text-align:left}
+ .ann-description::before{content:"·";margin-right:5px}
+ .ann-alternative{text-align:left}
+ .ann-label-description:has(.ann-alternative){display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:5px;row-gap:2px}
+ .ann-label-description:has(.ann-alternative) .ann-description{grid-column:2;grid-row:1}
+ .ann-label-description:has(.ann-alternative) .ann-alternative{grid-column:2;grid-row:2;padding-left:10px;text-align:left}
+}
+.slate-match-button{cursor:pointer}.slate-match-button:focus{outline:2px solid #fff;outline-offset:2px}
+.slate-score-area .slate-round-numbers{top:0;bottom:auto;height:auto;display:flex;flex-direction:column;justify-content:flex-start;gap:5px;padding:4px 0}
+.slate-score-area .slate-round-numbers[hidden]{display:none}
+.slate-match-button[aria-disabled="true"]{opacity:.35;cursor:default}.slate-hit[aria-disabled="true"]{cursor:default}
+html:not(.slate-open){overflow-y:auto}.language-dialog{max-height:calc(100dvh - 32px);overflow-y:auto}.slate-content{overflow-y:auto;-webkit-overflow-scrolling:touch}
 </style>
 </head>
 <body>
@@ -296,7 +311,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  <aside class="card ann b"><h2 id="annTitleB" data-i18n="ann">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.100</span></div></section>
+<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.110</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -320,7 +335,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=3.100"></script>
+<script src="./i18n.js?v=3.110"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -339,7 +354,23 @@ let state={
 };
 let winnerShownFor=null;
 let dismissedWinner=null;
-function closeWinner(){dismissedWinner=winnerShownFor;document.getElementById("winToast").classList.remove("show");}
+function syncScrollLock(){
+ const slate=document.getElementById("slateDialog");
+ const isOpen=!!slate?.open;
+ document.documentElement.classList.toggle("slate-open",isOpen);
+ if(!isOpen){
+  document.documentElement.style.removeProperty("overflow");
+  document.body.style.removeProperty("overflow");
+  const toast=document.getElementById("winToast");
+  if(toast?.parentElement===slate)document.body.appendChild(toast);
+ }
+}
+function closeWinner(){
+ dismissedWinner=winnerShownFor;
+ document.getElementById("winToast").classList.remove("show");
+ syncScrollLock();
+}
+
 
 function showWinner(name,total,threshold){
  const toast=document.getElementById("winToast");
@@ -376,14 +407,35 @@ function save(){
 }
 function factor(){ return state.mode===1500 ? 2 : 1; }
 function setMode(mode){
- state.mode=mode===1500?1500:1000;
- save(); render();
+ const nextMode=mode===1500?1500:1000;
+ if(state.mode!==nextMode){
+  state.mode=nextMode;
+  if(state.winnerTeam){
+   const winner=state.winnerTeam;
+   const total=(roundTotal(winner.toLowerCase())+annTotal(winner))*factor();
+   if(total<nextMode)state.winnerTeam=null;
+  }
+  winnerShownFor=null;dismissedWinner=null;
+  document.getElementById("winToast").classList.remove("show");
+ }
+ save();render();
+}
+function lastCompletedRound(){
+ let last=-1;state.rounds.forEach((r,i)=>{if(r.a!==null&&r.b!==null)last=i;});return last;
+}
+function recheckCorrectedWinner(){
+ if(!state.winnerTeam)return;
+ const winner=state.winnerTeam;
+ if((roundTotal(winner.toLowerCase())+annTotal(winner))*factor()<(state.mode===1500?1500:1000)){
+  state.winnerTeam=null;winnerShownFor=null;dismissedWinner=null;
+ }
 }
 function setRound(i,team,raw){
+ if(state.winnerTeam&&i!==lastCompletedRound())return;
  if(i>=visibleRoundCount()) return;
  if(state.rounds.slice(0,i).some(r=>r.a===null || r.b===null)) return;
  const r=state.rounds[i];
- if(raw===""){state.rounds.slice(i).forEach(r=>{r.a=null;r.b=null});save();render();return}
+ if(raw===""){state.rounds.slice(i).forEach(r=>{r.a=null;r.b=null});recheckCorrectedWinner();save();render();return}
  const n=Number(raw);
  if(!Number.isInteger(n) || (n!==257 && (n<2 || n>MAX-2))){
    alert(t("validation"));
@@ -391,9 +443,17 @@ function setRound(i,team,raw){
  }
  const other=n===257?0:MAX-n;
  if(team==="a"){r.a=n;r.b=other}else{r.b=n;r.a=other}
+ resetAnnCounters();
+ recheckCorrectedWinner();
  recordWinner(team.toUpperCase());
  save();render();
 }
+function currentAnnCounters(team){
+ if(!state.currentAnnCounters)state.currentAnnCounters={A:{},B:{}};
+ return state.currentAnnCounters[team];
+}
+function resetAnnCounters(){state.currentAnnCounters={A:{},B:{}};state.annCounterEpoch=(state.annCounterEpoch||0)+1;}
+function currentAnnCount(team){return Object.values(currentAnnCounters(team)).reduce((sum,n)=>sum+n,0);}
 function changeAnn(team,key,delta){
  if(state.winnerTeam)return;
  const obj=team==="A"?state.annA:state.annB;
@@ -404,6 +464,7 @@ function changeAnn(team,key,delta){
      const idx=state.rounds.findIndex(r=>r.a===null && r.b===null);
      if(idx===-1){ alert(t("full")); return; }
      if(idx>=visibleRoundCount()) return;
+     resetAnnCounters();
      if(team==="A"){
        state.rounds[idx].a=257;
        state.rounds[idx].b=0;
@@ -427,6 +488,9 @@ function changeAnn(team,key,delta){
    save();render();return;
  }
 
+ const counters=currentAnnCounters(team);
+ if(delta<0&&!(counters[key]>0))return;
+ counters[key]=Math.max(0,(counters[key]||0)+delta);
  obj[key]=Math.max(0,(obj[key]||0)+delta);
  recordWinner(team);
  save();render();
@@ -474,7 +538,7 @@ function makeAnnouncements(team){
     label.appendChild(cards);
   }
   const minus=document.createElement("button");minus.textContent="−";minus.onclick=()=>changeAnn(team,x.key,-1);
-  const count=document.createElement("span");count.className="count";count.textContent=x.key==="match"?matchCount(team):(obj[x.key]||0);
+  const count=document.createElement("span");count.className="count";count.textContent=x.key==="match"?matchCount(team):(currentAnnCounters(team)[x.key]||0);
   const plus=document.createElement("button");plus.textContent="+";plus.onclick=()=>changeAnn(team,x.key,1);
   minus.setAttribute("aria-label",t("decrease",{value:x.key==="match"?t("match"):x.value,team:teamName(team)}));
   plus.setAttribute("aria-label",t("increase",{value:x.key==="match"?t("match"):x.value,team:teamName(team)}));
@@ -496,13 +560,15 @@ function makeRounds(){
   const eq=document.createElement("span");eq.className="eq";eq.textContent=":";
   const b=document.createElement("input");b.className="score";b.type="number";b.min=0;b.max=257;b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
   const locked=state.rounds.slice(0,i).some(previous=>previous.a===null || previous.b===null);
-  a.disabled=locked;b.disabled=locked;
+  const victoryLocked=!!state.winnerTeam&&i!==lastCompletedRound();
+  a.disabled=locked||victoryLocked;b.disabled=locked||victoryLocked;
   if(locked) row.classList.add("round-locked");
   a.setAttribute("aria-label",t("round_label",{number:i+1,team:teamName("A")}));b.setAttribute("aria-label",t("round_label",{number:i+1,team:teamName("B")}));
   row.append(num,a,eq,b);root.appendChild(row);
  });
 }
 function render(){
+ syncScrollLock();
  recordWinner();
  makeAnnouncements("A");makeAnnouncements("B");makeRounds();
  const nA=teamName("A"),nB=teamName("B");
@@ -826,9 +892,9 @@ function slateSvg(total,team){
  }
  const accessible=t("slate_readout",{total,hundreds:points.hundreds,fifties:points.fifties,twenties:points.twenties,remainder:points.remainder});
  return `<svg viewBox="0 0 600 400" preserveAspectRatio="none" role="group" aria-label="${escapeHistoryText(accessible)}" xmlns="http://www.w3.org/2000/svg">
- ${team?`<g class="slate-hit" role="button" tabindex="0" aria-label="${escapeHistoryText(t("manual_title",{team:teamName(team)}))}" onclick="openSlateManual('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateManual('${team}');}"><rect x="60" y="30" width="480" height="340" fill="transparent" pointer-events="all"/></g>`:""}
+ ${team?`<g class="slate-hit" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("manual_title",{team:teamName(team)}))}" onclick="openSlateManual('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateManual('${team}');}"><rect x="60" y="30" width="480" height="340" fill="transparent" pointer-events="all"/></g>`:""}
  <g pointer-events="none" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M65 55 H535 L65 345 H535" opacity=".65"/>${tallies(points.hundreds,55)}${fiftyMarks}${tallies(points.twenties,345)}</g>
- <g pointer-events="none" fill="currentColor" font-family="Georgia,serif" font-size="20"><text x="12" y="62">100</text><text x="310" y="170">50</text><text x="20" y="352">20</text><text x="475" y="225" font-size="40">${points.remainder}</text></g><path d="M65 55 H535 L65 345 H535" fill="none" stroke="transparent" stroke-width="18" vector-effect="non-scaling-stroke" pointer-events="stroke"/>${team?`<g class="slate-ann-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("ann_manual_title",{team:teamName(team)}))}" onclick="openSlateAnnPicker('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateAnnPicker('${team}');}"><rect x="8" y="170" width="60" height="60" rx="4" fill="#151a18" stroke="currentColor" stroke-width="2"/><text x="38" y="212" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="36">${escapeHistoryText(t("ann_symbol"))}</text></g>`:""}${team?`<g class="slate-edit-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("slate_edit",{team:teamName(team)}))}" onclick="openSlateEdit('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateEdit('${team}');}"><rect x="267.5" y="355" width="65" height="45" fill="transparent"/><text x="300" y="378" text-anchor="middle" dominant-baseline="central" transform="rotate(90 300 378)" fill="#ffffff" font-family="system-ui,sans-serif" font-size="42">↶</text></g>`:""}</svg>`;
+ <g pointer-events="none" fill="currentColor" font-family="Georgia,serif" font-size="20"><text x="12" y="62">100</text><text x="310" y="170">50</text><text x="20" y="352">20</text><text x="475" y="225" font-size="40">${points.remainder}</text></g><path d="M65 55 H535 L65 345 H535" fill="none" stroke="transparent" stroke-width="18" vector-effect="non-scaling-stroke" pointer-events="stroke"/>${team?`<g class="slate-ann-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("ann_manual_title",{team:teamName(team)}))}" onclick="openSlateAnnPicker('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateAnnPicker('${team}');}"><rect x="8" y="170" width="60" height="60" rx="4" fill="#151a18" stroke="currentColor" stroke-width="2"/><text x="38" y="212" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="36">${escapeHistoryText(t("ann_symbol"))}</text>${currentAnnCount(team)?`<text x="38" y="251" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="20">${currentAnnCount(team)}</text>`:""}</g>`:""}${team?`<g class="slate-match-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("slate_add",{value:257,team:teamName(team)}))}" onclick="slateMatch('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();slateMatch('${team}');}"><rect x="420" y="355" width="115" height="45" fill="transparent"/><text x="535" y="389" text-anchor="end" fill="#ffffff" font-family="Georgia, Palatino, serif" font-size="29" font-weight="400">${escapeHistoryText(t("match"))}</text></g>`:""}${team?`<g class="slate-edit-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("slate_edit",{team:teamName(team)}))}" onclick="openSlateEdit('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateEdit('${team}');}"><rect x="267.5" y="355" width="65" height="45" fill="transparent"/><text x="300" y="378" text-anchor="middle" dominant-baseline="central" transform="rotate(90 300 378)" fill="#ffffff" font-family="system-ui,sans-serif" font-size="42">↶</text></g>`:""}</svg>`;
 }
 let slateEditContext=null;
 function slateCompletedRounds(){
@@ -839,6 +905,7 @@ function slateCompletedRounds(){
 }
 function nextSlateRound(){return state.rounds.filter(r=>r.a!==null && r.b!==null).length+slateCompletedRounds()+1;}
 function slateTransaction(team,value,kind){
+ if(state.winnerTeam&&!slateEditContext)return false;
  if(kind==="announcements"&&state.winnerTeam&&!slateEditContext)return false;
  state.usedSlate=true;
  const key=team.toLowerCase(),other=key==="a"?"b":"a";
@@ -857,6 +924,7 @@ function slateTransaction(team,value,kind){
    if(previous.match)state.slateMatches[key]=Math.max(0,(state.slateMatches[key]||0)-1);
   }else state.slateAnnouncements[team]-=previous.rawValue;
  }
+ if(kind==="points"&&!previous)resetAnnCounters();
  const entry={kind,value,rawValue:value,rawOther:kind==="points"?(value===257?0:MAX-value):0,match:kind==="points"&&value===257};
  if(kind==="points"){
   if(!state.slatePoints)state.slatePoints={a:0,b:0};
@@ -881,22 +949,37 @@ function slateTransaction(team,value,kind){
  }
  recordWinner(team);save();render();renderSlate();
 }
+function slateMatch(team){
+ if(state.winnerTeam)return;
+ slateEditContext=null;slateAdd(team,257);
+}
 function slateAdd(team,value){
+ if(state.winnerTeam&&!slateEditContext)return;
  if(!["A","B"].includes(team)||!Number.isSafeInteger(value)||(value!==257&&(value<2||value>155)))return;
  slateTransaction(team,value,"points");
+ if(value===257 && state.winnerTeam===team){
+  const total=(roundTotal(team.toLowerCase())+annTotal(team))*factor();
+  const threshold=state.mode===1500?1500:1000;
+  if(total>=threshold){
+   dismissedWinner=null;
+   renderSlate();
+   showWinner(teamName(team),total,threshold);
+  }
+ }
 }
 function openSlateEdit(team){
  const entry=state.slateLastEntries?.[team];if(!entry)return;
  if(entry.selection){openSlateAnnPicker(team,true);return;}
  const kind=entry.kind==="points"?"Manual":"Ann";
- if(kind==="Manual")openSlateManual(team);else openSlateAnn(team);
+ if(kind==="Manual")openSlateManual(team,true);else openSlateAnn(team);
  slateEditContext={team,entry};
  document.getElementById("slate"+kind+"Value").value=entry.value;
  document.getElementById("slate"+kind+"Title").textContent=kind==="Manual"&&entry.roundNumber?t("edit_round",{number:entry.roundNumber,team:teamName(team)}):t("slate_edit",{team:teamName(team)});
  document.getElementById("slate"+kind+"Submit").textContent=t("update");
 }
 let slateManualTeam=null;
-function openSlateManual(team){
+function openSlateManual(team,editing=false){
+ if(state.winnerTeam&&!editing)return;
  if(!["A","B"].includes(team))return;
  slateEditContext=null;document.getElementById("slateManualSubmit").textContent=t("add_round",{number:nextSlateRound(),team:teamName(team)});
  slateManualTeam=team;
@@ -975,6 +1058,8 @@ function openSlateAnnPicker(team,editing=false){
 function confirmAnnPicker(){
  if(state.winnerTeam&&!annPickerEditing){document.getElementById("annPickerDialog").close();return;}
  const value=annPickerAmount();
+ const oldEntry=annPickerEditing?state.slateLastEntries[annPickerTeam]:null;
+ const oldSelection=oldEntry?.counterEpoch===(state.annCounterEpoch||0)?oldEntry.selection||{}:{};
  if(value>0){
   if(annPickerEditing)slateEditContext={team:annPickerTeam,entry:state.slateLastEntries[annPickerTeam]};
   slateAddAnnouncement(annPickerTeam,value);
@@ -984,8 +1069,13 @@ function confirmAnnPicker(){
   const fiftyRaw=((annPickerDraft[50]||0)+(annPickerDraft[150]||0))*50;
   state.slateFiftyPoints[annPickerTeam]=(state.slateFiftyPoints[annPickerTeam]||0)+fiftyRaw;
   state.slateLastEntries[annPickerTeam].fiftyRaw=fiftyRaw;
-  state.slateLastEntries[annPickerTeam].selection={...annPickerDraft};save();renderSlate();
+  const counters=currentAnnCounters(annPickerTeam);
+  for(const key of annPickerValues)counters[key]=Math.max(0,(counters[key]||0)-(oldSelection[key]||0))+(annPickerDraft[key]||0);
+  state.slateLastEntries[annPickerTeam].counterEpoch=state.annCounterEpoch||0;
+  state.slateLastEntries[annPickerTeam].selection={...annPickerDraft};save();render();renderSlate();
  }else if(annPickerEditing){
+  const counters=currentAnnCounters(annPickerTeam);
+  for(const key of annPickerValues)counters[key]=Math.max(0,(counters[key]||0)-(oldSelection[key]||0));
   const entry=state.slateLastEntries[annPickerTeam];
   state.slateAnnouncements[annPickerTeam]-=entry.rawValue;
   if(state.slateTwentyPoints)state.slateTwentyPoints[annPickerTeam]=Math.max(0,(state.slateTwentyPoints[annPickerTeam]||0)-(entry.twentyRaw||0));
@@ -1066,12 +1156,13 @@ function openSlate(){
  dialog.appendChild(document.getElementById("winToast"));
  dialog.showModal();document.documentElement.classList.add("slate-open");
 }
-function closeSlate(){document.getElementById("slateDialog").close();}
+function closeSlate(){document.getElementById("slateDialog").close();syncScrollLock();}
 document.getElementById("slateDialog").addEventListener("close",()=>{
  document.body.appendChild(document.getElementById("winToast"));
  document.documentElement.classList.remove("slate-open");document.getElementById("slateToggle").focus();
 });
 
+document.addEventListener("close",syncScrollLock,true);
 load();applyLanguage();render();
 </script>
 <script>
