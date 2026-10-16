@@ -1,8 +1,8 @@
 "use strict";
-const CACHE="chibre-v4.28-20261016";
-const FILES=["./","./index.html","./comment-ca-marche.html","./i18n.js?v=4.28","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
+const CACHE="chibre-v4.31-20261016";
+const FILES=["./","./index.html","./comment-ca-marche.html","./i18n.js?v=4.31","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 self.addEventListener("install",event=>{
- event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()));
+ event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES.map(file=>new Request(file,{cache:"reload"})))).then(()=>self.skipWaiting()));
 });
 self.addEventListener("activate",event=>{
  event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE&&(key.startsWith("chibre")||key.startsWith("Chibre"))).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));
@@ -16,11 +16,12 @@ function navigationKey(url){
 self.addEventListener("fetch",event=>{
  const url=new URL(event.request.url);
  if(event.request.method!=="GET"||url.origin!==self.location.origin)return;
+ if(url.pathname.endsWith("/version.json")){event.respondWith(fetch(event.request,{cache:"no-store"}));return;}
  if(event.request.mode==="navigate"){
   const key=navigationKey(url);
   event.respondWith((async()=>{
    try{
-    const response=await fetch(event.request);
+    const response=await fetch(event.request,{cache:"no-store"});
     if(response.ok){const copy=response.clone();event.waitUntil(caches.open(CACHE).then(cache=>cache.put(key,copy)));return response;}
     return (await caches.match(key))||response;
    }catch(error){
@@ -31,7 +32,7 @@ self.addEventListener("fetch",event=>{
  event.respondWith((async()=>{
   const cached=await caches.match(event.request);
   if(cached)return cached;
-  const response=await fetch(event.request);
+  const response=await fetch(event.request,{cache:"no-store"});
   if(response.ok){const copy=response.clone();event.waitUntil(caches.open(CACHE).then(cache=>cache.put(event.request,copy)));}
   return response;
  })());

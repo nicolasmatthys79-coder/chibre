@@ -311,6 +311,8 @@ h1{font-family:Georgia,serif}
 .slate-name-edit.trump-name-green,.slate-name-edit.trump-name-pink{min-height:28px;padding-top:0;padding-bottom:0;line-height:1.1;outline-offset:1px}
 
 .language-choices .menu-help{display:block;padding:8px;border-radius:8px;min-height:44px;color:inherit;text-decoration:none;font:500 16px Arial,sans-serif}.language-choices .menu-help:hover{background:#efebe2}.info{padding:6px 12px}
+
+.language-choices .menu-share{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #d8d4c8;border-radius:0;margin-top:6px;padding-top:12px}
 </style>
 </head>
 <body>
@@ -358,19 +360,8 @@ h1{font-family:Georgia,serif}
   <div class="title-row" style="display:flex;align-items:center;gap:10px">
     <h1>Chibre <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
-    <button class="share-app-button" onclick="shareApp()" title="Partager" aria-label="Partager" data-i18n-title="share" data-i18n-aria-label="share"
-      style="border:0;background:transparent;padding:5px;cursor:pointer">
-      <svg width="28" height="28" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2"
-           stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="18" cy="5" r="3"></circle>
-        <circle cx="6" cy="12" r="3"></circle>
-        <circle cx="18" cy="19" r="3"></circle>
-        <line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line>
-        <line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line>
-      </svg>
-    </button>
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
+    
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
 
   </div>
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
@@ -400,7 +391,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><span class="app-version">V4.28</span></div></section>
+<section class="card info"><div class="info-actions"><span class="app-version">V4.31</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -424,7 +415,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.28"></script>
+<script src="./i18n.js?v=4.31"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -1389,7 +1380,26 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(error=>console.warn("Offline setup:",error)));
+ const APP_VERSION="4.31";
+ let checkingVersion=false;
+ async function checkHostedVersion(){
+  if(checkingVersion)return;checkingVersion=true;
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6000);
+  try{
+   const registration=await navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"});
+   registration.update().catch(()=>{});
+   const response=await fetch("./version.json",{cache:"no-store",signal:controller.signal});
+   if(!response.ok)return;
+   const release=await response.json();
+   if(typeof release.version==="string"&&release.version!==APP_VERSION){
+    const target=new URL(location.href);target.searchParams.set("v",release.version);
+    if(target.searchParams.get("v")!==new URL(location.href).searchParams.get("v"))location.replace(target.href);
+   }
+  }catch(error){/* Sans réseau, conserver la version locale et la partie. */}
+  finally{clearTimeout(timer);checkingVersion=false;}
+ }
+ window.addEventListener("load",checkHostedVersion);
+ document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")checkHostedVersion();});
 }
 </script>
 </body></html>

@@ -53,13 +53,32 @@ body,button,input,h2{font-family:Arial,"Helvetica Neue",sans-serif}
 <section><h2 data-i18n="help_scores_title">Saisir une donne</h2><p data-i18n="help_scores_body">Entrez 2 à 155 pour une équipe : l’autre reçoit automatiquement 157 moins ce nombre. Match inscrit 257 contre 0 et ne compte pas comme une annonce. Remplissez les donnes dans l’ordre. Après validation, les compteurs d’annonces repartent à zéro ; leurs points restent acquis. La feuille et l’ardoise partagent les mêmes scores. Sur l’ardoise, touchez la zone noire pour saisir.</p></section>
 <section><h2 data-i18n="help_slate_use_title">Corriger</h2><p data-i18n="help_slate_use_body">Seule la dernière donne remplie est modifiable. Sur la feuille, touchez sa valeur pour la remplacer. Sur l’ardoise, ↶ rouvre la dernière saisie de l’équipe : points ou annonces. Une correction de points recalcule aussi l’adversaire ; une correction d’annonces ne touche que l’équipe choisie. OK remplace l’ancienne saisie ; Annuler ne change rien.</p></section>
 <section><h2 data-i18n="help_finish_title">Gagner</h2><p data-i18n="help_finish_body">La première équipe à atteindre ou dépasser l’objectif gagne, y compris avec des annonces avant la donne. Les nouveaux ajouts sont alors bloqués. Fermez le panneau avec × pour corriger la dernière donne si nécessaire. Nouvelle partie enregistre le résultat et remet les scores à zéro.</p></section>
-</article>
+<section><h2 data-i18n="help_update_title">Mises à jour et hors ligne</h2><p data-i18n="help_update_body"> Au lancement et au retour dans l’application, une connexion Internet permet de vérifier la version du site et de charger une nouvelle version. Sans connexion, la version déjà enregistrée reste utilisable ; la partie est conservée.</p></section></article>
 <a class="back" href="./index.html" data-i18n="back">Retour au jeu</a>
 </main>
-<script src="./i18n.js?v=4.28"></script>
+<script src="./i18n.js?v=4.31"></script>
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(error=>console.warn("Offline setup:",error)));
+ const APP_VERSION="4.31";
+ let checkingVersion=false;
+ async function checkHostedVersion(){
+  if(checkingVersion)return;checkingVersion=true;
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6000);
+  try{
+   const registration=await navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"});
+   registration.update().catch(()=>{});
+   const response=await fetch("./version.json",{cache:"no-store",signal:controller.signal});
+   if(!response.ok)return;
+   const release=await response.json();
+   if(typeof release.version==="string"&&release.version!==APP_VERSION){
+    const target=new URL(location.href);target.searchParams.set("v",release.version);
+    if(target.searchParams.get("v")!==new URL(location.href).searchParams.get("v"))location.replace(target.href);
+   }
+  }catch(error){/* Sans réseau, conserver la version locale et la partie. */}
+  finally{clearTimeout(timer);checkingVersion=false;}
+ }
+ window.addEventListener("load",checkHostedVersion);
+ document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")checkHostedVersion();});
 }
 </script>
 </body>

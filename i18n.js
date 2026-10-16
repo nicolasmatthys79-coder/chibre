@@ -23,7 +23,7 @@ const TRANSLATIONS={
     "round": "Donne",
     "round_label": "Donne {number} {team}",
     "match": "Match",
-    "help": "comment ça marche ?",
+    "help": "Comment ça marche ?",
     "help_title": "Comment ça marche ?",
     "share": "Partager",
     "delete_question": "Supprimer cette partie ?",
@@ -131,7 +131,9 @@ const TRANSLATIONS={
     "language_menu": "Langue",
     "trump_guide": "Qui fait Atout ?",
     "help_trump_title": "Qui fait Atout ?",
-    "help_trump_body": "Dans le menu ⋮ sur smartphone ou Menu sur ordinateur, activez l’option : ✓ activée, ✕ désactivée. Glissez le pique vers l’équipe verte ou rose avant la première donne. Sa prochaine case de points est colorée ; sur l’ardoise, ses prénoms sont encadrés. Après chaque donne, l’indication passe automatiquement à l’autre équipe. Le choix est verrouillé après la première donne. Nouvelle partie conserve l’activation ; le premier clic sur des points ou une annonce demande qui commence. Retrouvez cette aide dans le même menu."
+    "help_trump_body": "Dans le menu ⋮ sur smartphone ou Menu sur ordinateur, activez l’option : ✓ activée, ✕ désactivée. Glissez le pique vers l’équipe verte ou rose avant la première donne. Sa prochaine case de points est colorée ; sur l’ardoise, ses prénoms sont encadrés. Après chaque donne, l’indication passe automatiquement à l’autre équipe. Le choix est verrouillé après la première donne. Nouvelle partie conserve l’activation ; le premier clic sur des points ou une annonce demande qui commence. Retrouvez cette aide dans le même menu.",
+    "help_update_title": "Mises à jour et hors ligne",
+    "help_update_body": " Au lancement et au retour dans l’application, une connexion Internet permet de vérifier la version du site et de charger une nouvelle version. Sans connexion, la version déjà enregistrée reste utilisable ; la partie est conservée."
   },
   "de": {
     "choose": "Sprache wählen",
@@ -264,7 +266,9 @@ const TRANSLATIONS={
     "language_menu": "Sprache",
     "trump_guide": "Wer macht Trumpf?",
     "help_trump_title": "Wer macht Trumpf?",
-    "help_trump_body": "Im Menü ⋮ auf dem Smartphone oder Menü auf dem Computer aktivieren: ✓ aktiv, ✕ inaktiv. Vor der ersten Runde das Pik zum grünen oder rosa Team ziehen. Dessen nächstes Punktefeld wird markiert; auf der Tafel erhalten die Namen einen Rahmen. Nach jeder Runde wechselt die Markierung automatisch. Nach der ersten Runde ist die Startwahl gesperrt. Neues Spiel behält die Aktivierung bei; beim ersten Antippen von Punkten oder Meldungen wird nach dem Startteam gefragt. Diese Hilfe steht im selben Menü."
+    "help_trump_body": "Im Menü ⋮ auf dem Smartphone oder Menü auf dem Computer aktivieren: ✓ aktiv, ✕ inaktiv. Vor der ersten Runde das Pik zum grünen oder rosa Team ziehen. Dessen nächstes Punktefeld wird markiert; auf der Tafel erhalten die Namen einen Rahmen. Nach jeder Runde wechselt die Markierung automatisch. Nach der ersten Runde ist die Startwahl gesperrt. Neues Spiel behält die Aktivierung bei; beim ersten Antippen von Punkten oder Meldungen wird nach dem Startteam gefragt. Diese Hilfe steht im selben Menü.",
+    "help_update_title": "Updates und offline",
+    "help_update_body": " Beim Start und bei der Rückkehr zur App wird online die Version der Website geprüft und eine neue Version geladen. Offline bleibt die gespeicherte Version nutzbar; das Spiel bleibt erhalten."
   },
   "it": {
     "choose": "Scegli la lingua",
@@ -397,7 +401,9 @@ const TRANSLATIONS={
     "language_menu": "Lingua",
     "trump_guide": "Chi fa atout?",
     "help_trump_title": "Chi fa atout?",
-    "help_trump_body": "Attiva l’opzione nel menu ⋮ sul telefono o Menu sul computer: ✓ attiva, ✕ disattiva. Prima della prima mano trascina la picche verso la squadra verde o rosa. La sua prossima casella viene colorata; sulla lavagna i nomi sono incorniciati. Dopo ogni mano l’indicazione passa all’altra squadra. La scelta iniziale si blocca dopo la prima mano. Nuova partita conserva l’attivazione; al primo tocco su punti o annunci viene chiesto chi comincia. Questa guida si trova nello stesso menu."
+    "help_trump_body": "Attiva l’opzione nel menu ⋮ sul telefono o Menu sul computer: ✓ attiva, ✕ disattiva. Prima della prima mano trascina la picche verso la squadra verde o rosa. La sua prossima casella viene colorata; sulla lavagna i nomi sono incorniciati. Dopo ogni mano l’indicazione passa all’altra squadra. La scelta iniziale si blocca dopo la prima mano. Nuova partita conserva l’attivazione; al primo tocco su punti o annunci viene chiesto chi comincia. Questa guida si trova nello stesso menu.",
+    "help_update_title": "Aggiornamenti e offline",
+    "help_update_body": " All’avvio e al ritorno nell’app, con Internet viene verificata la versione sul sito e caricata quella nuova. Senza connessione resta disponibile la versione salvata; la partita è conservata."
   },
   "rm": {
     "choose": "Tscherner la lingua",
@@ -530,7 +536,9 @@ const TRANSLATIONS={
     "language_menu": "Lingua",
     "trump_guide": "Tgi fa trumf?",
     "help_trump_title": "Tgi fa trumf?",
-    "help_trump_body": "Activai l’opziun en il menu ⋮ sin il telefon u Menu sin il computer: ✓ activa, ✕ deactiva. Avant l’emprima runda spustai il pic vers l’equipa verda u rosa. Ses proxim champ da puncts vegn colurà; sin la tavla èn ses nums en in rom. Suenter mintga runda mida l’indicaziun automaticamain a l’autra equipa. La tscherna iniziala è bloccada suenter l’emprima runda. Nov gieu mantegna l’activaziun; cun tutgar puncts u annunzias vegn dumandà tgi che cumenza. Quest agid è en il medem menu."
+    "help_trump_body": "Activai l’opziun en il menu ⋮ sin il telefon u Menu sin il computer: ✓ activa, ✕ deactiva. Avant l’emprima runda spustai il pic vers l’equipa verda u rosa. Ses proxim champ da puncts vegn colurà; sin la tavla èn ses nums en in rom. Suenter mintga runda mida l’indicaziun automaticamain a l’autra equipa. La tscherna iniziala è bloccada suenter l’emprima runda. Nov gieu mantegna l’activaziun; cun tutgar puncts u annunzias vegn dumandà tgi che cumenza. Quest agid è en il medem menu.",
+    "help_update_title": "Actualisaziuns ed offline",
+    "help_update_body": " Tar l’avertura ed il return en l’app vegn la versiun dal website controllada cun internet e chargiada ina nova versiun. Senza connexiun resta la versiun memorisada utilisabla; il gieu vegn mantegnì."
   },
   "en": {
     "choose": "Choose a language",
@@ -663,7 +671,9 @@ const TRANSLATIONS={
     "language_menu": "Language",
     "trump_guide": "Who chooses trumps?",
     "help_trump_title": "Who chooses trumps?",
-    "help_trump_body": "Enable the option in ⋮ on phones or Menu on desktop: ✓ on, ✕ off. Before the first round, drag the spade towards the green or pink team. Its next score field is highlighted; on the slate, its names are framed. After each round the indicator switches teams automatically. The initial choice locks after the first round. New game keeps the setting; the first tap on points or announcements asks who starts. This help is available in the same menu."
+    "help_trump_body": "Enable the option in ⋮ on phones or Menu on desktop: ✓ on, ✕ off. Before the first round, drag the spade towards the green or pink team. Its next score field is highlighted; on the slate, its names are framed. After each round the indicator switches teams automatically. The initial choice locks after the first round. New game keeps the setting; the first tap on points or announcements asks who starts. This help is available in the same menu.",
+    "help_update_title": "Updates and offline",
+    "help_update_body": " On launch and when returning to the app, an Internet connection allows it to check the hosted version and load an update. Offline, the saved version remains available and your game is kept."
   }
 };
 let currentLanguage="fr";

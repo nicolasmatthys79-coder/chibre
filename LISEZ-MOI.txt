@@ -1,4 +1,4 @@
-CHIBRE SUISSE — V4.28 — FICHIERS POUR LE SERVEUR
+CHIBRE SUISSE — V4.31 — FICHIERS POUR LE SERVEUR
 
 Transférez ces sept fichiers ensemble dans le dossier actuel de votre site :
 - index.html
@@ -36,3 +36,5 @@ Modifications incluses :
 
 Ouvrez une première fois le site HTTPS avec Internet et attendez son chargement.
 Le jeu, l’aide et les langues sont alors mis en cache pour une utilisation hors ligne.
+
+Publier tous les fichiers, y compris version.json et sw.js. Hébergement HTTPS requis pour le mode hors ligne.
