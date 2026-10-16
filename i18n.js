@@ -63,7 +63,7 @@ const TRANSLATIONS={
     "decrease": "Retirer {value} pour {team}",
     "info": "Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.",
     "help_start_title": "Commencer",
-    "help_start_body": "Choisissez 1000 points ou 1500 (♠ ♠ : points et annonces doublés). Si « Qui fait Atout ? » est activé, choisissez la première équipe au premier clic sur des points ou une annonce. L’atout alterne ensuite à chaque donne.",
+    "help_start_body": "Choisissez 1000 points ou 1500 (♠ ♠ : points et annonces doublés). Si « Qui fait Atout ? » est activé, choisissez la première équipe au premier clic sur des points ou une annonce. L’atout alterne ensuite à chaque donne. Dans Menu → Option, activez ou désactivez « Qui fait Atout ? » et l’affichage des numéros de donne sur l’ardoise : ✓ activé, ✕ désactivé.",
     "help_scores_title": "Saisir une donne",
     "help_scores_body": "Entrez 2 à 155 pour une équipe : l’autre reçoit automatiquement 157 moins ce nombre. Match inscrit 257 contre 0 et ne compte pas comme une annonce. Après validation, les compteurs d’annonces repartent à zéro ; leurs points restent acquis. La feuille et l’ardoise partagent les mêmes scores. Sur l’ardoise, touchez la zone noire pour saisir.",
     "help_order_title": "Remplir les donnes dans l’ordre",
@@ -135,7 +135,10 @@ const TRANSLATIONS={
     "help_update_title": "Mises à jour et hors ligne",
     "help_update_body": " Au lancement et au retour dans l’application, une connexion Internet permet de vérifier la version du site et de charger une nouvelle version. Sans connexion, la version déjà enregistrée reste utilisable ; la partie est conservée.",
     "help_home_title": "Ajouter à l’écran d’accueil",
-    "help_home_body": "Ouvrez le site du jeu sur votre téléphone. Sur Android, dans Chrome : menu ⋮ → Ajouter à l’écran d’accueil ou Installer l’application. Sur iPhone, dans Safari : Partager → Sur l’écran d’accueil → Ajouter. L’icône du jeu apparaît ensuite à côté de vos applications."
+    "help_home_body": "Ouvrez le site du jeu sur votre téléphone. Sur Android, dans Chrome : menu ⋮ → Ajouter à l’écran d’accueil ou Installer l’application. Sur iPhone, dans Safari : Partager → Sur l’écran d’accueil → Ajouter. L’icône du jeu apparaît ensuite à côté de vos applications.",
+    "help_trump_example": "Le sélecteur d’atout ressemble à ceci : glissez le ♠ vers l’équipe qui fait Atout.",
+    "options_menu": "Option",
+    "show_slate_rounds": "N° des donne dans ardoise"
   },
   "de": {
     "choose": "Sprache wählen",
@@ -200,7 +203,7 @@ const TRANSLATIONS={
     "decrease": "{value} für {team} abziehen",
     "info": "Erlaubte Eingaben: <b>2 bis 155 oder 257 für einen Match</b>. Bei 257 erhält das andere Team <b>0 Punkte</b> und ein Match wird automatisch gezählt. Sonst: <b>157 − eingegebene Punkte</b>. Im Modus 1500 wird die Gesamtsumme einmal verdoppelt.",
     "help_start_title": "Start",
-    "help_start_body": "1000 Punkte oder 1500 wählen (♠ ♠: Punkte und Weis doppelt). Ist die Trumpfhilfe aktiv, beim ersten Antippen von Punkten oder Meldungen das Startteam wählen. Danach wechselt Trumpf nach jeder Runde.",
+    "help_start_body": "1000 Punkte oder 1500 wählen (♠ ♠: Punkte und Weis doppelt). Ist die Trumpfhilfe aktiv, beim ersten Antippen von Punkten oder Meldungen das Startteam wählen. Danach wechselt Trumpf nach jeder Runde. Unter Menü → Optionen lassen sich Trumpfhilfe und Rundennummern auf der Tafel umschalten: ✓ an, ✕ aus.",
     "help_scores_title": "Runde eintragen",
     "help_scores_body": "Für ein Team 2 bis 155 eingeben: Das andere erhält 157 minus diese Zahl. Match trägt 257 zu 0 ein und zählt nicht als Weis. Danach werden die Weiszähler zurückgesetzt; gutgeschriebene Punkte bleiben erhalten. Blatt und Tafel teilen dieselben Punkte. Auf der Tafel die schwarze Fläche antippen.",
     "help_order_title": "Runden der Reihe nach ausfüllen",
@@ -272,7 +275,10 @@ const TRANSLATIONS={
     "help_update_title": "Updates und offline",
     "help_update_body": " Beim Start und bei der Rückkehr zur App wird online die Version der Website geprüft und eine neue Version geladen. Offline bleibt die gespeicherte Version nutzbar; das Spiel bleibt erhalten.",
     "help_home_title": "Zum Startbildschirm hinzufügen",
-    "help_home_body": "Öffnen Sie die Spielwebsite auf dem Telefon. Android, Chrome: Menü ⋮ → Zum Startbildschirm hinzufügen oder App installieren. iPhone, Safari: Teilen → Zum Home-Bildschirm → Hinzufügen. Das Spielsymbol erscheint neben Ihren Apps."
+    "help_home_body": "Öffnen Sie die Spielwebsite auf dem Telefon. Android, Chrome: Menü ⋮ → Zum Startbildschirm hinzufügen oder App installieren. iPhone, Safari: Teilen → Zum Home-Bildschirm → Hinzufügen. Das Spielsymbol erscheint neben Ihren Apps.",
+    "help_trump_example": "So sieht die Trumpfauswahl aus: Ziehen Sie das ♠ zum Team, das Trumpf macht.",
+    "options_menu": "Optionen",
+    "show_slate_rounds": "Runden auf der Tafel anzeigen"
   },
   "it": {
     "choose": "Scegli la lingua",
@@ -337,7 +343,7 @@ const TRANSLATIONS={
     "decrease": "Togli {value} per {team}",
     "info": "Valori ammessi: <b>da 2 a 155, oppure 257 per un match</b>. Inserendo 257, l’altra squadra riceve <b>0 punti</b> e viene contato automaticamente un match. Altrimenti: <b>157 − punti inseriti</b>. In modalità 1500 il totale viene raddoppiato una sola volta.",
     "help_start_title": "Iniziare",
-    "help_start_body": "Scegli 1000 punti o 1500 (♠ ♠: punti e annunci raddoppiati). Se l’aiuto per l’atout è attivo, scegli la prima squadra al primo tocco su punti o annunci. L’atout alterna dopo ogni mano.",
+    "help_start_body": "Scegli 1000 punti o 1500 (♠ ♠: punti e annunci raddoppiati). Se l’aiuto per l’atout è attivo, scegli la prima squadra al primo tocco su punti o annunci. L’atout alterna dopo ogni mano. In Menu → Opzioni puoi attivare o disattivare l’aiuto per l’atout e i numeri delle mani sulla lavagna: ✓ attivo, ✕ disattivo.",
     "help_scores_title": "Inserire una mano",
     "help_scores_body": "Inserisci da 2 a 155 per una squadra: l’altra riceve 157 meno il numero inserito. Match registra 257 a 0 e non è un annuncio. I contatori degli annunci si azzerano dopo la mano; i punti restano acquisiti. Foglio e lavagna condividono i punteggi. Sulla lavagna tocca il nero per inserire.",
     "help_order_title": "Compilare le mani in ordine",
@@ -409,7 +415,10 @@ const TRANSLATIONS={
     "help_update_title": "Aggiornamenti e offline",
     "help_update_body": " All’avvio e al ritorno nell’app, con Internet viene verificata la versione sul sito e caricata quella nuova. Senza connessione resta disponibile la versione salvata; la partita è conservata.",
     "help_home_title": "Aggiungere alla schermata Home",
-    "help_home_body": "Apri il sito del gioco sul telefono. Android, Chrome: menu ⋮ → Aggiungi a schermata Home oppure Installa app. iPhone, Safari: Condividi → Aggiungi alla schermata Home → Aggiungi. L’icona del gioco apparirà accanto alle tue applicazioni."
+    "help_home_body": "Apri il sito del gioco sul telefono. Android, Chrome: menu ⋮ → Aggiungi a schermata Home oppure Installa app. iPhone, Safari: Condividi → Aggiungi alla schermata Home → Aggiungi. L’icona del gioco apparirà accanto alle tue applicazioni.",
+    "help_trump_example": "Il selettore dell’atout è questo: trascina il ♠ verso la squadra che fa atout.",
+    "options_menu": "Opzioni",
+    "show_slate_rounds": "Mostra le mani sulla lavagna"
   },
   "rm": {
     "choose": "Tscherner la lingua",
@@ -474,7 +483,7 @@ const TRANSLATIONS={
     "decrease": "Deductar {value} per {team}",
     "info": "Endataziuns permessas: <b>2 fin 155 u 257 per in match</b>. Cun 257 survegn l’autra equipa <b>0 puncts</b> ed in match vegn dumbrà automaticamain. Uschiglio: <b>157 − puncts endatads</b>. En il modus 1500 vegn il total dublegià ina suletta giada.",
     "help_start_title": "Cumenzar",
-    "help_start_body": "Tschernì 1000 puncts u 1500 (♠ ♠: puncts ed annunzias dubels). Sche l’agid per trumf è activ, tschernì l’emprima equipa cun tutgar puncts u annunzias. Trumf mida suenter mintga runda.",
+    "help_start_body": "Tschernì 1000 puncts u 1500 (♠ ♠: puncts ed annunzias dubels). Sche l’agid per trumf è activ, tschernì l’emprima equipa cun tutgar puncts u annunzias. Trumf mida suenter mintga runda. En Menu → Opziuns pudais activar u deactivar l’agid per trumf ed ils numers da runda sin la tavla: ✓ activ, ✕ deactivà.",
     "help_scores_title": "Endatar ina runda",
     "help_scores_body": "Endatai 2 fin 155 per in’equipa: l’autra survegn 157 minus quest dumber. Match noda 257 a 0 e na quinta betg sco annunzia. Ils contaders d’annunzias vegnan mess a nulla suenter la runda; ils puncts restan quintads. Formular e tavla dovran ils medems puncts. Sin la tavla tutgai il nair per endatar.",
     "help_order_title": "Emplenir las rundas en successiun",
@@ -546,7 +555,10 @@ const TRANSLATIONS={
     "help_update_title": "Actualisaziuns ed offline",
     "help_update_body": " Tar l’avertura ed il return en l’app vegn la versiun dal website controllada cun internet e chargiada ina nova versiun. Senza connexiun resta la versiun memorisada utilisabla; il gieu vegn mantegnì.",
     "help_home_title": "Agiuntar al visur inizial",
-    "help_home_body": "Avri la pagina dal gieu sin il telefon. Android, Chrome: menu ⋮ → Agiuntar al visur inizial u Installar l’applicaziun. iPhone, Safari: Parter → Agiuntar al visur inizial → Agiuntar. L’icona dal gieu cumpara sper vossas applicaziuns."
+    "help_home_body": "Avri la pagina dal gieu sin il telefon. Android, Chrome: menu ⋮ → Agiuntar al visur inizial u Installar l’applicaziun. iPhone, Safari: Parter → Agiuntar al visur inizial → Agiuntar. L’icona dal gieu cumpara sper vossas applicaziuns.",
+    "help_trump_example": "La tscherna da trumf vesa ora uschia: spustai il ♠ vers l’equipa che fa trumf.",
+    "options_menu": "Opziuns",
+    "show_slate_rounds": "Mussar las rundas sin la tavla"
   },
   "en": {
     "choose": "Choose a language",
@@ -611,7 +623,7 @@ const TRANSLATIONS={
     "decrease": "Remove {value} for {team}",
     "info": "Allowed scores: <b>2 to 155, or 257 for a match</b>. Entering 257 gives the other team <b>0 points</b> and automatically counts one match. Otherwise: <b>157 − entered score</b>. In 1500 mode, the total is doubled once.",
     "help_start_title": "Start",
-    "help_start_body": "Choose 1000 points or 1500 (♠ ♠: points and announcements doubled). If the trump guide is enabled, choose the starting team when you first tap points or announcements. Trumps then alternate after each round.",
+    "help_start_body": "Choose 1000 points or 1500 (♠ ♠: points and announcements doubled). If the trump guide is enabled, choose the starting team when you first tap points or announcements. Trumps then alternate after each round. In Menu → Options, toggle the trump guide and round numbers on the slate: ✓ on, ✕ off.",
     "help_scores_title": "Enter a round",
     "help_scores_body": "Enter 2 to 155 for either team: the other receives 157 minus that number. Match records 257 against 0 and is not an announcement. Announcement counters reset after the round; earned points remain credited. The sheet and slate share scores. On the slate, tap the black area to enter points.",
     "help_order_title": "Fill in rounds in order",
@@ -683,7 +695,10 @@ const TRANSLATIONS={
     "help_update_title": "Updates and offline",
     "help_update_body": " On launch and when returning to the app, an Internet connection allows it to check the hosted version and load an update. Offline, the saved version remains available and your game is kept.",
     "help_home_title": "Add to your home screen",
-    "help_home_body": "Open the game website on your phone. Android, Chrome: menu ⋮ → Add to Home screen or Install app. iPhone, Safari: Share → Add to Home Screen → Add. The game icon then appears alongside your apps."
+    "help_home_body": "Open the game website on your phone. Android, Chrome: menu ⋮ → Add to Home screen or Install app. iPhone, Safari: Share → Add to Home Screen → Add. The game icon then appears alongside your apps.",
+    "help_trump_example": "This is the trump selector: drag the ♠ towards the team choosing trumps.",
+    "options_menu": "Options",
+    "show_slate_rounds": "Show rounds on the slate"
   }
 };
 let currentLanguage="fr";
@@ -717,7 +732,7 @@ function applyLanguage(){
  const links=document.querySelectorAll("a[data-official]");links.forEach(el=>{const url=new URL(el.href);if(el.dataset.official==="google")url.searchParams.set("hl",currentLanguage==="rm"?"de":currentLanguage);else url.pathname="/"+(currentLanguage==="rm"?"de-ch":currentLanguage==="de"?"de-ch":currentLanguage==="it"?"it-ch":currentLanguage==="en"?"en-gb":"fr-ch")+"/guide/iphone/iphea86e5236/ios";el.href=url.href;});
 }
 function languageMenuPosition(viewWidth,viewHeight,button,menuHeight){
- const width=Math.min(190,Math.max(0,viewWidth-16));
+ const width=Math.min(285,Math.max(0,viewWidth-16));
  const left=Math.max(8,Math.min(button.right-width,viewWidth-width-8));
  const top=Math.max(8,Math.min(button.bottom+6,viewHeight-menuHeight-8));
  return {left,top,width};
@@ -731,7 +746,7 @@ function positionLanguageMenu(){
   menu.style.left=pos.left+"px";menu.style.top=pos.top+"px";menu.style.width=pos.width+"px";
  }else{menu.style.left="";menu.style.top="";menu.style.width="";}
 }
-function closeLanguageMenu(){const menu=document.getElementById("languageChoices"),flag=getLanguageTrigger();if(menu)menu.hidden=true;const list=document.getElementById("languageList");if(list)list.classList.remove("is-open");const toggle=document.querySelector(".language-submenu-toggle");if(toggle)toggle.setAttribute("aria-expanded","false");if(flag)flag.setAttribute("aria-expanded","false");}
+function closeLanguageMenu(){const menu=document.getElementById("languageChoices"),flag=getLanguageTrigger();if(menu)menu.hidden=true;const options=document.getElementById("appOptions");if(options)options.hidden=true;document.getElementById("optionsToggle")?.setAttribute("aria-expanded","false");const list=document.getElementById("languageList");if(list)list.classList.remove("is-open");const toggle=document.querySelector(".language-submenu-toggle");if(toggle)toggle.setAttribute("aria-expanded","false");if(flag)flag.setAttribute("aria-expanded","false");}
 function setLanguage(lang){
  if(!Object.hasOwn(TRANSLATIONS,lang)) return;
  currentLanguage=lang;try{localStorage.setItem("chibre_language",lang);}catch(error){}

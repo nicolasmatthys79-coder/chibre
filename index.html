@@ -343,6 +343,12 @@ h1{font-family:Georgia,serif}
 }
 
 .trump-track{border:1px solid rgba(0,0,0,.5);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+
+.info-actions .contact-email{grid-column:1/3;justify-self:start;color:inherit;text-decoration:none;font-size:12px;overflow-wrap:anywhere}.info-actions{align-items:center}
+
+#appOptions[hidden]{display:none}#appOptions{padding-left:5px;border-left:2px solid #d8d4c8}.language-choices .rounds-menu-choice{display:flex;justify-content:space-between;gap:8px;align-items:center}.rounds-menu-choice span:last-child{font-weight:700}
+
+.app-menu .language-choices{min-width:285px;width:285px;max-width:calc(100vw - 16px)}@media(max-width:600px){.app-menu .language-choices{min-width:0;width:285px}}
 </style>
 </head>
 <body>
@@ -368,7 +374,7 @@ h1{font-family:Georgia,serif}
 <dialog id="slateDialog" class="slate-dialog" aria-labelledby="slateTitle">
 
 <button type="button" class="slate-close" onclick="closeSlate()" data-i18n-aria-label="slate_close" aria-label="Fermer l’ardoise">×</button>
-<div class="slate-content"><div class="slate-toolbar"><button type="button" id="slateTitle" class="slate-title-menu" data-i18n="slate_title" onclick="toggleSlateOptions()" aria-expanded="false" aria-controls="slateOptions">Ardoise</button><button type="button" class="slate-new-game" onclick="resetAll();renderSlate()" data-i18n="new">Nouvelle partie</button><button type="button" class="slate-new-game" onclick="openSlateHistory()" data-i18n="history">Historique</button></div>
+<div class="slate-content"><div class="slate-toolbar"><h2 id="slateTitle" data-i18n="slate_title">Ardoise</h2><button type="button" class="slate-new-game" onclick="resetAll();renderSlate()" data-i18n="new">Nouvelle partie</button><button type="button" class="slate-new-game" onclick="openSlateHistory()" data-i18n="history">Historique</button></div>
 <div id="slateOptions" class="slate-options" hidden><button type="button" id="roundNumberToggle" onclick="toggleRoundNumbers()" aria-pressed="true"></button><div class="slate-options-actions"><button type="button" onclick="closeSlateOptions(false)" data-i18n="cancel">Annuler</button><button type="button" onclick="closeSlateOptions(true)">OK</button></div></div><div class="slate-halves"><section class="slate-half opposite"><div class="slate-team-line"><button type="button" id="slateNameB" class="slate-name-edit" onclick="openSlateName('B')" data-i18n-title="edit_name" title="Modifier les noms"></button><span id="slateTotalB"></span></div><div class="slate-score-area"><div id="slatePointsB" class="slate-z-area"></div><div id="slateRoundNumbersB" class="slate-round-numbers" aria-live="polite"></div></div></section>
 <button type="button" id="slateDoubleToggle" class="slate-double-toggle" onclick="toggleSlateDouble()" aria-pressed="false"></button>
 <section class="slate-half"><div class="slate-team-line"><button type="button" id="slateNameA" class="slate-name-edit" onclick="openSlateName('A')" data-i18n-title="edit_name" title="Modifier les noms"></button><span id="slateTotalA"></span></div><div class="slate-score-area"><div id="slatePointsA" class="slate-z-area"></div><div id="slateRoundNumbersA" class="slate-round-numbers" aria-live="polite"></div></div></section></div></div></dialog>
@@ -391,7 +397,7 @@ h1{font-family:Georgia,serif}
     <h1>Chibre <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
     
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Option</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
 
   </div>
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
@@ -421,7 +427,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><span class="app-version">V4.41</span></div></section>
+<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.46</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -445,7 +451,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.41"></script>
+<script src="./i18n.js?v=4.46"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -688,6 +694,19 @@ function visibleRoundCount(){
  let lastFilled=0;
  state.rounds.forEach((round,index)=>{if(round.a!==null || round.b!==null)lastFilled=index+1;});
  return Math.min(NROUNDS,Math.max(8,lastFilled+(state.winnerTeam?0:1)));
+}
+function toggleAppOptions(){
+ const panel=document.getElementById("appOptions");panel.hidden=!panel.hidden;
+ document.getElementById("optionsToggle").setAttribute("aria-expanded",String(!panel.hidden));updateMenuRounds();positionLanguageMenu();
+}
+function updateMenuRounds(){
+ const status=document.getElementById("menuRoundsStatus");status.textContent=showSlateRoundNumbers?"✓":"✕";
+ status.parentElement.setAttribute("aria-pressed",String(showSlateRoundNumbers));
+}
+function toggleMenuRounds(){
+ showSlateRoundNumbers=!showSlateRoundNumbers;draftSlateRoundNumbers=showSlateRoundNumbers;
+ try{localStorage.setItem("chibre_show_round_numbers",String(showSlateRoundNumbers));}catch(error){}
+ updateMenuRounds();renderSlate();positionLanguageMenu();
 }
 function toggleLanguageList(){
  const list=document.getElementById("languageList"),button=document.querySelector(".language-submenu-toggle");
@@ -1419,7 +1438,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.41";
+ const APP_VERSION="4.46";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;
