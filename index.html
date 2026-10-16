@@ -311,7 +311,7 @@ html:not(.slate-open){overflow-y:auto}.language-dialog{max-height:calc(100dvh - 
  <aside class="card ann b"><h2 id="annTitleB" data-i18n="ann">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.112</span></div></section>
+<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.114</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -335,7 +335,7 @@ html:not(.slate-open){overflow-y:auto}.language-dialog{max-height:calc(100dvh - 
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=3.112"></script>
+<script src="./i18n.js?v=3.114"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -977,7 +977,7 @@ function openSlateEdit(team){
  if(kind==="Manual")openSlateManual(team,true);else openSlateAnn(team);
  slateEditContext={team,entry};
  document.getElementById("slate"+kind+"Value").value=entry.value;
- document.getElementById("slate"+kind+"Title").textContent=kind==="Manual"&&entry.roundNumber?t("edit_round",{number:entry.roundNumber,team:teamName(team)}):t("slate_edit",{team:teamName(team)});
+ document.getElementById("slate"+kind+"Title").textContent=kind==="Manual"&&entry.roundNumber?t("edit_round",{number:entry.roundNumber,team:teamName(team)}):kind==="Ann"?t("edit_announcement"):t("slate_edit",{team:teamName(team)});
  document.getElementById("slate"+kind+"Submit").textContent=t("update");
 }
 let slateManualTeam=null;
@@ -1063,7 +1063,7 @@ function openSlateAnnPicker(team,editing=false){
  annPickerTeam=team;annPickerEditing=editing;slateEditContext=null;
  const entry=state.slateLastEntries?.[team];
  annPickerDraft=editing&&entry?.selection?{...entry.selection}:{};
- document.getElementById("annPickerTitle").textContent=t("ann_manual_title",{team:teamName(team)});
+ document.getElementById("annPickerTitle").textContent=editing?t("edit_announcement"):t("ann_manual_title",{team:teamName(team)});
  renderAnnPicker();document.getElementById("annPickerDialog").showModal();
 }
 function confirmAnnPicker(){
