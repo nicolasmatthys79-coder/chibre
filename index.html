@@ -300,18 +300,18 @@ html:not(.slate-open){overflow-y:auto}.language-dialog{max-height:calc(100dvh - 
    <button id="mode1500" onclick="setMode(1500)" data-i18n="double">1500 • ♠ ♠</button>
  </div>
  <div class="head">
-  <div class="team a"><small data-i18n="team_a">Équipe Nous</small><input class="name" id="nameA" placeholder="Mettez vos noms" data-i18n-placeholder="names"><div class="total" id="totalA">0</div></div>
-  <div class="team b"><small data-i18n="team_b">Équipe Eux</small><input class="name" id="nameB" placeholder="Mettez vos noms" data-i18n-placeholder="names"><div class="total" id="totalB">0</div></div>
+  <div class="team a"><input class="name" id="nameA" placeholder="Mettez vos noms" data-i18n-placeholder="names"><div class="total" id="totalA">0</div></div>
+  <div class="team b"><input class="name" id="nameB" placeholder="Mettez vos noms" data-i18n-placeholder="names"><div class="total" id="totalB">0</div></div>
  </div>
 </section>
 
 <div class="layout">
- <aside class="card ann a"><h2 id="annTitleA" data-i18n="ann">Annonces Nous</h2><div id="annA"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnA">0</span></div></aside>
+ <aside class="card ann a"><h2 id="annTitleA">Annonces Nous</h2><div id="annA"></div><div class="annsum"><span id="annTeamA">Total annonces</span><span id="sumAnnA">0</span></div></aside>
  <main class="card rounds"><h2 data-i18n="round_points">Points des donnes</h2><div class="rhead"><span data-i18n="round">Donne</span><span id="labelA">A</span><span></span><span id="labelB">B</span></div><div id="rounds"></div></main>
- <aside class="card ann b"><h2 id="annTitleB" data-i18n="ann">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span data-i18n="ann">Annonces</span><span id="sumAnnB">0</span></div></aside>
+ <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.114</span></div></section>
+<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.123</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -335,7 +335,7 @@ html:not(.slate-open){overflow-y:auto}.language-dialog{max-height:calc(100dvh - 
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=3.114"></script>
+<script src="./i18n.js?v=3.123"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -430,12 +430,22 @@ function recheckCorrectedWinner(){
   state.winnerTeam=null;winnerShownFor=null;dismissedWinner=null;
  }
 }
+function syncSharedRound(i){
+ if(!state.slateLastEntries)state.slateLastEntries={};
+ for(const team of ["A","B"]){
+  const key=team.toLowerCase(),other=key==="a"?"b":"a",r=state.rounds[i];
+  state.slateLastEntries[team]={kind:"points",value:r[key],rawValue:r[key],rawOther:r[other],match:r[key]===257,roundIndex:i,roundNumber:i+1};
+ }
+}
+function clearSharedRoundEntries(){
+ for(const team of ["A","B"]){const entry=state.slateLastEntries?.[team];if(Number.isInteger(entry?.roundIndex)&&state.rounds[entry.roundIndex]?.a===null)delete state.slateLastEntries[team];}
+}
 function setRound(i,team,raw){
  if(state.winnerTeam&&i!==lastCompletedRound())return;
  if(i>=visibleRoundCount()) return;
  if(state.rounds.slice(0,i).some(r=>r.a===null || r.b===null)) return;
  const r=state.rounds[i];
- if(raw===""){state.rounds.slice(i).forEach(r=>{r.a=null;r.b=null});recheckCorrectedWinner();save();render();return}
+ if(raw===""){state.rounds.slice(i).forEach(r=>{r.a=null;r.b=null});clearSharedRoundEntries();recheckCorrectedWinner();save();render();renderSlate();return}
  const n=Number(raw);
  if(!Number.isInteger(n) || (n!==257 && (n<2 || n>MAX-2))){
    alert(t("validation"));
@@ -445,10 +455,11 @@ function setRound(i,team,raw){
  const other=n===257?0:MAX-n;
  if(wasCompleted)dismissedWinner=null;
  if(team==="a"){r.a=n;r.b=other}else{r.b=n;r.a=other}
+ syncSharedRound(i);
  resetAnnCounters();
  recheckCorrectedWinner();
  recordWinner(team.toUpperCase());
- save();render();
+ save();render();renderSlate();
 }
 function currentAnnCounters(team){
  if(!state.currentAnnCounters)state.currentAnnCounters={A:{},B:{}};
@@ -456,6 +467,15 @@ function currentAnnCounters(team){
 }
 function resetAnnCounters(){state.currentAnnCounters={A:{},B:{}};state.annCounterEpoch=(state.annCounterEpoch||0)+1;}
 function currentAnnCount(team){return Object.values(currentAnnCounters(team)).reduce((sum,n)=>sum+n,0);}
+const announcementLimits={20:6,50:4,100:3};
+const announcementCards={20:3,50:4,100:5,150:4,200:4};
+function announcementCardCount(counts){return Object.entries(announcementCards).reduce((sum,[key,cards])=>sum+(counts[key]||0)*cards,0);}
+function announcementCapacity(team,key,removed=0){
+ const counts=currentAnnCounters(team),cards=announcementCards[key];
+ const countLimit=(announcementLimits[key]??Infinity)-(counts[key]||0)+removed;
+ const cardLimit=cards?Math.floor((18-announcementCardCount(counts)+removed*cards)/cards):Infinity;
+ return Math.max(0,Math.min(countLimit,cardLimit));
+}
 function changeAnn(team,key,delta){
  if(state.winnerTeam)return;
  const obj=team==="A"?state.annA:state.annB;
@@ -474,6 +494,7 @@ function changeAnn(team,key,delta){
        state.rounds[idx].a=0;
        state.rounds[idx].b=257;
      }
+     syncSharedRound(idx);
 
    }else{
      // Retire le dernier MATCH de cette équipe et libère sa ligne.
@@ -481,16 +502,18 @@ function changeAnn(team,key,delta){
        const r=state.rounds[i];
        if((team==="A" && r.a===257 && r.b===0) || (team==="B" && r.b===257 && r.a===0)){
          state.rounds.slice(i).forEach(round=>{round.a=null;round.b=null});
+         clearSharedRoundEntries();
 
          break;
        }
      }
    }
    recordWinner(team);
-   save();render();return;
+   save();render();renderSlate();return;
  }
 
  const counters=currentAnnCounters(team);
+ if(delta>0&&announcementCapacity(team,key)<delta)return;
  if(delta<0&&!(counters[key]>0))return;
  counters[key]=Math.max(0,(counters[key]||0)+delta);
  obj[key]=Math.max(0,(obj[key]||0)+delta);
@@ -544,7 +567,7 @@ function makeAnnouncements(team){
   const plus=document.createElement("button");plus.textContent="+";plus.onclick=()=>changeAnn(team,x.key,1);
   minus.setAttribute("aria-label",t("decrease",{value:x.key==="match"?t("match"):x.value,team:teamName(team)}));
   plus.setAttribute("aria-label",t("increase",{value:x.key==="match"?t("match"):x.value,team:teamName(team)}));
-  minus.disabled=!!state.winnerTeam;plus.disabled=!!state.winnerTeam;
+  minus.disabled=!!state.winnerTeam;plus.disabled=!!state.winnerTeam||(x.key!=="match"&&announcementCapacity(team,x.key)<=0);
   row.append(label,minus,count,plus);root.appendChild(row);
  });
 }
@@ -577,6 +600,7 @@ function render(){
  document.getElementById("labelA").textContent=nA;document.getElementById("labelB").textContent=nB;
  document.getElementById("annTitleA").textContent=t("ann_title",{name:teamName("A")});
  document.getElementById("annTitleB").textContent=t("ann_title",{name:teamName("B")});
+ document.getElementById("annTeamA").textContent=t("announcement_total");document.getElementById("annTeamB").textContent=t("announcement_total");
  const aa=annTotal("A"),ab=annTotal("B");
  document.getElementById("sumAnnA").textContent=aa*factor();document.getElementById("sumAnnB").textContent=ab*factor();
  const f=factor();
@@ -863,7 +887,7 @@ function slateDisplayBreakdown(total,team){
  if(raw===undefined){const last=state.slateLastEntries?.[team];raw=last?.selection?((last.selection[50]||0)+(last.selection[150]||0))*50*(last.rawValue/last.value):0;}
  const amount=(((state[team==="A"?"annA":"annB"]?.[50]||0)+(state[team==="A"?"annA":"annB"]?.[150]||0))*50+(raw||0))*factor();
  const fifties=Math.min(Math.floor(total/50),Math.floor(amount/50));
- const twentyAmount=((state[team==="A"?"annA":"annB"]?.[20]||0)*20+(state.slateTwentyPoints?.[team]||0))*factor();
+ const twentyAmount=((state[team==="A"?"annA":"annB"]?.[20]||0)*20+(state.slateTwentyPoints?.[team]||0)+state.rounds.filter(r=>r[team.toLowerCase()]===20).length*20)*factor();
  const twenties=Math.min(Math.floor((total-fifties*50)/20),Math.floor(twentyAmount/20));
  const points=slateBreakdown(total-fifties*50-twenties*20);points.fifties+=fifties;points.twenties+=twenties;return points;
 }
@@ -912,6 +936,13 @@ function slateTransaction(team,value,kind){
  state.usedSlate=true;
  const key=team.toLowerCase(),other=key==="a"?"b":"a";
  const previous=slateEditContext?.team===team?slateEditContext.entry:null;
+ if(kind==="points"&&(!previous||Number.isInteger(previous.roundIndex))){
+  const index=previous?previous.roundIndex:state.rounds.findIndex(r=>r.a===null&&r.b===null);
+  if(index<0){alert(t("full"));return false;}
+  slateEditContext=null;
+  setRound(index,key,String(value));
+  return true;
+ }
  const roundNumber=kind==="points"?(previous?.roundNumber||nextSlateRound()):null;
  if(kind==="points"&&!previous)state.slateRoundCount=slateCompletedRounds()+1;
  if(!state.slateFiftyPoints){state.slateFiftyPoints={A:0,B:0};["A","B"].forEach(t=>{const last=state.slateLastEntries?.[t];if(last?.selection?.[50]){const raw=last.selection[50]*50*(last.rawValue/last.value);state.slateFiftyPoints[t]=raw;if(last.fiftyRaw===undefined)last.fiftyRaw=raw;}});}
@@ -1030,6 +1061,19 @@ document.getElementById("slateManualDialog").addEventListener("close",()=>{slate
 document.getElementById("slateAnnDialog").addEventListener("close",()=>{slateEditContext=null;});
 let annPickerTeam=null,annPickerDraft={},annPickerEditing=false;
 const annPickerValues=[20,50,100,150,200];
+function annPickerBase(){
+ const entry=annPickerEditing?state.slateLastEntries?.[annPickerTeam]:null;
+ const removed=entry?.counterEpoch===(state.annCounterEpoch||0)?entry.selection||{}:{};
+ const counts={...currentAnnCounters(annPickerTeam)};
+ for(const key of annPickerValues)counts[key]=Math.max(0,(counts[key]||0)-(removed[key]||0));
+ return counts;
+}
+function annPickerCapacity(value){
+ const base=annPickerBase(),cards=announcementCards[value];
+ const otherCards=annPickerValues.reduce((sum,key)=>sum+(key===value?0:(annPickerDraft[key]||0)*announcementCards[key]),0);
+ return Math.max(0,Math.min((announcementLimits[value]??Infinity)-(base[value]||0),Math.floor((18-announcementCardCount(base)-otherCards)/cards)));
+}
+
 function annPickerAmount(){return annPickerValues.reduce((sum,value)=>sum+(annPickerDraft[value]||0)*value,0);}
 function renderAnnPicker(){
  const root=document.getElementById("annPickerRows");root.innerHTML="";
@@ -1052,7 +1096,7 @@ function renderAnnPicker(){
   const minus=document.createElement("button");minus.type="button";minus.textContent="−";minus.disabled=!(annPickerDraft[value]>0);
   minus.setAttribute("aria-label",t("decrease",{value,team:teamName(annPickerTeam)}));minus.onclick=()=>{annPickerDraft[value]=Math.max(0,(annPickerDraft[value]||0)-1);renderAnnPicker();};
   const count=document.createElement("span");count.textContent=annPickerDraft[value]||0;count.className="count";
-  const plus=document.createElement("button");plus.type="button";plus.textContent="+";plus.setAttribute("aria-label",t("increase",{value,team:teamName(annPickerTeam)}));plus.onclick=()=>{annPickerDraft[value]=(annPickerDraft[value]||0)+1;renderAnnPicker();};
+  const plus=document.createElement("button");plus.type="button";plus.textContent="+";plus.setAttribute("aria-label",t("increase",{value,team:teamName(annPickerTeam)}));plus.disabled=(annPickerDraft[value]||0)>=annPickerCapacity(value);plus.onclick=()=>{if((annPickerDraft[value]||0)>=annPickerCapacity(value))return;annPickerDraft[value]=(annPickerDraft[value]||0)+1;renderAnnPicker();};
   row.append(label,minus,count,plus);root.appendChild(row);
  });
  document.getElementById("annPickerTotal").textContent=t("ann")+" : "+annPickerAmount()+" "+t("pts");
@@ -1068,6 +1112,7 @@ function openSlateAnnPicker(team,editing=false){
 }
 function confirmAnnPicker(){
  if(state.winnerTeam&&!annPickerEditing){document.getElementById("annPickerDialog").close();return;}
+ if(annPickerValues.some(value=>(annPickerDraft[value]||0)>annPickerCapacity(value)))return;
  const value=annPickerAmount();
  const oldEntry=annPickerEditing?state.slateLastEntries[annPickerTeam]:null;
  const oldSelection=oldEntry?.counterEpoch===(state.annCounterEpoch||0)?oldEntry.selection||{}:{};
