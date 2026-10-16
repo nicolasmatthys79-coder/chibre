@@ -305,9 +305,15 @@ h1{font-family:Georgia,serif}
 .trump-track.locked{cursor:default}.trump-track.locked button{opacity:1;cursor:default}
 
 .language-choices .trump-menu-choice{display:flex;justify-content:space-between;align-items:center;gap:8px}#trumpGuideStatus{font-weight:700;white-space:nowrap}
+
+.slate-name-edit.trump-name-green{outline:2px solid #c8e6d5;outline-offset:2px;border-radius:5px}.slate-name-edit.trump-name-pink{outline:2px solid #edc6cd;outline-offset:2px;border-radius:5px}
+
+.slate-name-edit.trump-name-green,.slate-name-edit.trump-name-pink{min-height:28px;padding-top:0;padding-bottom:0;line-height:1.1;outline-offset:1px}
 </style>
 </head>
 <body>
+<dialog id="trumpRequiredDialog" class="language-dialog" aria-labelledby="trumpRequiredTitle"><h2 id="trumpRequiredTitle" data-i18n="trump_guide">Qui fait Atout ?</h2><div style="display:flex;gap:12px;justify-content:center"><button type="button" id="trumpChooseA" onclick="confirmInitialTrump('a')" style="background:#c8e6d5"></button><button type="button" id="trumpChooseB" onclick="confirmInitialTrump('b')" style="background:#edc6cd"></button></div></dialog>
+
 <dialog id="newGameDialog" class="language-dialog" aria-labelledby="newGameQuestion"><h2 id="newGameQuestion" data-i18n="reset_question">Nouvelle partie ?</h2><form method="dialog" style="justify-content:center"><button value="no" data-i18n="no" autofocus>Non</button><button value="yes" data-i18n="yes">Oui</button></form></dialog>
 <dialog id="slateNameDialog" class="language-dialog" aria-labelledby="slateNameTitle"><h2 id="slateNameTitle" data-i18n="edit_name">Modifier les noms</h2><form id="slateNameForm" style="display:block"><label for="slateNameValue" data-i18n="names">Mettez vos noms</label><input id="slateNameValue" type="text" autocomplete="off" style="display:block;width:100%;min-height:48px;margin:10px 0;padding:8px;font:inherit;box-sizing:border-box"><div style="display:flex;justify-content:center;gap:12px"><button type="button" onclick="document.getElementById('slateNameDialog').close()" data-i18n="cancel">Annuler</button><button type="submit" value="yes">OK</button></div></form></dialog>
 <dialog id="annPickerDialog" class="language-dialog ann-picker" aria-labelledby="annPickerTitle"><h2 id="annPickerTitle"></h2><div id="annPickerRows"></div><p id="annPickerTotal" aria-live="polite"></p><form method="dialog"><button value="cancel" data-i18n="cancel">Annuler</button><button type="button" value="yes" onclick="confirmAnnPicker()">OK</button></form></dialog>
@@ -362,7 +368,7 @@ h1{font-family:Georgia,serif}
         <line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line>
       </svg>
     </button>
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait l’atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
 
   </div>
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
@@ -392,7 +398,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V4.17</span></div></section>
+<section class="card info"><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V4.23</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -416,7 +422,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.17"></script>
+<script src="./i18n.js?v=4.23"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -522,6 +528,7 @@ function clearSharedRoundEntries(){
  for(const team of ["A","B"]){const entry=state.slateLastEntries?.[team];if(Number.isInteger(entry?.roundIndex)&&state.rounds[entry.roundIndex]?.a===null)delete state.slateLastEntries[team];}
 }
 function setRound(i,team,raw){
+ if(requireInitialTrump())return;
  if(i<lastCompletedRound())return;
  if(state.winnerTeam&&i!==lastCompletedRound())return;
  if(i>=visibleRoundCount()) return;
@@ -559,6 +566,7 @@ function announcementCapacity(team,key,removed=0){
  return Math.max(0,Math.min(countLimit,cardLimit));
 }
 function changeAnn(team,key,delta){
+ if(requireInitialTrump())return;
  if(state.winnerTeam)return;
  const obj=team==="A"?state.annA:state.annB;
 
@@ -686,11 +694,22 @@ function fitRoundSheet(){
  sheet.style.setProperty("--visible-rounds",visibleRoundCount());
 }
 window.addEventListener("resize",()=>requestAnimationFrame(fitRoundSheet));
+function requireInitialTrump(){
+ if(!state.trumpPending)return false;
+ const dialog=document.getElementById("trumpRequiredDialog");
+ document.getElementById("trumpChooseA").textContent=teamName("A");document.getElementById("trumpChooseB").textContent=teamName("B");
+ if(!dialog.open)dialog.showModal();return true;
+}
+function confirmInitialTrump(team){
+ state.trumpPending=false;state.trumpGuide=true;state.trumpStart=team;
+ document.getElementById("trumpRequiredDialog").close();save();render();renderSlate();
+}
+document.getElementById("trumpRequiredDialog").addEventListener("cancel",event=>event.preventDefault());
 function trumpTeam(){
  const count=state.rounds.filter(r=>r.a!==null&&r.b!==null).length;
  return ((state.trumpStart||"a")==="a")===(count%2===0)?"a":"b";
 }
-function toggleTrumpGuide(){state.trumpGuide=!state.trumpGuide;save();render();}
+function toggleTrumpGuide(){state.trumpGuide=!state.trumpGuide;save();render();if(document.getElementById("slateDialog").open)renderSlate();}
 function trumpChoiceLocked(){return state.rounds.some(r=>r.a!==null&&r.b!==null);}
 function chooseTrump(team){
  if(trumpChoiceLocked())return;
@@ -715,9 +734,9 @@ function makeRounds(){
  state.rounds.slice(0,visibleRoundCount()).forEach((r,i)=>{
   const row=document.createElement("div");row.className="round";
   const num=document.createElement("span");num.className="num";num.textContent=i+1;
-  const a=document.createElement("input");a.className="score";a.type="text";a.pattern="[0-9]*";a.onfocus=()=>a.select();a.onclick=()=>a.select();a.inputMode="numeric";a.value=r.a===null?"":r.a;a.placeholder="—";a.onchange=()=>setRound(i,"a",a.value);
+  const a=document.createElement("input");a.className="score";a.type="text";a.pattern="[0-9]*";a.onfocus=()=>{if(requireInitialTrump()){a.blur();return;}a.select();};a.onclick=()=>{if(requireInitialTrump())return;a.select();};a.inputMode="numeric";a.value=r.a===null?"":r.a;a.placeholder="—";a.onchange=()=>setRound(i,"a",a.value);
   const eq=document.createElement("span");eq.className="eq";eq.textContent=":";
-  const b=document.createElement("input");b.className="score";b.type="text";b.pattern="[0-9]*";b.onfocus=()=>b.select();b.onclick=()=>b.select();b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
+  const b=document.createElement("input");b.className="score";b.type="text";b.pattern="[0-9]*";b.onfocus=()=>{if(requireInitialTrump()){b.blur();return;}b.select();};b.onclick=()=>{if(requireInitialTrump())return;b.select();};b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
   if(state.trumpGuide&&r.a===null&&r.b===null&&i===state.rounds.findIndex(round=>round.a===null&&round.b===null)){(trumpTeam()==="a"?a:b).classList.add(trumpTeam()==="a"?"trump-green":"trump-pink");}
   const locked=state.rounds.slice(0,i).some(previous=>previous.a===null || previous.b===null);
   const victoryLocked=(!!state.winnerTeam&&i!==lastCompletedRound())||i<lastCompletedRound();
@@ -1005,7 +1024,7 @@ function startNewGame(){
  dismissedWinner=null;
  winnerShownFor=null;
  document.getElementById("winToast").classList.remove("show");
- state={nameA:document.getElementById("nameA").value||"",nameB:document.getElementById("nameB").value||"",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{}};
+ state={nameA:document.getElementById("nameA").value||"",nameB:document.getElementById("nameB").value||"",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{},trumpPending:true};
  save();render();
  if(document.getElementById("slateDialog").open)renderSlate();
 }
@@ -1067,6 +1086,7 @@ function slateCompletedRounds(){
 }
 function nextSlateRound(){return state.rounds.filter(r=>r.a!==null && r.b!==null).length+slateCompletedRounds()+1;}
 function slateTransaction(team,value,kind){
+ if(requireInitialTrump())return;
  if(state.winnerTeam&&!slateEditContext)return false;
  if(kind==="announcements"&&state.winnerTeam&&!slateEditContext)return false;
  state.usedSlate=true;
@@ -1150,6 +1170,7 @@ function openSlateEdit(team){
 }
 let slateManualTeam=null;
 function openSlateManual(team,editing=false){
+ if(requireInitialTrump())return;
  if(state.winnerTeam&&!editing)return;
  if(!["A","B"].includes(team))return;
  slateEditContext=null;document.getElementById("slateManualSubmit").textContent=t("add_round",{number:nextSlateRound(),team:teamName(team)});
@@ -1239,6 +1260,7 @@ function renderAnnPicker(){
  document.getElementById("annPickerTotal").textContent=t("ann")+" : "+annPickerAmount()+" "+t("pts");
 }
 function openSlateAnnPicker(team,editing=false){
+ if(requireInitialTrump())return;
  if(state.winnerTeam&&!editing)return;
  if(!["A","B"].includes(team))return;
  annPickerTeam=team;annPickerEditing=editing;slateEditContext=null;
@@ -1337,6 +1359,9 @@ function renderSlate(){
  ["A","B"].forEach(team=>{
   const total=(roundTotal(team.toLowerCase())+annTotal(team))*factor();
   document.getElementById("slateName"+team).textContent=teamName(team);
+  const nameButton=document.getElementById("slateName"+team);
+  nameButton.classList.toggle("trump-name-green",!!state.trumpGuide&&trumpTeam()==="a"&&team==="A");
+  nameButton.classList.toggle("trump-name-pink",!!state.trumpGuide&&trumpTeam()==="b"&&team==="B");
   document.getElementById("slatePoints"+team).innerHTML=slateSvg(total,team);
   document.getElementById("slateTotal"+team).textContent=total+" "+t("points");
  });
