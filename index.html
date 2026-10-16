@@ -14,9 +14,9 @@
 .app{max-width:1160px;margin:auto;padding:18px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 h1{margin:0;font:700 clamp(30px,5vw,46px) Georgia,serif;letter-spacing:-.03em}button,input{font:inherit}button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 12px 32px rgba(35,31,23,.07)}
-.head{display:grid;grid-template-columns:1fr 1fr}.team{padding:18px}.team.a{background:var(--softa)}.team.b{background:var(--softb);text-align:right}
+.head{display:grid;grid-template-columns:1fr 1fr}.team{padding:8px 18px}.team.a{background:var(--softa)}.team.b{background:var(--softb);text-align:right}
 .team small{display:block;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em}.name{border:0;background:transparent;font-size:22px;font-weight:900;width:100%;outline:none}.b .name{text-align:right}
-.total{font:700 42px Georgia,serif;margin-top:5px}.a .total{color:var(--a)}.b .total{color:var(--b)}
+.total{font:700 42px Georgia,serif;margin-top:2px;line-height:1.1}.a .total{color:var(--a)}.b .total{color:var(--b)}
 .layout{display:grid;grid-template-columns:minmax(275px,300px) minmax(200px,1fr) minmax(275px,300px);gap:12px;margin-top:12px}.ann,.rounds{padding:15px}
 .ann.a{background:#c8e6d5}
 .ann.b{background:#f5e9e7}
@@ -60,7 +60,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
  .header-actions{display:grid;grid-template-columns:1fr 1.4fr 1.1fr;width:100%;gap:6px}
  .header-actions button{padding:10px 6px;font-size:14px;white-space:nowrap;min-width:0}
  .head{grid-template-columns:1fr 1fr}
- .team{padding:12px 10px}
+ .team{padding:5px 10px}
  .name{font-size:18px}
  .total{font-size:34px}
  .layout{display:flex;flex-direction:column;gap:8px;margin-top:8px}
@@ -237,6 +237,17 @@ html:not(.slate-open){overflow-y:auto}.language-dialog{max-height:calc(100dvh - 
 .rounds .score{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:22px;font-weight:700;line-height:1.2;font-variant-numeric:lining-nums tabular-nums;font-size-adjust:none;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
 .total,#slateTotalA,#slateTotalB{font-family:ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif;font-variant-numeric:lining-nums tabular-nums;font-weight:700;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+textarea.name{font-family:inherit;letter-spacing:normal;word-break:normal;display:block;resize:none;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.25;padding:0;min-width:0;max-width:100%;box-sizing:border-box}.team{min-width:0}.slate-name-edit{white-space:normal;overflow-wrap:anywhere}
+
+/* Police commune de l’interface, titre Chibre conservé. */
+body,button,input,textarea,select,h2,.name,.score,.rounds .score,.total,
+#slateTotalA,#slateTotalB,.language-dialog h2,.win-toast,.slate-content h2,
+.slate-name-edit,.slate-toolbar #slateTitle,.slate-half svg text{
+ font-family:Arial,"Helvetica Neue",sans-serif!important;
+ font-variant-numeric:lining-nums tabular-nums;
+}
+h1{font-family:Georgia,serif}
 </style>
 </head>
 <body>
@@ -307,12 +318,12 @@ html:not(.slate-open){overflow-y:auto}.language-dialog{max-height:calc(100dvh - 
 
 <section class="card" style="margin-bottom:12px">
  <div style="padding:12px 16px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line)">
-   <button id="mode1000" onclick="setMode(1000)" data-i18n="normal">1000 • normal</button>
+   <button id="mode1000" onclick="setMode(1000)">1000</button>
    <button id="mode1500" onclick="setMode(1500)" data-i18n="double">1500 • ♠ ♠</button>
  </div>
  <div class="head">
-  <div class="team a"><input class="name" id="nameA" readonly role="button" aria-haspopup="dialog" data-i18n-aria-label="edit_name" onclick="openSlateName('A')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateName('A');}" style="cursor:pointer" placeholder="Mettez vos noms" data-i18n-placeholder="names"><div class="total" id="totalA">0</div></div>
-  <div class="team b"><input class="name" id="nameB" readonly role="button" aria-haspopup="dialog" data-i18n-aria-label="edit_name" onclick="openSlateName('B')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateName('B');}" style="cursor:pointer" placeholder="Mettez vos noms" data-i18n-placeholder="names"><div class="total" id="totalB">0</div></div>
+  <div class="team a"><textarea class="name" id="nameA" readonly role="button" aria-haspopup="dialog" data-i18n-aria-label="edit_name" onclick="openSlateName('A')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateName('A');}" style="cursor:pointer" placeholder="Mettez vos noms" data-i18n-placeholder="names" rows="1"></textarea><div class="total" id="totalA">0</div></div>
+  <div class="team b"><textarea class="name" id="nameB" readonly role="button" aria-haspopup="dialog" data-i18n-aria-label="edit_name" onclick="openSlateName('B')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateName('B');}" style="cursor:pointer" placeholder="Mettez vos noms" data-i18n-placeholder="names" rows="1"></textarea><div class="total" id="totalB">0</div></div>
  </div>
 </section>
 
@@ -322,7 +333,7 @@ html:not(.slate-open){overflow-y:auto}.language-dialog{max-height:calc(100dvh - 
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V3.135</span></div></section>
+<section class="card info"><span data-i18n-html="info">Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.</span><div class="info-actions"><a class="help-link" href="./comment-ca-marche.html" data-i18n="help">comment ça marche ?</a><span class="app-version">V4.1</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -346,7 +357,7 @@ html:not(.slate-open){overflow-y:auto}.language-dialog{max-height:calc(100dvh - 
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=3.135"></script>
+<script src="./i18n.js?v=4.1"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -452,6 +463,7 @@ function clearSharedRoundEntries(){
  for(const team of ["A","B"]){const entry=state.slateLastEntries?.[team];if(Number.isInteger(entry?.roundIndex)&&state.rounds[entry.roundIndex]?.a===null)delete state.slateLastEntries[team];}
 }
 function setRound(i,team,raw){
+ if(i<lastCompletedRound())return;
  if(state.winnerTeam&&i!==lastCompletedRound())return;
  if(i>=visibleRoundCount()) return;
  if(state.rounds.slice(0,i).some(r=>r.a===null || r.b===null)) return;
@@ -587,6 +599,15 @@ function visibleRoundCount(){
  state.rounds.forEach((round,index)=>{if(round.a!==null || round.b!==null)lastFilled=index+1;});
  return Math.min(NROUNDS,Math.max(8,lastFilled+(state.winnerTeam?0:1)));
 }
+function fitTeamNames(){
+ for(const id of ["nameA","nameB"]){
+  const el=document.getElementById(id);if(!el||!el.clientWidth)continue;
+  el.style.fontSize="";el.style.height="auto";el.style.height=el.scrollHeight+"px";
+ }
+ for(const id of ["slateNameA","slateNameB"]){const el=document.getElementById(id);if(el)el.style.fontSize="";}
+}
+
+window.addEventListener("resize",()=>requestAnimationFrame(fitTeamNames));
 function fitRoundSheet(){
  const sheet=document.querySelector(".rounds");if(!sheet)return;
  const top=Math.round(sheet.getBoundingClientRect().top+window.scrollY);
@@ -603,9 +624,9 @@ function makeRounds(){
   const eq=document.createElement("span");eq.className="eq";eq.textContent=":";
   const b=document.createElement("input");b.className="score";b.type="text";b.pattern="[0-9]*";b.onfocus=()=>b.select();b.onclick=()=>b.select();b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
   const locked=state.rounds.slice(0,i).some(previous=>previous.a===null || previous.b===null);
-  const victoryLocked=!!state.winnerTeam&&i!==lastCompletedRound();
+  const victoryLocked=(!!state.winnerTeam&&i!==lastCompletedRound())||i<lastCompletedRound();
   a.disabled=locked||victoryLocked;b.disabled=locked||victoryLocked;
-  if(locked) row.classList.add("round-locked");
+  if(locked||i<lastCompletedRound()) row.classList.add("round-locked");
   a.setAttribute("aria-label",t("round_label",{number:i+1,team:teamName("A")}));b.setAttribute("aria-label",t("round_label",{number:i+1,team:teamName("B")}));
   row.append(num,a,eq,b);root.appendChild(row);
  });
@@ -614,7 +635,7 @@ function render(){
  syncScrollLock();
  recordWinner();
  makeAnnouncements("A");makeAnnouncements("B");makeRounds();
- requestAnimationFrame(fitRoundSheet);
+ requestAnimationFrame(()=>{fitRoundSheet();fitTeamNames();});
  const nA=teamName("A"),nB=teamName("B");
  document.getElementById("labelA").textContent=nA;document.getElementById("labelB").textContent=nB;
  document.getElementById("annTitleA").textContent=t("ann_title",{name:teamName("A")});
@@ -1022,6 +1043,7 @@ function slateAdd(team,value){
 }
 function openSlateEdit(team){
  const entry=state.slateLastEntries?.[team];if(!entry)return;
+ if(Number.isInteger(entry.roundIndex)&&entry.roundIndex<lastCompletedRound())return;
  if(entry.selection){openSlateAnnPicker(team,true);return;}
  const kind=entry.kind==="points"?"Manual":"Ann";
  if(kind==="Manual")openSlateManual(team,true);else openSlateAnn(team);
@@ -1230,7 +1252,7 @@ function openSlateHistory(){
 function openSlate(){
  renderSlate();const dialog=document.getElementById("slateDialog");
  dialog.appendChild(document.getElementById("winToast"));
- dialog.showModal();document.documentElement.classList.add("slate-open");
+ dialog.showModal();document.documentElement.classList.add("slate-open");requestAnimationFrame(fitTeamNames);
 }
 function closeSlate(){document.getElementById("slateDialog").close();syncScrollLock();}
 document.getElementById("slateDialog").addEventListener("close",()=>{
@@ -1241,6 +1263,7 @@ document.getElementById("slateDialog").addEventListener("close",()=>{
 document.addEventListener("close",syncScrollLock,true);
 load();applyLanguage();render();
 </script>
+
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(error=>console.warn("Offline setup:",error)));
