@@ -463,7 +463,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.54</span></div></section>
+<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.55</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -487,7 +487,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.54"></script>
+<script src="./i18n.js?v=4.55"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -954,7 +954,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
         box.innerHTML=`
       <div style="padding-right:44px">
         <strong>${escapeHistoryText(t("part"))} ${history.length-index}</strong>
-        ${game.usedSlate?" <span class=\"history-slate-badge\">"+escapeHistoryText(t("slate_game"))+"</span>":""}<br>
+        <br>
         <small>${escapeHistoryText(gameDate(game))}</small>
       </div>
 
@@ -1472,7 +1472,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.54";
+ const APP_VERSION="4.55";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;
