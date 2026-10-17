@@ -349,6 +349,42 @@ h1{font-family:Georgia,serif}
 #appOptions[hidden]{display:none}#appOptions{padding-left:5px;border-left:2px solid #d8d4c8}.language-choices .rounds-menu-choice{display:flex;justify-content:space-between;gap:8px;align-items:center}.rounds-menu-choice span:last-child{font-weight:700}
 
 .app-menu .language-choices{min-width:285px;width:285px;max-width:calc(100vw - 16px)}@media(max-width:600px){.app-menu .language-choices{min-width:0;width:285px}}
+
+.ann h2{font-size:18px}@media(min-width:801px){.ann h2{font-size:20px}}
+
+@media(min-width:601px){
+ .head.with-trump-guide{position:relative;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:linear-gradient(to right,var(--softa) 50%,var(--softb) 50%)}
+ .head.with-trump-guide #trumpGuide{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);width:126px;padding:0 4px;z-index:1;background:transparent}
+ .head.with-trump-guide .trump-track{width:118px;max-width:118px}
+ .head.with-trump-guide .total{max-width:calc(100% - 65px)}
+ .head.with-trump-guide .team.b .total{margin-left:auto}
+}
+
+@media(min-width:801px){
+ .head.with-trump-guide #trumpGuide{top:0;bottom:0;display:flex;align-items:stretch;padding:4px}
+ .head.with-trump-guide #trumpGuide[hidden]{display:none}
+ .head.with-trump-guide .trump-track{height:100%;margin:0;min-height:50px;container-type:size}
+ .head.with-trump-guide .trump-track button{top:3px;height:calc(100% - 6px);display:grid;place-items:center;line-height:1;font-size:clamp(32px,65cqh,58px)}
+}
+
+.trump-track button{display:flex;align-items:center;justify-content:center;padding:0}
+.trump-spade-icon{display:block;width:24px;height:27px;flex-shrink:0}
+@media(min-width:801px){.head.with-trump-guide .trump-track button{top:50%;transform:translateY(-50%);height:calc(100% - 6px);display:flex;align-items:center;justify-content:center}.head.with-trump-guide .trump-spade-icon{width:38px;height:44px;max-height:80%}}
+
+@media(min-width:801px) and (max-width:1050px){
+ .layout{grid-template-columns:minmax(220px,1fr) minmax(220px,1.3fr) minmax(220px,1fr);gap:8px}
+ .ann{padding:10px}
+ .annrow{grid-template-columns:minmax(0,1fr) 30px 24px 30px;gap:3px}
+ .ann-label-description,.ann-label-description:has(.ann-alternative){display:flex;flex-direction:column;align-items:flex-start;gap:3px;white-space:normal}
+ .ann-description,.ann-alternative,.ann-label-description:has(.ann-alternative) .ann-description,.ann-label-description:has(.ann-alternative) .ann-alternative{font-size:14px;white-space:normal;padding:0;flex-basis:auto;margin:0}
+ .ann-description::before{content:none}
+ .ann-label-cards{flex-direction:column;align-items:flex-start;gap:4px}
+}
+
+@media(min-width:801px) and (max-width:1050px){
+ .annrow{grid-template-columns:minmax(0,1fr) 40px 24px 40px;gap:3px}
+ .annrow button{width:40px;height:40px;padding:0;font-size:27px;display:grid;place-items:center}
+}
 </style>
 </head>
 <body>
@@ -414,7 +450,7 @@ h1{font-family:Georgia,serif}
    <button id="mode1000" onclick="setMode(1000)">1000</button>
    <button id="mode1500" onclick="setMode(1500)" data-i18n="double">1500 • ♠ ♠</button>
  </div>
- <div id="trumpGuide" hidden><div class="trump-track" id="trumpTrack"><button type="button" id="trumpMarker" aria-label="Choisir une équipe" draggable="false">♠</button></div></div>
+ <div id="trumpGuide" hidden><div class="trump-track" id="trumpTrack"><button type="button" id="trumpMarker" aria-label="Choisir une équipe" draggable="false"><svg class="trump-spade-icon" viewBox="0 0 100 110" aria-hidden="true"><path fill="currentColor" d="M50 3C38 20 9 38 9 61c0 18 22 25 36 9-1 14-5 24-14 35h38C60 94 56 84 55 70c14 16 36 9 36-9C91 38 62 20 50 3Z"/></svg></button></div></div>
  <div class="head">
   <div class="team a"><textarea class="name" id="nameA" readonly role="button" aria-haspopup="dialog" data-i18n-aria-label="edit_name" onclick="openSlateName('A')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateName('A');}" style="cursor:pointer" placeholder="Mettez vos noms" data-i18n-placeholder="names" rows="1"></textarea><div class="total" id="totalA">0</div></div>
   <div class="team b"><textarea class="name" id="nameB" readonly role="button" aria-haspopup="dialog" data-i18n-aria-label="edit_name" onclick="openSlateName('B')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateName('B');}" style="cursor:pointer" placeholder="Mettez vos noms" data-i18n-placeholder="names" rows="1"></textarea><div class="total" id="totalB">0</div></div>
@@ -427,7 +463,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.47</span></div></section>
+<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.54</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -451,7 +487,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.47"></script>
+<script src="./i18n.js?v=4.54"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -761,9 +797,8 @@ function chooseTrump(team){
 function positionTrumpGuide(){
  const guide=document.getElementById("trumpGuide"),head=document.querySelector(".head"),right=document.querySelector(".head .team.b");
  if(!guide||!head||!right)return;
- if(window.innerWidth<=600){if(guide.parentElement!==head)head.insertBefore(guide,right);}
- else if(guide.parentElement===head)head.parentElement.insertBefore(guide,head);
- head.classList.toggle("with-trump-guide",!!state.trumpGuide&&window.innerWidth<=600);
+ if(guide.parentElement!==head)head.insertBefore(guide,right);
+ head.classList.toggle("with-trump-guide",!!state.trumpGuide);
 }
 window.addEventListener("resize",positionTrumpGuide);
 function renderTrumpGuide(){
@@ -804,8 +839,7 @@ function render(){
  requestAnimationFrame(()=>{fitRoundSheet();fitTeamNames();});
  const nA=teamName("A"),nB=teamName("B");
  document.getElementById("labelA").textContent=nA;document.getElementById("labelB").textContent=nB;
- document.getElementById("annTitleA").textContent=t("ann_title",{name:teamName("A")});
- document.getElementById("annTitleB").textContent=t("ann_title",{name:teamName("B")});
+ updateAnnouncementTitles();
  document.getElementById("annTeamA").textContent=t("announcement_total");document.getElementById("annTeamB").textContent=t("announcement_total");
  const aa=annTotal("A"),ab=annTotal("B");
  document.getElementById("sumAnnA").textContent=aa*factor();document.getElementById("sumAnnB").textContent=ab*factor();
@@ -1438,7 +1472,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.47";
+ const APP_VERSION="4.54";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;
