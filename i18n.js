@@ -19,7 +19,7 @@ const TRANSLATIONS={
     "names": "Mettez vos noms",
     "ann": "Annonces",
     "ann_title": "Annonces {name}",
-    "round_points": "Points des donnes",
+    "round_points": "Point des plis",
     "round": "Donne",
     "round_label": "Donne {number} {team}",
     "match": "Match",
