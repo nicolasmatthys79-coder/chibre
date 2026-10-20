@@ -136,7 +136,7 @@ const TRANSLATIONS={
     "help_update_body": " Au lancement et au retour dans l’application, une connexion Internet permet de vérifier la version du site et de charger une nouvelle version. Sans connexion, la version déjà enregistrée reste utilisable ; la partie est conservée.",
     "help_home_title": "Ajouter à l’écran d’accueil",
     "help_home_body": "Ouvrez le site du jeu sur votre téléphone. Sur Android, dans Chrome : menu ⋮ → Ajouter à l’écran d’accueil ou Installer l’application. Sur iPhone, dans Safari : Partager → Sur l’écran d’accueil → Ajouter. L’icône du jeu apparaît ensuite à côté de vos applications.",
-    "help_trump_example": "Le sélecteur d’atout ressemble à ceci : glissez le ♠ vers l’équipe qui fait Atout.",
+    "help_trump_example": "Si « Qui fait Atout ? » est activé, le premier clic sur des points ou une annonce demande de choisir l’équipe qui commence. Le pique reste au milieu avant ce choix, puis indique l’équipe qui fait Atout. Il ne peut pas être déplacé : le jeu alterne automatiquement après chaque donne.",
     "options_menu": "Option",
     "show_slate_rounds": "N° des donne dans ardoise"
   },
@@ -276,7 +276,7 @@ const TRANSLATIONS={
     "help_update_body": " Beim Start und bei der Rückkehr zur App wird online die Version der Website geprüft und eine neue Version geladen. Offline bleibt die gespeicherte Version nutzbar; das Spiel bleibt erhalten.",
     "help_home_title": "Zum Startbildschirm hinzufügen",
     "help_home_body": "Öffnen Sie die Spielwebsite auf dem Telefon. Android, Chrome: Menü ⋮ → Zum Startbildschirm hinzufügen oder App installieren. iPhone, Safari: Teilen → Zum Home-Bildschirm → Hinzufügen. Das Spielsymbol erscheint neben Ihren Apps.",
-    "help_trump_example": "So sieht die Trumpfauswahl aus: Ziehen Sie das ♠ zum Team, das Trumpf macht.",
+    "help_trump_example": "Ist die Trumpfhilfe aktiv, fragt das Spiel beim ersten Antippen von Punkten oder Meldungen nach dem Startteam. Vor der Wahl steht das Pik in der Mitte, danach zeigt es das Trumpfteam an. Es lässt sich nicht verschieben; nach jeder Runde wechselt das Spiel automatisch.",
     "options_menu": "Optionen",
     "show_slate_rounds": "Runden auf der Tafel anzeigen"
   },
@@ -416,7 +416,7 @@ const TRANSLATIONS={
     "help_update_body": " All’avvio e al ritorno nell’app, con Internet viene verificata la versione sul sito e caricata quella nuova. Senza connessione resta disponibile la versione salvata; la partita è conservata.",
     "help_home_title": "Aggiungere alla schermata Home",
     "help_home_body": "Apri il sito del gioco sul telefono. Android, Chrome: menu ⋮ → Aggiungi a schermata Home oppure Installa app. iPhone, Safari: Condividi → Aggiungi alla schermata Home → Aggiungi. L’icona del gioco apparirà accanto alle tue applicazioni.",
-    "help_trump_example": "Il selettore dell’atout è questo: trascina il ♠ verso la squadra che fa atout.",
+    "help_trump_example": "Se l’aiuto per l’atout è attivo, al primo tocco su punti o annunci scegli la squadra che comincia. La picche resta al centro prima della scelta, poi indica la squadra che fa atout. Non è trascinabile: il gioco alterna automaticamente dopo ogni mano.",
     "options_menu": "Opzioni",
     "show_slate_rounds": "Mostra le mani sulla lavagna"
   },
@@ -556,7 +556,7 @@ const TRANSLATIONS={
     "help_update_body": " Tar l’avertura ed il return en l’app vegn la versiun dal website controllada cun internet e chargiada ina nova versiun. Senza connexiun resta la versiun memorisada utilisabla; il gieu vegn mantegnì.",
     "help_home_title": "Agiuntar al visur inizial",
     "help_home_body": "Avri la pagina dal gieu sin il telefon. Android, Chrome: menu ⋮ → Agiuntar al visur inizial u Installar l’applicaziun. iPhone, Safari: Parter → Agiuntar al visur inizial → Agiuntar. L’icona dal gieu cumpara sper vossas applicaziuns.",
-    "help_trump_example": "La tscherna da trumf vesa ora uschia: spustai il ♠ vers l’equipa che fa trumf.",
+    "help_trump_example": "Sche l’agid per trumf è activ, dumonda il gieu cun tutgar puncts u annunzias tge equipa che cumenza. Il pic resta amez avant la tscherna, lura inditgescha el l’equipa che fa trumf. El na po betg vegnir spustà; il gieu alternescha automaticamain suenter mintga runda.",
     "options_menu": "Opziuns",
     "show_slate_rounds": "Mussar las rundas sin la tavla"
   },
@@ -696,7 +696,7 @@ const TRANSLATIONS={
     "help_update_body": " On launch and when returning to the app, an Internet connection allows it to check the hosted version and load an update. Offline, the saved version remains available and your game is kept.",
     "help_home_title": "Add to your home screen",
     "help_home_body": "Open the game website on your phone. Android, Chrome: menu ⋮ → Add to Home screen or Install app. iPhone, Safari: Share → Add to Home Screen → Add. The game icon then appears alongside your apps.",
-    "help_trump_example": "This is the trump selector: drag the ♠ towards the team choosing trumps.",
+    "help_trump_example": "If the trump guide is enabled, the first tap on points or announcements asks which team starts. The spade stays in the middle before that choice, then indicates the team choosing trumps. It cannot be dragged: the game alternates automatically after each round.",
     "options_menu": "Options",
     "show_slate_rounds": "Show rounds on the slate"
   }

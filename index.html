@@ -368,8 +368,8 @@ h1{font-family:Georgia,serif}
 }
 
 .trump-track button{display:flex;align-items:center;justify-content:center;padding:0}
-.trump-spade-icon{display:block;width:24px;height:27px;flex-shrink:0}
-@media(min-width:801px){.head.with-trump-guide .trump-track button{top:50%;transform:translateY(-50%);height:calc(100% - 6px);display:flex;align-items:center;justify-content:center}.head.with-trump-guide .trump-spade-icon{width:38px;height:44px;max-height:80%}}
+.trump-spade-icon{display:block;width:24px;height:26.4px;flex-shrink:0}
+@media(min-width:801px){.head.with-trump-guide .trump-track button{top:50%;transform:translateY(-50%);height:calc(100% - 6px);display:flex;align-items:center;justify-content:center}.head.with-trump-guide .trump-spade-icon{width:24px;height:26.4px;max-height:none}}
 
 @media(min-width:801px) and (max-width:1050px){
  .layout{grid-template-columns:minmax(220px,1fr) minmax(220px,1.3fr) minmax(220px,1fr);gap:8px}
@@ -385,6 +385,17 @@ h1{font-family:Georgia,serif}
  .annrow{grid-template-columns:minmax(0,1fr) 40px 24px 40px;gap:3px}
  .annrow button{width:40px;height:40px;padding:0;font-size:27px;display:grid;place-items:center}
 }
+
+.trump-track button.neutral,.head .trump-track button.neutral{left:50%;transform:translateX(-50%)}
+@media(min-width:801px){.head.with-trump-guide .trump-track button.neutral{left:50%;top:50%;transform:translate(-50%,-50%)}}
+
+.trump-track,.trump-track button{cursor:default;pointer-events:none}.trump-track button:disabled{opacity:1}
+
+.trump-track button:disabled{opacity:1;color:#000;-webkit-text-fill-color:#000}.trump-track button.neutral:disabled{color:#777;-webkit-text-fill-color:#777}.trump-track button .trump-spade-icon{opacity:1}
+
+/* Même dessin vectoriel, proportions et dimensions sur toutes les plateformes. */
+.head.with-trump-guide .trump-track button{display:flex;align-items:center;justify-content:center;padding:0}
+.head.with-trump-guide .trump-spade-icon{width:24px;height:26.4px;min-width:24px;max-width:24px;max-height:none;flex:0 0 24px;overflow:visible}
 </style>
 </head>
 <body>
@@ -463,7 +474,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.55</span></div></section>
+<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.60</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -487,7 +498,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.55"></script>
+<script src="./i18n.js?v=4.60"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -773,27 +784,24 @@ function fitRoundSheet(){
 }
 window.addEventListener("resize",()=>requestAnimationFrame(fitRoundSheet));
 function requireInitialTrump(){
- if(!state.trumpPending)return false;
+ if(!state.trumpPending&&(state.trumpConfirmed||state.rounds.some(r=>r.a!==null&&r.b!==null)))return false;
  const dialog=document.getElementById("trumpRequiredDialog");
  document.getElementById("trumpChooseA").textContent=teamName("A");document.getElementById("trumpChooseB").textContent=teamName("B");
  if(!dialog.open)dialog.showModal();return true;
 }
 function confirmInitialTrump(team){
- state.trumpPending=false;state.trumpGuide=true;state.trumpStart=team;
+ state.trumpPending=false;state.trumpConfirmed=true;state.trumpGuide=true;state.trumpStart=team;
  document.getElementById("trumpRequiredDialog").close();save();render();renderSlate();
 }
 document.getElementById("trumpRequiredDialog").addEventListener("cancel",event=>event.preventDefault());
 function trumpTeam(){
+ if(!state.trumpConfirmed&&!state.rounds.some(r=>r.a!==null&&r.b!==null))return null;
  const count=state.rounds.filter(r=>r.a!==null&&r.b!==null).length;
  return ((state.trumpStart||"a")==="a")===(count%2===0)?"a":"b";
 }
 function toggleTrumpGuide(){state.trumpGuide=!state.trumpGuide;save();render();if(document.getElementById("slateDialog").open)renderSlate();}
 function trumpChoiceLocked(){return state.rounds.some(r=>r.a!==null&&r.b!==null);}
-function chooseTrump(team){
- if(trumpChoiceLocked())return;
- const count=state.rounds.filter(r=>r.a!==null&&r.b!==null).length;
- state.trumpStart=count%2?(team==="a"?"b":"a"):team;save();render();
-}
+
 function positionTrumpGuide(){
  const guide=document.getElementById("trumpGuide"),head=document.querySelector(".head"),right=document.querySelector(".head .team.b");
  if(!guide||!head||!right)return;
@@ -805,16 +813,9 @@ function renderTrumpGuide(){
  positionTrumpGuide();
  const guide=document.getElementById("trumpGuide"),marker=document.getElementById("trumpMarker");
  const status=document.getElementById("trumpGuideStatus");status.textContent=state.trumpGuide?"✓":"✕";status.parentElement.setAttribute("aria-pressed",String(!!state.trumpGuide));
- guide.hidden=!state.trumpGuide;marker.classList.toggle("right",trumpTeam()==="b");
- marker.disabled=trumpChoiceLocked();document.getElementById("trumpTrack").classList.toggle("locked",trumpChoiceLocked());
+ guide.hidden=!state.trumpGuide;marker.classList.toggle("right",trumpTeam()==="b");marker.classList.toggle("neutral",trumpTeam()===null);
+ marker.disabled=true;document.getElementById("trumpTrack").classList.toggle("locked",trumpChoiceLocked());
 }
-const trumpTrack=document.getElementById("trumpTrack");
-let trumpDragging=false;
-trumpTrack.addEventListener("pointerdown",event=>{if(trumpChoiceLocked())return;trumpDragging=true;trumpTrack.setPointerCapture(event.pointerId);event.preventDefault();});
-trumpTrack.addEventListener("pointermove",event=>{if(!trumpDragging)return;const box=trumpTrack.getBoundingClientRect();document.getElementById("trumpMarker").classList.toggle("right",event.clientX>box.left+box.width/2);});
-trumpTrack.addEventListener("pointerup",event=>{if(!trumpDragging)return;trumpDragging=false;const box=trumpTrack.getBoundingClientRect();chooseTrump(event.clientX>box.left+box.width/2?"b":"a");});
-trumpTrack.addEventListener("pointercancel",()=>{trumpDragging=false;renderTrumpGuide();});
-document.getElementById("trumpMarker").addEventListener("keydown",event=>{if(event.key==="ArrowLeft"||event.key==="ArrowRight"){event.preventDefault();chooseTrump(event.key==="ArrowLeft"?"a":"b");}});
 function makeRounds(){
  const root=document.getElementById("rounds");root.innerHTML="";
  state.rounds.slice(0,visibleRoundCount()).forEach((r,i)=>{
@@ -823,7 +824,7 @@ function makeRounds(){
   const a=document.createElement("input");a.className="score";a.type="text";a.pattern="[0-9]*";a.onfocus=()=>{if(requireInitialTrump()){a.blur();return;}a.select();};a.onclick=()=>{if(requireInitialTrump())return;a.select();};a.inputMode="numeric";a.value=r.a===null?"":r.a;a.placeholder="—";a.onchange=()=>setRound(i,"a",a.value);
   const eq=document.createElement("span");eq.className="eq";eq.textContent=":";
   const b=document.createElement("input");b.className="score";b.type="text";b.pattern="[0-9]*";b.onfocus=()=>{if(requireInitialTrump()){b.blur();return;}b.select();};b.onclick=()=>{if(requireInitialTrump())return;b.select();};b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
-  if(state.trumpGuide&&r.a===null&&r.b===null&&i===state.rounds.findIndex(round=>round.a===null&&round.b===null)){(trumpTeam()==="a"?a:b).classList.add(trumpTeam()==="a"?"trump-green":"trump-pink");}
+  if(state.trumpGuide&&trumpTeam()!==null&&r.a===null&&r.b===null&&i===state.rounds.findIndex(round=>round.a===null&&round.b===null)){(trumpTeam()==="a"?a:b).classList.add(trumpTeam()==="a"?"trump-green":"trump-pink");}
   const locked=state.rounds.slice(0,i).some(previous=>previous.a===null || previous.b===null);
   const victoryLocked=(!!state.winnerTeam&&i!==lastCompletedRound())||i<lastCompletedRound();
   a.disabled=locked||victoryLocked;b.disabled=locked||victoryLocked;
@@ -1275,6 +1276,7 @@ document.getElementById("slateManualForm").addEventListener("submit",event=>{
 });
 let slateAnnTeam=null;
 function openSlateAnn(team){
+ if(requireInitialTrump())return;
  if(!["A","B"].includes(team))return;
  slateEditContext=null;document.getElementById("slateAnnSubmit").textContent=t("add_points");
  slateAnnTeam=team;
@@ -1292,6 +1294,7 @@ function announceSlateVictory(){
  if(total>=threshold){dismissedWinner=null;renderSlate();showWinner(teamName(team),total,threshold);}
 }
 function slateAddAnnouncement(team,value){
+ if(requireInitialTrump())return;
  if(!["A","B"].includes(team)||!Number.isSafeInteger(value)||value<=0)return;
  slateTransaction(team,value,"announcements");
 }
@@ -1355,6 +1358,7 @@ function openSlateAnnPicker(team,editing=false){
  renderAnnPicker();document.getElementById("annPickerDialog").showModal();
 }
 function confirmAnnPicker(){
+ if(requireInitialTrump())return;
  if(state.winnerTeam&&!annPickerEditing){document.getElementById("annPickerDialog").close();return;}
  if(annPickerValues.some(value=>(annPickerDraft[value]||0)>annPickerCapacity(value)))return;
  const value=annPickerAmount();
@@ -1472,7 +1476,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.55";
+ const APP_VERSION="4.60";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;
