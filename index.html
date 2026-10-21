@@ -493,7 +493,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.64</span></div></section>
+<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.65</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -517,7 +517,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.64"></script>
+<script src="./i18n.js?v=4.65"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -657,9 +657,12 @@ function currentAnnCount(team){return Object.values(currentAnnCounters(team)).re
 const announcementLimits={20:6,50:4,100:3,150:1,200:1};
 const announcementCards={20:3,50:4,100:5,150:4,200:4};
 function announcementCardCount(counts){return Object.entries(announcementCards).reduce((sum,[key,cards])=>sum+(counts[key]||0)*cards,0);}
+function sharedAnnouncementCount(team,key){
+ return ["150","200"].includes(String(key))?(currentAnnCounters(team==="A"?"B":"A")[key]||0):0;
+}
 function announcementCapacity(team,key,removed=0){
  const counts=currentAnnCounters(team),cards=announcementCards[key];
- const countLimit=(announcementLimits[key]??Infinity)-(counts[key]||0)+removed;
+ const countLimit=(announcementLimits[key]??Infinity)-(counts[key]||0)-sharedAnnouncementCount(team,key)+removed;
  const cardLimit=cards?Math.floor((18-announcementCardCount(counts)+removed*cards)/cards):Infinity;
  return Math.max(0,Math.min(countLimit,cardLimit));
 }
@@ -1339,7 +1342,7 @@ function annPickerBase(){
 function annPickerCapacity(value){
  const base=annPickerBase(),cards=announcementCards[value];
  const otherCards=annPickerValues.reduce((sum,key)=>sum+(key===value?0:(annPickerDraft[key]||0)*announcementCards[key]),0);
- return Math.max(0,Math.min((announcementLimits[value]??Infinity)-(base[value]||0),Math.floor((18-announcementCardCount(base)-otherCards)/cards)));
+ return Math.max(0,Math.min((announcementLimits[value]??Infinity)-(base[value]||0)-sharedAnnouncementCount(annPickerTeam,value),Math.floor((18-announcementCardCount(base)-otherCards)/cards)));
 }
 
 function annPickerAmount(){return annPickerValues.reduce((sum,value)=>sum+(annPickerDraft[value]||0)*value,0);}
@@ -1498,7 +1501,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.64";
+ const APP_VERSION="4.65";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;
