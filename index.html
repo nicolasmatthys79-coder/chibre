@@ -415,6 +415,12 @@ h1{font-family:Georgia,serif}
 .head.with-trump-guide .trump-track button{width:46%;container-type:size}
 .head.with-trump-guide .trump-track button.right{left:calc(54% - 3px)}
 .head.with-trump-guide .trump-spade-icon{width:88%;height:84%;min-width:0;max-width:none;max-height:none;flex:0 1 auto;aspect-ratio:10/11;object-fit:contain}
+
+.slate-entry-oriented{padding-top:48px;padding-bottom:48px;transform-origin:center center}
+.slate-entry-oriented.slate-entry-reversed{transform:rotate(180deg)}
+.entry-rotate{display:none}
+.slate-entry-oriented .entry-rotate{display:grid;place-items:center;position:absolute;min-width:36px;min-height:36px;width:36px;height:36px;padding:0;border:0;background:transparent;color:inherit;font:28px/1 Arial,sans-serif;cursor:pointer}
+.entry-rotate-top{top:5px;left:6px}.entry-rotate-bottom{bottom:5px;right:6px}
 </style>
 </head>
 <body>
@@ -463,7 +469,7 @@ h1{font-family:Georgia,serif}
     <h1>Chibre <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
     
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Option</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
 
   </div>
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
@@ -493,7 +499,7 @@ h1{font-family:Georgia,serif}
  <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.66</span></div></section>
+<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.68</span></div></section>
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -517,7 +523,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.66"></script>
+<script src="./i18n.js?v=4.68"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -1280,6 +1286,21 @@ function openSlateEdit(team){
  document.getElementById("slate"+kind+"Submit").textContent=t("update");
 }
 let slateManualTeam=null;
+function orientSlateEntry(id,team){
+ const dialog=document.getElementById(id);
+ const onSlate=document.getElementById("slateDialog").open;
+ const touchScreen=window.matchMedia("(max-width:1050px), (pointer:coarse)").matches;
+ dialog.classList.toggle("slate-entry-oriented",onSlate&&touchScreen);
+ dialog.classList.toggle("slate-entry-reversed",onSlate&&touchScreen&&team==="B");
+ if(!dialog.querySelector(".entry-rotate")){
+  for(const corner of ["top","bottom"]){
+   const button=document.createElement("button");button.type="button";button.className="entry-rotate entry-rotate-"+corner;
+   button.textContent="↻";button.setAttribute("aria-label",t("rotate_entry"));
+   button.onclick=()=>dialog.classList.toggle("slate-entry-reversed");dialog.appendChild(button);
+  }
+ }
+ dialog.querySelectorAll(".entry-rotate").forEach(button=>button.setAttribute("aria-label",t("rotate_entry")));
+}
 function openSlateManual(team,editing=false){
  if(requireInitialTrump())return;
  if(state.winnerTeam&&!editing)return;
@@ -1289,7 +1310,7 @@ function openSlateManual(team,editing=false){
  document.getElementById("slateManualTitle").textContent=t("add_round",{number:nextSlateRound(),team:teamName(team)});
  document.getElementById("slateManualValue").value="";
  document.getElementById("slateManualError").textContent="";
- document.getElementById("slateManualDialog").showModal();
+ orientSlateEntry("slateManualDialog",team);document.getElementById("slateManualDialog").showModal();
  document.getElementById("slateManualValue").focus();
 }
 document.getElementById("slateManualForm").addEventListener("submit",event=>{
@@ -1308,7 +1329,7 @@ function openSlateAnn(team){
  document.getElementById("slateAnnTitle").textContent=t("ann_manual_title",{team:teamName(team)});
  document.getElementById("slateAnnValue").value="";
  document.getElementById("slateAnnError").textContent="";
- document.getElementById("slateAnnDialog").showModal();document.getElementById("slateAnnValue").focus();
+ orientSlateEntry("slateAnnDialog",team);document.getElementById("slateAnnDialog").showModal();document.getElementById("slateAnnValue").focus();
 }
 function announceSlateVictory(){
  recordWinner();
@@ -1380,7 +1401,7 @@ function openSlateAnnPicker(team,editing=false){
  const entry=state.slateLastEntries?.[team];
  annPickerDraft=editing&&entry?.selection?{...entry.selection}:{};
  document.getElementById("annPickerTitle").textContent=editing?t("edit_announcement"):t("ann_manual_title",{team:teamName(team)});
- renderAnnPicker();document.getElementById("annPickerDialog").showModal();
+ renderAnnPicker();orientSlateEntry("annPickerDialog",team);document.getElementById("annPickerDialog").showModal();
 }
 function confirmAnnPicker(){
  if(requireInitialTrump())return;
@@ -1501,7 +1522,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.66";
+ const APP_VERSION="4.68";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;

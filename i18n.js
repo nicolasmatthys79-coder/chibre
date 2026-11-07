@@ -63,7 +63,7 @@ const TRANSLATIONS={
     "decrease": "Retirer {value} pour {team}",
     "info": "Saisies autorisées : <b>2 à 155, ou 257 pour un match</b>. Une saisie de 257 donne <b>0 à l’autre équipe</b> et compte automatiquement un match. Sinon : <b>157 − points saisis</b>. En mode 1500, le total crédité est doublé une seule fois.",
     "help_start_title": "Commencer",
-    "help_start_body": "Choisissez 1000 points ou 1500 (♠ ♠ : points et annonces doublés). Si « Qui fait Atout ? » est activé, choisissez la première équipe au premier clic sur des points ou une annonce. L’atout alterne ensuite à chaque donne. Dans Menu → Option, activez ou désactivez « Qui fait Atout ? » et l’affichage des numéros de donne sur l’ardoise : ✓ activé, ✕ désactivé.",
+    "help_start_body": "Choisissez 1000 points ou 1500 (♠ ♠ : points et annonces doublés). Si « Qui fait Atout ? » est activé, choisissez la première équipe au premier clic sur des points ou une annonce. L’atout alterne ensuite à chaque donne. Dans Menu → Options, activez ou désactivez « Qui fait Atout ? » et l’affichage des numéros de donne sur l’ardoise : ✓ activé, ✕ désactivé.",
     "help_scores_title": "Saisir une donne",
     "help_scores_body": "Entrez 2 à 155 pour une équipe : l’autre reçoit automatiquement 157 moins ce nombre. Match inscrit 257 contre 0 et ne compte pas comme une annonce. Après validation, les compteurs d’annonces repartent à zéro ; leurs points restent acquis. La feuille et l’ardoise partagent les mêmes scores. Sur l’ardoise, touchez la zone noire pour saisir.",
     "help_order_title": "Remplir les donnes dans l’ordre",
@@ -114,7 +114,7 @@ const TRANSLATIONS={
     "edit_round": "Modifier le pli {number} — {team}",
     "double_toggle": "♠ ♠",
     "help_slate_use_title": "Corriger",
-    "help_slate_use_body": "Seule la dernière donne remplie est modifiable. Sur la feuille, touchez sa valeur pour la remplacer. Sur l’ardoise, ↶ rouvre la dernière saisie de l’équipe : points ou annonces. Une correction de points recalcule aussi l’adversaire ; une correction d’annonces ne touche que l’équipe choisie. OK remplace l’ancienne saisie ; Annuler ne change rien.",
+    "help_slate_use_body": "Seule la dernière donne remplie est modifiable. Sur la feuille, touchez sa valeur pour la remplacer. Sur l’ardoise, ↶ rouvre la dernière saisie de l’équipe : points ou annonces. Une correction de points recalcule aussi l’adversaire ; une correction d’annonces ne touche que l’équipe choisie. OK remplace l’ancienne saisie ; Annuler ne change rien. Sur smartphone et tablette, les fenêtres de points et d’annonces de l’ardoise sont orientées vers l’équipe choisie : sens normal pour l’équipe du bas, retournées pour celle d’en face. Les flèches ↻ en haut à gauche et en bas à droite permettent de changer le sens, sans changer l’équipe qui reçoit les points.",
     "help_slate_ann_title": "Annonces sur l’ardoise",
     "help_slate_ann_body": "Le bouton A ouvre les annonces : 20 pour 3 cartes, 50 pour 4 cartes, 100 pour 5 cartes ou un carré, 150 pour quatre neuf et 200 pour quatre valets. Les cartes 9 et J sont illustrées avec leurs couleurs. Choisissez les quantités avec − et +, puis appuyez sur OK pour appliquer le total une seule fois. Annuler ne change rien. Les annonces vont uniquement à l’équipe choisie : aucun complément à 157 n’est attribué à l’adversaire. Le bouton devient W en allemand et M en anglais. Si vous avez 950 points, vous pouvez encore valider 70 points d’annonces : vous arrivez à 1020 et gagnez. Après la victoire, aucun nouvel ajout d’annonces n’est permis. Sur l’ardoise, les annonces sont prises en compte avant les points de la donne : si leur validation avec OK atteint ou dépasse 1000 points en mode simple ou 1500 en pique double, le vainqueur est annoncé immédiatement, sans attendre une donne. Lorsque la flèche de retour rouvre une annonce, la fenêtre porte le titre « Modifier annonce ? ». Par équipe et par donne, vous pouvez inscrire au maximum 6 annonces de 20, 4 annonces de 50 et 3 annonces de 100. Le bouton + se désactive à la limite, y compris après plusieurs ouvertures du menu. Les compteurs sont remis à zéro après la donne. Un match remplit une seule donne avec 257 points pour une équipe et 0 pour l’autre ; un autre match appartient à la donne suivante. Chaque équipe dispose de 18 cartes au maximum pour ses annonces par donne : 20 compte 3 cartes, 50 compte 4 cartes, 100 compte 5 cartes, 150 et 200 comptent 4 cartes chacun. Le bouton + est bloqué si cet ajout dépasse 18 cartes, en tenant compte des annonces déjà validées. La ligne de 100 regroupant cinq cartes et carré utilise un décompte de 5 cartes.",
     "help_slate_read_title": "Lire et corriger l’ardoise",
@@ -137,8 +137,9 @@ const TRANSLATIONS={
     "help_home_title": "Ajouter à l’écran d’accueil",
     "help_home_body": "Ouvrez le site du jeu sur votre téléphone. Sur Android, dans Chrome : menu ⋮ → Ajouter à l’écran d’accueil ou Installer l’application. Sur iPhone, dans Safari : Partager → Sur l’écran d’accueil → Ajouter. L’icône du jeu apparaît ensuite à côté de vos applications.",
     "help_trump_example": "Si « Qui fait Atout ? » est activé, le premier clic sur des points ou une annonce demande de choisir l’équipe qui commence. Le pique reste au milieu avant ce choix, puis indique l’équipe qui fait Atout. Il ne peut pas être déplacé : le jeu alterne automatiquement après chaque donne.",
-    "options_menu": "Option",
-    "show_slate_rounds": "N° des donne dans ardoise"
+    "options_menu": "Options",
+    "show_slate_rounds": "N° des donne dans ardoise",
+    "rotate_entry": "Tourner la fenêtre"
   },
   "de": {
     "choose": "Sprache wählen",
@@ -254,7 +255,7 @@ const TRANSLATIONS={
     "edit_round": "Runde {number} ändern — {team}",
     "double_toggle": "♠ ♠",
     "help_slate_use_title": "Korrigieren",
-    "help_slate_use_body": "Nur die letzte ausgefüllte Runde ist änderbar. Im Blatt ihren Wert antippen. Auf der Tafel öffnet ↶ den letzten Eintrag des Teams: Punkte oder Weis. Eine Punktekorrektur berechnet auch die Gegenseite neu; eine Weiskorrektur betrifft nur das gewählte Team. OK ersetzt den bisherigen Eintrag; Abbrechen ändert nichts.",
+    "help_slate_use_body": "Nur die letzte ausgefüllte Runde ist änderbar. Im Blatt ihren Wert antippen. Auf der Tafel öffnet ↶ den letzten Eintrag des Teams: Punkte oder Weis. Eine Punktekorrektur berechnet auch die Gegenseite neu; eine Weiskorrektur betrifft nur das gewählte Team. OK ersetzt den bisherigen Eintrag; Abbrechen ändert nichts. Auf Smartphone und Tablet richten sich Punkte- und Meldungsfenster der Tafel zum gewählten Team aus: unten normal, gegenüber um 180° gedreht. Mit ↻ oben links oder unten rechts lässt sich die Ansicht drehen, ohne das Team zu ändern.",
     "help_slate_ann_title": "Weis auf der Tafel",
     "help_slate_ann_body": "Die Taste W öffnet die Weise: 20 für 3 Karten, 50 für 4 Karten, 100 für 5 Karten oder einen Vierling, 150 für vier Neuner und 200 für vier Buben. Neuner und Buben sind farbig abgebildet. Wählen Sie die Anzahl mit − und + und bestätigen Sie mit OK; die Summe wird einmal hinzugefügt. Abbrechen ändert nichts. Nur das ausgewählte Team erhält Weispunkte, ohne Ergänzung auf 157 für den Gegner. Die Taste heisst A auf Französisch, Italienisch und Romanisch und M auf Englisch. Bei 950 Punkten können Sie 70 Weispunkte bestätigen: Mit 1020 gewinnen Sie. Nach dem Sieg sind neue Weise gesperrt. Auf der Tafel zählt der Weis vor den Rundenpunkten: Werden durch OK 1000 Punkte im normalen Modus oder 1500 bei Pik doppelt erreicht oder überschritten, wird der Gewinner sofort ohne weitere Runde angezeigt. Beim erneuten Öffnen eines Weises über den Rückpfeil lautet der Fenstertitel «Weis ändern?». Pro Team und Runde sind höchstens 6 Meldungen zu 20, 4 zu 50 und 3 zu 100 möglich. An der Grenze wird + deaktiviert, auch beim erneuten Öffnen des Menüs. Nach der Runde werden die Zähler zurückgesetzt. Ein Match belegt eine Runde mit 257 zu 0; ein weiteres Match gehört zur nächsten Runde. Pro Team und Runde dürfen Meldungen höchstens 18 Karten beanspruchen: 20 zählt 3, 50 zählt 4, 100 zählt 5, 150 und 200 zählen je 4 Karten. Bereits bestätigte Meldungen zählen mit. Die gemeinsame Zeile für fünf Karten und ein Vierer bei 100 wird mit 5 Karten gerechnet.",
     "help_slate_read_title": "Die Tafel lesen und korrigieren",
@@ -278,7 +279,8 @@ const TRANSLATIONS={
     "help_home_body": "Öffnen Sie die Spielwebsite auf dem Telefon. Android, Chrome: Menü ⋮ → Zum Startbildschirm hinzufügen oder App installieren. iPhone, Safari: Teilen → Zum Home-Bildschirm → Hinzufügen. Das Spielsymbol erscheint neben Ihren Apps.",
     "help_trump_example": "Ist die Trumpfhilfe aktiv, fragt das Spiel beim ersten Antippen von Punkten oder Meldungen nach dem Startteam. Vor der Wahl steht das Pik in der Mitte, danach zeigt es das Trumpfteam an. Es lässt sich nicht verschieben; nach jeder Runde wechselt das Spiel automatisch.",
     "options_menu": "Optionen",
-    "show_slate_rounds": "Runden auf der Tafel anzeigen"
+    "show_slate_rounds": "Runden auf der Tafel anzeigen",
+    "rotate_entry": "Fenster drehen"
   },
   "it": {
     "choose": "Scegli la lingua",
@@ -394,7 +396,7 @@ const TRANSLATIONS={
     "edit_round": "Modifica la mano {number} — {team}",
     "double_toggle": "♠ ♠",
     "help_slate_use_title": "Correggere",
-    "help_slate_use_body": "Solo l’ultima mano compilata è modificabile. Sul foglio tocca il suo valore. Sulla lavagna ↶ riapre l’ultima registrazione della squadra: punti o annunci. Correggere punti ricalcola anche gli avversari; correggere annunci modifica solo la squadra scelta. OK sostituisce la registrazione precedente; Annulla non cambia nulla.",
+    "help_slate_use_body": "Solo l’ultima mano compilata è modificabile. Sul foglio tocca il suo valore. Sulla lavagna ↶ riapre l’ultima registrazione della squadra: punti o annunci. Correggere punti ricalcola anche gli avversari; correggere annunci modifica solo la squadra scelta. OK sostituisce la registrazione precedente; Annulla non cambia nulla. Su telefono e tablet, le finestre di punti e annunci della lavagna sono orientate verso la squadra scelta: normale in basso, capovolta per quella di fronte. Le frecce ↻ in alto a sinistra e in basso a destra cambiano l’orientamento senza cambiare la squadra destinataria.",
     "help_slate_ann_title": "Annunci sulla lavagna",
     "help_slate_ann_body": "Il pulsante A apre gli annunci: 20 per 3 carte, 50 per 4 carte, 100 per 5 carte o un poker, 150 per quattro nove e 200 per quattro fanti. Le carte 9 e J sono illustrate a colori. Scegliete le quantità con − e + e confermate con OK: il totale viene aggiunto una sola volta. Annulla non cambia nulla. Gli annunci vanno solo alla squadra scelta, senza complemento a 157 per l’avversario. Il pulsante diventa W in tedesco e M in inglese. A 950 punti potete confermare 70 punti di annunci: arrivate a 1020 e vincete. Dopo la vittoria non si possono aggiungere nuovi annunci. Sulla lavagna gli annunci contano prima dei punti della mano: se la conferma con OK raggiunge o supera 1000 punti in modalità normale o 1500 con picche doppie, il vincitore viene annunciato subito, senza aspettare una mano. Quando la freccia di ritorno riapre un annuncio, il titolo è «Modificare l’annuncio?». Per squadra e per mano sono consentiti al massimo 6 annunci da 20, 4 da 50 e 3 da 100. Al limite il pulsante + viene disattivato, anche riaprendo il menu. I contatori si azzerano dopo la mano. Un match occupa una sola mano con 257 a 0; un altro match appartiene alla mano successiva. Per squadra e per mano gli annunci possono utilizzare al massimo 18 carte: 20 conta 3 carte, 50 ne conta 4, 100 ne conta 5, 150 e 200 ne contano 4 ciascuno. Sono inclusi gli annunci già confermati. La riga da 100, che raggruppa cinque carte e poker, viene conteggiata come 5 carte.",
     "help_slate_read_title": "Leggere e correggere la lavagna",
@@ -418,7 +420,8 @@ const TRANSLATIONS={
     "help_home_body": "Apri il sito del gioco sul telefono. Android, Chrome: menu ⋮ → Aggiungi a schermata Home oppure Installa app. iPhone, Safari: Condividi → Aggiungi alla schermata Home → Aggiungi. L’icona del gioco apparirà accanto alle tue applicazioni.",
     "help_trump_example": "Se l’aiuto per l’atout è attivo, al primo tocco su punti o annunci scegli la squadra che comincia. La picche resta al centro prima della scelta, poi indica la squadra che fa atout. Non è trascinabile: il gioco alterna automaticamente dopo ogni mano.",
     "options_menu": "Opzioni",
-    "show_slate_rounds": "Mostra le mani sulla lavagna"
+    "show_slate_rounds": "Mostra le mani sulla lavagna",
+    "rotate_entry": "Ruota la finestra"
   },
   "rm": {
     "choose": "Tscherner la lingua",
@@ -534,7 +537,7 @@ const TRANSLATIONS={
     "edit_round": "Midar la runda {number} — {team}",
     "double_toggle": "♠ ♠",
     "help_slate_use_title": "Curreger",
-    "help_slate_use_body": "Mo l’ultima runda emplenida po vegnir midada. En il formular tutgai sia valur. Sin la tavla avra ↶ l’ultima endataziun da l’equipa: puncts u annunzias. Ina correctura da puncts recalculescha era l’adversari; ina correctura d’annunzias mida mo l’equipa tschernida. OK remplazza l’endataziun anteriura; Interrumper na mida nagut.",
+    "help_slate_use_body": "Mo l’ultima runda emplenida po vegnir midada. En il formular tutgai sia valur. Sin la tavla avra ↶ l’ultima endataziun da l’equipa: puncts u annunzias. Ina correctura da puncts recalculescha era l’adversari; ina correctura d’annunzias mida mo l’equipa tschernida. OK remplazza l’endataziun anteriura; Interrumper na mida nagut. Sin telefon e tablet èn las fanestras da puncts ed annunzias orientadas vers l’equipa tschernida: normal sut, vieutas per l’equipa visavi. Las frizzas ↻ sura a sanestra e sut a dretga midan l’orientaziun senza midar l’equipa.",
     "help_slate_ann_title": "Annunzias sin la tavla",
     "help_slate_ann_body": "Il buttun A avra las annunzias: 20 per 3 chartas, 50 per 4 chartas, 100 per 5 chartas u quatter chartas da la medema valur, 150 per quatter novs e 200 per quatter purs. Las chartas 9 e J èn illustradas en colur. Tschernì il dumber cun − e + e confermai cun OK: il total vegn agiuntà ina suletta giada. Interrumper na mida nagut. Las annunzias van mo a l’equipa tschernida, senza cumplettar a 157 per l’adversari. Il buttun daventa W en tudestg e M en englais. Cun 950 puncts pudais Vus confermar 70 puncts d’annunzias: Vus arrivais a 1020 e gudagnais. Suenter la victoria n’èn novas annunzias betg permessas. Sin la tavla quintan las annunzias avant ils puncts da la runda: sche la conferma cun OK cuntanscha u surpassa 1000 puncts en il modus normal u 1500 cun palas dubel, vegn il victur annunzià immediatamain senza spetgar ina runda. Sche la frizza enavos avra danovamain in’annunzia, è il titel «Midar l’annunzia?». Per equipa e runda èn permessas maximalmain 6 annunzias da 20, 4 da 50 e 3 da 100. A la limita vegn il buttun + deactivà, era sche vus avris danovamain il menu. Ils contaders vegnan mess a nulla suenter la runda. In match occupa ina runda cun 257 a 0; in ulteriur match tutga a la proxima runda. Per equipa e runda pon las annunzias duvrar maximalmain 18 chartas: 20 quinta 3, 50 quinta 4, 100 quinta 5, 150 e 200 quintan mintgamai 4 chartas. Las annunzias gia confermadas vegnan quintadas er. La lingia da 100 per tschintg chartas u quatter chartas da la medema valur quinta 5 chartas.",
     "help_slate_read_title": "Leger e curreger la tavla",
@@ -558,7 +561,8 @@ const TRANSLATIONS={
     "help_home_body": "Avri la pagina dal gieu sin il telefon. Android, Chrome: menu ⋮ → Agiuntar al visur inizial u Installar l’applicaziun. iPhone, Safari: Parter → Agiuntar al visur inizial → Agiuntar. L’icona dal gieu cumpara sper vossas applicaziuns.",
     "help_trump_example": "Sche l’agid per trumf è activ, dumonda il gieu cun tutgar puncts u annunzias tge equipa che cumenza. Il pic resta amez avant la tscherna, lura inditgescha el l’equipa che fa trumf. El na po betg vegnir spustà; il gieu alternescha automaticamain suenter mintga runda.",
     "options_menu": "Opziuns",
-    "show_slate_rounds": "Mussar las rundas sin la tavla"
+    "show_slate_rounds": "Mussar las rundas sin la tavla",
+    "rotate_entry": "Volver la fanestra"
   },
   "en": {
     "choose": "Choose a language",
@@ -674,7 +678,7 @@ const TRANSLATIONS={
     "edit_round": "Edit round {number} — {team}",
     "double_toggle": "♠ ♠",
     "help_slate_use_title": "Correct",
-    "help_slate_use_body": "Only the last completed round is editable. On the sheet, tap its value. On the slate, ↶ reopens the team’s latest entry: points or announcements. Correcting points also recalculates the opponents; correcting announcements changes only the selected team. OK replaces the previous entry; Cancel changes nothing.",
+    "help_slate_use_body": "Only the last completed round is editable. On the sheet, tap its value. On the slate, ↶ reopens the team’s latest entry: points or announcements. Correcting points also recalculates the opponents; correcting announcements changes only the selected team. OK replaces the previous entry; Cancel changes nothing. On phones and tablets, slate points and announcement windows face the selected team: upright for the bottom team, upside down for the opposite team. The ↻ arrows at the top left and bottom right rotate the window without changing the team receiving points.",
     "help_slate_ann_title": "Melds on the slate",
     "help_slate_ann_body": "The M button opens melds: 20 for 3 cards, 50 for 4 cards, 100 for 5 cards or four of a kind, 150 for four nines and 200 for four jacks. The 9 and J cards are illustrated in colour. Choose quantities with − and +, then press OK to apply the total once. Cancel changes nothing. Melds go only to the chosen team, with no complement to 157 for the opponent. The button is A in French, Italian and Romansh, and W in German. At 950 points, you can confirm 70 meld points: you reach 1020 and win. No new melds can be added after victory. On the slate, melds count before the round score: if confirming with OK reaches or exceeds 1000 in normal mode or 1500 in double spades mode, the winner is announced immediately, without waiting for a round. When the back arrow reopens a meld, the window is titled “Edit meld?”. Per team and round, you can enter at most 6 announcements of 20, 4 of 50 and 3 of 100. The + button is disabled at the limit, including when reopening the menu. Counters reset after the round. A match fills one round with 257 for one team and 0 for the other; another match belongs to the next round. Each team can use at most 18 cards for announcements per round: 20 uses 3 cards, 50 uses 4, 100 uses 5, and 150 and 200 each use 4. Previously confirmed announcements are included. The shared 100 row for five cards or four of a kind is counted as 5 cards.",
     "help_slate_read_title": "Reading and correcting the slate",
@@ -698,7 +702,8 @@ const TRANSLATIONS={
     "help_home_body": "Open the game website on your phone. Android, Chrome: menu ⋮ → Add to Home screen or Install app. iPhone, Safari: Share → Add to Home Screen → Add. The game icon then appears alongside your apps.",
     "help_trump_example": "If the trump guide is enabled, the first tap on points or announcements asks which team starts. The spade stays in the middle before that choice, then indicates the team choosing trumps. It cannot be dragged: the game alternates automatically after each round.",
     "options_menu": "Options",
-    "show_slate_rounds": "Show rounds on the slate"
+    "show_slate_rounds": "Show rounds on the slate",
+    "rotate_entry": "Rotate the window"
   }
 };
 let currentLanguage="fr";
