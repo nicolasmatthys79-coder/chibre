@@ -453,6 +453,14 @@ h1{font-family:Georgia,serif}
 }
 
 .round-ann-button.current-trick-ann{border:1.5px solid currentColor;border-radius:7px;background:var(--paper)}
+
+@media(min-width:801px){
+ .layout{display:grid;grid-template-columns:minmax(290px,1fr) minmax(240px,1.15fr) minmax(290px,1fr);gap:12px}
+ .layout .ann[hidden]{display:flex;flex-direction:column}
+ .round-ann-button{display:none}
+ .rhead,.round{grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);gap:6px}
+ .rhead>span:first-child,.rhead>span:last-child{display:none}
+}
 </style>
 </head>
 <body>
@@ -501,7 +509,7 @@ h1{font-family:Georgia,serif}
     <h1>Chibre <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
     
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><div class="menu-version">V4.76</div><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><div class="menu-version">V4.79</div><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
 
   </div>
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
@@ -555,7 +563,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.76"></script>
+<script src="./i18n.js?v=4.79"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -660,6 +668,19 @@ function syncSharedRound(i){
 function clearSharedRoundEntries(){
  for(const team of ["A","B"]){const entry=state.slateLastEntries?.[team];if(Number.isInteger(entry?.roundIndex)&&state.rounds[entry.roundIndex]?.a===null)delete state.slateLastEntries[team];}
 }
+function showAppMessage(message,confirmation=false,copyText=null){
+ return new Promise(resolve=>{
+  const dialog=document.createElement("dialog");dialog.className="language-dialog app-message";
+  const text=document.createElement("p");text.textContent=message;dialog.appendChild(text);
+  if(copyText!==null){const input=document.createElement("textarea");input.value=copyText;input.readOnly=true;input.style.cssText="width:100%;min-height:100px;font:inherit";input.onclick=()=>input.select();dialog.appendChild(input);}
+  const actions=document.createElement("form");actions.method="dialog";
+  if(confirmation){const cancel=document.createElement("button");cancel.value="cancel";cancel.textContent=t("cancel");actions.appendChild(cancel);}
+  const ok=document.createElement("button");ok.value="ok";ok.textContent="OK";actions.appendChild(ok);dialog.appendChild(actions);
+  document.body.appendChild(dialog);
+  dialog.addEventListener("close",()=>{const accepted=dialog.returnValue==="ok";dialog.remove();resolve(accepted);},{once:true});
+  dialog.showModal();
+ });
+}
 function targetReached(){
  return ["A","B"].some(team=>(roundTotal(team.toLowerCase())+annTotal(team))*factor()>=state.mode);
 }
@@ -673,7 +694,7 @@ function setRound(i,team,raw){
  if(raw===""){state.rounds.slice(i).forEach(r=>{r.a=null;r.b=null});clearSharedRoundEntries();recheckCorrectedWinner();save();render();renderSlate();return}
  const n=Number(raw);
  if(!Number.isInteger(n) || (n!==257 && (n<2 || n>MAX-2))){
-   alert(t("validation"));
+   showAppMessage(t("validation"));
    render();return;
  }
  const wasCompleted=r.a!==null&&r.b!==null;
@@ -713,7 +734,7 @@ function changeAnn(team,key,delta){
  if(key==="match"){
    if(delta>0){
      const idx=state.rounds.findIndex(r=>r.a===null && r.b===null);
-     if(idx===-1){ alert(t("full")); return; }
+     if(idx===-1){ showAppMessage(t("full")); return; }
      if(idx>=visibleRoundCount()) return;
      resetAnnCounters();
      if(team==="A"){
@@ -1126,8 +1147,8 @@ function closeHistory(){
   document.getElementById("historyPage").style.display="none";
   if(historyFromSlate){historyFromSlate=false;openSlate();}
 }
-function clearHistory(){
-  if(!confirm(t("clear_question")))
+async function clearHistory(){
+  if(!await showAppMessage(t("clear_question"),true))
     return;
 
   localStorage.removeItem("chibre_history");
@@ -1145,8 +1166,8 @@ async function shareHistoryGame(game,number){
    try{await navigator.share({title:"Chibre — "+t("part")+" "+number,text});return;}
    catch(error){if(error.name==="AbortError") return;}
  }
- try{await navigator.clipboard.writeText(text);alert(t("summary_copied"));}
- catch(error){window.prompt(t("copy_summary"),text);}
+ try{await navigator.clipboard.writeText(text);showAppMessage(t("summary_copied"));}
+ catch(error){showAppMessage(t("copy_summary"),false,text);}
 }
 async function shareApp(){
   const data={
@@ -1162,9 +1183,9 @@ async function shareApp(){
   }else{
     try{
       await navigator.clipboard.writeText(window.location.href);
-      alert(t("link_copied"));
+      showAppMessage(t("link_copied"));
     }catch(e){
-      alert(t("share_unavailable"));
+      showAppMessage(t("share_unavailable"));
     }
   }
 }
@@ -1251,7 +1272,7 @@ function slateTransaction(team,value,kind){
  const previous=slateEditContext?.team===team?slateEditContext.entry:null;
  if(kind==="points"&&(!previous||Number.isInteger(previous.roundIndex))){
   const index=previous?previous.roundIndex:state.rounds.findIndex(r=>r.a===null&&r.b===null);
-  if(index<0){alert(t("full"));return false;}
+  if(index<0){showAppMessage(t("full"));return false;}
   slateEditContext=null;
   setRound(index,key,String(value));
   return true;
@@ -1435,10 +1456,12 @@ function renderAnnPicker(){
 }
 function openSlateAnnPicker(team,editing=false){
  if(requireInitialTrump())return;
- if(state.winnerTeam&&!editing)return;
  if(!["A","B"].includes(team))return;
- annPickerTeam=team;annPickerEditing=editing;slateEditContext=null;
  const entry=state.slateLastEntries?.[team];
+ const currentEntry=entry?.kind==="announcements"&&entry.selection&&entry.counterEpoch===(state.annCounterEpoch||0);
+ editing=editing||!!currentEntry;
+ if(state.winnerTeam&&!editing)return;
+ annPickerTeam=team;annPickerEditing=editing;slateEditContext=null;
  annPickerDraft=editing&&entry?.selection?{...entry.selection}:{};
  document.getElementById("annPickerTitle").textContent=editing?t("edit_announcement"):t("ann_manual_title",{team:teamName(team)});
  renderAnnPicker();orientSlateEntry("annPickerDialog",team);document.getElementById("annPickerDialog").showModal();
@@ -1560,9 +1583,10 @@ document.addEventListener("close",syncScrollLock,true);
 load();applyLanguage();render();
 </script>
 
+
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.76";
+ const APP_VERSION="4.79";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;
