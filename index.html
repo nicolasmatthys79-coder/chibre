@@ -423,6 +423,36 @@ h1{font-family:Georgia,serif}
 .entry-rotate-top{top:5px;left:6px}.entry-rotate-bottom{bottom:5px;right:6px}
 
 .slate-half{padding-top:16px}.slate-team-line{padding-left:7px;padding-right:7px}
+
+.rhead,.round{grid-template-columns:30px minmax(0,1fr) 34px minmax(0,1fr) 30px;gap:5px}
+.rhead>span{text-align:center;min-width:0;overflow-wrap:anywhere}
+.round .num{justify-self:center;width:30px;height:30px;font-size:14px}
+.round-ann-button{width:30px;min-height:36px;padding:0;border:0;background:transparent;font-size:19px;font-weight:700}
+.round-ann-button.team-a{color:var(--a)}.round-ann-button.team-b{color:var(--b)}
+.round-ann-button:disabled{opacity:.28;cursor:default}
+.round-ann-button:focus-visible{outline:2px solid currentColor;outline-offset:1px}
+@media(min-width:801px) and (max-width:1050px){.rhead,.round{grid-template-columns:25px minmax(0,1fr) 28px minmax(0,1fr) 25px;gap:3px}.round-ann-button{width:25px}.round .num{width:26px;height:26px}}
+
+.layout .ann[hidden]{display:none}.layout{grid-template-columns:minmax(0,1fr)}
+
+.menu-version{padding:8px 10px;color:var(--muted);font:500 12px Arial,sans-serif;border-top:1px solid #d8d4c8;margin-top:6px}
+
+@media(max-width:600px){
+/* La feuille utilise la hauteur disponible, sans espace réservé en bas. */
+.app{height:100dvh;min-height:0;display:flex;flex-direction:column;padding-top:8px;padding-bottom:8px;gap:0}
+.app>header,.app>section{flex-shrink:0}
+.layout{flex:1;min-height:0;margin-top:6px;display:grid;grid-template-columns:minmax(0,1fr)}
+.rounds{min-height:0;display:flex;flex-direction:column;padding-top:9px;padding-bottom:6px}
+.rounds>h2{flex-shrink:0;margin-bottom:6px}.rounds .rhead{flex-shrink:0;padding-bottom:4px}
+.rounds #rounds{flex:1;min-height:0;display:grid;grid-template-rows:repeat(var(--visible-rounds,8),minmax(0,1fr))}
+.rounds .round{min-height:0;padding:2px 0}
+.rounds .score{min-height:24px;height:100%;max-height:62px}
+.round .round-ann-button{min-height:26px;height:100%;max-height:44px}
+@media(max-width:600px){header{margin-bottom:7px}.head .team{padding-top:4px;padding-bottom:4px}.rounds{padding-left:7px;padding-right:7px}.round .num{width:25px;height:25px;font-size:13px}}
+@media(max-height:540px){.app{height:auto;min-height:100dvh}.rounds #rounds{grid-template-rows:repeat(var(--visible-rounds,8),minmax(32px,1fr))}}
+}
+
+.round-ann-button.current-trick-ann{border:1.5px solid currentColor;border-radius:7px;background:var(--paper)}
 </style>
 </head>
 <body>
@@ -471,7 +501,7 @@ h1{font-family:Georgia,serif}
     <h1>Chibre <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
     
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><div class="menu-version">V4.76</div><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
 
   </div>
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
@@ -496,12 +526,12 @@ h1{font-family:Georgia,serif}
 </section>
 
 <div class="layout">
- <aside class="card ann a"><h2 id="annTitleA">Annonces Nous</h2><div id="annA"></div><div class="annsum"><span id="annTeamA">Total annonces</span><span id="sumAnnA">0</span></div></aside>
- <main class="card rounds"><h2 data-i18n="round_points">Points des plis</h2><div class="rhead"><span data-i18n="round">Donne</span><span id="labelA">A</span><span></span><span id="labelB">B</span></div><div id="rounds"></div></main>
- <aside class="card ann b"><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
+ <aside class="card ann a" hidden><h2 id="annTitleA">Annonces Nous</h2><div id="annA"></div><div class="annsum"><span id="annTeamA">Total annonces</span><span id="sumAnnA">0</span></div></aside>
+ <main class="card rounds"><h2 data-i18n="round_points">Points des plis</h2><div class="rhead"><span></span><span id="labelA">A</span><span data-i18n="trick_column">Pli</span><span id="labelB">B</span><span></span></div><div id="rounds"></div></main>
+ <aside class="card ann b" hidden><h2 id="annTitleB">Annonces Eux</h2><div id="annB"></div><div class="annsum"><span id="annTeamB">Total annonces</span><span id="sumAnnB">0</span></div></aside>
 </div>
 
-<section class="card info"><div class="info-actions"><a class="contact-email" href="mailto:nicolas.matthys.79@gmail.com">nicolas.matthys.79@gmail.com</a><span class="app-version">V4.70</span></div></section>
+
 </div>
 <!-- DÉBUT DE LA PAGE HISTORIQUE -->
 
@@ -525,7 +555,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.70"></script>
+<script src="./i18n.js?v=4.76"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -863,7 +893,15 @@ function makeRounds(){
   a.disabled=locked||victoryLocked;b.disabled=locked||victoryLocked;
   if(locked||victoryLocked) row.classList.add("round-locked");
   a.setAttribute("aria-label",t("round_label",{number:i+1,team:teamName("A")}));b.setAttribute("aria-label",t("round_label",{number:i+1,team:teamName("B")}));
-  row.append(num,a,eq,b);root.appendChild(row);
+  const announcementButton=team=>{
+   const button=document.createElement("button");button.type="button";button.className="round-ann-button "+(team==="A"?"team-a":"team-b");
+   button.textContent=t("ann_symbol");button.setAttribute("aria-label",t("ann_manual_title",{team:teamName(team)}));
+   // Announcements precede the points: only the next unplayed round accepts them.
+   button.disabled=locked||r.a!==null||r.b!==null||!!state.winnerTeam||targetReached();
+   button.classList.toggle("current-trick-ann",!button.disabled);
+   button.onclick=()=>openSlateAnnPicker(team);return button;
+  };
+  row.append(announcementButton("A"),a,num,b,announcementButton("B"));root.appendChild(row);
  });
 }
 function render(){
@@ -1524,7 +1562,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.70";
+ const APP_VERSION="4.76";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;

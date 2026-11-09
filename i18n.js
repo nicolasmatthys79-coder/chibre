@@ -71,7 +71,7 @@ const TRANSLATIONS={
     "help_match_title": "Compter un match",
     "help_match_body": "257 donne 0 à l’autre équipe et ajoute un match au compteur. Si une équipe remporte tous les points de la donne, inscrivez 257, pas 157. Le + de « Match » inscrit 257 sur la prochaine ligne libre. Le − retire le dernier match de cette équipe et efface sa donne ainsi que les suivantes. Corriger ou effacer un 257 ajuste le compteur. Les 257 points sont inclus dans les donnes et ne sont pas ajoutés une deuxième fois aux annonces.",
     "help_ann_title": "Annonces avant les points",
-    "help_ann_body": "20 points = 3 cartes ; 50 = 4 cartes ; 100 = 5 cartes ou carré ; 150 = quatre neuf ; 200 = quatre valets. Utilisez + et −, ou A sur l’ardoise puis OK. Les annonces ne donnent aucun point à l’adversaire. Sur ordinateur, les rectangles d’annonces portent simplement le titre « Annonces » ; sur smartphone, le nom de l’équipe est aussi indiqué. Les quatre neuf (150) et les quatre valets (200) ne peuvent être annoncés qu’une fois chacun par donne, les deux équipes réunies. Après les points de la donne, ils sont à nouveau disponibles.",
+    "help_ann_body": "20 points = 3 cartes ; 50 = 4 cartes ; 100 = 5 cartes ou carré ; 150 = quatre neuf ; 200 = quatre valets. Utilisez + et −, ou A sur l’ardoise puis OK. Les annonces ne donnent aucun point à l’adversaire. Sur ordinateur, les rectangles d’annonces portent simplement le titre « Annonces » ; sur smartphone, le nom de l’équipe est aussi indiqué. Les quatre neuf (150) et les quatre valets (200) ne peuvent être annoncés qu’une fois chacun par donne, les deux équipes réunies. Après les points de la donne, ils sont à nouveau disponibles. Le numéro du pli est entre les deux scores. Le petit A à gauche du score A ou à droite du score B ouvre les annonces de cette équipe pour le prochain pli, avant ses points.",
     "help_finish_title": "Gagner",
     "help_finish_body": "La première équipe à atteindre ou dépasser l’objectif gagne, y compris avec des annonces avant la donne. Les nouveaux ajouts sont alors bloqués. Fermez le panneau avec × pour corriger la dernière donne si nécessaire. Nouvelle partie enregistre le résultat et remet les scores à zéro.",
     "help_history_title": "Consulter l’historique",
@@ -139,7 +139,8 @@ const TRANSLATIONS={
     "help_trump_example": "Si « Qui fait Atout ? » est activé, le premier clic sur des points ou une annonce demande de choisir l’équipe qui commence. Le pique reste au milieu avant ce choix, puis indique l’équipe qui fait Atout. Il ne peut pas être déplacé : le jeu alterne automatiquement après chaque donne.",
     "options_menu": "Options",
     "show_slate_rounds": "N° des donne dans ardoise",
-    "rotate_entry": "Tourner la fenêtre"
+    "rotate_entry": "Tourner la fenêtre",
+    "trick_column": "Pli"
   },
   "de": {
     "choose": "Sprache wählen",
@@ -212,7 +213,7 @@ const TRANSLATIONS={
     "help_match_title": "Einen Match zählen",
     "help_match_body": "257 ergibt 0 für das andere Team und erhöht den Match-Zähler. Gewinnt ein Team alle Punkte einer Runde, geben Sie 257 ein, nicht 157. Das + bei «Match» trägt 257 in die nächste freie Zeile ein. Das − entfernt den letzten Match dieses Teams und löscht dessen Runde sowie alle folgenden. Beim Ändern oder Löschen von 257 wird der Zähler angepasst. Die 257 Punkte sind bereits in den Runden enthalten und werden nicht nochmals als Weis addiert.",
     "help_ann_title": "Weis vor den Punkten",
-    "help_ann_body": "20 Punkte = 3 Karten; 50 = 4 Karten; 100 = 5 Karten oder vier Gleiche; 150 = vier Neuner; 200 = vier Buben. + und − verwenden oder W auf der Tafel, dann OK. Weis gibt der Gegenseite keine Punkte. Auf dem Computer steht über den Meldungsfeldern nur die Überschrift; auf dem Smartphone zusätzlich der Teamname. Vier Neuner (150) und vier Buben (200) können je Runde insgesamt nur einmal gemeldet werden, über beide Teams hinweg. Nach den Rundenpunkten sind sie wieder verfügbar.",
+    "help_ann_body": "20 Punkte = 3 Karten; 50 = 4 Karten; 100 = 5 Karten oder vier Gleiche; 150 = vier Neuner; 200 = vier Buben. + und − verwenden oder W auf der Tafel, dann OK. Weis gibt der Gegenseite keine Punkte. Auf dem Computer steht über den Meldungsfeldern nur die Überschrift; auf dem Smartphone zusätzlich der Teamname. Vier Neuner (150) und vier Buben (200) können je Runde insgesamt nur einmal gemeldet werden, über beide Teams hinweg. Nach den Rundenpunkten sind sie wieder verfügbar. Die Rundennummer steht zwischen den Punkten. W links neben Team A oder rechts neben Team B öffnet die Meldungen dieses Teams für die nächste Runde vor den Punkten.",
     "help_finish_title": "Gewinnen",
     "help_finish_body": "Das erste Team am oder über dem Ziel gewinnt, auch durch Weis vor der Runde. Neue Einträge sind dann gesperrt. Das Fenster mit × schliessen, um bei Bedarf die letzte Runde zu korrigieren. Neues Spiel speichert das Ergebnis und setzt die Punkte zurück.",
     "help_history_title": "Den Verlauf ansehen",
@@ -280,7 +281,8 @@ const TRANSLATIONS={
     "help_trump_example": "Ist die Trumpfhilfe aktiv, fragt das Spiel beim ersten Antippen von Punkten oder Meldungen nach dem Startteam. Vor der Wahl steht das Pik in der Mitte, danach zeigt es das Trumpfteam an. Es lässt sich nicht verschieben; nach jeder Runde wechselt das Spiel automatisch.",
     "options_menu": "Optionen",
     "show_slate_rounds": "Runden auf der Tafel anzeigen",
-    "rotate_entry": "Fenster drehen"
+    "rotate_entry": "Fenster drehen",
+    "trick_column": "Runde"
   },
   "it": {
     "choose": "Scegli la lingua",
@@ -353,7 +355,7 @@ const TRANSLATIONS={
     "help_match_title": "Contare un match",
     "help_match_body": "257 assegna 0 all’altra squadra e aggiunge un match al contatore. Se una squadra conquista tutti i punti della mano, inserite 257, non 157. Il + di «Match» inserisce 257 nella prossima riga libera. Il − rimuove l’ultimo match di quella squadra e cancella la sua mano e quelle successive. Correggere o cancellare un 257 aggiorna il contatore. I 257 punti sono inclusi nelle mani e non vengono aggiunti una seconda volta agli annunci.",
     "help_ann_title": "Annunci prima dei punti",
-    "help_ann_body": "20 punti = 3 carte; 50 = 4 carte; 100 = 5 carte o poker; 150 = quattro nove; 200 = quattro fanti. Usa + e −, oppure A sulla lavagna, poi OK. Gli annunci non assegnano punti agli avversari. Sul computer i riquadri degli annunci mostrano solo il titolo; sul telefono compare anche il nome della squadra. I quattro nove (150) e i quattro fanti (200) possono essere annunciati una sola volta ciascuno per mano, considerando entrambe le squadre. Dopo i punti della mano tornano disponibili.",
+    "help_ann_body": "20 punti = 3 carte; 50 = 4 carte; 100 = 5 carte o poker; 150 = quattro nove; 200 = quattro fanti. Usa + e −, oppure A sulla lavagna, poi OK. Gli annunci non assegnano punti agli avversari. Sul computer i riquadri degli annunci mostrano solo il titolo; sul telefono compare anche il nome della squadra. I quattro nove (150) e i quattro fanti (200) possono essere annunciati una sola volta ciascuno per mano, considerando entrambe le squadre. Dopo i punti della mano tornano disponibili. Il numero della mano è tra i punteggi. A a sinistra del punteggio A o a destra del B apre gli annunci di quella squadra per la prossima mano, prima dei punti.",
     "help_finish_title": "Vincere",
     "help_finish_body": "Vince la prima squadra che raggiunge o supera l’obiettivo, anche con annunci prima della mano. Nuovi inserimenti sono bloccati. Chiudi il pannello con × per correggere l’ultima mano se necessario. Nuova partita salva il risultato e azzera i punteggi.",
     "help_history_title": "Consultare la cronologia",
@@ -421,7 +423,8 @@ const TRANSLATIONS={
     "help_trump_example": "Se l’aiuto per l’atout è attivo, al primo tocco su punti o annunci scegli la squadra che comincia. La picche resta al centro prima della scelta, poi indica la squadra che fa atout. Non è trascinabile: il gioco alterna automaticamente dopo ogni mano.",
     "options_menu": "Opzioni",
     "show_slate_rounds": "Mostra le mani sulla lavagna",
-    "rotate_entry": "Ruota la finestra"
+    "rotate_entry": "Ruota la finestra",
+    "trick_column": "Mano"
   },
   "rm": {
     "choose": "Tscherner la lingua",
@@ -494,7 +497,7 @@ const TRANSLATIONS={
     "help_match_title": "Dumbrar in match",
     "help_match_body": "257 dat 0 a l’autra equipa ed agiunta in match al dumbrader. Sche in’equipa gudogna tut ils puncts d’ina runda, endatai 257 e betg 157. Il + tar «Match» endatescha 257 en la proxima lingia libra. Il − allontanescha il davos match da questa equipa e stizza sia runda e las suandantas. Curreger u stizzar in 257 adatta il dumbrader. Ils 257 puncts èn gia inclus en las rundas e na vegnan betg agiuntads ina segunda giada a las annunzias.",
     "help_ann_title": "Annunzias avant ils puncts",
-    "help_ann_body": "20 puncts = 3 chartas; 50 = 4 chartas; 100 = 5 chartas u quatter da la medema valur; 150 = quatter novs; 200 = quatter buobs. Duvrai + e −, u A sin la tavla, lura OK. Annunzias na dattan nagins puncts a l’adversari. Sin il computer mussan ils champs d’annunzias mo il titel; sin il telefon era il num da l’equipa. Ils quatter novs (150) ed ils quatter buobs (200) pon vegnir annunziads mo ina giada mintgamai per runda, per omaduas equipas ensemen. Suenter ils puncts da la runda èn els danovamain disponibels.",
+    "help_ann_body": "20 puncts = 3 chartas; 50 = 4 chartas; 100 = 5 chartas u quatter da la medema valur; 150 = quatter novs; 200 = quatter buobs. Duvrai + e −, u A sin la tavla, lura OK. Annunzias na dattan nagins puncts a l’adversari. Sin il computer mussan ils champs d’annunzias mo il titel; sin il telefon era il num da l’equipa. Ils quatter novs (150) ed ils quatter buobs (200) pon vegnir annunziads mo ina giada mintgamai per runda, per omaduas equipas ensemen. Suenter ils puncts da la runda èn els danovamain disponibels. Il numer da la runda è tranter ils puncts. A a sanestra dals puncts A u a dretga dals puncts B avra las annunzias da quella equipa per la proxima runda avant ils puncts.",
     "help_finish_title": "Gudagnar",
     "help_finish_body": "L’emprima equipa che cuntanscha u surpassa la finamira gudogna, era cun annunzias avant la runda. Novas endataziuns èn lura bloccadas. Serrai il panel cun × per curreger l’ultima runda sche necessari. Nov gieu memorisescha il resultat e metta ils puncts a nulla.",
     "help_history_title": "Consultar la cronologia",
@@ -562,7 +565,8 @@ const TRANSLATIONS={
     "help_trump_example": "Sche l’agid per trumf è activ, dumonda il gieu cun tutgar puncts u annunzias tge equipa che cumenza. Il pic resta amez avant la tscherna, lura inditgescha el l’equipa che fa trumf. El na po betg vegnir spustà; il gieu alternescha automaticamain suenter mintga runda.",
     "options_menu": "Opziuns",
     "show_slate_rounds": "Mussar las rundas sin la tavla",
-    "rotate_entry": "Volver la fanestra"
+    "rotate_entry": "Volver la fanestra",
+    "trick_column": "Runda"
   },
   "en": {
     "choose": "Choose a language",
@@ -635,7 +639,7 @@ const TRANSLATIONS={
     "help_match_title": "Count a match",
     "help_match_body": "257 gives the other team 0 and adds one match to the counter. If a team wins all the points in a round, enter 257, not 157. The + next to “Match” enters 257 on the next empty row. The − removes that team’s last match and clears its round and all later rounds. Editing or clearing a 257 updates the counter. The 257 points are included in the round scores and are not added again as melds.",
     "help_ann_title": "Announcements before points",
-    "help_ann_body": "20 points = 3 cards; 50 = 4 cards; 100 = 5 cards or four of a kind; 150 = four nines; 200 = four jacks. Use + and −, or M on the slate, then OK. Announcements give opponents no points. On desktop, announcement boxes show only the heading; on phones, they also show the team name. Four nines (150) and four jacks (200) can each be announced only once per round across both teams. They become available again after the round points are entered.",
+    "help_ann_body": "20 points = 3 cards; 50 = 4 cards; 100 = 5 cards or four of a kind; 150 = four nines; 200 = four jacks. Use + and −, or M on the slate, then OK. Announcements give opponents no points. On desktop, announcement boxes show only the heading; on phones, they also show the team name. Four nines (150) and four jacks (200) can each be announced only once per round across both teams. They become available again after the round points are entered. The round number is between the scores. M to the left of score A or right of score B opens that team’s announcements for the next round, before points.",
     "help_finish_title": "Win",
     "help_finish_body": "The first team to reach or exceed the target wins, including through announcements before a round. New entries are then blocked. Close the panel with × to correct the last round if needed. New game saves the result and resets scores.",
     "help_history_title": "View game history",
@@ -703,7 +707,8 @@ const TRANSLATIONS={
     "help_trump_example": "If the trump guide is enabled, the first tap on points or announcements asks which team starts. The spade stays in the middle before that choice, then indicates the team choosing trumps. It cannot be dragged: the game alternates automatically after each round.",
     "options_menu": "Options",
     "show_slate_rounds": "Show rounds on the slate",
-    "rotate_entry": "Rotate the window"
+    "rotate_entry": "Rotate the window",
+    "trick_column": "Round"
   }
 };
 let currentLanguage="fr";
