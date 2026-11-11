@@ -744,7 +744,7 @@ function applyLanguage(){
  }
  document.querySelectorAll("[data-language]").forEach(el=>el.setAttribute("aria-pressed",String(el.dataset.language===currentLanguage)));
  const flag=getLanguageTrigger();if(flag)flag.setAttribute("aria-label",t("choose"));
- document.title=document.querySelector("article")?t("help_title")+" — Chibre":"Chibre";
+ document.title=document.querySelector("article")?t("help_title")+" — Chibre Jass":"Chibre Jass";
  const meta=document.querySelector('meta[name="description"]');if(meta)meta.content=t("app_description");
  const links=document.querySelectorAll("a[data-official]");links.forEach(el=>{const url=new URL(el.href);if(el.dataset.official==="google")url.searchParams.set("hl",currentLanguage==="rm"?"de":currentLanguage);else url.pathname="/"+(currentLanguage==="rm"?"de-ch":currentLanguage==="de"?"de-ch":currentLanguage==="it"?"it-ch":currentLanguage==="en"?"en-gb":"fr-ch")+"/guide/iphone/iphea86e5236/ios";el.href=url.href;});
 }
