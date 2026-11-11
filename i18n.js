@@ -65,7 +65,7 @@ const TRANSLATIONS={
     "help_start_title": "Commencer",
     "help_start_body": "Choisissez 1000 points ou 1500 (♠ ♠ : points et annonces doublés). Si « Qui fait Atout ? » est activé, choisissez la première équipe au premier clic sur des points ou une annonce. L’atout alterne ensuite à chaque donne. Dans Menu → Options, activez ou désactivez « Qui fait Atout ? » et l’affichage des numéros de donne sur l’ardoise : ✓ activé, ✕ désactivé.",
     "help_scores_title": "Saisir une donne",
-    "help_scores_body": "Entrez 2 à 155 pour une équipe : l’autre reçoit automatiquement 157 moins ce nombre. Match inscrit 257 contre 0 et ne compte pas comme une annonce. Après validation, les compteurs d’annonces repartent à zéro ; leurs points restent acquis. La feuille et l’ardoise partagent les mêmes scores. Sur l’ardoise, touchez la zone noire pour saisir. Validez les points avec Entrée pour passer directement au pli suivant, dans la case de l’équipe qui ne fait pas atout. Aucun passage à la ligne suivante après la victoire. Un appui long sur une case de points inscrit un match : 257 pour cette équipe et 0 pour l’autre.",
+    "help_scores_body": "Saisissez 2 à 155 pour une équipe : l’autre reçoit le complément à 157. Match inscrit 257 contre 0. Un appui long sur une case de la feuille principale inscrit un match. Entrée passe au pli suivant dans la case de l’équipe qui ne fait pas atout.",
     "help_order_title": "Remplir les donnes dans l’ordre",
     "help_order_body": "Seule la première ligne vide est accessible. Les lignes suivantes restent grisées jusqu’à ce que la précédente soit remplie. Les lignes déjà remplies restent modifiables. Pour corriger une donne, modifiez une case. Pour l’effacer, videz une case et validez : cette donne et toutes les suivantes sont effacées pour conserver l’ordre. Si la correction de la dernière donne atteint ou dépasse l’objectif de 1000 points, ou 1500 en pique double, le panneau du vainqueur apparaît à nouveau, même s’il avait été fermé. Cela s’applique à la feuille classique et à l’ardoise.",
     "help_match_title": "Compter un match",
@@ -140,7 +140,10 @@ const TRANSLATIONS={
     "options_menu": "Options",
     "show_slate_rounds": "N° des donne dans ardoise",
     "rotate_entry": "Tourner la fenêtre",
-    "trick_column": "Pli"
+    "trick_column": "Pli",
+    "apple_sheet": "Ouvrir la feuille de calcul",
+    "help_apple_title": "Feuille pomme",
+    "help_apple_body": "Touchez la pomme pour ouvrir une feuille à 2 ou 3 joueurs. Touchez une case et choisissez une pomme, un trait vertical ou une case vide : aucun nombre de points n’est nécessaire. La ligne suivante se débloque après le choix pour tous les joueurs. Les traits deviennent bleus lorsque le pli est complet ; chaque trait barre la pomme précédente non barrée de la même colonne. Le premier joueur à 7 traits dans des rectangles bleus gagne. Les traits entre parenthèses sur fond blanc ne comptent pas pour la victoire. Nouvelle feuille enregistre la partie dans Historique ; l’icône de cartes permet de la reprendre. Effacer la feuille vide les marques après confirmation. À 2 joueurs, choisir une pomme ajoute automatiquement un trait vertical à l’autre joueur. Le trophée apparaît dans la case du gagnant, au pli suivant la victoire. Un trait qui barre une pomme précédente est affiché à gauche entre parenthèses, sur fond blanc. Un seul joueur peut recevoir un trait vertical par pli : ce choix est ensuite bloqué pour les autres. À 3 pommes non barrées, le joueur est éliminé : sa colonne est grisée et les autres continuent sans lui. Dans l’historique, un trophée avant le prénom identifie le vainqueur."
   },
   "de": {
     "choose": "Sprache wählen",
@@ -207,7 +210,7 @@ const TRANSLATIONS={
     "help_start_title": "Start",
     "help_start_body": "1000 Punkte oder 1500 wählen (♠ ♠: Punkte und Weis doppelt). Ist die Trumpfhilfe aktiv, beim ersten Antippen von Punkten oder Meldungen das Startteam wählen. Danach wechselt Trumpf nach jeder Runde. Unter Menü → Optionen lassen sich Trumpfhilfe und Rundennummern auf der Tafel umschalten: ✓ an, ✕ aus.",
     "help_scores_title": "Runde eintragen",
-    "help_scores_body": "Für ein Team 2 bis 155 eingeben: Das andere erhält 157 minus diese Zahl. Match trägt 257 zu 0 ein und zählt nicht als Weis. Danach werden die Weiszähler zurückgesetzt; gutgeschriebene Punkte bleiben erhalten. Blatt und Tafel teilen dieselben Punkte. Auf der Tafel die schwarze Fläche antippen. Mit Enter bestätigen: Der Cursor springt zur nächsten Runde in das Feld des Teams, das nicht Trumpf macht. Nach dem Sieg erfolgt kein Wechsel. Langes Drücken auf ein Punktefeld trägt einen Match ein: 257 für dieses Team und 0 für das andere.",
+    "help_scores_body": "2 bis 155 für ein Team eingeben; das andere erhält die Ergänzung auf 157. Match trägt 257 zu 0 ein. Langes Drücken auf ein Punktefeld trägt einen Match ein. Enter wechselt zur nächsten Runde zum Team ohne Trumpfwahl.",
     "help_order_title": "Runden der Reihe nach ausfüllen",
     "help_order_body": "Nur die erste leere Zeile ist freigegeben. Die folgenden Zeilen bleiben grau, bis die vorherige ausgefüllt ist. Bereits ausgefüllte Zeilen können weiterhin geändert werden. Zum Korrigieren ändern Sie ein Feld. Zum Löschen leeren Sie ein Feld und bestätigen: Diese Runde und alle folgenden werden gelöscht, damit die Reihenfolge erhalten bleibt. Erreicht oder überschreitet die Korrektur der letzten Runde das Ziel von 1000 Punkten oder 1500 bei Pik doppelt, erscheint die Gewinnmeldung erneut, auch wenn sie zuvor geschlossen wurde. Dies gilt für das Punkteblatt und die Tafel.",
     "help_match_title": "Einen Match zählen",
@@ -282,7 +285,10 @@ const TRANSLATIONS={
     "options_menu": "Optionen",
     "show_slate_rounds": "Runden auf der Tafel anzeigen",
     "rotate_entry": "Fenster drehen",
-    "trick_column": "Runde"
+    "trick_column": "Runde",
+    "apple_sheet": "Punktetabelle öffnen",
+    "help_apple_title": "Apfelblatt",
+    "help_apple_body": "Die Apfel-Taste öffnet ein Blatt für 2 oder 3 Spieler. Ein Feld antippen und Apfel, senkrechten Strich oder leeres Feld wählen; keine Punkteingabe nötig. Die nächste Runde wird nach der Auswahl aller Spieler freigeschaltet. Striche werden nach Abschluss der Runde blau und streichen den vorherigen ungestrichenen Apfel derselben Spalte. Wer zuerst 7 Striche in blauen Feldern hat, gewinnt. Eingeklammerte Striche auf weißem Grund zählen nicht. Neues Blatt speichert im Verlauf; das Kartensymbol setzt das Spiel fort. Blatt leeren entfernt die Markierungen nach Bestätigung. Bei 2 Spielern erhält der andere Spieler automatisch einen senkrechten Strich, wenn ein Apfel gewählt wird. Der Pokal erscheint im Feld des Gewinners in der nächsten Runde. Ein Strich, der einen früheren Apfel streicht, steht links in Klammern auf weißem Grund. Pro Runde kann nur ein Spieler einen senkrechten Strich erhalten; für die anderen ist diese Auswahl dann gesperrt. Mit 3 ungestrichenen Äpfeln scheidet der Spieler aus. Seine Spalte wird grau; die anderen spielen weiter. Im Verlauf kennzeichnet ein Pokal vor dem Namen den Gewinner."
   },
   "it": {
     "choose": "Scegli la lingua",
@@ -349,7 +355,7 @@ const TRANSLATIONS={
     "help_start_title": "Iniziare",
     "help_start_body": "Scegli 1000 punti o 1500 (♠ ♠: punti e annunci raddoppiati). Se l’aiuto per l’atout è attivo, scegli la prima squadra al primo tocco su punti o annunci. L’atout alterna dopo ogni mano. In Menu → Opzioni puoi attivare o disattivare l’aiuto per l’atout e i numeri delle mani sulla lavagna: ✓ attivo, ✕ disattivo.",
     "help_scores_title": "Inserire una mano",
-    "help_scores_body": "Inserisci da 2 a 155 per una squadra: l’altra riceve 157 meno il numero inserito. Match registra 257 a 0 e non è un annuncio. I contatori degli annunci si azzerano dopo la mano; i punti restano acquisiti. Foglio e lavagna condividono i punteggi. Sulla lavagna tocca il nero per inserire. Conferma con Invio per passare alla mano successiva, nella casella della squadra che non fa atout. Dopo la vittoria il cursore non avanza. Una pressione prolungata su una casella registra un match: 257 per questa squadra e 0 per l’altra.",
+    "help_scores_body": "Inserisci da 2 a 155 per una squadra: l’altra riceve il complemento a 157. Match registra 257 a 0. Una pressione prolungata sul foglio principale registra un match. Invio passa alla mano successiva nella squadra che non fa atout.",
     "help_order_title": "Compilare le mani in ordine",
     "help_order_body": "Solo la prima riga vuota è attiva. Le righe successive restano grigie finché la precedente non è compilata. Le righe già compilate restano modificabili. Per correggere una mano, modificate una casella. Per cancellarla, svuotate una casella e confermate: questa mano e tutte le successive vengono cancellate per mantenere l’ordine. Se la correzione dell’ultima mano raggiunge o supera 1000 punti, oppure 1500 con picche doppie, il pannello del vincitore riappare anche se era stato chiuso. Questo vale per il segnapunti e la lavagna.",
     "help_match_title": "Contare un match",
@@ -424,7 +430,10 @@ const TRANSLATIONS={
     "options_menu": "Opzioni",
     "show_slate_rounds": "Mostra le mani sulla lavagna",
     "rotate_entry": "Ruota la finestra",
-    "trick_column": "Mano"
+    "trick_column": "Mano",
+    "apple_sheet": "Apri il foglio di calcolo",
+    "help_apple_title": "Foglio mela",
+    "help_apple_body": "La mela apre un foglio per 2 o 3 giocatori. Tocca una casella e scegli mela, tratto verticale o casella vuota: non servono punti numerici. La riga successiva si sblocca dopo la scelta di tutti. I tratti diventano blu a mano completata e barrano la mela precedente non barrata nella stessa colonna. Vince chi arriva a 7 tratti nelle caselle blu. I tratti tra parentesi su sfondo bianco non contano. Nuovo foglio salva nella cronologia; l’icona delle carte riprende la partita. Svuota foglio cancella i segni dopo conferma. Con 2 giocatori, scegliere una mela assegna automaticamente un tratto verticale all’altro giocatore. Il trofeo appare nella casella del vincitore nella mano successiva. Un tratto che barra una mela precedente appare a sinistra tra parentesi su sfondo bianco. Solo un giocatore può ricevere un tratto verticale per mano; la scelta viene poi bloccata per gli altri. Con 3 mele non barrate il giocatore è eliminato: la colonna diventa grigia e gli altri continuano. Nella cronologia un trofeo prima del nome identifica il vincitore."
   },
   "rm": {
     "choose": "Tscherner la lingua",
@@ -491,7 +500,7 @@ const TRANSLATIONS={
     "help_start_title": "Cumenzar",
     "help_start_body": "Tschernì 1000 puncts u 1500 (♠ ♠: puncts ed annunzias dubels). Sche l’agid per trumf è activ, tschernì l’emprima equipa cun tutgar puncts u annunzias. Trumf mida suenter mintga runda. En Menu → Opziuns pudais activar u deactivar l’agid per trumf ed ils numers da runda sin la tavla: ✓ activ, ✕ deactivà.",
     "help_scores_title": "Endatar ina runda",
-    "help_scores_body": "Endatai 2 fin 155 per in’equipa: l’autra survegn 157 minus quest dumber. Match noda 257 a 0 e na quinta betg sco annunzia. Ils contaders d’annunzias vegnan mess a nulla suenter la runda; ils puncts restan quintads. Formular e tavla dovran ils medems puncts. Sin la tavla tutgai il nair per endatar. Confermai cun Enter per ir a la proxima runda en il champ da l’equipa che na fa betg trumf. Suenter la victoria na va il cursor betg vinavant. Tutgar ditg in champ da puncts noda in match: 257 per questa equipa e 0 per l’autra.",
+    "help_scores_body": "Endatai 2 fin 155 per in’equipa; l’autra survegn il cumplement a 157. Match noda 257 a 0. Tutgar ditg in champ dal formular principal noda in match. Enter va a la proxima runda tar l’equipa che na fa betg trumf.",
     "help_order_title": "Emplenir las rundas en successiun",
     "help_order_body": "Sulettamain l’emprima lingia vida è accessibla. Las lingias suandantas restan grischas fin che la precedenta è emplenida. Las lingias gia emplenidas pon vinavant vegnir midadas. Per curreger ina runda, midai in champ. Per stizzar ella, laschai in champ vid e confermai: questa runda e tut las suandantas vegnan stizzadas per mantegnair la successiun. Sche la correctura da la davosa runda cuntanscha u surpassa 1000 puncts u 1500 cun palas dubel, cumpara il panel dal victur danovamain, er sch’el era serrà. Quai vala per il fegl da puncts e per la tavla.",
     "help_match_title": "Dumbrar in match",
@@ -566,7 +575,10 @@ const TRANSLATIONS={
     "options_menu": "Opziuns",
     "show_slate_rounds": "Mussar las rundas sin la tavla",
     "rotate_entry": "Volver la fanestra",
-    "trick_column": "Runda"
+    "trick_column": "Runda",
+    "apple_sheet": "Avrir la tabella da puncts",
+    "help_apple_title": "Formular cun il mail",
+    "help_apple_body": "Il mail avra in formular per 2 u 3 giugaders. Tutgai in champ e tschernì mail, stritg vertical u champ vid: nagins puncts numerics èn necessaris. La proxima runda vegn averta suenter la tscherna da tuts. Ils stritgs vegnan blaus suenter la runda cumpletta e stritgan il mail precedent betg anc stritgà en la medema colonna. Tgi che ha 7 stritgs en champs blaus gudogna. Stritgs en parantesas sin fund alv na quintan betg. Nov formular memorisescha en l’istorgia; l’icona da chartas permetta da cuntinuar. Svidar formular stizza ils segns suenter conferma. Cun 2 giugaders survegn l’auter automaticamain in stritg vertical, sch’in mail vegn tschernì. Il trofea cumpara en il champ dal victur en la proxima runda. In stritg che stritga in mail precedent vegn mussà a sanestra en parantesas sin fund alv. Mo in giugader po survegnir in stritg vertical per runda; la tscherna vegn alura bloccada per ils auters. Cun 3 mails betg stritgads è il giugader eliminà. Sia colonna vegn grischa ed ils auters cuntinueschan. En l’istorgia mussa in trofea avant il num il victur."
   },
   "en": {
     "choose": "Choose a language",
@@ -633,7 +645,7 @@ const TRANSLATIONS={
     "help_start_title": "Start",
     "help_start_body": "Choose 1000 points or 1500 (♠ ♠: points and announcements doubled). If the trump guide is enabled, choose the starting team when you first tap points or announcements. Trumps then alternate after each round. In Menu → Options, toggle the trump guide and round numbers on the slate: ✓ on, ✕ off.",
     "help_scores_title": "Enter a round",
-    "help_scores_body": "Enter 2 to 155 for either team: the other receives 157 minus that number. Match records 257 against 0 and is not an announcement. Announcement counters reset after the round; earned points remain credited. The sheet and slate share scores. On the slate, tap the black area to enter points. Press Enter to move to the next round in the score field of the team not choosing trumps. The cursor does not advance after victory. Long-press a score field to record a match: 257 for that team and 0 for the other.",
+    "help_scores_body": "Enter 2 to 155 for either team; the other receives the remainder out of 157. Match records 257 against 0. Long-pressing a main-sheet score records a match. Enter advances to the next round for the team not choosing trumps.",
     "help_order_title": "Fill in rounds in order",
     "help_order_body": "Only the first empty row is available. Later rows stay grey until the preceding row is filled in. Completed rows can still be edited. To correct a round, change one field. To clear it, empty one field and confirm: that round and all later rounds are cleared to keep the rounds in order. If correcting the last round reaches or exceeds 1000 points, or 1500 in double spades mode, the winner panel appears again even if it was previously closed. This applies to both the score sheet and the slate.",
     "help_match_title": "Count a match",
@@ -708,7 +720,10 @@ const TRANSLATIONS={
     "options_menu": "Options",
     "show_slate_rounds": "Show rounds on the slate",
     "rotate_entry": "Rotate the window",
-    "trick_column": "Round"
+    "trick_column": "Round",
+    "apple_sheet": "Open the score sheet",
+    "help_apple_title": "Apple sheet",
+    "help_apple_body": "The apple opens a sheet for 2 or 3 players. Tap a cell and choose an apple, vertical stroke or empty cell; no numeric points are needed. The next round unlocks after every player has chosen. Strokes turn blue when the round is complete and cross out the nearest earlier uncrossed apple in the same column. First to 7 strokes in blue cells wins. Parenthesized strokes on white backgrounds do not count toward victory. New sheet saves to History; the card icon resumes a game. Clear sheet removes marks after confirmation. With 2 players, choosing an apple automatically gives the other player a vertical stroke. The trophy appears in the winner’s cell in the row after the winning round. A stroke cancelling an earlier apple is shown on the left in parentheses on a white background. Only one player can receive a vertical stroke per round; this choice is then disabled for the others. A player with 3 uncrossed apples is eliminated. Their column turns grey and the others continue without them. In History, a trophy before the name identifies the winner."
   }
 };
 let currentLanguage="fr";
