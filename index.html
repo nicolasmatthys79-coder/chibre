@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#174c3c">
 <meta name="description" content="Feuille de score Chibre installable sur téléphone Android.">
-<link rel="manifest" href="manifest.webmanifest?v=4.136">
+<link rel="manifest" href="manifest.webmanifest?v=4.144">
 <link rel="apple-touch-icon" href="icon-red-192-v481.png">
 <link rel="icon" href="icon-red-192-v481.png">
 <title>Chibre Suisse</title>
@@ -475,7 +475,7 @@ h1{font-family:Georgia,serif}
 
 .mode-apple{text-decoration:none;color:inherit}.mode-apple:focus-visible{outline:2px solid var(--a);outline-offset:-3px;border-radius:8px}
 </style>
-</head>
+<link rel="stylesheet" href="theme.css?v=4.144"><script src="theme.js?v=4.144"></script></head>
 <body>
 <dialog id="trumpRequiredDialog" class="language-dialog" aria-labelledby="trumpRequiredTitle"><h2 id="trumpRequiredTitle" data-i18n="trump_guide">Qui fait Atout ?</h2><div style="display:flex;gap:12px;justify-content:center"><button type="button" id="trumpChooseA" onclick="confirmInitialTrump('a')" style="background:#c8e6d5"></button><button type="button" id="trumpChooseB" onclick="confirmInitialTrump('b')" style="background:#edc6cd"></button></div></dialog>
 
@@ -522,7 +522,7 @@ h1{font-family:Georgia,serif}
     <h1>Chibre Jass <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
     
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><div class="menu-version">V4.136</div><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button></span></span>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><button type="button" id="darkModeToggle" role="switch" aria-checked="false"><span data-i18n="dark_mode">Mode sombre</span><span class="dark-mode-switch" aria-hidden="true"><span id="darkModeStatus">OFF</span><span class="dark-mode-knob"></span></span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button><div class="menu-version">V4.144</div></span></span>
 
   </div>
   <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
@@ -577,7 +577,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.136"></script>
+<script src="./i18n.js?v=4.144"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -1225,25 +1225,13 @@ async function shareHistoryGame(game,number){
  catch(error){showAppMessage(t("copy_summary"),false,text);}
 }
 async function shareApp(){
-  const data={
-    title:"Chibre",
-    text:t("share_description"),
-    url:window.location.href
-  };
-
-  if(navigator.share){
-    try{
-      await navigator.share(data);
-    }catch(e){}
-  }else{
-    try{
-      await navigator.clipboard.writeText(window.location.href);
-      showAppMessage(t("link_copied"));
-    }catch(e){
-      showAppMessage(t("share_unavailable"));
-    }
-  }
+ const url="https://nicolasmatthys79-coder.github.io/chibre/";
+ const data={title:"Chibre Jass",text:t("share_description"),url};
+ if(navigator.share){try{await navigator.share(data);return;}catch(error){if(error.name==="AbortError")return;}}
+ try{if(!navigator.clipboard?.writeText)throw new Error("clipboard unavailable");await navigator.clipboard.writeText(url);showAppMessage(t("link_copied"));}
+ catch(error){showAppMessage(t("share_copy_link"),false,url);}
 }
+
 function resetAll(){
  const dialog=document.getElementById("newGameDialog");
  if(dialog.open)return;
@@ -1641,7 +1629,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.136";
+ const APP_VERSION="4.144";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;
