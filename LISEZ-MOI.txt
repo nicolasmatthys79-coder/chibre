@@ -1,40 +1,12 @@
-CHIBRE SUISSE — V4.144 — FICHIERS POUR LE SERVEUR
+CHIBRE JASS — V4.201 — FICHIERS POUR L’HÉBERGEUR
 
-Transférez ces sept fichiers ensemble dans le dossier actuel de votre site :
-- index.html
-- i18n.js
-- comment-ca-marche.html
-- manifest.webmanifest
-- sw.js
-- icon-192.png
-- icon-512.png
+Décompressez le ZIP, puis transférez tous ses fichiers dans le dossier actuel du site, à côté de index.html. Remplacez les fichiers existants portant les mêmes noms.
+Ne transférez pas le ZIP lui-même et ne créez pas de sous-dossier supplémentaire.
 
-Remplacez les anciens fichiers portant les mêmes noms. Les fichiers doivent
-être côte à côte, sans sous-dossier supplémentaire. Le fichier LISEZ-MOI.txt
-est une notice et n’est pas nécessaire au fonctionnement.
+Cette livraison contient le jeu Chibre, la Pomme, la Mise, l’aide, les traductions, le mode sombre, les icônes rouges et les fichiers du mode hors ligne.
 
-Conservez la même adresse du site pour retrouver l’historique enregistré
-sur chaque appareil. Ne supprimez pas les données du navigateur.
-Après transfert, rechargez le site. La version du cache hors connexion
-a été mise à jour pour cette livraison.
+Conservez la même adresse du site pour retrouver les parties enregistrées sur chaque appareil. Ne supprimez pas les données du navigateur.
+Après le transfert, ouvrez le site avec Internet et rechargez la page. La version affichée dans le menu doit être V4.201.
+HTTPS est nécessaire pour le fonctionnement du cache hors ligne.
 
-Modifications incluses :
-- Saisie de 2 à 155 ou de 257 pour un match.
-- 257 donne 0 à l’autre équipe et compte un match automatiquement.
-- Correction et effacement des donnes : compteur ajusté automatiquement.
-- Historique : nombre de match à côté des annonces pour chaque équipe.
-- « Match » sans S, quel que soit le nombre.
-- Anciennes parties : « — » si le compteur n’avait pas été enregistré.
-
-- Lien « comment ça marche ? » en bas du jeu et page d’aide accessible hors connexion.
-
-- Saisie des donnes dans l’ordre ; les lignes suivantes sont grisées.
-
-- Langues : Français, Deutsch, Italiano, Rumantsch (rumantsch grischun), English.
-
-- 8 donnes initiales, puis ajout progressif jusqu’à 12 sans gagnant.
-
-Ouvrez une première fois le site HTTPS avec Internet et attendez son chargement.
-Le jeu, l’aide et les langues sont alors mis en cache pour une utilisation hors ligne.
-
-Publier tous les fichiers, y compris version.json et sw.js. Hébergement HTTPS requis pour le mode hors ligne.
+Dernière modification : couleurs des boutons 1000, 1500 et pique double en mode sombre.

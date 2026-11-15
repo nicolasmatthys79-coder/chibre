@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#174c3c">
 <meta name="description" content="Feuille de score Chibre installable sur téléphone Android.">
-<link rel="manifest" href="manifest.webmanifest?v=4.144">
+<link rel="manifest" href="manifest.webmanifest?v=4.201">
 <link rel="apple-touch-icon" href="icon-red-192-v481.png">
 <link rel="icon" href="icon-red-192-v481.png">
 <title>Chibre Suisse</title>
+<script>if(location.origin==="https://appassets.androidplatform.net")document.documentElement.classList.add("native-android");</script>
 <style>
 :root{--bg:#f3f0e8;--paper:#fffdf8;--ink:#17211b;--muted:#6c746f;--line:#d8d4c8;--a:#174c3c;--b:#7b2d26;--softa:#c8e6d5;--softb:#f5e9e7}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
@@ -147,7 +148,7 @@ h2{font:700 20px Georgia,serif;margin:0 0 12px}.annrow{display:grid;grid-templat
 
 .slate-hit{cursor:pointer}.slate-hit:focus path{stroke:#f4f0e455}.slate-hit:focus{outline:none}
 @media(hover:hover){.slate-hit:hover path{stroke:#f4f0e422}}
-#slateManualForm,#slateAnnForm{display:block}.slate-ann-button{cursor:pointer}.slate-ann-button:focus rect{stroke-width:4}.slate-hit:focus rect{stroke:#f4f0e4;stroke-width:2}
+#slateManualForm,#slateAnnForm{display:block}.slate-ann-button{cursor:pointer}.slate-ann-button:focus rect{stroke-width:4}.slate-hit rect,.slate-hit:focus rect,.slate-hit:active rect{stroke:none;outline:none}.slate-hit{-webkit-tap-highlight-color:transparent}
 .slate-edit-button{cursor:pointer}.slate-edit-button:focus{outline:2px solid #fff;outline-offset:2px}
 .slate-new-game{position:absolute;right:54px;top:8px;z-index:1;padding:7px 10px;min-height:36px;border:1px solid #f4f0e477;border-radius:7px;background:#151a18;color:#f4f0e4;font-size:12px}
 .slate-content h2{margin-right:205px}
@@ -474,17 +475,17 @@ h1{font-family:Georgia,serif}
 @media(min-width:601px){.mode-apple{width:calc((100% - 290px)/2);min-width:58px;font-size:36px}}
 
 .mode-apple{text-decoration:none;color:inherit}.mode-apple:focus-visible{outline:2px solid var(--a);outline-offset:-3px;border-radius:8px}
-</style>
-<link rel="stylesheet" href="theme.css?v=4.144"><script src="theme.js?v=4.144"></script></head>
+#slateManualForm>div:last-child{display:flex;gap:12px}#slateManualForm>div:last-child>button{flex:1 1 0;width:0;min-width:0}#roundDoubleToggle{white-space:nowrap;font-size:14px;padding:6px 10px}.double-active{background:#174c3c!important;color:#fff!important}.round .num{position:relative}.round-double-badge{display:block;font:700 17px/18px Arial,sans-serif;white-space:nowrap;letter-spacing:1px}.round .num>.round-double-badge{position:absolute;top:100%;left:50%;transform:translateX(-50%)}.slate-round-numbers>span:has(.round-double-badge){line-height:18px;margin-bottom:18px}.slate-round-numbers .round-double-badge{width:auto;line-height:18px}.slate-double-toggle{min-width:0;min-height:60px;font-size:13px;padding:14px 12px}.mise-open{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 34px;border:1.5px solid currentColor;border-radius:5px;color:inherit;text-decoration:none;font:700 20px/1 Arial,sans-serif}.slate-mise-open{position:absolute;left:calc(50% + 56px);top:50%;transform:translateY(-50%);z-index:3;background:#151a18;color:#f4f0e4}.mise-entry,.mise-goals,.mise-back{display:none}.mise-page .mise-entry{display:flex;align-items:center;gap:10px;font-weight:700}.mise-entry input{width:110px;min-height:36px;padding:4px 8px;border:1px solid var(--line);border-radius:7px;font:inherit}.mise-page .mise-goals{display:none;flex-basis:100%;margin:0;text-align:center;font-size:12px}.mise-page .mise-back{display:inline-block;color:inherit;font-size:14px}.mise-page .mode-apple,.mise-page #mode1000,.mise-page #mode1500,.mise-page #roundDoubleToggle,.mise-page .mise-open,.mise-page #slateDoubleToggle{display:none!important}.game-mode-row{position:relative}.game-mode-row>.mise-open{position:absolute;right:8px;top:50%;transform:translateY(-50%)}.slate-mise-open{left:auto;right:10px}.mise-page .title-row{position:relative;justify-content:center}.mise-page .title-row h1{width:100%;text-align:center;margin-left:0;margin-right:0}.mise-page .title-row .language-picker{position:absolute;right:0;top:50%;transform:translateY(-50%)}</style>
+<link rel="stylesheet" href="theme.css?v=4.201"><script src="theme.js?v=4.201"></script><link rel="stylesheet" href="responsive.css?v=4.164"></head>
 <body>
-<dialog id="trumpRequiredDialog" class="language-dialog" aria-labelledby="trumpRequiredTitle"><h2 id="trumpRequiredTitle" data-i18n="trump_guide">Qui fait Atout ?</h2><div style="display:flex;gap:12px;justify-content:center"><button type="button" id="trumpChooseA" onclick="confirmInitialTrump('a')" style="background:#c8e6d5"></button><button type="button" id="trumpChooseB" onclick="confirmInitialTrump('b')" style="background:#edc6cd"></button></div></dialog>
+<dialog id="trumpRequiredDialog" class="language-dialog" aria-labelledby="trumpRequiredTitle"><button type="button" class="trump-dialog-close" onclick="dismissTrumpChoice(event)" data-i18n-aria-label="cancel" aria-label="Annuler">×</button><h2 id="trumpRequiredTitle" data-i18n="trump_guide">Qui fait Atout ?</h2><div style="display:flex;gap:12px;justify-content:center"><button type="button" id="trumpChooseA" onclick="confirmInitialTrump('a')" style="background:#c8e6d5"></button><button type="button" id="trumpChooseB" onclick="confirmInitialTrump('b')" style="background:#edc6cd"></button></div></dialog>
 
 <dialog id="newGameDialog" class="language-dialog" aria-labelledby="newGameQuestion"><h2 id="newGameQuestion" data-i18n="reset_question">Nouvelle partie ?</h2><form method="dialog" style="justify-content:center"><button value="no" data-i18n="no" autofocus>Non</button><button value="yes" data-i18n="yes">Oui</button></form></dialog>
 <dialog id="slateNameDialog" class="language-dialog" aria-labelledby="slateNameTitle"><h2 id="slateNameTitle" data-i18n="edit_name">Modifier les noms</h2><form id="slateNameForm" style="display:block"><label for="slateNameValue" data-i18n="names">Mettez vos noms</label><input id="slateNameValue" type="text" autocomplete="off" style="display:block;width:100%;min-height:48px;margin:10px 0;padding:8px;font:inherit;box-sizing:border-box"><div style="display:flex;justify-content:center;gap:12px"><button type="button" onclick="document.getElementById('slateNameDialog').close()" data-i18n="cancel">Annuler</button><button type="submit" value="yes">OK</button></div></form></dialog>
 <dialog id="annPickerDialog" class="language-dialog ann-picker" aria-labelledby="annPickerTitle"><h2 id="annPickerTitle"></h2><div id="annPickerRows"></div><p id="annPickerTotal" aria-live="polite"></p><form method="dialog"><button value="cancel" data-i18n="cancel">Annuler</button><button type="button" value="yes" onclick="confirmAnnPicker()">OK</button></form></dialog>
 <dialog id="slateManualDialog" class="language-dialog" aria-labelledby="slateManualTitle">
 <h2 id="slateManualTitle"></h2><form id="slateManualForm">
-<label for="slateManualValue" data-i18n="manual_value">Points à ajouter</label>
+<label for="slateManualValue" data-i18n="manual_value">Points</label>
 <input id="slateManualValue" type="number" inputmode="numeric" min="2" max="257" step="1" required style="display:block;width:100%;min-height:48px;margin:10px 0;font:inherit;padding:8px;box-sizing:border-box">
 <p id="slateManualError" role="alert" style="color:#7b2d26"></p>
 <div style="display:flex;justify-content:center;gap:12px"><button type="button" onclick="document.getElementById('slateManualDialog').close()" data-i18n="cancel">Annuler</button><button id="slateManualSubmit" type="submit" value="yes" data-i18n="add_points">Ajouter</button></div>
@@ -498,11 +499,11 @@ h1{font-family:Georgia,serif}
 </form></dialog>
 <dialog id="slateDialog" class="slate-dialog" aria-labelledby="slateTitle">
 
-<button type="button" class="slate-close" onclick="closeSlate()" data-i18n-aria-label="slate_close" aria-label="Fermer l’ardoise">×</button>
-<div class="slate-content"><div class="slate-toolbar"><h2 id="slateTitle" data-i18n="slate_title">Ardoise</h2><button type="button" class="slate-new-game" onclick="resetAll();renderSlate()" data-i18n="new">Nouvelle partie</button><button type="button" class="slate-new-game" onclick="openSlateHistory()" data-i18n="history">Historique</button></div>
-<div id="slateOptions" class="slate-options" hidden><button type="button" id="roundNumberToggle" onclick="toggleRoundNumbers()" aria-pressed="true"></button><div class="slate-options-actions"><button type="button" onclick="closeSlateOptions(false)" data-i18n="cancel">Annuler</button><button type="button" onclick="closeSlateOptions(true)">OK</button></div></div><div class="slate-halves"><section class="slate-half opposite"><div class="slate-team-line"><button type="button" id="slateNameB" class="slate-name-edit" onclick="openSlateName('B')" data-i18n-title="edit_name" title="Modifier les noms"></button><span id="slateTotalB"></span></div><div class="slate-score-area"><div id="slatePointsB" class="slate-z-area"></div><div id="slateRoundNumbersB" class="slate-round-numbers" aria-live="polite"></div></div></section>
-<button type="button" id="slateDoubleToggle" class="slate-double-toggle" onclick="toggleSlateDouble()" aria-pressed="false"></button>
-<section class="slate-half"><div class="slate-team-line"><button type="button" id="slateNameA" class="slate-name-edit" onclick="openSlateName('A')" data-i18n-title="edit_name" title="Modifier les noms"></button><span id="slateTotalA"></span></div><div class="slate-score-area"><div id="slatePointsA" class="slate-z-area"></div><div id="slateRoundNumbersA" class="slate-round-numbers" aria-live="polite"></div></div></section></div></div></dialog>
+
+<div class="slate-content"><div class="slate-toolbar"><button type="button" class="slate-close" onclick="closeSlate()" data-i18n="slate_back">Retour</button><h2 id="slateTitle" data-i18n="slate_title">Ardoise</h2><button type="button" class="slate-new-game" onclick="resetAll();renderSlate()" data-i18n="new">Nouvelle partie</button><button type="button" class="slate-new-game" onclick="openSlateHistory()" data-i18n="history">Historique</button></div>
+<div id="slateOptions" class="slate-options" hidden><button type="button" id="roundNumberToggle" onclick="toggleRoundNumbers()" aria-pressed="true"></button><div class="slate-options-actions"><button type="button" onclick="closeSlateOptions(false)" data-i18n="cancel">Annuler</button><button type="button" onclick="closeSlateOptions(true)">OK</button></div></div><div class="slate-halves"><input id="slateMiseDraft" class="slate-mise-draft" placeholder="?" type="number" inputmode="numeric" min="1" max="100000" step="1" hidden onfocus="this.select()" onchange="setMise(this.value)" data-i18n-aria-label="mise_label"><section class="slate-half opposite"><span id="slateOpeningMiseB" class="slate-opening-mise" hidden></span><div class="slate-team-line"><button type="button" id="slateNameB" class="slate-name-edit" onclick="openSlateName('B')" data-i18n-title="edit_name" title="Modifier les noms"></button><span id="slateTotalB"></span></div><div class="slate-score-area"><div id="slatePointsB" class="slate-z-area"></div><div id="slateRoundNumbersB" class="slate-round-numbers" aria-live="polite"></div></div></section>
+<div class="slate-mode-controls"><button type="button" id="slateModeToggle" class="slate-double-toggle" onclick="toggleSlateMode()">1000 ON</button><button type="button" id="slateDoubleToggle" class="slate-double-toggle" onclick="toggleSlateDouble()" aria-pressed="false"></button></div>
+<section class="slate-half"><span id="slateOpeningMiseA" class="slate-opening-mise" hidden></span><div class="slate-team-line"><button type="button" id="slateNameA" class="slate-name-edit" onclick="openSlateName('A')" data-i18n-title="edit_name" title="Modifier les noms"></button><span id="slateTotalA"></span></div><div class="slate-score-area"><div id="slatePointsA" class="slate-z-area"></div><div id="slateRoundNumbersA" class="slate-round-numbers" aria-live="polite"></div></div></section></div></div></dialog>
 <dialog id="languageDialog" class="language-dialog" aria-labelledby="languageQuestion">
 <h2 id="languageQuestion"></h2>
 <form method="dialog"><button value="no" data-i18n="no" autofocus>Non</button><button value="yes" data-i18n="yes">Oui</button></form>
@@ -518,14 +519,15 @@ h1{font-family:Georgia,serif}
 <div class="app">
 <header>
  <div>
+  <a href="./index.html" class="mise-back" data-i18n="slate_back">Retour</a>
   <div class="title-row" style="display:flex;align-items:center;gap:10px">
     <h1>Chibre Jass <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
     
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button></div><button type="button" id="darkModeToggle" role="switch" aria-checked="false"><span data-i18n="dark_mode">Mode sombre</span><span class="dark-mode-switch" aria-hidden="true"><span id="darkModeStatus">OFF</span><span class="dark-mode-knob"></span></span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button><div class="menu-version">V4.144</div></span></span>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button><button type="button" class="slate-ann-total-choice" onclick="toggleSlateAnnTotals()" aria-pressed="false"><span data-i18n="show_slate_ann_totals">Total annonces en fin de partie</span><span id="menuAnnTotalsStatus" aria-hidden="true">✕</span></button></div><button type="button" id="darkModeToggle" role="switch" aria-checked="false"><span data-i18n="dark_mode">Mode sombre</span><span class="dark-mode-switch" aria-hidden="true"><span id="darkModeStatus">OFF</span><span class="dark-mode-knob"></span></span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><button type="button" class="menu-share" onclick="closeLanguageMenu();shareApp()"><span data-i18n="share">Partager</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg></button><div class="menu-version">V4.201</div></span></span>
 
   </div>
-  <div style="color:var(--muted)" data-i18n="subtitle">Feuille de score</div>
+  
 </div>
  <div class="header-actions">
   <button type="button" id="slateToggle" class="slate-mode-button" onclick="openSlate()" data-i18n-html="slate_mode_button" data-i18n-title="slate_open" data-i18n-aria-label="slate_open">Ardoise</button>
@@ -537,8 +539,12 @@ h1{font-family:Georgia,serif}
 <section class="card score-summary" style="margin-bottom:12px">
  <div class="game-mode-row" style="padding:12px 16px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line)">
    <a class="mode-apple" href="./calcul-pomme.html" data-i18n-aria-label="apple_sheet" aria-label="Ouvrir la feuille de calcul">🍎</a>
-   <button id="mode1000" onclick="setMode(1000)">1000</button>
-   <button id="mode1500" onclick="setMode(1500)" data-i18n="double">1500 • ♠ ♠</button>
+   <button id="mode1000" onclick="requestGameMode(1000)">1000</button>
+   <button id="mode1500" onclick="requestGameMode(1500)" >1500</button>
+   <button id="roundDoubleToggle" type="button" onclick="toggleSlateDouble()" aria-pressed="false">♠ ♠ OFF</button>
+   <a href="./mise.html" class="mise-open" data-i18n="mise_symbol" data-i18n-aria-label="mise_title" aria-label="Mise">M</a>
+   <label class="mise-entry" for="miseValue"><span data-i18n="mise_points_label">Points</span> <input id="miseValue" type="number" min="1" max="100000" step="1" inputmode="numeric" value="1000" onchange="setMise(this.value)"></label>
+   <p id="miseGoals" class="mise-goals" hidden></p>
  </div>
  <div id="trumpGuide" hidden><div class="trump-track" id="trumpTrack"><button type="button" id="trumpMarker" aria-label="Choisir une équipe" draggable="false"><svg class="trump-spade-icon" viewBox="0 0 100 110" aria-hidden="true"><path fill="currentColor" d="M50 3C38 20 9 38 9 61c0 18 22 25 36 9-1 14-5 24-14 35h38C60 94 56 84 55 70c14 16 36 9 36-9C91 38 62 20 50 3Z"/></svg></button></div></div>
  <div class="head">
@@ -565,10 +571,9 @@ h1{font-family:Georgia,serif}
 
      <h1 data-i18n="history_title">Historique des parties</h1>
 
-     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+     <div class="history-actions">
        <button onclick="closeHistory()" data-i18n="back">Retour au jeu</button>
        <button onclick="clearHistory()" data-i18n="clear">Effacer historique</button>
-      <button onclick="window.print()" data-i18n="print_history">🖨️ Imprimer historique</button>
      </div>
 
      <div id="historyList"></div>
@@ -577,11 +582,12 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.144"></script>
+<script src="./i18n.js?v=4.164"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
 const announcements=[
+ {key:"stock",label:"Stöck",value:20},
  {key:"20",label:"20",value:20},
  {key:"50",label:"50",value:50},
  {key:"100",label:"100",value:100},
@@ -589,6 +595,8 @@ const announcements=[
  {key:"200",label:"200",value:200},
  {key:"match",label:"Match",value:257}
 ];
+const IS_MISE=location.pathname.endsWith("/mise.html");
+const GAME_STORAGE_KEY=IS_MISE?"chibre_mise_v1":"chibre_clean_v1";
 let state={
  nameA:"",nameB:"",mode:1000,
  rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),
@@ -626,34 +634,80 @@ function showWinner(name,total,threshold){
 
 function load(){
  try{
-  const x=JSON.parse(localStorage.getItem("chibre_clean_v1"));
+  const x=JSON.parse(localStorage.getItem(GAME_STORAGE_KEY));
   if(x && Array.isArray(x.rounds) && x.rounds.length===NROUNDS) state=x;
  }catch(e){}
+ if(IS_MISE){state.mise=Number.isSafeInteger(state.mise)&&state.mise>0?state.mise:1000;state.trumpGuide=true;state.roundDoubleVersion=1;state.roundFactors=[];if(state.miseDraftPending===undefined)state.miseDraftPending=!state.trumpConfirmed&&!state.rounds.some(r=>r.a!==null&&r.b!==null);}
+ initRoundDouble();
  document.getElementById("nameA").value=state.nameA||"";
  document.getElementById("nameB").value=state.nameB||"";
 }
+function initialMiseTeam(){
+ const team=String(state.trumpStart||state.miseTeam||"").toLowerCase();
+ return team==="a"||team==="b"?team:null;
+}
+function teamGoal(team){
+ if(!IS_MISE)return state.mode===1500?1500:1000;
+ return initialMiseTeam()===team.toLowerCase()?state.mise:1000;
+}
+function winnerForScores(totalA,totalB,goalA,goalB,previous=null){
+ const a=totalA>=goalA,b=totalB>=goalB;
+ if(a&&b)return totalA>totalB?"A":totalB>totalA?"B":previous;
+ return a?"A":b?"B":null;
+}
 function recordWinner(){
- const threshold=state.mode===1500?1500:1000;
- const totalA=(roundTotal("a")+annTotal("A"))*factor();
- const totalB=(roundTotal("b")+annTotal("B"))*factor();
- let winner=null;
- if(totalA>=threshold||totalB>=threshold){
-  if(totalA>totalB)winner="A";
-  else if(totalB>totalA)winner="B";
-  else winner=state.winnerTeam||null;
- }
- if((state.winnerTeam||null)!==winner){
-  state.winnerTeam=winner;winnerShownFor=null;dismissedWinner=null;
- }
+ const totalA=roundTotal("a")+annTotal("A"),totalB=roundTotal("b")+annTotal("B");
+ const winner=winnerForScores(totalA,totalB,teamGoal("A"),teamGoal("B"),state.winnerTeam||null);
+ if((state.winnerTeam||null)!==winner){state.winnerTeam=winner;winnerShownFor=null;dismissedWinner=null;}
+}
+function miseIsLocked(){
+ if(!IS_MISE)return false;
+ const started=initialMiseTeam()!==null||state.rounds.some(r=>r.a!==null||r.b!==null)||["A","B"].some(team=>annRawTotal(team)>0)||Object.values(state.slatePoints||{}).some(value=>value>0);
+ if(started)state.miseLocked=true;
+ return !!state.miseLocked;
+}
+function setMise(raw){
+ if(miseIsLocked()){renderMise();renderSlate();return;}
+ const value=Number(raw);
+ if(!Number.isSafeInteger(value)||value<1||value>100000){if(!initialMiseTeam()){state.miseDraftPending=true;save();render();renderSlate();}return;}
+ state.mise=value;state.miseDraftPending=false;dismissedWinner=null;save();render();renderSlate();
+}
+function renderMise(){
+ document.body.classList.toggle("mise-page",IS_MISE);if(!IS_MISE)return;
+ document.querySelector(".title-row h1").textContent=t("mise_title");document.title=t("mise_title")+" — Chibre Jass";
+ document.getElementById("miseValue").placeholder="?";
+ document.getElementById("miseValue").value=state.miseDraftPending?"":state.mise;
+ document.getElementById("miseValue").disabled=miseIsLocked();
+ const goal=document.getElementById("miseGoals");
+ goal.textContent=state.miseTeam?["A","B"].map(team=>teamName(team)+" : "+teamGoal(team)+" "+t("points")).join(" · "):t("mise_explain");
 }
 
 function save(){
+ miseIsLocked();
  recordWinner();
  state.nameA=document.getElementById("nameA").value||"";
  state.nameB=document.getElementById("nameB").value||"";
- localStorage.setItem("chibre_clean_v1",JSON.stringify(state));
+ localStorage.setItem(GAME_STORAGE_KEY,JSON.stringify(state));
 }
-function factor(){ return state.mode===1500 ? 2 : 1; }
+function factor(){return 1;}
+function currentDoubleRound(){const i=state.rounds.findIndex(r=>r.a===null&&r.b===null);return i<0?NROUNDS-1:i;}
+function initRoundDouble(){
+ if(state.roundDoubleVersion===1)return;
+ const old=state.mode===1500?2:1;
+ state.roundFactors=state.rounds.map(r=>r.a!==null?old:1);
+ state.roundFactors[currentDoubleRound()]=old;
+ state.annRoundAmounts={A:{},B:{}};
+ state.legacyAnnBonus={A:(old-1)*annRawTotal("A"),B:(old-1)*annRawTotal("B")};
+ state.legacySlateFactor=old;state.roundDoubleVersion=1;
+}
+function roundFactor(i){return state.roundFactors?.[i]===2?2:1;}
+function noteRoundAnnouncement(team,amount,index=currentDoubleRound()){
+ initRoundDouble();const amounts=state.annRoundAmounts[team];amounts[index]=(amounts[index]||0)+amount;
+}
+function updateDoubleButtons(){
+ const active=roundFactor(currentDoubleRound())===2;
+ for(const id of ["roundDoubleToggle","slateDoubleToggle"]){const b=document.getElementById(id);if(!b)continue;b.textContent="♠ ♠ "+(active?"ON":"OFF");b.setAttribute("aria-pressed",String(active));b.disabled=!!state.winnerTeam||(!IS_MISE&&state.mode!==1500);b.classList.toggle("double-active",active);b.classList.toggle("double-unavailable",!IS_MISE&&state.mode!==1500);}
+}
 function setMode(mode){
  const nextMode=mode===1500?1500:1000;
  if(state.mode!==nextMode){
@@ -661,12 +715,16 @@ function setMode(mode){
   if(state.winnerTeam){
    const winner=state.winnerTeam;
    const total=(roundTotal(winner.toLowerCase())+annTotal(winner))*factor();
-   if(total<nextMode)state.winnerTeam=null;
+   if(total<teamGoal(winner))state.winnerTeam=null;
   }
   winnerShownFor=null;dismissedWinner=null;
   document.getElementById("winToast").classList.remove("show");
  }
- save();render();
+ if(!IS_MISE&&nextMode===1000){
+  initRoundDouble();const i=currentDoubleRound();
+  if(state.rounds[i]&&(state.rounds[i].a===null||state.rounds[i].b===null))state.roundFactors[i]=1;
+ }
+ save();render();renderSlate();
 }
 function lastCompletedRound(){
  let last=-1;state.rounds.forEach((r,i)=>{if(r.a!==null&&r.b!==null)last=i;});return last;
@@ -674,7 +732,7 @@ function lastCompletedRound(){
 function recheckCorrectedWinner(){
  if(!state.winnerTeam)return;
  const winner=state.winnerTeam;
- if((roundTotal(winner.toLowerCase())+annTotal(winner))*factor()<(state.mode===1500?1500:1000)){
+ if((roundTotal(winner.toLowerCase())+annTotal(winner))*factor()<teamGoal(winner)){
   state.winnerTeam=null;winnerShownFor=null;dismissedWinner=null;
  }
 }
@@ -702,7 +760,7 @@ function showAppMessage(message,confirmation=false,copyText=null){
  });
 }
 function targetReached(){
- return ["A","B"].some(team=>(roundTotal(team.toLowerCase())+annTotal(team))*factor()>=state.mode);
+ return ["A","B"].some(team=>(roundTotal(team.toLowerCase())+annTotal(team))*factor()>=teamGoal(team));
 }
 function setRound(i,team,raw){
  if(requireInitialTrump())return;
@@ -733,11 +791,11 @@ function currentAnnCounters(team){
 }
 function resetAnnCounters(){state.currentAnnCounters={A:{},B:{}};state.annCounterEpoch=(state.annCounterEpoch||0)+1;}
 function currentAnnCount(team){return Object.values(currentAnnCounters(team)).reduce((sum,n)=>sum+n,0);}
-const announcementLimits={20:6,50:4,100:3,150:1,200:1};
+const announcementLimits={stock:1,20:6,50:4,100:3,150:1,200:1};
 const announcementCards={20:3,50:4,100:5,150:4,200:4};
 function announcementCardCount(counts){return Object.entries(announcementCards).reduce((sum,[key,cards])=>sum+(counts[key]||0)*cards,0);}
 function sharedAnnouncementCount(team,key){
- return ["150","200"].includes(String(key))?(currentAnnCounters(team==="A"?"B":"A")[key]||0):0;
+ return ["stock","150","200"].includes(String(key))?(currentAnnCounters(team==="A"?"B":"A")[key]||0):0;
 }
 function announcementCapacity(team,key,removed=0){
  const counts=currentAnnCounters(team),cards=announcementCards[key];
@@ -787,6 +845,7 @@ function changeAnn(team,key,delta){
  if(delta<0&&!(counters[key]>0))return;
  counters[key]=Math.max(0,(counters[key]||0)+delta);
  obj[key]=Math.max(0,(obj[key]||0)+delta);
+ noteRoundAnnouncement(team,delta*(key==="stock"?20:Number(key)));
  recordWinner(team);
  save();render();
 }
@@ -794,12 +853,15 @@ function matchCount(team){
  const key=team==="A"?"a":"b";
  return state.rounds.filter(r=>r[key]===257).length+(state.slateMatches?.[key]||0);
 }
-function annTotal(team){
+function annRawTotal(team){
  const obj=team==="A"?state.annA:state.annB;
  return announcements.reduce((sum,x)=>x.key==="match" ? sum : sum+(obj[x.key]||0)*x.value,0)+(state.slateAnnouncements?.[team]||0);
 }
+function annTotal(team){
+ return annRawTotal(team)+(state.legacyAnnBonus?.[team]||0)+Object.entries(state.annRoundAmounts?.[team]||{}).reduce((sum,[i,value])=>sum+value*(roundFactor(Number(i))-1),0);
+}
 function roundTotal(team){
- return state.rounds.reduce((sum,r)=>sum+(r[team]===null?0:r[team]),0)+(state.slatePoints?.[team]||0);
+ return state.rounds.reduce((sum,r)=>sum+(r[team]===null?0:r[team])*roundFactor(state.rounds.indexOf(r)),0)+(state.slatePoints?.[team]||0)*(state.legacySlateFactor||1);
 }
 function makeAnnouncements(team){
  const obj=team==="A"?state.annA:state.annB;
@@ -838,7 +900,11 @@ function makeAnnouncements(team){
   minus.setAttribute("aria-label",t("decrease",{value:x.key==="match"?t("match"):x.value,team:teamName(team)}));
   plus.setAttribute("aria-label",t("increase",{value:x.key==="match"?t("match"):x.value,team:teamName(team)}));
   minus.disabled=!!state.winnerTeam;plus.disabled=!!state.winnerTeam||(x.key!=="match"&&announcementCapacity(team,x.key)<=0);
-  row.append(label,minus,count,plus);root.appendChild(row);
+  if(x.key==="stock"){
+   row.classList.add("stock-row");const toggle=document.createElement("button");toggle.type="button";toggle.className="stock-toggle";
+   const selected=!!currentAnnCounters(team).stock;toggle.textContent=selected?"✓":"?";toggle.setAttribute("aria-pressed",String(selected));toggle.setAttribute("aria-label","Stöck : "+t(selected?"yes":"no"));
+   toggle.disabled=!!state.winnerTeam||(!selected&&announcementCapacity(team,"stock")<=0);toggle.onclick=()=>changeAnn(team,"stock",selected?-1:1);row.append(label,toggle);
+  }else row.append(label,minus,count,plus);root.appendChild(row);
  });
 }
 function visibleRoundCount(){
@@ -851,6 +917,7 @@ function toggleAppOptions(){
  document.getElementById("optionsToggle").setAttribute("aria-expanded",String(!panel.hidden));updateMenuRounds();positionLanguageMenu();
 }
 function updateMenuRounds(){
+ const annStatus=document.getElementById("menuAnnTotalsStatus");annStatus.textContent=showSlateAnnTotals?"✓":"✕";annStatus.parentElement.setAttribute("aria-pressed",String(showSlateAnnTotals));
  const status=document.getElementById("menuRoundsStatus");status.textContent=showSlateRoundNumbers?"✓":"✕";
  status.parentElement.setAttribute("aria-pressed",String(showSlateRoundNumbers));
 }
@@ -887,24 +954,81 @@ function fitRoundSheet(){
  sheet.style.setProperty("--visible-rounds",visibleRoundCount());
 }
 window.addEventListener("resize",()=>requestAnimationFrame(fitRoundSheet));
+let miseWarningOpen=false;
+function requireMise(edit=false){
+ if(!IS_MISE||miseIsLocked()||(!edit&&!state.miseDraftPending))return false;
+ if(!miseWarningOpen){
+  miseWarningOpen=true;
+  const dialog=document.createElement("dialog");dialog.className="language-dialog app-message mise-warning-dialog";
+  const form=document.createElement("form");form.method="dialog";
+  const label=document.createElement("label");label.textContent=t("mise_required");label.htmlFor="miseWarningValue";
+  const input=document.createElement("input");input.id="miseWarningValue";input.type="number";input.inputMode="numeric";input.min="1";input.max="100000";input.step="1";input.required=true;input.placeholder="?";
+  if(edit&&!state.miseDraftPending)input.value=String(state.mise);
+  input.style.cssText="display:block;width:100%;box-sizing:border-box;min-height:44px;margin:12px 0;text-align:center;font:inherit";
+  const actions=document.createElement("div");actions.style.cssText="display:flex;justify-content:center;gap:12px";
+  const cancel=document.createElement("button");cancel.type="button";cancel.textContent=t("cancel");cancel.onclick=()=>dialog.close("cancel");
+  const ok=document.createElement("button");ok.type="submit";ok.textContent="OK";
+  const entry=document.createElement("div");entry.className="mise-warning-entry";entry.append(label,input);
+  actions.className="mise-warning-actions";
+  actions.append(cancel,ok);form.append(entry,actions);dialog.appendChild(form);
+  form.addEventListener("submit",event=>{
+   event.preventDefault();if(!input.reportValidity())return;
+   input.blur();setMise(input.value);dialog.close("ok");
+  });
+  dialog.addEventListener("close",()=>{miseWarningOpen=false;dialog.remove();},{once:true});
+  document.body.appendChild(dialog);dialog.showModal();input.focus();input.select();
+ }
+ return true;
+}
+document.getElementById("slateMiseDraft").addEventListener("pointerdown",event=>{
+ if(!window.matchMedia("(max-width:600px)").matches)return;
+ event.preventDefault();if(!miseIsLocked())requireMise(true);
+});
+let dismissingTrumpChoice=false;
+function dismissTrumpChoice(event){
+ if(event){event.preventDefault();event.stopPropagation();}
+ dismissingTrumpChoice=true;
+ document.getElementById("trumpRequiredDialog").close();
+ if(document.activeElement?.matches("input.score"))document.activeElement.blur();
+ setTimeout(()=>{dismissingTrumpChoice=false;},0);
+}
 function requireInitialTrump(){
+ if(dismissingTrumpChoice)return true;
+ if(requireMise())return true;
  if(!state.trumpPending&&(state.trumpConfirmed||state.rounds.some(r=>r.a!==null&&r.b!==null)))return false;
  const dialog=document.getElementById("trumpRequiredDialog");
  document.getElementById("trumpChooseA").textContent=teamName("A");document.getElementById("trumpChooseB").textContent=teamName("B");
  if(!dialog.open)dialog.showModal();return true;
 }
 function confirmInitialTrump(team){
- state.trumpPending=false;state.trumpConfirmed=true;state.trumpGuide=true;state.trumpStart=team;
+ const draft=document.getElementById("slateMiseDraft");
+ if(IS_MISE&&document.getElementById("slateDialog").open&&!draft.hidden){
+  const value=Number(draft.value);
+  if(!Number.isSafeInteger(value)||value<1||value>100000){document.getElementById("trumpRequiredDialog").close();draft.focus();return;}
+  state.mise=value;state.miseDraftPending=false;
+ }
+ state.trumpPending=false;state.trumpConfirmed=true;state.trumpGuide=true;state.trumpStart=team;if(IS_MISE){state.miseTeam=team;state.initialMise=state.mise;}
  document.getElementById("trumpRequiredDialog").close();save();render();renderSlate();
 }
-document.getElementById("trumpRequiredDialog").addEventListener("cancel",event=>event.preventDefault());
+document.getElementById("trumpRequiredDialog").addEventListener("cancel",dismissTrumpChoice);
+document.getElementById("trumpRequiredDialog").addEventListener("click",event=>{
+ const dialog=event.currentTarget;if(event.target!==dialog)return;
+ const rect=dialog.getBoundingClientRect();
+ if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dismissTrumpChoice(event);
+});
 function trumpTeam(){
  if(!state.trumpConfirmed&&!state.rounds.some(r=>r.a!==null&&r.b!==null))return null;
  const count=state.rounds.filter(r=>r.a!==null&&r.b!==null).length;
  return ((state.trumpStart||"a")==="a")===(count%2===0)?"a":"b";
 }
 function toggleTrumpGuide(){state.trumpGuide=!state.trumpGuide;save();render();if(document.getElementById("slateDialog").open)renderSlate();}
-function trumpChoiceLocked(){return state.rounds.some(r=>r.a!==null&&r.b!==null);}
+function trumpChoiceLocked(){return state.rounds.some(r=>r.a!==null||r.b!==null)||["A","B"].some(team=>annRawTotal(team)>0)||Object.values(state.slatePoints||{}).some(value=>value>0);}
+function chooseTrumpFromMarker(){
+ if(trumpChoiceLocked())return;
+ if(requireMise())return;
+ if(!reopenInitialTrumpChoice())requireInitialTrump();
+}
+document.getElementById("trumpTrack").addEventListener("click",chooseTrumpFromMarker);
 
 function positionTrumpGuide(){
  const guide=document.getElementById("trumpGuide"),head=document.querySelector(".head"),right=document.querySelector(".head .team.b");
@@ -917,8 +1041,8 @@ function renderTrumpGuide(){
  positionTrumpGuide();
  const guide=document.getElementById("trumpGuide"),marker=document.getElementById("trumpMarker");
  const status=document.getElementById("trumpGuideStatus");status.textContent=state.trumpGuide?"✓":"✕";status.parentElement.setAttribute("aria-pressed",String(!!state.trumpGuide));
- guide.hidden=!state.trumpGuide;marker.classList.toggle("right",trumpTeam()==="b");marker.classList.toggle("neutral",trumpTeam()===null);
- marker.disabled=true;document.getElementById("trumpTrack").classList.toggle("locked",trumpChoiceLocked());
+ guide.hidden=IS_MISE?false:!state.trumpGuide;marker.classList.toggle("right",trumpTeam()==="b");marker.classList.toggle("neutral",trumpTeam()===null);
+ marker.disabled=trumpChoiceLocked();marker.setAttribute("aria-haspopup","dialog");document.getElementById("trumpTrack").classList.toggle("locked",trumpChoiceLocked());
 }
 function enterRoundPoints(event,index,team,input){
  if(event.key!=="Enter"||event.isComposing)return;
@@ -957,7 +1081,7 @@ function makeRounds(){
  const root=document.getElementById("rounds");root.innerHTML="";
  state.rounds.slice(0,visibleRoundCount()).forEach((r,i)=>{
   const row=document.createElement("div");row.className="round";
-  const num=document.createElement("span");num.className="num";num.textContent=i+1;
+  const num=document.createElement("span");num.className="num";num.textContent=i+1;if(roundFactor(i)===2){const badge=document.createElement("small");badge.className="round-double-badge";badge.textContent="♠♠";num.appendChild(badge);}
   const a=document.createElement("input");a.className="score";a.type="text";a.pattern="[0-9]*";a.onfocus=()=>{if(requireInitialTrump()){a.blur();return;}a.select();};a.onclick=()=>{if(requireInitialTrump())return;a.select();};a.inputMode="numeric";a.value=r.a===null?"":r.a;a.placeholder="—";a.onchange=()=>setRound(i,"a",a.value);
   const eq=document.createElement("span");eq.className="eq";eq.textContent=":";
   const b=document.createElement("input");b.className="score";b.type="text";b.pattern="[0-9]*";b.onfocus=()=>{if(requireInitialTrump()){b.blur();return;}b.select();};b.onclick=()=>{if(requireInitialTrump())return;b.select();};b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
@@ -981,9 +1105,11 @@ function makeRounds(){
  });
 }
 function render(){
+ initRoundDouble();
  syncScrollLock();
+ renderMise();
  recordWinner();
- makeAnnouncements("A");makeAnnouncements("B");makeRounds();renderTrumpGuide();
+ makeAnnouncements("A");makeAnnouncements("B");makeRounds();renderTrumpGuide();updateDoubleButtons();
  requestAnimationFrame(()=>{fitRoundSheet();fitTeamNames();});
  const nA=teamName("A"),nB=teamName("B");
  document.getElementById("labelA").textContent=nA;document.getElementById("labelB").textContent=nB;
@@ -997,13 +1123,15 @@ function render(){
  document.getElementById("totalA").textContent=totalA;
  document.getElementById("totalB").textContent=totalB;
 
- const threshold=state.mode===1500?1500:1000;
+ const threshold=teamGoal(state.winnerTeam||"A");
  recordWinner();
- if(state.winnerTeam==="A") showWinner(nA,totalA,threshold);
- else if(state.winnerTeam==="B") showWinner(nB,totalB,threshold);
+ if(state.winnerTeam==="A") showWinner(nA,totalA,teamGoal("A"));
+ else if(state.winnerTeam==="B") showWinner(nB,totalB,teamGoal("B"));
  else document.getElementById("winToast").classList.remove("show");
 
  const m1000=document.getElementById("mode1000"),m1500=document.getElementById("mode1500");
+ m1000.setAttribute("aria-pressed",String(state.mode===1000));
+ m1500.setAttribute("aria-pressed",String(state.mode===1500));
  m1000.style.background=state.mode===1000?"#17211b":"#fff"; m1000.style.color=state.mode===1000?"#fff":"#17211b";
  m1500.style.background=state.mode===1500?"#17211b":"#fff"; m1500.style.color=state.mode===1500?"#fff":"#17211b";
 
@@ -1032,7 +1160,11 @@ function render(){
     history=[];
   }
 
-  history.unshift({
+  if(!state.historyGameId)state.historyGameId=crypto.randomUUID();
+  const existingIndex=history.findIndex(game=>game.gameId===state.historyGameId);
+  const previousGame=existingIndex>=0?history[existingIndex]:null;
+  const savedGame={
+    gameId:state.historyGameId,
     date:new Date().toLocaleString("fr-CH"),
     timestamp:Date.now(),
     usedSlate:!!(state.usedSlate || state.slatePoints || state.slateAnnouncements),
@@ -1046,13 +1178,61 @@ function render(){
    annB:ab*f,
    matchesA:matchCount("A"),
    matchesB:matchCount("B"),
-    winnerTeam:state.winnerTeam || null,
-    mode:state.mode
-  });
-
+    winnerTeam:winnerForScores(totalA,totalB,teamGoal("A"),teamGoal("B"),state.winnerTeam||null),
+    mode:IS_MISE?t("mise_title")+" "+state.mise:state.mode,
+    goalA:teamGoal("A"),goalB:teamGoal("B"),gameType:IS_MISE?"mise":"chibre",
+    initialMise:IS_MISE?(state.initialMise||state.mise):null,
+    miseTeam:IS_MISE?initialMiseTeam():null,
+    initialTrumpTeam:IS_MISE?initialMiseTeam():null
+  };
+  if(previousGame){savedGame.timestamp=previousGame.timestamp;savedGame.date=previousGame.date;history[existingIndex]=savedGame;}
+  else history.unshift(savedGame);
+  localStorage.setItem(GAME_STORAGE_KEY,JSON.stringify(state));
   localStorage.setItem("chibre_history",JSON.stringify(history));
 }
 
+
+function historyModeSummary(game){
+ if(game.gameType==="mise")return miseHistorySummary(game);
+ return t("mode")+" : "+(Number(game.mode)===1500?"♠♠ ":"")+game.mode+" "+t("points");
+}
+function miseHistorySummary(game){
+ if(game.gameType!=="mise")return "";
+ const team=String(game.initialTrumpTeam||game.miseTeam||"").toUpperCase();
+ const value=game.initialMise??(team?game["goal"+team]:null)??String(game.mode).replace(/[^0-9]/g,"");
+ return t("mise_initial")+" : "+value+" "+t("points")+(team?" — "+gameName(game,team):"");
+}
+function historyTextFile(history){
+ const lines=["Chibre Jass — "+t("history"),""];
+ history.forEach((game,index)=>{
+  lines.push(t("part")+" "+(history.length-index),gameDate(game),t("mode")+" : "+game.mode+" "+t("points"));
+  if(game.gameType==="mise")lines.push(miseHistorySummary(game));
+  for(const team of ["A","B"]){
+   lines.push(gameName(game,team)+" : "+(Number(game["total"+team])||0)+" "+t("pts"));
+   lines.push("  "+t("ann")+" : "+(Number(game["ann"+team])||0)+" "+t("pts")+" · "+t("match")+" : "+(game["matches"+team]??"—"));
+  }
+  if(game.winnerTeam)lines.push("🏆 "+t("winner")+" : "+gameName(game,game.winnerTeam));
+  lines.push("", "────────────────────────", "");
+ });
+ return lines.join("\r\n");
+}
+async function exportHistoryText(){
+ let history=[];
+ try{history=JSON.parse(localStorage.getItem("chibre_history"))||[];}catch(error){}
+ if(!Array.isArray(history)||history.length===0){showAppMessage(t("empty"));return;}
+ const text=historyTextFile(history);
+ const filename="Chibre-Jass-historique-"+new Date().toISOString().slice(0,10)+".txt";
+ if(window.ChibreFileShare?.postMessage){
+  window.ChibreFileShare.postMessage(JSON.stringify({filename,text}));return;
+ }
+ const file=new File(["\uFEFF",text],filename,{type:"text/plain;charset=utf-8"});
+ if(navigator.canShare?.({files:[file]})&&navigator.share){
+  try{await navigator.share({files:[file],title:"Chibre Jass"});return;}catch(error){if(error.name==="AbortError")return;}
+ }
+ const url=URL.createObjectURL(file),link=document.createElement("a");
+ link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),60000);
+}
 
 function escapeHistoryText(value){
   return String(value ?? "").replace(/[&<>"']/g,char=>({
@@ -1061,6 +1241,8 @@ function escapeHistoryText(value){
 }
 
 function openHistory(){
+  recordWinner();
+  if(state.winnerTeam)saveGameToHistory();
 
   document.getElementById("historyPage").style.display="block";
 
@@ -1092,6 +1274,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
     const largeurB=(game.totalB/meilleurScore)*100;
     const box=document.createElement("div");
 
+    box.className="history-game";
     box.style.background="#fffdf8";
     box.style.border="1px solid #d8d4c8";
     box.style.borderRadius="16px";
@@ -1110,7 +1293,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
         ${winnerLabel}
       </div>
 
-      <div>${escapeHistoryText(t("mode"))} : ${game.mode} ${escapeHistoryText(t("points"))}</div>
+      <div>${escapeHistoryText(historyModeSummary(game))}</div>
 
       <div style="margin-top:18px;padding-top:14px;border-top:1px solid #d8d4c8">
 
@@ -1118,7 +1301,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
           ${escapeHistoryText(gameName(game,"A"))}
         </div>
 
-        <div style="height:42px;background:#efebe2;border-radius:10px;overflow:hidden">
+        <div class="history-score-track" style="height:28px;background:#efebe2;border-radius:10px;overflow:hidden">
           <div style="
             width:${largeurA}%;
   height:100%;
@@ -1131,7 +1314,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
   font-size:18px;
   font-weight:900;
   color:#000;
-  min-width:65px">
+  min-width:max-content;max-width:100%;white-space:nowrap;flex-shrink:0;padding-left:8px">
   ${game.totalA} ${escapeHistoryText(t("pts"))}
           </div>
         </div>
@@ -1143,7 +1326,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
           ${escapeHistoryText(gameName(game,"B"))}
         </div>
 
-        <div style="height:42px;background:#efebe2;border-radius:10px;overflow:hidden">
+        <div class="history-score-track" style="height:28px;background:#efebe2;border-radius:10px;overflow:hidden">
           <div style="
             width:${largeurB}%;
   height:100%;
@@ -1156,7 +1339,7 @@ const meilleurScore=Math.max(game.totalA,game.totalB,1);
   font-size:18px;
   font-weight:900;
   color:#000;
-  min-width:65px">
+  min-width:max-content;max-width:100%;white-space:nowrap;flex-shrink:0;padding-left:8px">
   ${game.totalB} ${escapeHistoryText(t("pts"))}
           </div>
         </div>
@@ -1213,7 +1396,7 @@ async function clearHistory(){
 function historyShareText(game,number){
  const winner=game.winnerTeam==="A"?gameName(game,"A"):game.winnerTeam==="B"?gameName(game,"B"):null;
  const teamLine=team=>gameName(game,team)+" : "+game["total"+team]+" "+t("pts")+" · "+t("ann")+" : "+(game["ann"+team]||0)+" "+t("pts")+" · "+t("match")+" : "+(game["matches"+team]??"—");
- return ["Chibre — "+t("part")+" "+number,gameDate(game),t("mode")+" : "+game.mode+" "+t("points"),teamLine("A"),teamLine("B"),winner?t("winner")+" : "+winner:(Object.hasOwn(game,"winnerTeam")?t("unfinished"):t("unknown"))].join("\n");
+ return ["Chibre — "+t("part")+" "+number,gameDate(game),historyModeSummary(game),teamLine("A"),teamLine("B"),winner?t("winner")+" : "+winner:(Object.hasOwn(game,"winnerTeam")?t("unfinished"):t("unknown"))].join("\n");
 }
 async function shareHistoryGame(game,number){
  const text=historyShareText(game,number);
@@ -1245,7 +1428,7 @@ function startNewGame(){
  dismissedWinner=null;
  winnerShownFor=null;
  document.getElementById("winToast").classList.remove("show");
- state={nameA:document.getElementById("nameA").value||"",nameB:document.getElementById("nameB").value||"",mode:state.mode||1000,rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{},trumpGuide:!!state.trumpGuide,trumpPending:true};
+ state={nameA:document.getElementById("nameA").value||"",nameB:document.getElementById("nameB").value||"",mode:state.mode||1000,mise:state.mise||1000,miseTeam:null,initialMise:null,miseDraftPending:true,roundDoubleVersion:1,roundFactors:[],annRoundAmounts:{A:{},B:{}},legacyAnnBonus:{A:0,B:0},rounds:Array.from({length:NROUNDS},()=>({a:null,b:null})),annA:{},annB:{},trumpGuide:!!state.trumpGuide,trumpPending:true};
  save();render();
  if(document.getElementById("slateDialog").open)renderSlate();
 }
@@ -1263,7 +1446,7 @@ function slateDisplayBreakdown(total,team){
  if(raw===undefined){const last=state.slateLastEntries?.[team];raw=last?.selection?((last.selection[50]||0)+(last.selection[150]||0))*50*(last.rawValue/last.value):0;}
  const amount=(((state[team==="A"?"annA":"annB"]?.[50]||0)+(state[team==="A"?"annA":"annB"]?.[150]||0))*50+(raw||0))*factor();
  const fifties=Math.min(Math.floor(total/50),Math.floor(amount/50));
- const twentyAmount=((state[team==="A"?"annA":"annB"]?.[20]||0)*20+(state.slateTwentyPoints?.[team]||0)+state.rounds.filter(r=>r[team.toLowerCase()]===20).length*20)*factor();
+ const twentyAmount=(((state[team==="A"?"annA":"annB"]?.[20]||0)+(state[team==="A"?"annA":"annB"]?.stock||0))*20+(state.slateTwentyPoints?.[team]||0)+state.rounds.filter(r=>r[team.toLowerCase()]===20).length*20)*factor();
  const twenties=Math.min(Math.floor((total-fifties*50)/20),Math.floor(twentyAmount/20));
  const points=slateBreakdown(total-fifties*50-twenties*20);points.fifties+=fifties;points.twenties+=twenties;return points;
 }
@@ -1285,18 +1468,18 @@ function slateSvg(total,team){
   const slots=groupCount*5+1;
   const groupCenter=group*5+2.5;
   const position=(groupCenter+(slot-1.5)*0.55)/slots;
-  const x=535-470*position,y=55+290*position;
-  const length=Math.hypot(470,290),dx=18*290/length,dy=18*470/length;
+  const x=535-470*position,y=35+310*position;
+  const length=Math.hypot(470,310),dx=18*310/length,dy=18*470/length;
   if(slot===4){
    const start=(groupCenter-1.5*0.55)/slots,end=(groupCenter+1.5*0.55)/slots;
-   fiftyMarks+=line(535-470*start-dx,55+290*start-dy,535-470*end+dx,55+290*end+dy);
+   fiftyMarks+=line(535-470*start-dx,35+310*start-dy,535-470*end+dx,35+310*end+dy);
   }else fiftyMarks+=line(x-dx,y-dy,x+dx,y+dy);
  }
  const accessible=t("slate_readout",{total,hundreds:points.hundreds,fifties:points.fifties,twenties:points.twenties,remainder:points.remainder});
  return `<svg viewBox="0 0 600 400" preserveAspectRatio="none" role="group" aria-label="${escapeHistoryText(accessible)}" xmlns="http://www.w3.org/2000/svg">
  ${team?`<g class="slate-hit" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("manual_title",{team:teamName(team)}))}" onclick="openSlateManual('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateManual('${team}');}"><rect x="60" y="30" width="480" height="340" fill="transparent" pointer-events="all"/></g>`:""}
- <g pointer-events="none" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M65 55 H535 L65 345 H535" opacity=".65"/>${tallies(points.hundreds,55)}${fiftyMarks}${tallies(points.twenties,345)}</g>
- <g pointer-events="none" fill="currentColor" font-family="Georgia,serif" font-size="20"><text x="12" y="62">100</text><text x="310" y="170">50</text><text x="20" y="352">20</text><text x="475" y="225" font-size="40">${points.remainder}</text></g><path d="M65 55 H535 L65 345 H535" fill="none" stroke="transparent" stroke-width="18" vector-effect="non-scaling-stroke" pointer-events="stroke"/>${team?`<g class="slate-ann-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("ann_manual_title",{team:teamName(team)}))}" onclick="openSlateAnnPicker('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateAnnPicker('${team}');}"><rect x="8" y="170" width="60" height="60" rx="4" fill="#151a18" stroke="currentColor" stroke-width="2"/><text x="38" y="212" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="36">${escapeHistoryText(t("ann_symbol"))}</text>${currentAnnCount(team)?`<text x="38" y="251" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="20">${currentAnnCount(team)}</text>`:""}</g>`:""}${team?`<g class="slate-match-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("slate_add",{value:257,team:teamName(team)}))}" onclick="slateMatch('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();slateMatch('${team}');}"><rect x="420" y="355" width="115" height="45" fill="transparent"/><text x="535" y="389" text-anchor="end" fill="#ffffff" font-family="Georgia, Palatino, serif" font-size="29" font-weight="400">${escapeHistoryText(t("match"))}</text></g>`:""}${team?`<g class="slate-edit-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("slate_edit",{team:teamName(team)}))}" onclick="openSlateEdit('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateEdit('${team}');}"><rect x="267.5" y="355" width="65" height="45" fill="transparent"/><text x="300" y="378" text-anchor="middle" dominant-baseline="central" transform="rotate(90 300 378)" fill="#ffffff" font-family="system-ui,sans-serif" font-size="42">↶</text></g>`:""}</svg>`;
+ <g pointer-events="none" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M65 35 H535 L65 345 H535" opacity=".65"/>${tallies(points.hundreds,35)}${fiftyMarks}${tallies(points.twenties,345)}</g>
+ <g pointer-events="none" fill="currentColor" font-family="Georgia,serif" font-size="20"><text x="12" y="42">100</text><text x="310" y="160">50</text><text x="20" y="352">20</text><text x="475" y="225" font-size="40">${points.remainder}</text></g><path d="M65 35 H535 L65 345 H535" fill="none" stroke="transparent" stroke-width="18" vector-effect="non-scaling-stroke" pointer-events="stroke"/>${team?`<g class="slate-ann-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("ann_manual_title",{team:teamName(team)}))}" onclick="openSlateAnnPicker('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateAnnPicker('${team}');}"><rect x="8" y="170" width="60" height="60" rx="4" fill="#151a18" stroke="currentColor" stroke-width="2"/><text x="38" y="212" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="36">${escapeHistoryText(t("ann_symbol"))}</text>${!(state.winnerTeam&&showSlateAnnTotals)&&currentAnnCount(team)?`<text x="38" y="251" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="20">${currentAnnCount(team)}</text>`:""}</g>${state.winnerTeam&&showSlateAnnTotals?`<text class="slate-final-ann-total" x="8" y="256" text-anchor="start" fill="#ffffff" font-family="system-ui,sans-serif" font-size="20" pointer-events="none">${annTotal(team)} ${escapeHistoryText(t("pts"))}</text>`:""}`:""}${team?`<g class="slate-match-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("slate_add",{value:257,team:teamName(team)}))}" onclick="slateMatch('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();slateMatch('${team}');}"><rect x="420" y="355" width="115" height="45" fill="transparent"/><text x="535" y="389" text-anchor="end" fill="#ffffff" font-family="Georgia, Palatino, serif" font-size="29" font-weight="400">${escapeHistoryText(t("match"))}</text></g>`:""}${team?`<g class="slate-edit-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("slate_edit",{team:teamName(team)}))}" onclick="openSlateEdit('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateEdit('${team}');}"><rect x="267.5" y="355" width="65" height="45" fill="transparent"/><text x="300" y="378" text-anchor="middle" dominant-baseline="central" transform="rotate(90 300 378)" fill="#ffffff" font-family="system-ui,sans-serif" font-size="42">↶</text></g>`:""}</svg>`;
 }
 let slateEditContext=null;
 function slateCompletedRounds(){
@@ -1332,7 +1515,7 @@ function slateTransaction(team,value,kind){
   if(previous.kind==="points"){
    state.slatePoints[key]-=previous.rawValue;state.slatePoints[other]-=previous.rawOther;
    if(previous.match)state.slateMatches[key]=Math.max(0,(state.slateMatches[key]||0)-1);
-  }else state.slateAnnouncements[team]-=previous.rawValue;
+  }else {state.slateAnnouncements[team]-=previous.rawValue;noteRoundAnnouncement(team,-previous.rawValue,previous.annRoundIndex??currentDoubleRound());}
  }
  if(kind==="points"&&!previous)resetAnnCounters();
  const entry={kind,value,rawValue:value,rawOther:kind==="points"?(value===257?0:MAX-value):0,match:kind==="points"&&value===257};
@@ -1344,6 +1527,7 @@ function slateTransaction(team,value,kind){
  }else{
   if(!state.slateAnnouncements)state.slateAnnouncements={A:0,B:0};
   state.slateAnnouncements[team]=(state.slateAnnouncements[team]||0)+entry.rawValue;
+  entry.annRoundIndex=previous?.annRoundIndex??currentDoubleRound();noteRoundAnnouncement(team,entry.rawValue,entry.annRoundIndex);
  }
  entry.twentyRaw=value===20?entry.rawValue:0;
  entry.otherTwentyRaw=kind==="points"&&value===137?entry.rawOther:0;
@@ -1355,7 +1539,7 @@ function slateTransaction(team,value,kind){
  slateEditContext=null;
  if(previous && state.winnerTeam){
   const winner=state.winnerTeam;
-  if((roundTotal(winner.toLowerCase())+annTotal(winner))*factor()<state.mode){state.winnerTeam=null;winnerShownFor=null;}
+  if((roundTotal(winner.toLowerCase())+annTotal(winner))*factor()<teamGoal(winner)){state.winnerTeam=null;winnerShownFor=null;}
  }
  if(previous)dismissedWinner=null;
  recordWinner(team);save();render();renderSlate();
@@ -1370,7 +1554,7 @@ function slateAdd(team,value){
  slateTransaction(team,value,"points");
  if(value===257 && state.winnerTeam===team){
   const total=(roundTotal(team.toLowerCase())+annTotal(team))*factor();
-  const threshold=state.mode===1500?1500:1000;
+  const threshold=teamGoal(state.winnerTeam||"A");
   if(total>=threshold){
    dismissedWinner=null;
    renderSlate();
@@ -1378,7 +1562,15 @@ function slateAdd(team,value){
   }
  }
 }
+function reopenInitialTrumpChoice(){
+ if(!state.trumpConfirmed||!initialMiseTeam())return false;
+ if(state.rounds.some(r=>r.a!==null||r.b!==null)||["A","B"].some(team=>annRawTotal(team)>0)||Object.values(state.slatePoints||{}).some(value=>value>0))return false;
+ const dialog=document.getElementById("trumpRequiredDialog");
+ document.getElementById("trumpChooseA").textContent=teamName("A");document.getElementById("trumpChooseB").textContent=teamName("B");
+ if(!dialog.open)dialog.showModal();return true;
+}
 function openSlateEdit(team){
+ if(reopenInitialTrumpChoice())return;
  const entry=state.slateLastEntries?.[team];if(!entry)return;
  if(Number.isInteger(entry.roundIndex)&&entry.roundIndex<lastCompletedRound())return;
  if(entry.selection){openSlateAnnPicker(team,true);return;}
@@ -1395,7 +1587,7 @@ function orientSlateEntry(id,team){
  const onSlate=document.getElementById("slateDialog").open;
  const touchScreen=window.matchMedia("(max-width:1050px), (pointer:coarse)").matches;
  dialog.classList.toggle("slate-entry-oriented",onSlate&&touchScreen);
- dialog.classList.toggle("slate-entry-reversed",onSlate&&touchScreen&&team==="B");
+ dialog.classList.remove("slate-entry-reversed");
  if(!dialog.querySelector(".entry-rotate")){
   for(const corner of ["top","bottom"]){
    const button=document.createElement("button");button.type="button";button.className="entry-rotate entry-rotate-"+corner;
@@ -1404,12 +1596,13 @@ function orientSlateEntry(id,team){
   }
  }
  dialog.querySelectorAll(".entry-rotate").forEach(button=>button.setAttribute("aria-label",t("rotate_entry")));
+ requestAnimationFrame(()=>{dialog.querySelectorAll("#slateManualTitle,#slateManualSubmit").forEach(el=>{el.style.fontSize="";let size=parseFloat(getComputedStyle(el).fontSize);while(el.scrollWidth>el.clientWidth&&size>8){size-=.5;el.style.fontSize=size+"px";}});});
 }
 function openSlateManual(team,editing=false){
  if(requireInitialTrump())return;
  if(state.winnerTeam&&!editing)return;
  if(!["A","B"].includes(team))return;
- slateEditContext=null;document.getElementById("slateManualSubmit").textContent=t("add_round",{number:nextSlateRound(),team:teamName(team)});
+ slateEditContext=null;document.getElementById("slateManualSubmit").textContent=t("add_points");
  slateManualTeam=team;
  document.getElementById("slateManualTitle").textContent=t("add_round",{number:nextSlateRound(),team:teamName(team)});
  document.getElementById("slateManualValue").value="";
@@ -1440,7 +1633,7 @@ function announceSlateVictory(){
  if(!state.winnerTeam)return;
  const team=state.winnerTeam;
  const total=(roundTotal(team.toLowerCase())+annTotal(team))*factor();
- const threshold=state.mode===1500?1500:1000;
+ const threshold=teamGoal(state.winnerTeam||"A");
  if(total>=threshold){dismissedWinner=null;renderSlate();showWinner(teamName(team),total,threshold);}
 }
 function slateAddAnnouncement(team,value){
@@ -1456,7 +1649,7 @@ document.getElementById("slateAnnForm").addEventListener("submit",event=>{
 document.getElementById("slateManualDialog").addEventListener("close",()=>{slateEditContext=null;});
 document.getElementById("slateAnnDialog").addEventListener("close",()=>{slateEditContext=null;});
 let annPickerTeam=null,annPickerDraft={},annPickerEditing=false;
-const annPickerValues=[20,50,100,150,200];
+const annPickerValues=["stock",20,50,100,150,200];
 function annPickerBase(){
  const entry=annPickerEditing?state.slateLastEntries?.[annPickerTeam]:null;
  const removed=entry?.counterEpoch===(state.annCounterEpoch||0)?entry.selection||{}:{};
@@ -1466,16 +1659,23 @@ function annPickerBase(){
 }
 function annPickerCapacity(value){
  const base=annPickerBase(),cards=announcementCards[value];
- const otherCards=annPickerValues.reduce((sum,key)=>sum+(key===value?0:(annPickerDraft[key]||0)*announcementCards[key]),0);
+ if(value==="stock")return Math.max(0,1-(base.stock||0)-sharedAnnouncementCount(annPickerTeam,"stock"));
+ const otherCards=annPickerValues.reduce((sum,key)=>sum+(key===value?0:(annPickerDraft[key]||0)*(announcementCards[key]||0)),0);
  return Math.max(0,Math.min((announcementLimits[value]??Infinity)-(base[value]||0)-sharedAnnouncementCount(annPickerTeam,value),Math.floor((18-announcementCardCount(base)-otherCards)/cards)));
 }
 
-function annPickerAmount(){return annPickerValues.reduce((sum,value)=>sum+(annPickerDraft[value]||0)*value,0);}
+function annPickerAmount(){return annPickerValues.reduce((sum,value)=>sum+(annPickerDraft[value]||0)*(value==="stock"?20:value),0);}
 function renderAnnPicker(){
  const root=document.getElementById("annPickerRows");root.innerHTML="";
  const labels={20:t("cards_20"),50:t("cards_50"),100:t("cards_100")+" / "+t("four_kind"),150:t("four_nines"),200:t("four_jacks")};
  annPickerValues.forEach(value=>{
   const row=document.createElement("div");row.className="ann-picker-row";
+  if(value==="stock"){
+   row.classList.add("stock-row");const label=document.createElement("span");label.textContent="Stöck";
+   const toggle=document.createElement("button");toggle.type="button";toggle.className="stock-toggle";const selected=!!annPickerDraft.stock;
+   toggle.textContent=selected?"✓":"?";toggle.setAttribute("aria-pressed",String(selected));toggle.setAttribute("aria-label","Stöck : "+t(selected?"yes":"no"));toggle.disabled=!selected&&annPickerCapacity("stock")<1;
+   toggle.onclick=()=>{annPickerDraft.stock=selected?0:1;renderAnnPicker();};row.append(label,toggle);root.appendChild(row);return;
+  }
   const label=document.createElement("span");label.textContent=value+" · "+labels[value];
   if(value===150||value===200){
    label.className="ann-picker-card-label";label.textContent=String(value);
@@ -1519,7 +1719,7 @@ function confirmAnnPicker(){
  if(value>0){
   if(annPickerEditing)slateEditContext={team:annPickerTeam,entry:state.slateLastEntries[annPickerTeam]};
   slateAddAnnouncement(annPickerTeam,value);
-  const twentyRaw=(annPickerDraft[20]||0)*20;
+  const twentyRaw=((annPickerDraft[20]||0)+(annPickerDraft.stock||0))*20;
   state.slateTwentyPoints[annPickerTeam]+=(twentyRaw-(state.slateLastEntries[annPickerTeam].twentyRaw||0));
   state.slateLastEntries[annPickerTeam].twentyRaw=twentyRaw;
   const fiftyRaw=((annPickerDraft[50]||0)+(annPickerDraft[150]||0))*50;
@@ -1533,11 +1733,11 @@ function confirmAnnPicker(){
   const counters=currentAnnCounters(annPickerTeam);
   for(const key of annPickerValues)counters[key]=Math.max(0,(counters[key]||0)-(oldSelection[key]||0));
   const entry=state.slateLastEntries[annPickerTeam];
-  state.slateAnnouncements[annPickerTeam]-=entry.rawValue;
+  state.slateAnnouncements[annPickerTeam]-=entry.rawValue;noteRoundAnnouncement(annPickerTeam,-entry.rawValue,entry.annRoundIndex??currentDoubleRound());
   if(state.slateTwentyPoints)state.slateTwentyPoints[annPickerTeam]=Math.max(0,(state.slateTwentyPoints[annPickerTeam]||0)-(entry.twentyRaw||0));
   if(entry.fiftyRaw&&state.slateFiftyPoints)state.slateFiftyPoints[annPickerTeam]=Math.max(0,state.slateFiftyPoints[annPickerTeam]-entry.fiftyRaw);
   delete state.slateLastEntries[annPickerTeam];
-  if(state.winnerTeam&&(roundTotal(state.winnerTeam.toLowerCase())+annTotal(state.winnerTeam))*factor()<state.mode){state.winnerTeam=null;winnerShownFor=null;}
+  if(state.winnerTeam&&(roundTotal(state.winnerTeam.toLowerCase())+annTotal(state.winnerTeam))*factor()<teamGoal(state.winnerTeam)){state.winnerTeam=null;winnerShownFor=null;}
   recordWinner();save();render();renderSlate();
  }
  slateEditContext=null;document.getElementById("annPickerDialog").close();
@@ -1555,8 +1755,30 @@ document.getElementById("slateNameForm").addEventListener("submit",event=>{
  document.getElementById("name"+slateNameTeam).value=document.getElementById("slateNameValue").value.trim();
  save();winnerShownFor=null;render();renderSlate();document.getElementById("slateNameDialog").close();
 });
+let slateModeConfirmOpen=false;
+function toggleSlateMode(){return requestGameMode(state.mode===1500?1000:1500);}
+async function requestGameMode(mode){
+ const nextMode=mode===1500?1500:1000;
+ if(IS_MISE||state.winnerTeam||slateModeConfirmOpen||state.mode===nextMode)return;
+ if(nextSlateRound()>1){
+  slateModeConfirmOpen=true;
+  let accepted;
+  try{accepted=await showAppMessage(t("slate_mode_change_warning",{points:nextMode}),true);}
+  finally{slateModeConfirmOpen=false;}
+  if(!accepted||state.winnerTeam)return;
+ }
+ setMode(nextMode);
+}
 function toggleSlateDouble(){
- setMode(state.mode===1500?1000:1500);renderSlate();
+ if(IS_MISE||state.mode!==1500)return;
+ if(state.winnerTeam)return;initRoundDouble();const i=currentDoubleRound();state.roundFactors[i]=roundFactor(i)===2?1:2;save();render();renderSlate();
+}
+let showSlateAnnTotals=false;
+try{showSlateAnnTotals=localStorage.getItem("chibre_show_slate_ann_totals")==="true";}catch(error){}
+function toggleSlateAnnTotals(){
+ showSlateAnnTotals=!showSlateAnnTotals;
+ try{localStorage.setItem("chibre_show_slate_ann_totals",String(showSlateAnnTotals));}catch(error){}
+ updateMenuRounds();renderSlate();positionLanguageMenu();
 }
 let showSlateRoundNumbers=true;
 try{showSlateRoundNumbers=localStorage.getItem("chibre_show_round_numbers")!=="false";}catch(error){}
@@ -1581,6 +1803,12 @@ function closeSlateOptions(apply){
 }
 document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!document.getElementById("slateOptions").hidden){event.preventDefault();event.stopPropagation();closeSlateOptions(false);}});
 function renderSlate(){
+ document.getElementById("slateDialog").dataset.gameMode=String(state.mode===1500?1500:1000);
+ const miseDraft=document.getElementById("slateMiseDraft");
+ miseDraft.hidden=!IS_MISE||initialMiseTeam()!==null;
+ miseDraft.value=state.miseDraftPending?"":(state.mise??1000);
+ miseDraft.disabled=miseIsLocked();
+ miseDraft.readOnly=window.matchMedia("(max-width:600px)").matches;
  const numberToggle=document.getElementById("roundNumberToggle");
  const numberChoice=document.getElementById("slateOptions").hidden?showSlateRoundNumbers:draftSlateRoundNumbers;
  numberToggle.textContent=t("round_numbers")+" "+(numberChoice?"ON":"OFF");
@@ -1589,22 +1817,29 @@ function renderSlate(){
  ["A","B"].forEach(team=>{
   const rail=document.getElementById("slateRoundNumbers"+team);rail.innerHTML="";rail.hidden=!showSlateRoundNumbers;
   for(let i=1;i<=Math.min(12,completed);i++){
-   const number=document.createElement("span");number.textContent=i;
+   const number=document.createElement("span");number.textContent=i;if(roundFactor(i-1)===2){const badge=document.createElement("small");badge.className="round-double-badge";badge.textContent="♠♠";number.appendChild(badge);}
    number.className=i===completed?"current":"";
    number.setAttribute("aria-label",t("round_label",{number:i,team:teamName(team)}));rail.appendChild(number);
   }
  });
  const toggle=document.getElementById("slateDoubleToggle");
- toggle.textContent=t("double_toggle")+" "+(state.mode===1500?"ON":"OFF");
- toggle.setAttribute("aria-pressed",String(state.mode===1500));
+ toggle.hidden=IS_MISE||state.mode!==1500;
+ const modeToggle=document.getElementById("slateModeToggle");
+ modeToggle.textContent=(state.mode===1500?"1500":"1000")+" ON";modeToggle.disabled=!!state.winnerTeam;
+ modeToggle.parentElement.hidden=IS_MISE;
+ updateDoubleButtons();
  ["A","B"].forEach(team=>{
   const total=(roundTotal(team.toLowerCase())+annTotal(team))*factor();
   document.getElementById("slateName"+team).textContent=teamName(team);
+  const miseBadge=document.getElementById("slateOpeningMise"+team);
+  miseBadge.hidden=!IS_MISE||initialMiseTeam()!==team.toLowerCase();
+  miseBadge.textContent=String(state.initialMise??state.mise??"");
+  miseBadge.setAttribute("aria-label",t("mise_initial")+" : "+miseBadge.textContent);
   const nameButton=document.getElementById("slateName"+team);
   nameButton.classList.toggle("trump-name-green",!!state.trumpGuide&&trumpTeam()==="a"&&team==="A");
   nameButton.classList.toggle("trump-name-pink",!!state.trumpGuide&&trumpTeam()==="b"&&team==="B");
   document.getElementById("slatePoints"+team).innerHTML=slateSvg(total,team);
-  document.getElementById("slateTotal"+team).textContent=total+" "+t("points");
+  document.getElementById("slateTotal"+team).textContent=total+" "+(document.documentElement.lang==="fr"?"Pts":t("pts"));
  });
 }
 let historyFromSlate=false;
@@ -1629,7 +1864,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.144";
+ const APP_VERSION="4.201";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;

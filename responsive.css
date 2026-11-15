@@ -1,0 +1,264 @@
+/* Smartphone layout: dimensions follow the viewport, not a device model. */
+@media (max-width:600px){
+ html{ -webkit-text-size-adjust:100%;text-size-adjust:100% }
+ body{overflow-wrap:break-word}
+ .app{padding-left:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right));padding-top:max(8px,env(safe-area-inset-top));padding-bottom:max(8px,env(safe-area-inset-bottom));height:auto;min-height:100svh;min-height:100dvh}
+ .app>header{gap:clamp(6px,2vw,10px)}
+ .header-actions{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr) minmax(0,1fr);gap:clamp(4px,1.5vw,8px)}
+ .header-actions button{width:100%;min-width:0;min-height:42px;height:auto;padding:5px 4px;font-size:clamp(15px,4.2vw,18px);line-height:1.15;white-space:normal;overflow-wrap:anywhere}
+ .team{min-width:0}.head .team{padding-left:clamp(8px,2.8vw,16px);padding-right:clamp(8px,2.8vw,16px)}
+ .head .name{font-size:clamp(17px,5vw,23px);line-height:1.2;overflow-wrap:anywhere}
+ .head .total{font-size:clamp(29px,8vw,39px)}
+ .layout{flex:1;min-height:410px;min-width:0}
+ .rounds{min-width:0;padding-left:clamp(6px,2vw,10px);padding-right:clamp(6px,2vw,10px)}
+ .rounds>h2{font-size:clamp(20px,5.5vw,25px)}
+ .rounds #rounds{grid-template-rows:repeat(var(--visible-rounds,9),minmax(36px,1fr))}
+ .rhead,.round{grid-template-columns:clamp(26px,7vw,32px) minmax(0,1fr) clamp(25px,7vw,32px) minmax(0,1fr) clamp(26px,7vw,32px);gap:clamp(3px,1.3vw,6px)}
+ .rounds .score{width:100%;min-width:0;min-height:32px;height:100%;max-height:64px;padding:2px;font-size:clamp(20px,5.8vw,26px);line-height:1.15}
+ .round .round-ann-button{width:100%;min-width:0;min-height:32px;max-height:48px;font-size:clamp(18px,5vw,23px)}
+ .round .num{width:clamp(24px,6.5vw,29px);height:clamp(24px,6.5vw,29px);font-size:clamp(13px,3.7vw,16px)}
+ .app-menu .language-choices{width:min(320px,calc(100vw - 16px));max-width:calc(100vw - 16px);max-height:calc(100dvh - 90px);overflow-y:auto}
+ dialog:not(.slate-dialog){max-width:calc(100vw - 20px);max-height:calc(100dvh - 24px);overflow:auto}
+ input:not([type=checkbox]):not([type=radio]),textarea{font-size:max(16px,1em)}
+ .slate-dialog{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);border-width:clamp(6px,2vw,12px)}
+ .slate-toolbar{gap:4px;margin-right:34px}.slate-toolbar #slateTitle{font-size:clamp(20px,5.7vw,27px)}
+ .slate-toolbar .slate-new-game[data-i18n="new"]{width:auto;flex:0 1 106px}.slate-toolbar .slate-new-game[data-i18n="history"]{width:auto;flex:0 1 82px}
+ .slate-toolbar .slate-new-game{font-size:clamp(13px,3.6vw,16px);min-height:36px;height:auto;padding:3px}
+ /* Apple sheet */
+ body.apple-sheet main{padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}
+ .apple-sheet header{gap:8px}.apple-sheet h1{font-size:clamp(20px,5.6vw,26px);min-width:0}
+ .apple-sheet th:first-child{width:26px}.apple-sheet input.name{font-size:clamp(16px,4vw,18px);height:42px;padding:3px 2px}
+ .apple-sheet .mark{height:clamp(40px,6.2dvh,56px);font-size:clamp(23px,6.5vw,29px)}
+ .apple-sheet .choices{gap:8px}.apple-sheet .choices button{min-width:0;min-height:88px;font-size:clamp(13px,3.6vw,16px)}
+ .apple-sheet footer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.apple-sheet footer button{min-width:0;min-height:42px;font-size:clamp(12px,3.3vw,15px);padding:6px 3px;line-height:1.2;overflow-wrap:anywhere}
+}
+@media(max-width:600px) and (min-height:800px){.app .layout{min-height:450px}}
+@media(max-height:500px) and (max-width:950px) and (pointer:coarse){.app{height:auto;min-height:100dvh}.layout{min-height:410px}.slate-dialog{overflow-y:auto}}
+
+/* Compact and large recent phones; keep desktop and tablet rules intact. */
+@media (max-width:600px){
+ .rounds .round{container-type:inline-size}
+ .rounds .score{font-size:clamp(20px,6.2cqw,27px)}
+ .header-actions button{font-size:clamp(14px,4vw,18px);text-wrap:balance}
+ .score-summary>.game-mode-row{padding-left:clamp(44px,13vw,62px)!important;padding-right:clamp(44px,13vw,62px)!important;gap:clamp(4px,1.5vw,8px)}
+ .mode-apple{width:clamp(40px,12vw,58px)}
+ .game-mode-row button{min-width:0;font-size:clamp(16px,4.5vw,21px);padding-left:clamp(7px,2vw,12px);padding-right:clamp(7px,2vw,12px)}
+ dialog:not(.slate-dialog){scroll-padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom));overscroll-behavior:contain}
+ .apple-sheet .mark{touch-action:manipulation}.apple-sheet .name-box{min-width:0}
+}
+@media(min-width:400px) and (max-width:600px){
+ .rounds .score{border-radius:12px}.rounds>h2{font-size:24px}
+ .header-actions{gap:7px}.header-actions button{min-height:44px}
+ .apple-sheet .mark{height:clamp(44px,6.2dvh,58px)}
+}
+@media(max-width:375px){
+ .head .name{font-size:17px}.rounds>h2{font-size:20px}
+ .header-actions{gap:4px}.header-actions button{font-size:14px}
+ .rhead{font-size:10px}.apple-sheet h1{font-size:20px}.apple-sheet .players-toggle{width:80px}
+}
+
+/* Readable labels that cannot paint outside their buttons. */
+@media(max-width:600px){
+ .app .header-actions{grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr) minmax(0,1.1fr)}
+ .app .header-actions button{font-size:clamp(12px,3.5vw,15px)!important;line-height:1.2!important;min-height:40px;height:auto!important;max-width:100%;white-space:normal!important;overflow-wrap:anywhere;overflow:hidden;padding:6px 3px!important}
+ .app h1{font-size:clamp(28px,8.8vw,38px)}
+ .app .head .name{font-size:clamp(16px,4.4vw,19px)}
+ .app .rounds>h2{font-size:clamp(19px,5.2vw,23px)}
+ .app .head .total{font-size:clamp(28px,7.7vw,35px)}
+}
+
+@media(max-width:600px){
+ .app header .title-row h1,.app header h1{font-size:clamp(26px,7.4vw,31px)!important;line-height:1.05}
+ .app .title-row .swiss-flag{font-size:1em}
+ .app .score-summary>.game-mode-row{padding-top:4px!important;padding-bottom:4px!important;min-height:0}
+ .app .game-mode-row #mode1000,.app .game-mode-row #mode1500{height:34px!important;min-height:34px!important;padding:3px 10px!important;font-size:17px!important;line-height:1.1;border-radius:9px}
+ .app .game-mode-row .mode-apple{font-size:28px}
+ .app .rounds>h2[data-i18n="round_points"]{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+ .app .rounds{padding-top:7px}.app .rounds .rhead{padding-bottom:4px}
+}
+
+/* V4.201: compact phone headers; native Android keeps the system-bar inset. */
+@media(max-width:600px){
+ .app{padding-top:env(safe-area-inset-top,0px)!important}
+ .app>header,.app .title-row{margin-top:0!important;padding-top:0!important}
+ .app header h1{margin-top:0!important;margin-bottom:0!important}
+ .app .game-mode-row #mode1000,.app .game-mode-row #mode1500{font-size:15px!important;height:30px!important;min-height:30px!important;padding:2px 9px!important}
+ .app .game-mode-row .mode-apple{font-size:22px!important}
+ body.apple-sheet main{padding-top:env(safe-area-inset-top,0px)!important}
+ .apple-sheet #back{display:inline-block;margin-top:0!important;padding-top:0!important;line-height:1.15}
+ .apple-sheet header{margin-top:4px!important;margin-bottom:8px!important;gap:6px}
+ .apple-sheet h1#title{font-size:clamp(17px,4.6vw,20px)!important;line-height:1.15!important;margin:0!important}
+}
+
+@media(max-width:600px){.app .title-row{align-items:flex-start!important}.app .title-row #menuToggle{min-height:32px;height:32px;padding-top:0;padding-bottom:0}.app h1 .language-flag{padding-top:0;padding-bottom:0;min-height:0}}
+
+/* Compact slate toolbar and centre: leave more height for both Z boards. */
+.slate-dialog .slate-content{padding-top:2px}
+.slate-dialog .slate-toolbar{margin:0 0 3px;gap:6px;justify-content:flex-end}
+.slate-dialog .slate-toolbar #slateTitle{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0;padding:0;min-height:0}
+.slate-dialog .slate-toolbar .slate-new-game{font-size:12px;white-space:nowrap;text-wrap:nowrap;overflow-wrap:normal;width:auto;flex:0 1 auto;min-width:0;height:30px;min-height:30px;padding:2px 9px}
+.slate-dialog .slate-toolbar .slate-close{position:static;flex:0 0 30px;width:30px;height:30px;min-height:30px;font-size:27px;line-height:1;padding:0}
+.slate-dialog .slate-half{padding-top:7px;padding-bottom:2px;gap:2px}
+.slate-dialog .slate-double-toggle{min-height:28px;height:28px;padding:2px 8px;font-size:12px}
+
+/* Compact history heading, actions and saved games. */
+#historyPage .history-actions{display:flex;flex-wrap:nowrap;gap:6px;margin-bottom:16px;align-items:center}
+#historyPage .history-actions button{min-width:0;font-size:13px;padding:8px 9px;white-space:nowrap;line-height:1.15}
+#historyPage .history-actions .history-print{flex:0 0 36px;width:36px;padding:6px;font-size:19px}
+#historyPage #historyList>.history-game{font-size:14px}
+#historyPage .history-game small{font-size:12px}
+#historyPage .history-game div[style*="font-size:18px"]{font-size:16px!important}
+#historyPage .history-game div[style*="font-size:14px"]{font-size:12px!important}
+@media(max-width:600px){
+ #historyPage{padding:12px!important}
+ #historyPage h1[data-i18n="history_title"]{font-size:clamp(20px,6vw,27px)!important;line-height:1.15;white-space:nowrap;letter-spacing:-.04em;margin:0 0 8px}
+ #historyPage .history-actions{gap:5px}
+ #historyPage .history-actions button{font-size:clamp(10px,3.1vw,13px);padding:8px 7px}
+}
+
+/* Readable, single-line slate entry labels. */
+#slateManualDialog{width:min(460px,calc(100vw - 20px));font-size:15px;padding-left:16px;padding-right:16px}
+#slateManualDialog #slateManualTitle{font-size:18px;line-height:1.2;white-space:nowrap;overflow-wrap:normal;margin-bottom:18px}
+#slateManualDialog label{font-size:15px;white-space:nowrap}
+#slateManualForm>div{gap:8px!important}
+#slateManualForm button{font-size:12px;line-height:1.2;white-space:nowrap;overflow-wrap:normal;padding:10px 8px;min-width:0}
+#slateManualForm button:first-child{flex:0 0 auto}
+#slateManualSubmit{flex:1}
+
+.slate-dialog .slate-toolbar .slate-close{margin-right:auto;flex:0 0 auto;width:auto;font:700 12px/1.2 Arial,sans-serif;padding:2px 6px;white-space:nowrap}
+
+/* Chiffres saisis un peu plus grands, dimensions des cases inchangées. */
+.rounds .round .score{font-size:24px;line-height:1.1}
+@media(max-width:600px){.rounds .round .score{font-size:clamp(22px,6.2vw,28px)}}
+
+/* En-tête compact sous la barre système, sans ligne vide avant le titre. */
+@media(max-width:800px){.app>header>div:first-child{display:flex;flex-direction:column;gap:0;padding-top:0;margin-top:0}.app>header .title-row{margin-top:0;padding-top:0}}
+html.native-android .app{padding-top:0!important}
+
+/* Réserver la place du double pique sous le numéro du pli. */
+.round .num:has(>.round-double-badge){transform:translateY(-9px)}
+.round .num>.round-double-badge{top:calc(100% - 3px);line-height:18px}
+
+/* Champ de mise centré indépendamment de son libellé. */
+.mise-page .game-mode-row .mise-entry{position:relative;justify-content:center;margin-inline:auto;gap:0}
+.mise-page .mise-entry>span{position:absolute;right:calc(100% + 10px);white-space:nowrap}
+.mise-page .mise-entry #miseValue{box-sizing:border-box;width:112px;min-width:112px;text-align:center;appearance:textfield;-moz-appearance:textfield}
+.mise-page #miseValue::-webkit-inner-spin-button,.mise-page #miseValue::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+
+/* Mise initiale, du côté de l’équipe qui a commencé à faire atout. */
+.slate-half{position:relative}
+.slate-opening-mise{position:absolute;top:3px;left:50%;transform:translateX(-50%);z-index:2;border:1.5px solid #f4f0e4;border-radius:5px;padding:3px 10px;background:#151a18;color:#f4f0e4;font:700 15px/1.2 Arial,sans-serif;white-space:nowrap;pointer-events:none}
+.slate-opening-mise[hidden]{display:none}
+
+/* Avant le choix d’atout : mise éditable au centre de l’ardoise. */
+.slate-halves>.slate-mise-draft{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;width:80px;box-sizing:border-box;padding:5px 8px;text-align:center;border:1.5px solid #f4f0e4;border-radius:5px;background:#151a18;color:#f4f0e4;font:700 16px/1.2 Arial,sans-serif;appearance:textfield}
+.slate-mise-draft[hidden]{display:none}
+.slate-mise-draft::-webkit-inner-spin-button,.slate-mise-draft::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+
+/* Avertissement Mise sur deux lignes : saisie, puis actions compactes. */
+.mise-warning-dialog{width:min(340px,calc(100vw - 32px));box-sizing:border-box;padding:20px}
+.mise-warning-entry{display:flex;align-items:center;justify-content:center;gap:12px}
+.mise-warning-entry label{font-size:16px;line-height:1.2}
+.mise-warning-entry input{width:84px!important;min-height:36px!important;margin:0!important;padding:4px 6px;font-size:17px!important;border:1px solid var(--line);border-radius:6px}
+.mise-warning-actions{margin-top:16px}
+.mise-warning-actions button{flex:0 0 94px;width:94px;min-height:32px;padding:6px 10px;font-size:14px;line-height:1.2;white-space:nowrap}
+
+/* Le formulaire générique est horizontal : imposer deux rangées pour la mise. */
+.language-dialog.mise-warning-dialog>form{display:flex;flex-direction:column;align-items:stretch;gap:14px}
+.language-dialog.mise-warning-dialog .mise-warning-actions{margin-top:0;flex-shrink:0}
+.language-dialog.mise-warning-dialog .mise-warning-actions button{min-width:80px;min-height:32px;width:94px;padding:6px 10px;font-size:14px;line-height:1.2}
+
+/* Mise : saisie directe sans flèches d’incrémentation. */
+.mise-warning-dialog input[type="number"]{appearance:textfield;-moz-appearance:textfield}
+.mise-warning-dialog input[type="number"]::-webkit-inner-spin-button,
+.mise-warning-dialog input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+
+/* Dimensions et typographie communes au champ et aux actions de mise. */
+.language-dialog.mise-warning-dialog{--mise-control-width:96px;--mise-control-height:36px}
+.language-dialog.mise-warning-dialog .mise-warning-entry input,
+.language-dialog.mise-warning-dialog .mise-warning-actions button{box-sizing:border-box;flex:0 0 var(--mise-control-width);width:var(--mise-control-width)!important;min-width:var(--mise-control-width);height:var(--mise-control-height);min-height:var(--mise-control-height)!important;padding:6px 8px;font-family:inherit;font-size:15px!important;font-weight:600;line-height:1.2;text-align:center;letter-spacing:normal;border-radius:7px}
+.language-dialog.mise-warning-dialog .mise-warning-entry label{font-family:inherit;font-size:15px;font-weight:600;line-height:1.2;letter-spacing:normal}
+
+/* Le menu mobile est fixé au viewport : son parent ne doit pas être transformé. */
+.mise-page .title-row .language-picker{top:0;bottom:0;transform:none;display:flex;align-items:center;z-index:11000}
+
+/* Coins plus discrets sur les grands blocs. */
+.app .card,.sheet{border-radius:10px}
+#historyPage .history-game{border-radius:10px!important}
+
+/* Ardoise Chibre : double pique à gauche du numéro de pli. */
+body:not(.mise-page) .slate-round-numbers>span:has(.round-double-badge){position:relative;margin-bottom:0;line-height:20px}
+body:not(.mise-page) .slate-round-numbers .round-double-badge{position:absolute;right:calc(100% + 1px);top:50%;transform:translateY(-50%);width:max-content;line-height:18px;white-space:nowrap}
+
+/* Réserver un peu plus de place aux doubles piques à droite du Z. */
+body:not(.mise-page) .slate-score-area .slate-z-area{width:calc(100% - 36px)}
+
+/* Ardoise sur téléphone : utiliser la hauteur disponible sans marges vides. */
+@media(max-width:600px){
+ body:not(.mise-page) .slate-dialog{border-width:6px}
+ body:not(.mise-page) .slate-dialog .slate-content{padding:0 6px 0}
+ body:not(.mise-page) .slate-dialog .slate-toolbar{margin-bottom:0}
+ body:not(.mise-page) .slate-dialog .slate-half{padding-top:3px;padding-bottom:0;gap:0}
+ body:not(.mise-page) .slate-half .slate-z-area svg{width:100%;height:100%;max-height:none;aspect-ratio:auto}
+ html.native-android body:not(.mise-page) .slate-dialog{padding-top:0;padding-bottom:0}
+}
+
+/* Pomme: choix de 2, 3 ou 4 joueurs. */
+.apple-sheet #playersToggle{width:114px;min-width:114px}
+.apple-sheet[data-players="4"] input.name{font-size:13px}
+
+.apple-sheet #playersToggle{width:128px;min-width:128px}
+.apple-sheet[data-players="5"] input.name{font-size:12px}
+@media(max-width:360px){.apple-sheet .apple-page-header #playersToggle{width:112px;min-width:112px}}
+
+/* Align Mise header with the main game; Return shares the title row. */
+.mise-page .app>header>div:first-child{position:relative}
+.mise-page .app>header .mise-back{position:absolute;left:0;top:0;z-index:2;line-height:1.5;margin:0;padding:0;text-decoration:none}
+.mise-page .app>header .title-row h1{padding-inline:64px}
+
+.mise-page .mise-entry #miseValue{font-size:24px;font-weight:700;line-height:1.15}
+
+/* Stöck: a single yes/no choice, separated from the other announcements. */
+.stock-row{grid-template-columns:minmax(0,1fr) auto!important;border-bottom:1px solid var(--line,#d8d4c8);padding-bottom:10px;margin-bottom:4px}
+.stock-row .stock-toggle{width:auto;min-width:76px;min-height:36px;padding:4px 10px;font-size:15px;font-weight:700;line-height:1.2}
+.stock-toggle[aria-pressed="true"]{background:#c8e6d5;color:#174c3c;border-color:#174c3c}
+
+.stock-row .stock-toggle{box-sizing:border-box;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;font-size:22px;display:grid;place-items:center;justify-self:end}
+
+.stock-toggle:disabled{opacity:.35;filter:grayscale(1);cursor:default}
+
+#trumpRequiredDialog{position:fixed;padding-top:36px}#trumpRequiredDialog .trump-dialog-close{position:absolute;right:6px;top:3px;border:0;background:transparent;color:inherit;min-width:32px;min-height:32px;padding:0;font-size:27px;line-height:1;cursor:pointer}
+
+#trumpRequiredDialog .trump-dialog-close{z-index:10;pointer-events:auto;width:32px;height:32px}
+
+/* Balanced trump-choice dialog, with an independent close control. */
+#trumpRequiredDialog{padding:24px;text-align:center}
+#trumpRequiredDialog h2{margin:0 0 22px;text-align:center;line-height:1.25}
+#trumpRequiredDialog>div{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px!important;align-items:stretch;justify-content:center}
+#trumpRequiredDialog #trumpChooseA,#trumpRequiredDialog #trumpChooseB{box-sizing:border-box;width:100%;min-width:0;min-height:48px;padding:10px 8px;display:flex;align-items:center;justify-content:center;text-align:center;white-space:normal;overflow-wrap:anywhere;line-height:1.25}
+
+.mise-page #miseValue:disabled{background:#e5e5e5;color:#777;border-color:#ccc;opacity:1;cursor:not-allowed;-webkit-text-fill-color:#777}
+html[data-theme="dark"] .mise-page #miseValue:disabled{background:#343a36;color:#aaa;border-color:#555;-webkit-text-fill-color:#aaa}
+
+.head .trump-track,.head .trump-track button{pointer-events:auto;cursor:pointer}.head .trump-track.locked,.head .trump-track.locked button{cursor:default}.head .trump-track button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.slate-mode-controls{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;gap:8px;max-width:calc(100% - 12px)}
+.slate-mode-controls .slate-double-toggle{position:static;left:auto;top:auto;transform:none;flex:0 0 auto}
+.slate-mode-controls[hidden],.slate-mode-controls .slate-double-toggle[hidden]{display:none!important}
+
+#roundDoubleToggle.double-unavailable{background:#e3e3e3!important;color:#888!important;border-color:#c9c9c9!important;opacity:1;cursor:not-allowed;box-shadow:none}
+
+body:not(.mise-page) #slateDialog[data-game-mode="1000"] .slate-score-area .slate-z-area{width:calc(100% - 24px);margin-inline:auto}
+body:not(.mise-page) #slateDialog[data-game-mode="1500"] .slate-score-area .slate-z-area{width:calc(100% - 36px)}
+
+.language-choices .slate-ann-total-choice{display:flex;justify-content:space-between;align-items:center;gap:8px}.slate-ann-total-choice span:first-child{min-width:0}.slate-ann-total-choice span:last-child{flex-shrink:0;font-weight:700;white-space:nowrap}
+
+.slate-final-ann-total{font-family:Arial,sans-serif;font-size:22px;font-weight:600;letter-spacing:.4px}
+
+/* Reserve equal space for rotation arrows above and below dialog content. */
+.language-dialog.slate-entry-oriented{padding-top:52px;padding-bottom:52px;scroll-padding-top:52px;scroll-padding-bottom:52px}
+.language-dialog.slate-entry-oriented .entry-rotate{box-sizing:border-box;width:36px;height:36px;min-width:36px;min-height:36px;z-index:2;line-height:1}
+.language-dialog.slate-entry-oriented .entry-rotate-top{top:8px;left:8px}
+.language-dialog.slate-entry-oriented .entry-rotate-bottom{bottom:8px;right:8px}
+.slate-entry-oriented #slateManualForm>div:last-child,.slate-entry-oriented #slateAnnForm>div:last-child{justify-content:center;align-items:stretch;margin-bottom:0}
+.slate-entry-oriented #slateManualForm>div:last-child>button,.slate-entry-oriented #slateAnnForm>div:last-child>button{flex:1 1 0;width:0;min-width:0;text-align:center}

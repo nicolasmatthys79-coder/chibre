@@ -11,3 +11,27 @@ html[data-theme="dark"] .language-choices button[aria-pressed="true"],html[data-
 #darkModeToggle{display:flex;justify-content:space-between;align-items:center;gap:12px}
 
 .dark-mode-switch{position:relative;display:inline-flex;align-items:center;justify-content:flex-end;flex:0 0 66px;width:66px;height:30px;padding:0 7px;border-radius:18px;background:#d4d8d5;color:#38443d;font-size:11px;font-weight:700;box-shadow:inset 0 0 0 1px #0002}.dark-mode-knob{position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0004;transition:transform .18s ease}#darkModeToggle[aria-checked="true"] .dark-mode-switch{justify-content:flex-start;background:#28734f;color:#fff}#darkModeToggle[aria-checked="true"] .dark-mode-knob{transform:translateX(36px)}@media(prefers-reduced-motion:reduce){.dark-mode-knob{transition:none}}
+
+/* Historique : contraste des noms, de la mise et des annonces en mode sombre. */
+html[data-theme="dark"] #historyPage{background:var(--bg)!important;color:var(--ink)}
+html[data-theme="dark"] #historyPage .history-game{background:var(--paper)!important;color:var(--ink);border-color:var(--line)!important}
+html[data-theme="dark"] #historyPage .history-game small{color:var(--muted)}
+html[data-theme="dark"] #historyPage .history-game div[style*="border-top"]{border-top-color:var(--line)!important}
+
+/* Choix de l’atout : texte contrasté sur les fonds vert et rose en mode sombre. */
+html[data-theme="dark"] #trumpChooseA{background:#c8e6d5!important;color:#174c3c!important;border-color:#8fc4aa}
+html[data-theme="dark"] #trumpChooseB{background:#edc6cd!important;color:#702d2a!important;border-color:#ce929c}
+
+/* Fond vide des barres de score, très sombre pour distinguer les écarts. */
+html[data-theme="dark"] #historyPage .history-score-track{background:#101613!important}
+
+/* Le mode actif reste clairement visible en mode sombre. */
+html[data-theme="dark"] :is(#mode1000,#mode1500)[aria-pressed="true"]{background:#fff!important;color:#17211b!important;border-color:#fff}
+html[data-theme="dark"] :is(#mode1000,#mode1500)[aria-pressed="false"]{background:#29352f!important;color:var(--ink)!important;border-color:var(--line)}
+
+/* Pique double disponible : contraste clair en mode 1500 sombre. */
+html[data-theme="dark"] #roundDoubleToggle:not(.double-unavailable){background:#e8eee9!important;color:#17211b!important;border-color:#c5d3c9!important}
+html[data-theme="dark"] #roundDoubleToggle:not(.double-unavailable)[aria-pressed="true"]{background:#bfe6cf!important;color:#123c2c!important;border-color:#8fc4aa!important}
+
+/* Mode 1000 : pique double indisponible et sombre. */
+html[data-theme="dark"] #roundDoubleToggle.double-unavailable{background:#29312c!important;color:#87948b!important;border-color:#48544c!important;opacity:1}
