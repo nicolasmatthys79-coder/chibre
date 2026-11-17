@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#174c3c">
 <meta name="description" content="Feuille de score Chibre installable sur téléphone Android.">
-<link rel="manifest" href="manifest.webmanifest?v=4.209">
+<link rel="manifest" href="manifest.webmanifest?v=4.210">
 <link rel="apple-touch-icon" href="icon-red-192-v481.png">
 <link rel="icon" href="icon-red-192-v481.png">
 <title>Chibre Suisse</title>
@@ -476,7 +476,7 @@ h1{font-family:Georgia,serif}
 
 .mode-apple{text-decoration:none;color:inherit}.mode-apple:focus-visible{outline:2px solid var(--a);outline-offset:-3px;border-radius:8px}
 #slateManualForm>div:last-child{display:flex;gap:12px}#slateManualForm>div:last-child>button{flex:1 1 0;width:0;min-width:0}#roundDoubleToggle{white-space:nowrap;font-size:14px;padding:6px 10px}.double-active{background:#174c3c!important;color:#fff!important}.round .num{position:relative}.round-double-badge{display:block;font:700 17px/18px Arial,sans-serif;white-space:nowrap;letter-spacing:1px}.round .num>.round-double-badge{position:absolute;top:100%;left:50%;transform:translateX(-50%)}.slate-round-numbers>span:has(.round-double-badge){line-height:18px;margin-bottom:18px}.slate-round-numbers .round-double-badge{width:auto;line-height:18px}.slate-double-toggle{min-width:0;min-height:60px;font-size:13px;padding:14px 12px}.mise-open{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 34px;border:1.5px solid currentColor;border-radius:5px;color:inherit;text-decoration:none;font:700 20px/1 Arial,sans-serif}.slate-mise-open{position:absolute;left:calc(50% + 56px);top:50%;transform:translateY(-50%);z-index:3;background:#151a18;color:#f4f0e4}.mise-entry,.mise-goals,.mise-back{display:none}.mise-page .mise-entry{display:flex;align-items:center;gap:10px;font-weight:700}.mise-entry input{width:110px;min-height:36px;padding:4px 8px;border:1px solid var(--line);border-radius:7px;font:inherit}.mise-page .mise-goals{display:none;flex-basis:100%;margin:0;text-align:center;font-size:12px}.mise-page .mise-back{display:inline-block;color:inherit;font-size:14px}.mise-page .mode-apple,.mise-page #mode1000,.mise-page #mode1500,.mise-page #roundDoubleToggle,.mise-page .mise-open,.mise-page #slateDoubleToggle{display:none!important}.game-mode-row{position:relative}.game-mode-row>.mise-open{position:absolute;right:8px;top:50%;transform:translateY(-50%)}.slate-mise-open{left:auto;right:10px}.mise-page .title-row{position:relative;justify-content:center}.mise-page .title-row h1{width:100%;text-align:center;margin-left:0;margin-right:0}.mise-page .title-row .language-picker{position:absolute;right:0;top:50%;transform:translateY(-50%)}.mise-back,.mise-back:hover,.mise-back:focus{text-decoration:none}</style>
-<link rel="stylesheet" href="theme.css?v=4.209"><script src="theme.js?v=4.209"></script><link rel="stylesheet" href="responsive.css?v=4.209"></head>
+<link rel="stylesheet" href="theme.css?v=4.210"><script src="theme.js?v=4.210"></script><link rel="stylesheet" href="responsive.css?v=4.210"></head>
 <body>
 <dialog id="trumpRequiredDialog" class="language-dialog" aria-labelledby="trumpRequiredTitle"><button type="button" class="trump-dialog-close" onclick="dismissTrumpChoice(event)" data-i18n-aria-label="cancel" aria-label="Annuler">×</button><h2 id="trumpRequiredTitle" data-i18n="trump_guide">Qui fait Atout ?</h2><div style="display:flex;gap:12px;justify-content:center"><button type="button" id="trumpChooseA" onclick="confirmInitialTrump('a')" style="background:#c8e6d5"></button><button type="button" id="trumpChooseB" onclick="confirmInitialTrump('b')" style="background:#edc6cd"></button></div></dialog>
 
@@ -524,7 +524,7 @@ h1{font-family:Georgia,serif}
     <h1>Chibre Jass <span class="language-flag" aria-label="Suisse">🇨🇭</span></h1>
 
     
-    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button><button type="button" class="slate-ann-total-choice" onclick="toggleSlateAnnTotals()" aria-pressed="false"><span data-i18n="show_slate_ann_totals">Total annonces en fin de partie</span><span id="menuAnnTotalsStatus" aria-hidden="true">✕</span></button></div><button type="button" id="darkModeToggle" role="switch" aria-checked="false"><span data-i18n="dark_mode">Mode sombre</span><span class="dark-mode-switch" aria-hidden="true"><span id="darkModeStatus">OFF</span><span class="dark-mode-knob"></span></span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><div class="menu-version">V4.209</div></span></span>
+    <span class="language-picker app-menu"><button type="button" id="menuToggle" class="app-menu-toggle" aria-expanded="false" aria-controls="languageChoices" data-i18n-aria-label="menu"><span class="menu-dots" aria-hidden="true">⋮</span><span class="menu-word" data-i18n="menu">Menu</span></button><span id="languageChoices" class="language-choices" hidden><button type="button" class="language-menu-title language-submenu-toggle" aria-expanded="false" aria-controls="languageList" onclick="toggleLanguageList()"><span data-i18n="language_menu">Langue</span><span class="menu-language-flags" aria-hidden="true">🇫🇷 🇩🇪 🇮🇹 🇬🇧</span></button><div id="languageList" class="language-list"><button type="button" data-language="fr" aria-pressed="true"><span aria-hidden="true">🇫🇷</span> Français</button><button type="button" data-language="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> Deutsch</button><button type="button" data-language="it" aria-pressed="false"><span aria-hidden="true">🇮🇹</span> Italiano</button><button type="button" data-language="rm" aria-pressed="false"><span aria-hidden="true">🇨🇭</span> Rumantsch</button><button type="button" data-language="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> English</button></div><button type="button" id="optionsToggle" onclick="toggleAppOptions()" aria-expanded="false" aria-controls="appOptions" data-i18n="options_menu">Options</button><div id="appOptions" hidden><button type="button" class="trump-menu-choice" onclick="toggleTrumpGuide();positionLanguageMenu()" aria-pressed="false"><span data-i18n="trump_guide">Qui fait Atout ?</span><span id="trumpGuideStatus" aria-hidden="true">✕</span></button><button type="button" class="rounds-menu-choice" onclick="toggleMenuRounds()" aria-pressed="true"><span data-i18n="show_slate_rounds">N° des donne dans ardoise</span><span id="menuRoundsStatus" aria-hidden="true">✓</span></button><button type="button" class="display-double-choice slate-ann-total-choice" onclick="toggleDisplayDouble()" aria-pressed="true"><span data-i18n="display_double">Afficher points doublés ?</span><span id="displayDoubleStatus" aria-hidden="true">✓</span></button><button type="button" class="slate-ann-total-choice" onclick="toggleSlateAnnTotals()" aria-pressed="false"><span data-i18n="show_slate_ann_totals">Total annonces en fin de partie</span><span id="menuAnnTotalsStatus" aria-hidden="true">✕</span></button></div><button type="button" id="darkModeToggle" role="switch" aria-checked="false"><span data-i18n="dark_mode">Mode sombre</span><span class="dark-mode-switch" aria-hidden="true"><span id="darkModeStatus">OFF</span><span class="dark-mode-knob"></span></span></button><a class="menu-help" href="./comment-ca-marche.html" data-i18n="help">Comment ça marche ?</a><div class="menu-version">V4.210</div></span></span>
 
   </div>
   
@@ -582,7 +582,7 @@ h1{font-family:Georgia,serif}
  </div>
 
  <!-- FIN DE LA PAGE HISTORIQUE -->
-<script src="./i18n.js?v=4.209"></script>
+<script src="./i18n.js?v=4.210"></script>
 <script>
 "use strict";
 const MAX=157, NROUNDS=12;
@@ -626,7 +626,12 @@ function showWinner(name,total,threshold){
  const toast=document.getElementById("winToast");
  const slate=document.getElementById("slateDialog");
  if(slate.open && toast.parentElement!==slate)slate.appendChild(toast);
- document.getElementById("winnerMessage").textContent=t("win",{name,total});
+ const message=document.getElementById("winnerMessage");message.textContent=t("win",{name,total});
+ const winnerTeam=state.winnerTeam;
+ if(winnerTeam==="A"||winnerTeam==="B"){
+  const announcements=document.createElement("small");announcements.className="winner-announcements";
+  announcements.textContent=t("winner_announcements",{points:annTotal(winnerTeam),unit:t("pts")});message.appendChild(announcements);
+ }
  winnerShownFor=state.mode+"|"+name+"|"+threshold;
  if(dismissedWinner!==winnerShownFor)toast.classList.add("show");
 }
@@ -919,6 +924,8 @@ function toggleAppOptions(){
 }
 function updateMenuRounds(){
  const annStatus=document.getElementById("menuAnnTotalsStatus");annStatus.textContent=showSlateAnnTotals?"✓":"✕";annStatus.parentElement.setAttribute("aria-pressed",String(showSlateAnnTotals));
+ const doubleStatus=document.getElementById("displayDoubleStatus");doubleStatus.textContent=displayDouble?"✓":"✕";doubleStatus.parentElement.setAttribute("aria-pressed",String(displayDouble));
+ 
  const status=document.getElementById("menuRoundsStatus");status.textContent=showSlateRoundNumbers?"✓":"✕";
  status.parentElement.setAttribute("aria-pressed",String(showSlateRoundNumbers));
 }
@@ -1083,11 +1090,19 @@ function roundAnnSelection(team,index){
  return index===currentDoubleRound()&&state.rounds[index]?.a===null?{...currentAnnCounters(team)}:{...(state.roundAnnSelections?.[index]?.[team]||{})};
 }
 function roundAnnPoints(team,index){return Object.entries(roundAnnSelection(team,index)).reduce((sum,[key,count])=>sum+count*(key==="stock"?20:(Number(key)||0)),0)*roundFactor(index);}
-function showRoundAnnouncements(team,index){
+function gameAnnSelection(team){
+ const totals={};
+ for(const round of Object.values(state.roundAnnSelections||{}))for(const [key,count] of Object.entries(round[team]||{}))totals[key]=(totals[key]||0)+count;
+ for(const [key,count] of Object.entries(currentAnnCounters(team)))totals[key]=(totals[key]||0)+count;
+ const legacy=state[team==="A"?"annA":"annB"]||{};
+ for(const key of ["stock",20,50,100,150,200])totals[key]=Math.max(totals[key]||0,legacy[key]||0);
+ return totals;
+}
+function showRoundAnnouncements(team,index,summary=false){
  let dialog=document.getElementById("roundAnnReadDialog");
  if(!dialog){dialog=document.createElement("dialog");dialog.id="roundAnnReadDialog";dialog.className="language-dialog";document.body.appendChild(dialog);dialog.addEventListener("click",event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});}
- dialog.replaceChildren();const title=document.createElement("h2");title.textContent=t("ann")+" · "+teamName(team)+" · "+(index+1);dialog.appendChild(title);
- const selection=roundAnnSelection(team,index),labels={stock:"20 · Stöck",20:t("cards_20"),50:t("cards_50"),100:t("cards_100")+" / "+t("four_kind"),150:"150",200:"200"};
+ dialog.replaceChildren();const title=document.createElement("h2");title.textContent=t("ann")+" · "+teamName(team)+(summary?"":" · "+(index+1));dialog.appendChild(title);
+ const selection=summary?gameAnnSelection(team):roundAnnSelection(team,index),labels={stock:"20 · Stöck",20:t("cards_20"),50:t("cards_50"),100:t("cards_100")+" / "+t("four_kind"),150:"150",200:"200"};
  for(const key of ["stock",20,50,100,150,200]){
   const count=selection[key]||0;if(!count)continue;
   const row=document.createElement("div");row.className="round-ann-detail";
@@ -1095,8 +1110,27 @@ function showRoundAnnouncements(team,index){
   if(key===150||key===200){const cards=document.createElement("span");cards.className="nine-cards";for(const suit of ["♠","♥","♦","♣"]){const card=document.createElement("span");card.className="nine-card"+(["♥","♦"].includes(suit)?" red":"");card.textContent=(key===150?"9":"J")+suit;cards.appendChild(card);}row.appendChild(cards);}
   const amount=document.createElement("strong");amount.textContent="×"+count;row.appendChild(amount);dialog.appendChild(row);
  }
- if(!Object.values(selection).some(n=>n>0)){const empty=document.createElement("p");empty.textContent=String(state.annRoundAmounts?.[team]?.[index]||0)+" "+t("pts");dialog.appendChild(empty);}
+ if(!Object.values(selection).some(n=>n>0)){const empty=document.createElement("p");empty.textContent=String(summary?annTotal(team):(state.annRoundAmounts?.[team]?.[index]||0))+" "+t("pts");dialog.appendChild(empty);}
+ if(summary){const total=document.createElement("p");total.textContent=t("announcement_total")+" : "+annTotal(team)+" "+t("pts");dialog.appendChild(total);}
  const close=document.createElement("button");close.textContent="OK";close.onclick=()=>dialog.close();dialog.appendChild(close);dialog.showModal();
+}
+let displayDouble=true;
+try{displayDouble=localStorage.getItem("chibre_display_double")!=="false";}catch(error){}
+function toggleDisplayDouble(){
+ displayDouble=!displayDouble;try{localStorage.setItem("chibre_display_double",String(displayDouble));}catch(error){}
+ render();updateMenuRounds();positionLanguageMenu();
+}
+function setupRoundScoreDisplay(input,index,team){
+ let editing=false;
+ const showScore=()=>{const raw=state.rounds[index]?.[team];input.value=raw===null||raw===undefined?"":String(raw*(displayDouble?roundFactor(index):1));};
+ const editScore=()=>{
+  if(requireInitialTrump()){input.blur();return;}
+  if(!editing){const raw=state.rounds[index]?.[team];input.value=raw===null||raw===undefined?"":String(raw);editing=true;}
+  input.select();
+ };
+ input.onfocus=editScore;input.onclick=editScore;
+ input.onblur=()=>{editing=false;showScore();};
+ showScore();
 }
 function makeRounds(){
  const root=document.getElementById("rounds");root.innerHTML="";
@@ -1108,6 +1142,7 @@ function makeRounds(){
   const b=document.createElement("input");b.className="score";b.type="text";b.pattern="[0-9]*";b.onfocus=()=>{if(requireInitialTrump()){b.blur();return;}b.select();};b.onclick=()=>{if(requireInitialTrump())return;b.select();};b.inputMode="numeric";b.value=r.b===null?"":r.b;b.placeholder="—";b.onchange=()=>setRound(i,"b",b.value);
   a.onkeydown=event=>enterRoundPoints(event,i,"a",a);b.onkeydown=event=>enterRoundPoints(event,i,"b",b);
   attachLongPressMatch(a,i,"a");attachLongPressMatch(b,i,"b");
+  setupRoundScoreDisplay(a,i,"a");setupRoundScoreDisplay(b,i,"b");
   if(state.trumpGuide&&trumpTeam()!==null&&r.a===null&&r.b===null&&i===state.rounds.findIndex(round=>round.a===null&&round.b===null)){(trumpTeam()==="a"?a:b).classList.add(trumpTeam()==="a"?"trump-green":"trump-pink");}
   const locked=state.rounds.slice(0,i).some(previous=>previous.a===null || previous.b===null);
   const victoryLocked=((!!state.winnerTeam||targetReached())&&i!==lastCompletedRound())||i<lastCompletedRound();
@@ -1123,7 +1158,7 @@ function makeRounds(){
    button.classList.toggle("has-stock",hasStock);
    button.disabled=!played&&(locked||!!state.winnerTeam||targetReached());
    button.classList.toggle("current-trick-ann",!played&&!button.disabled);button.classList.toggle("has-ann-total",total>0);button.classList.toggle("past-ann",played);
-   button.onclick=()=>played?showRoundAnnouncements(team,i):openSlateAnnPicker(team);return button;
+   button.onclick=()=>state.winnerTeam?showRoundAnnouncements(team,i,true):played?showRoundAnnouncements(team,i):openSlateAnnPicker(team);return button;
   };
   row.append(announcementButton("A"),a,num,b,announcementButton("B"));root.appendChild(row);
  });
@@ -1476,7 +1511,7 @@ function slateDisplayBreakdown(total,team){
 }
 function slateStockVisible(team){
  if(!state.winnerTeam)return (currentAnnCounters(team).stock||0)>0;
- if(!showSlateAnnTotals)return false;
+
  return (currentAnnCounters(team).stock||0)>0||Object.values(state.roundAnnSelections||{}).some(round=>(round[team]?.stock||0)>0)||(state[team==="A"?"annA":"annB"]?.stock||0)>0;
 }
 function slateSvg(total,team){
@@ -1508,7 +1543,7 @@ function slateSvg(total,team){
  return `<svg viewBox="0 0 600 400" preserveAspectRatio="none" role="group" aria-label="${escapeHistoryText(accessible)}" xmlns="http://www.w3.org/2000/svg">
  ${team?`<g class="slate-hit" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("manual_title",{team:teamName(team)}))}" onclick="openSlateManual('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateManual('${team}');}"><rect x="60" y="30" width="480" height="340" fill="transparent" pointer-events="all"/></g>`:""}
  <g pointer-events="none" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M65 35 H535 L65 345 H535" opacity=".65"/>${tallies(points.hundreds,35)}${fiftyMarks}${tallies(points.twenties,345)}</g>
- <g pointer-events="none" fill="currentColor" font-family="Georgia,serif" font-size="20"><text x="12" y="42">100</text><text x="310" y="160">50</text><text x="20" y="352">20</text><text x="475" y="225" font-size="40">${points.remainder}</text></g><path d="M65 35 H535 L65 345 H535" fill="none" stroke="transparent" stroke-width="18" vector-effect="non-scaling-stroke" pointer-events="stroke"/>${team?`<g class="slate-ann-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("ann_manual_title",{team:teamName(team)}))}" onclick="openSlateAnnPicker('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateAnnPicker('${team}');}"><rect x="8" y="170" width="60" height="60" rx="4" fill="#151a18" stroke="currentColor" stroke-width="2"/><text x="38" y="212" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="36">${escapeHistoryText(t("ann_symbol"))}</text></g>${!state.winnerTeam&&currentSlateAnnPoints(team)>0?`<text class="slate-final-ann-total" x="${window.matchMedia('(max-width:600px)').matches?38:8}" y="256" text-anchor="${window.matchMedia('(max-width:600px)').matches?'middle':'start'}" fill="#ffffff" font-family="system-ui,sans-serif" font-size="20" pointer-events="none">${currentSlateAnnPoints(team)}<tspan class="slate-ann-unit"> ${escapeHistoryText(t("pts"))}</tspan></text>`:""}${state.winnerTeam&&showSlateAnnTotals?`<text class="slate-final-ann-total" x="${window.matchMedia('(max-width:600px)').matches?38:8}" y="256" text-anchor="${window.matchMedia('(max-width:600px)').matches?'middle':'start'}" fill="#ffffff" font-family="system-ui,sans-serif" font-size="20" pointer-events="none">${annTotal(team)}<tspan class="slate-ann-unit"> ${escapeHistoryText(t("pts"))}</tspan></text>`:""}`:""}${team&&slateStockVisible(team)?`<text class="slate-ann-stock-cards" x="38" y="280" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="18" pointer-events="none" aria-label="Stöck">♚♛</text>`:""}${team?`<g class="slate-match-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("slate_add",{value:257,team:teamName(team)}))}" onclick="slateMatch('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();slateMatch('${team}');}"><rect x="420" y="292" width="115" height="45" fill="transparent"/><text x="535" y="329" text-anchor="end" fill="#ffffff" font-family="Georgia, Palatino, serif" font-size="29" font-weight="400">${escapeHistoryText(t("match"))}</text></g>`:""}${team?`<g class="slate-edit-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("slate_edit",{team:teamName(team)}))}" onclick="openSlateEdit('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateEdit('${team}');}"><rect x="267.5" y="355" width="65" height="45" fill="transparent"/><text x="300" y="378" text-anchor="middle" dominant-baseline="central" transform="rotate(90 300 378)" fill="#ffffff" font-family="system-ui,sans-serif" font-size="42">↶</text></g>`:""}</svg>`;
+ <g pointer-events="none" fill="currentColor" font-family="Georgia,serif" font-size="20"><text x="12" y="42">100</text><text x="310" y="160">50</text><text x="20" y="352">20</text><text x="475" y="225" font-size="40">${points.remainder}</text></g><path d="M65 35 H535 L65 345 H535" fill="none" stroke="transparent" stroke-width="18" vector-effect="non-scaling-stroke" pointer-events="stroke"/>${team?`<g class="slate-ann-button" role="button" aria-disabled="false" tabindex="0" aria-label="${escapeHistoryText(t("ann_manual_title",{team:teamName(team)}))}" onclick="openSlateAnnPicker('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateAnnPicker('${team}');}"><rect x="8" y="170" width="60" height="60" rx="4" fill="#151a18" stroke="currentColor" stroke-width="2"/><text x="38" y="212" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="36">${escapeHistoryText(t("ann_symbol"))}</text></g>${state.winnerTeam||currentSlateAnnPoints(team)>0?`<text class="slate-final-ann-total" x="${window.matchMedia('(max-width:600px)').matches?38:8}" y="256" text-anchor="${window.matchMedia('(max-width:600px)').matches?'middle':'start'}" fill="#ffffff" font-family="system-ui,sans-serif" font-size="20" pointer-events="none">${state.winnerTeam?annTotal(team):currentSlateAnnPoints(team)}<tspan class="slate-ann-unit"> ${escapeHistoryText(t("pts"))}</tspan></text>`:""}}`:""}${team&&slateStockVisible(team)?`<text class="slate-ann-stock-cards" x="38" y="280" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="18" pointer-events="none" aria-label="Stöck">♚♛</text>`:""}${team?`<g class="slate-match-button" role="button" aria-disabled="${state.winnerTeam?"true":"false"}" tabindex="${state.winnerTeam?-1:0}" aria-label="${escapeHistoryText(t("slate_add",{value:257,team:teamName(team)}))}" onclick="slateMatch('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();slateMatch('${team}');}"><rect x="420" y="292" width="115" height="45" fill="transparent"/><text x="535" y="329" text-anchor="end" fill="#ffffff" font-family="Georgia, Palatino, serif" font-size="29" font-weight="400">${escapeHistoryText(t("match"))}</text></g>`:""}${team?`<g class="slate-edit-button" role="button" tabindex="0" aria-label="${escapeHistoryText(t("slate_edit",{team:teamName(team)}))}" onclick="openSlateEdit('${team}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSlateEdit('${team}');}"><rect x="267.5" y="355" width="65" height="45" fill="transparent"/><text x="300" y="378" text-anchor="middle" dominant-baseline="central" transform="rotate(90 300 378)" fill="#ffffff" font-family="system-ui,sans-serif" font-size="42">↶</text></g>`:""}</svg>`;
 }
 let slateEditContext=null;
 function slateCompletedRounds(){
@@ -1728,6 +1763,7 @@ function renderAnnPicker(){
  document.getElementById("annPickerTotal").textContent=t("ann")+" : "+annPickerAmount()+" "+t("pts");
 }
 function openSlateAnnPicker(team,editing=false){
+ if(state.winnerTeam){showRoundAnnouncements(team,0,true);return;}
  if(requireInitialTrump())return;
  if(!["A","B"].includes(team))return;
  const entry=state.slateLastEntries?.[team];
@@ -1894,7 +1930,7 @@ load();applyLanguage();render();
 
 <script>
 if ("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")) {
- const APP_VERSION="4.209";
+ const APP_VERSION="4.210";
  let checkingVersion=false;
  async function checkHostedVersion(){
   if(checkingVersion)return;checkingVersion=true;

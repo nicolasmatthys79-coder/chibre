@@ -72,7 +72,7 @@ const TRANSLATIONS={
     "help_start_title": "Modes et options",
     "help_start_body": "Dans Menu → Options, activez « Qui fait Atout ? », les numéros de plis ou le total des annonces en fin de partie sur l’ardoise. « Taille de police » ajuste le texte du jeu avec un curseur.",
     "help_scores_title": "Saisir une donne",
-    "help_scores_body": "Saisissez les points d’une équipe : ceux de l’adversaire sont complétés à 157. Match vaut 257 contre 0. Un appui long sur une case inscrit un match.",
+    "help_scores_body": "Saisissez les points d’une équipe : ceux de l’adversaire sont complétés à 157. Match vaut 257 contre 0. Un appui long sur une case inscrit un match. En pique double, saisissez les points normaux : la case affiche ensuite le double. Touchez-la pour corriger la valeur normale.",
     "help_order_title": "Remplir les donnes dans l’ordre",
     "help_order_body": "Seule la première ligne vide est accessible. Les lignes suivantes restent grisées jusqu’à ce que la précédente soit remplie. Les lignes déjà remplies restent modifiables. Pour corriger une donne, modifiez une case. Pour l’effacer, videz une case et validez : cette donne et toutes les suivantes sont effacées pour conserver l’ordre. Si la correction de la dernière donne atteint ou dépasse l’objectif de 1000 points, ou 1500 en pique double, le panneau du vainqueur apparaît à nouveau, même s’il avait été fermé. Cela s’applique à la feuille classique et à l’ardoise.",
     "help_match_title": "Compter un match",
@@ -160,8 +160,10 @@ const TRANSLATIONS={
     "help_mise_title": "La Mise",
     "help_mise_body": "Ouvrez Mise avec le bouton M et saisissez l’objectif. L’équipe qui fait atout en premier doit atteindre cette mise ; l’autre vise 1000 points. La mise est verrouillée dès le choix de l’équipe et redevient modifiable à la nouvelle partie.",
     "help_modes_title": "1000, 1500 et pique double",
-    "help_modes_body": "Choisissez 1000 ou 1500 points. En mode 1500, ♠ ♠ ON double les points et annonces du pli en cours ; OFF les compte normalement. Le double est désactivé en mode 1000.",
-    "font_size": "Taille de police"
+    "help_modes_body": "Choisissez 1000 ou 1500 points. En mode 1500, ♠ ♠ ON double les points et annonces du pli en cours ; OFF les compte normalement. Le double est désactivé en mode 1000. Dans Options, « Afficher points doublés ? » permet de choisir entre points normaux et doublés dans les cases, sans modifier les totaux.",
+    "font_size": "Taille de police",
+    "display_double": "Afficher points doublés ?",
+    "winner_announcements": "Annonces : {points} {unit}"
   },
   "de": {
     "show_slate_ann_totals": "Weissumme am Spielende",
@@ -235,7 +237,7 @@ const TRANSLATIONS={
     "help_start_title": "Modes and options",
     "help_start_body": "Ist die Trumpfhilfe aktiv, beim ersten Antippen von Punkten oder Meldungen das Startteam wählen. Danach wechselt Trumpf nach jeder Runde. Unter Menü → Optionen lassen sich Trumpfhilfe und Rundennummern auf der Tafel umschalten: ✓ an, ✕ aus. « Schriftgrösse » passt die Spieltexte mit einem Schieberegler an.",
     "help_scores_title": "Runde eintragen",
-    "help_scores_body": "2 bis 155 für ein Team eingeben; das andere erhält die Ergänzung auf 157. Match trägt 257 zu 0 ein. Langes Drücken auf ein Punktefeld trägt einen Match ein. Enter wechselt zur nächsten Runde zum Team ohne Trumpfwahl.",
+    "help_scores_body": "2 bis 155 für ein Team eingeben; das andere erhält die Ergänzung auf 157. Match trägt 257 zu 0 ein. Langes Drücken auf ein Punktefeld trägt einen Match ein. Enter wechselt zur nächsten Runde zum Team ohne Trumpfwahl. Bei Doppel-Pik normale Punkte eingeben; das Feld zeigt danach den doppelten Wert. Zum Korrigieren erscheint wieder der normale Wert.",
     "help_order_title": "Runden der Reihe nach ausfüllen",
     "help_order_body": "Nur die erste leere Zeile ist freigegeben. Die folgenden Zeilen bleiben grau, bis die vorherige ausgefüllt ist. Bereits ausgefüllte Zeilen können weiterhin geändert werden. Zum Korrigieren ändern Sie ein Feld. Zum Löschen leeren Sie ein Feld und bestätigen: Diese Runde und alle folgenden werden gelöscht, damit die Reihenfolge erhalten bleibt. Erreicht oder überschreitet die Korrektur der letzten Runde das Ziel von 1000 Punkten oder 1500 bei Pik doppelt, erscheint die Gewinnmeldung erneut, auch wenn sie zuvor geschlossen wurde. Dies gilt für das Punkteblatt und die Tafel.",
     "help_match_title": "Einen Match zählen",
@@ -323,8 +325,10 @@ const TRANSLATIONS={
     "help_mise_title": "Ansage",
     "help_mise_body": "M öffnet Ansage: Ziel eingeben und vor der Punkteingabe das Trumpfteam wählen. Dieses Team muss die Ansage erreichen, das andere 1000 Punkte. Die normale Partie bleibt getrennt gespeichert. Im Ansage-Modus zuerst die Ansage in der Mitte eingeben, bevor Punkte oder Weis erfasst werden. Bei der Ansage muss das Team, das im ersten Durchgang Trumpf macht, die Ansage erreichen. Diese Zuordnung bleibt für das ganze Spiel bestehen, auch wenn der Trumpf wechselt. Beispiel: Bei einer Ansage von 700 und dem ersten Trumpf für Sie benötigen Sie 700 Punkte und Wir 1000. Sobald das Team für den ersten Trumpf gewählt ist, wird das Ansagefeld ausgegraut und bleibt bis zum nächsten Spiel gesperrt. Auf dem Smartphone öffnet ein Tippen auf das mittlere Ansagefeld der Tafel die Zahleneingabe. OK speichert den Wert und schließt das Fenster; Abbrechen behält den bisherigen Wert.",
     "help_modes_title": "1000, 1500 und Doppel-Pik",
-    "help_modes_body": "Wählen Sie 1000 oder 1500 Punkte als Ziel. Im Modus 1500 verdoppelt ♠ ♠ ON die Punkte und Weis der aktuellen Runde; OFF zählt sie normal. Frühere Runden bleiben unverändert. Bei 1000 ist Doppel-Pik deaktiviert. Nach der ersten Runde muss ein Wechsel des Ziels bestätigt werden.",
-    "font_size": "Schriftgrösse"
+    "help_modes_body": "Wählen Sie 1000 oder 1500 Punkte als Ziel. Im Modus 1500 verdoppelt ♠ ♠ ON die Punkte und Weis der aktuellen Runde; OFF zählt sie normal. Frühere Runden bleiben unverändert. Bei 1000 ist Doppel-Pik deaktiviert. Nach der ersten Runde muss ein Wechsel des Ziels bestätigt werden. Unter Optionen wählt « Doppelte Punkte anzeigen? » die Anzeige in den Feldern, ohne die Gesamtsummen zu ändern.",
+    "font_size": "Schriftgrösse",
+    "display_double": "Doppelte Punkte anzeigen?",
+    "winner_announcements": "Weis: {points} {unit}"
   },
   "it": {
     "show_slate_ann_totals": "Totale annunci a fine partita",
@@ -398,7 +402,7 @@ const TRANSLATIONS={
     "help_start_title": "Modalità e opzioni",
     "help_start_body": "Se l’aiuto per l’atout è attivo, scegli la prima squadra al primo tocco su punti o annunci. L’atout alterna dopo ogni mano. In Menu → Opzioni puoi attivare o disattivare l’aiuto per l’atout e i numeri delle mani sulla lavagna: ✓ attivo, ✕ disattivo. « Dimensione del testo » regola i testi del gioco con un cursore.",
     "help_scores_title": "Inserire una mano",
-    "help_scores_body": "Inserisci da 2 a 155 per una squadra: l’altra riceve il complemento a 157. Match registra 257 a 0. Una pressione prolungata sul foglio principale registra un match. Invio passa alla mano successiva nella squadra che non fa atout.",
+    "help_scores_body": "Inserisci da 2 a 155 per una squadra: l’altra riceve il complemento a 157. Match registra 257 a 0. Una pressione prolungata sul foglio principale registra un match. Invio passa alla mano successiva nella squadra che non fa atout. Con doppia picca inserite i punti normali; la casella mostra poi il doppio. Toccandola si corregge il valore normale.",
     "help_order_title": "Compilare le mani in ordine",
     "help_order_body": "Solo la prima riga vuota è attiva. Le righe successive restano grigie finché la precedente non è compilata. Le righe già compilate restano modificabili. Per correggere una mano, modificate una casella. Per cancellarla, svuotate una casella e confermate: questa mano e tutte le successive vengono cancellate per mantenere l’ordine. Se la correzione dell’ultima mano raggiunge o supera 1000 punti, oppure 1500 con picche doppie, il pannello del vincitore riappare anche se era stato chiuso. Questo vale per il segnapunti e la lavagna.",
     "help_match_title": "Contare un match",
@@ -486,8 +490,10 @@ const TRANSLATIONS={
     "help_mise_title": "La posta",
     "help_mise_body": "M apre Puntata: inserite l’obiettivo e scegliete la squadra di briscola prima dei punti. Questa squadra deve raggiungere la puntata, l’altra 1000 punti. La partita classica resta salvata separatamente. In modalità Puntata, inserite prima la puntata al centro, poi gli annunci o i punti. Nella partita con posta, la squadra che fa atout nella prima mano deve raggiungere la posta. Questa assegnazione resta invariata per tutta la partita, anche se l’atout si alterna. Esempio: con una posta di 700, se Loro fanno atout per primi, Loro devono raggiungere 700 punti e Noi 1000. Appena viene scelta la squadra che fa atout per prima, il campo della posta diventa grigio e resta bloccato fino alla nuova partita. Sullo smartphone, tocca il campo centrale della posta sulla lavagna per aprire l’inserimento numerico. OK salva il valore e chiude la finestra; Annulla mantiene il valore precedente.",
     "help_modes_title": "1000, 1500 e doppia picca",
-    "help_modes_body": "Scegliete un obiettivo di 1000 o 1500 punti. A 1500, ♠ ♠ ON raddoppia punti e annunci della mano corrente; OFF li conta normalmente. Le mani precedenti restano invariate. A 1000, la doppia picca è disattivata. Dopo la prima mano, cambiare obiettivo richiede conferma.",
-    "font_size": "Dimensione del testo"
+    "help_modes_body": "Scegliete un obiettivo di 1000 o 1500 punti. A 1500, ♠ ♠ ON raddoppia punti e annunci della mano corrente; OFF li conta normalmente. Le mani precedenti restano invariate. A 1000, la doppia picca è disattivata. Dopo la prima mano, cambiare obiettivo richiede conferma. Nelle Opzioni scegliete se mostrare i punti doppi nelle caselle, senza cambiare i totali.",
+    "font_size": "Dimensione del testo",
+    "display_double": "Mostrare i punti doppi?",
+    "winner_announcements": "Annunci: {points} {unit}"
   },
   "rm": {
     "show_slate_ann_totals": "Total annunzias a la fin dal gieu",
@@ -561,7 +567,7 @@ const TRANSLATIONS={
     "help_start_title": "Modus ed opziuns",
     "help_start_body": "Sche l’agid per trumf è activ, tschernì l’emprima equipa cun tutgar puncts u annunzias. Trumf mida suenter mintga runda. En Menu → Opziuns pudais activar u deactivar l’agid per trumf ed ils numers da runda sin la tavla: ✓ activ, ✕ deactivà. « Grondezza da scrittira » adatta ils texts cun in reglader.",
     "help_scores_title": "Endatar ina runda",
-    "help_scores_body": "Endatai 2 fin 155 per in’equipa; l’autra survegn il cumplement a 157. Match noda 257 a 0. Tutgar ditg in champ dal formular principal noda in match. Enter va a la proxima runda tar l’equipa che na fa betg trumf.",
+    "help_scores_body": "Endatai 2 fin 155 per in’equipa; l’autra survegn il cumplement a 157. Match noda 257 a 0. Tutgar ditg in champ dal formular principal noda in match. Enter va a la proxima runda tar l’equipa che na fa betg trumf. Cun pic dubel endatai ils puncts normals; il champ mussa alura il dubel. Per curreger cumpara la valur normala.",
     "help_order_title": "Emplenir las rundas en successiun",
     "help_order_body": "Sulettamain l’emprima lingia vida è accessibla. Las lingias suandantas restan grischas fin che la precedenta è emplenida. Las lingias gia emplenidas pon vinavant vegnir midadas. Per curreger ina runda, midai in champ. Per stizzar ella, laschai in champ vid e confermai: questa runda e tut las suandantas vegnan stizzadas per mantegnair la successiun. Sche la correctura da la davosa runda cuntanscha u surpassa 1000 puncts u 1500 cun palas dubel, cumpara il panel dal victur danovamain, er sch’el era serrà. Quai vala per il fegl da puncts e per la tavla.",
     "help_match_title": "Dumbrar in match",
@@ -649,8 +655,10 @@ const TRANSLATIONS={
     "help_mise_title": "La scumessa",
     "help_mise_body": "M avra Messa: endatai la finamira e tschernì l’equipa d’atout avant ils puncts. Questa equipa sto cuntanscher la messa, l’autra 1000 puncts. La partida classica resta memorisada separadamain. En il modus Messa, endatai l’emprim la messa entamez avant las annunzias u ils puncts. En il gieu cun scumessa sto l’equipa che fa trumf en l’emprima runda cuntanscher la scumessa. Questa attribuziun resta fixa durant l’entir gieu, era sche il trumf alternescha. Exempel: cun ina scumessa da 700, sche Els fan trumf l’emprim, dovran Els 700 puncts e Nus 1000. Uschespert che l’equipa che fa trumf l’emprim è tschernida, daventa il champ da la scumessa grisch e resta bloccà fin al proxim gieu. Sin il telefon, tutgar il champ central da la scumessa sin la tavla avra l’endataziun numerica. OK memorisescha la valur e serra la fanestra; Interrumper mantegna la valur precedenta.",
     "help_modes_title": "1000, 1500 e pic dubel",
-    "help_modes_body": "Tschernì 1000 u 1500 puncts sco finamira. Tar 1500 dublegia ♠ ♠ ON ils puncts e las annunzias da la runda actuala; OFF als quinta normalmain. Las rundas precedentas restan invariadas. Tar 1000 è il pic dubel deactivà. Suenter l’emprima runda dovra il midament da la finamira ina conferma.",
-    "font_size": "Grondezza da scrittira"
+    "help_modes_body": "Tschernì 1000 u 1500 puncts sco finamira. Tar 1500 dublegia ♠ ♠ ON ils puncts e las annunzias da la runda actuala; OFF als quinta normalmain. Las rundas precedentas restan invariadas. Tar 1000 è il pic dubel deactivà. Suenter l’emprima runda dovra il midament da la finamira ina conferma. En Opziuns pudais tscherner la visualisaziun dubla en ils champs senza midar ils totals.",
+    "font_size": "Grondezza da scrittira",
+    "display_double": "Mussar ils puncts dubels?",
+    "winner_announcements": "Annunzias: {points} {unit}"
   },
   "en": {
     "show_slate_ann_totals": "Announcement total at game end",
@@ -724,7 +732,7 @@ const TRANSLATIONS={
     "help_start_title": "Modes and options",
     "help_start_body": "If the trump guide is enabled, choose the starting team when you first tap points or announcements. Trumps then alternate after each round. In Menu → Options, toggle the trump guide and round numbers on the slate: ✓ on, ✕ off. Font size adjusts the game text with a slider.",
     "help_scores_title": "Enter a round",
-    "help_scores_body": "Enter 2 to 155 for either team; the other receives the remainder out of 157. Match records 257 against 0. Long-pressing a main-sheet score records a match. Enter advances to the next round for the team not choosing trumps.",
+    "help_scores_body": "Enter 2 to 155 for either team; the other receives the remainder out of 157. Match records 257 against 0. Long-pressing a main-sheet score records a match. Enter advances to the next round for the team not choosing trumps. With double spades, enter normal points; the field then displays double. Tap it to edit the normal value.",
     "help_order_title": "Fill in rounds in order",
     "help_order_body": "Only the first empty row is available. Later rows stay grey until the preceding row is filled in. Completed rows can still be edited. To correct a round, change one field. To clear it, empty one field and confirm: that round and all later rounds are cleared to keep the rounds in order. If correcting the last round reaches or exceeds 1000 points, or 1500 in double spades mode, the winner panel appears again even if it was previously closed. This applies to both the score sheet and the slate.",
     "help_match_title": "Count a match",
@@ -812,8 +820,10 @@ const TRANSLATIONS={
     "help_mise_title": "Bid mode",
     "help_mise_body": "M opens Bid: enter a target and select the trump team before entering points. That team must reach the bid; the other needs 1000 points. The standard game is saved separately. In Bid mode, enter the bid in the centre before adding melds or points. In a bid game, the team that chooses trump for the first round must reach the bid. This assignment stays fixed throughout the game, even as trump alternates. For example, with a bid of 700, if They choose trump first, They need 700 points and We need 1000. As soon as the team that chooses trump first is selected, the bid field becomes grey and stays locked until a new game. On a smartphone, tap the central bid field on the slate to open numeric entry. OK saves the value and closes the window; Cancel keeps the previous value.",
     "help_modes_title": "1000, 1500 and double spades",
-    "help_modes_body": "Choose a target of 1000 or 1500 points. At 1500, ♠ ♠ ON doubles the current round’s points and melds; OFF counts them normally. Earlier rounds stay unchanged. At 1000, double spades is disabled. After the first round, changing the target requires confirmation.",
-    "font_size": "Font size"
+    "help_modes_body": "Choose a target of 1000 or 1500 points. At 1500, ♠ ♠ ON doubles the current round’s points and melds; OFF counts them normally. Earlier rounds stay unchanged. At 1000, double spades is disabled. After the first round, changing the target requires confirmation. In Options, choose whether fields show doubled points; totals are unchanged.",
+    "font_size": "Font size",
+    "display_double": "Display doubled points?",
+    "winner_announcements": "Melds: {points} {unit}"
   }
 };
 let currentLanguage="fr";
