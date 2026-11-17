@@ -35,3 +35,5 @@ html[data-theme="dark"] #roundDoubleToggle:not(.double-unavailable)[aria-pressed
 
 /* Mode 1000 : pique double indisponible et sombre. */
 html[data-theme="dark"] #roundDoubleToggle.double-unavailable{background:#29312c!important;color:#87948b!important;border-color:#48544c!important;opacity:1}
+
+.font-size-choice{display:flex!important;align-items:center;justify-content:space-between;gap:12px}.font-size-icon{font-size:25px!important;font-weight:700;white-space:nowrap}.font-size-icon small{font-size:15px!important;margin-left:2px}#fontSizeDialog{text-align:center}#fontSizeDialog .font-size-range{display:flex;align-items:center;gap:12px;margin:20px 0}#fontSizeDialog input{flex:1;min-width:0;accent-color:#28734f}#fontSizeDialog output{display:block;margin-bottom:20px}#fontSizeDialog button{display:block;margin:auto}

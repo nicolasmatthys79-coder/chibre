@@ -1,12 +1,5 @@
-CHIBRE JASS — V4.201 — FICHIERS POUR L’HÉBERGEUR
+CHIBRE JASS — V4.205
 
-Décompressez le ZIP, puis transférez tous ses fichiers dans le dossier actuel du site, à côté de index.html. Remplacez les fichiers existants portant les mêmes noms.
-Ne transférez pas le ZIP lui-même et ne créez pas de sous-dossier supplémentaire.
+Décompressez cette archive et transférez tous les fichiers dans le dossier actuel du site, à côté de index.html, en remplaçant les anciens fichiers. Ne créez pas de sous-dossier supplémentaire.
 
-Cette livraison contient le jeu Chibre, la Pomme, la Mise, l’aide, les traductions, le mode sombre, les icônes rouges et les fichiers du mode hors ligne.
-
-Conservez la même adresse du site pour retrouver les parties enregistrées sur chaque appareil. Ne supprimez pas les données du navigateur.
-Après le transfert, ouvrez le site avec Internet et rechargez la page. La version affichée dans le menu doit être V4.201.
-HTTPS est nécessaire pour le fonctionnement du cache hors ligne.
-
-Dernière modification : couleurs des boutons 1000, 1500 et pique double en mode sombre.
+Conservez la même adresse du site et les données du navigateur pour garder les parties enregistrées. Rechargez le site après transfert : le menu doit afficher V4.205. HTTPS est nécessaire pour le mode hors ligne.
