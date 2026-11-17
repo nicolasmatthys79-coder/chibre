@@ -18,12 +18,12 @@
  document.addEventListener('DOMContentLoaded',()=>{
   const options=document.getElementById('appOptions');
   if(options){
-   const button=document.createElement('button');button.type='button';button.className='font-size-choice';button.innerHTML='<span data-i18n="font_size">Taille de police</span><span aria-hidden="true" class="font-size-icon">A<small>a</small></span>';options.appendChild(button);
+   const button=document.createElement('button');button.type='button';button.className='font-size-choice';button.innerHTML='<span><span data-i18n="font_size">Taille de police</span> <span class="font-size-percent"></span></span><span aria-hidden="true" class="font-size-icon">A<small>a</small></span>';options.appendChild(button);
    const dialog=document.createElement('dialog');dialog.id='fontSizeDialog';dialog.className='language-dialog';dialog.innerHTML='<h2 data-i18n="font_size">Taille de police</h2><div class="font-size-range"><small>a</small><input type="range" min="80" max="125" step="5"><strong>A</strong></div><output></output><button type="button">OK</button>';document.body.appendChild(dialog);
    const input=dialog.querySelector('input'),output=dialog.querySelector('output');input.value=Math.round(scale*100);output.textContent=input.value+' %';
-   function translate(){const lang=document.documentElement.lang.split('-')[0],text=labels[lang]||labels.fr;button.querySelector('span').textContent=text[0];dialog.querySelector('h2').textContent=text[0];input.setAttribute('aria-label',text[0]);}
+   function translate(){const lang=document.documentElement.lang.split('-')[0],text=labels[lang]||labels.fr;button.querySelector('[data-i18n=font_size]').textContent=text[0];button.querySelector('.font-size-percent').textContent=Math.round(scale*100)+' %';dialog.querySelector('h2').textContent=text[0];input.setAttribute('aria-label',text[0]);}
    button.onclick=()=>{translate();if(typeof closeLanguageMenu==='function')closeLanguageMenu();dialog.showModal();};
-   input.oninput=()=>{scale=Number(input.value)/100;output.textContent=input.value+' %';try{localStorage.setItem(KEY,String(scale));}catch(e){}schedule();};
+   input.oninput=()=>{scale=Number(input.value)/100;output.textContent=input.value+' %';button.querySelector('.font-size-percent').textContent=input.value+' %';try{localStorage.setItem(KEY,String(scale));}catch(e){}schedule();};
    dialog.querySelector('button').onclick=()=>dialog.close();translate();
    new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   }
