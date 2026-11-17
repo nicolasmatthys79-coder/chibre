@@ -77,7 +77,7 @@
  .app .rounds{padding-top:7px}.app .rounds .rhead{padding-bottom:4px}
 }
 
-/* V4.205: compact phone headers; native Android keeps the system-bar inset. */
+/* V4.206: compact phone headers; native Android keeps the system-bar inset. */
 @media(max-width:600px){
  .app{padding-top:env(safe-area-inset-top,0px)!important}
  .app>header,.app .title-row{margin-top:0!important;padding-top:0!important}
@@ -282,3 +282,5 @@ body:not(.mise-page) #slateDialog[data-game-mode="1500"] .slate-score-area .slat
 .app .title-row h1{min-width:0}
 
 @media(max-width:600px){html body:not(.mise-page) .app{padding-top:calc(env(safe-area-inset-top,0px) + 2px)!important}html.native-android body:not(.mise-page) .app{padding-top:2px!important}}
+
+@media(min-width:601px){.header-actions .app-menu{position:relative;z-index:11000}.header-actions .language-choices{z-index:11001}}
