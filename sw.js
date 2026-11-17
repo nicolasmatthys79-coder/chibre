@@ -1,6 +1,6 @@
 "use strict";
-const CACHE="chibre-v4.207-20261016";
-const FILES=["./responsive.css?v=4.207","./theme.css?v=4.207","./theme.js?v=4.207","./","./index.html","./comment-ca-marche.html","./calcul-pomme.html","./i18n.js?v=4.207","./manifest.webmanifest","./icon-red-192-v481.png","./icon-red-512-v481.png","./icon-192.png","./icon-512.png"];
+const CACHE="chibre-v4.208-20261016";
+const FILES=["./responsive.css?v=4.208","./theme.css?v=4.208","./theme.js?v=4.208","./","./index.html","./comment-ca-marche.html","./calcul-pomme.html","./i18n.js?v=4.208","./manifest.webmanifest","./icon-red-192-v481.png","./icon-red-512-v481.png","./icon-192.png","./icon-512.png"];
 self.addEventListener("install",event=>{
  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES.map(file=>new Request(file,{cache:"reload"})))).then(()=>self.skipWaiting()));
 });
