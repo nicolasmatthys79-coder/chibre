@@ -77,7 +77,7 @@
  .app .rounds{padding-top:7px}.app .rounds .rhead{padding-bottom:4px}
 }
 
-/* V4.210: compact phone headers; native Android keeps the system-bar inset. */
+/* V4.212: compact phone headers; native Android keeps the system-bar inset. */
 @media(max-width:600px){
  .app{padding-top:env(safe-area-inset-top,0px)!important}
  .app>header,.app .title-row{margin-top:0!important;padding-top:0!important}
@@ -187,20 +187,20 @@ html.native-android .app{padding-top:0!important}
 #historyPage .history-game{border-radius:10px!important}
 
 /* Ardoise Chibre : double pique à gauche du numéro de pli. */
-body:not(.mise-page) .slate-round-numbers>span:has(.round-double-badge){position:relative;margin-bottom:0;line-height:20px}
-body:not(.mise-page) .slate-round-numbers .round-double-badge{position:absolute;right:calc(100% + 1px);top:50%;transform:translateY(-50%);width:max-content;line-height:18px;white-space:nowrap}
+body .slate-round-numbers>span:has(.round-double-badge){position:relative;margin-bottom:0;line-height:20px}
+body .slate-round-numbers .round-double-badge{position:absolute;right:calc(100% + 1px);top:50%;transform:translateY(-50%);width:max-content;line-height:18px;white-space:nowrap}
 
 /* Réserver un peu plus de place aux doubles piques à droite du Z. */
-body:not(.mise-page) .slate-score-area .slate-z-area{width:calc(100% - 36px)}
+body .slate-score-area .slate-z-area{width:calc(100% - 36px)}
 
 /* Ardoise sur téléphone : utiliser la hauteur disponible sans marges vides. */
 @media(max-width:600px){
- body:not(.mise-page) .slate-dialog{border-width:6px}
- body:not(.mise-page) .slate-dialog .slate-content{padding:0 6px 0}
- body:not(.mise-page) .slate-dialog .slate-toolbar{margin-bottom:0}
- body:not(.mise-page) .slate-dialog .slate-half{padding-top:3px;padding-bottom:0;gap:0}
- body:not(.mise-page) .slate-half .slate-z-area svg{width:100%;height:100%;max-height:none;aspect-ratio:auto}
- html.native-android body:not(.mise-page) .slate-dialog{padding-top:0;padding-bottom:0}
+ body .slate-dialog{border-width:6px}
+ body .slate-dialog .slate-content{padding:0 6px 0}
+ body .slate-dialog .slate-toolbar{margin-bottom:0}
+ body .slate-dialog .slate-half{padding-top:3px;padding-bottom:0;gap:0}
+ body .slate-half .slate-z-area svg{width:100%;height:100%;max-height:none;aspect-ratio:auto}
+ html.native-android body .slate-dialog{padding-top:0;padding-bottom:0}
 }
 
 /* Pomme: choix de 2, 3 ou 4 joueurs. */
@@ -248,8 +248,8 @@ html[data-theme="dark"] .mise-page #miseValue:disabled{background:#343a36;color:
 
 #roundDoubleToggle.double-unavailable{background:#e3e3e3!important;color:#888!important;border-color:#c9c9c9!important;opacity:1;cursor:not-allowed;box-shadow:none}
 
-body:not(.mise-page) #slateDialog[data-game-mode="1000"] .slate-score-area .slate-z-area{width:calc(100% - 24px);margin-inline:auto}
-body:not(.mise-page) #slateDialog[data-game-mode="1500"] .slate-score-area .slate-z-area{width:calc(100% - 36px)}
+body #slateDialog[data-game-mode="1000"] .slate-score-area .slate-z-area{width:calc(100% - 24px);margin-inline:auto}
+body #slateDialog[data-game-mode="1500"] .slate-score-area .slate-z-area{width:calc(100% - 36px)}
 
 .language-choices .slate-ann-total-choice{display:flex;justify-content:space-between;align-items:center;gap:8px}.slate-ann-total-choice span:first-child{min-width:0}.slate-ann-total-choice span:last-child{flex-shrink:0;font-weight:700;white-space:nowrap}
 
@@ -311,12 +311,67 @@ body:not(.mise-page) #slateDialog[data-game-mode="1500"] .slate-score-area .slat
 #annPickerRows .stock-row{padding:7px 0;margin:0}
 #annPickerRows .stock-row .stock-toggle{align-self:center}
 
-body:not(.mise-page) .slate-dialog .slate-toolbar{padding-top:2px}
+body .slate-dialog .slate-toolbar{padding-top:2px}
 
-@media(max-width:600px){body:not(.mise-page) .slate-dialog .slate-toolbar{margin-right:-4px}}
+@media(max-width:600px){body .slate-dialog .slate-toolbar{margin-right:-4px}}
 
 @media(max-width:600px){
- .mise-page .slate-dialog .slate-toolbar{padding-top:2px;margin-right:-6px}
+ .mise-page .slate-dialog .slate-toolbar{padding-top:2px;margin-right:-4px}
 }
 
 .win-toast .winner-announcements{display:block;margin-top:12px;font-family:Arial,sans-serif;font-size:.45em;font-weight:600;line-height:1.3}
+
+/* La Mise utilise la géométrie de l’ardoise Chibre sans double pique. */
+.mise-page #slateDialog .slate-score-area .slate-z-area{width:calc(100% - 24px);margin-inline:auto}
+
+/* Totaux d’équipe plus lisibles, chacun dans sa colonne réservée. */
+.slate-dialog .slate-team-line{display:grid;grid-template-columns:minmax(0,1fr) max-content;align-items:center;column-gap:12px}
+.slate-dialog .slate-team-line .slate-name-edit{max-width:100%;min-width:0;justify-self:start;overflow-wrap:anywhere}
+.slate-dialog #slateTotalA,.slate-dialog #slateTotalB{font-size:clamp(24px,5.8vw,34px);line-height:1.15;font-weight:700;white-space:nowrap;justify-self:end}
+@media(max-width:360px){.slate-dialog #slateTotalA,.slate-dialog #slateTotalB{font-size:22px}}
+
+/* Actions de la Pomme en haut, dans le style de la page principale. */
+.apple-sheet .apple-header-actions{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,1.25fr);gap:8px;margin:0 0 8px}
+.apple-sheet .apple-header-actions button{width:100%;min-width:0;min-height:40px;border:1px solid #d8d4c8;border-radius:10px;background:#fff;font-family:Arial,sans-serif;font-size:15px;font-weight:700;padding:6px 8px;line-height:1.2;text-align:center;overflow-wrap:normal}
+html[data-theme="dark"] .apple-sheet .apple-header-actions button{background:#29352f;color:var(--ink);border-color:var(--line)}
+@media(max-width:600px){.apple-sheet .apple-header-actions{gap:clamp(4px,1.5vw,8px)}.apple-sheet .apple-header-actions button{font-size:clamp(12px,3.5vw,15px);padding:6px 3px}}
+
+/* Pomme et choix des joueurs rapprochés de la barre système, sans découpe. */
+@media(max-width:600px){
+ .apple-sheet header.apple-page-header{margin-top:0!important;padding-top:2px;min-height:72px}
+ .apple-sheet .apple-page-header #playersToggle{top:2px}
+}
+
+/* Le titre Pomme conserve la taille du réglage 95 %, hors curseur global. */
+.apple-sheet h1#title.apple-page-symbol{font-size:57px!important}
+
+/* Symboles du choix Pomme / trait / carré : taille constante à 95 %. */
+.apple-sheet #markDialog .choice-symbol{font-size:30.4px!important;height:36.1px;min-height:36.1px;flex-basis:36.1px;line-height:1}
+.apple-sheet #markDialog [data-mark="stroke"] .choice-symbol{font-size:0!important}
+.apple-sheet #markDialog [data-mark="stroke"] .choice-symbol::before{width:3.8px;height:30.4px}
+
+/* En-tête Pomme compact sous la barre d’informations du téléphone. */
+@media(max-width:600px){
+ .apple-sheet header.apple-page-header{padding-top:0;min-height:66px;align-items:flex-start}
+ .apple-sheet h1#title.apple-page-symbol{align-self:flex-start;line-height:1.05!important;margin-top:2px!important}
+ .apple-sheet .apple-page-header #playersToggle{top:0}
+}
+
+.apple-sheet .apple-header-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* En-tête Pomme de même échelle que le titre Chibre, hors réglage du texte. */
+.apple-sheet header.apple-page-header{min-height:48.3px;padding-top:0;height:auto;margin-top:0!important;align-items:center}
+.apple-sheet h1#title.apple-page-symbol{font-size:46px!important;line-height:1.05!important;margin:0!important;transform:none;align-self:center;flex:none}
+.apple-sheet .apple-page-header #playersToggle{top:50%;transform:translateY(-50%)}
+@media(max-width:600px){
+ .apple-sheet header.apple-page-header{min-height:40px;padding-top:2px;align-items:center}
+ .apple-sheet h1#title.apple-page-symbol{font-size:clamp(26px,7.4vw,31px)!important;line-height:1.05!important;margin:0!important;align-self:center}
+ .apple-sheet .apple-page-header #playersToggle{top:50%;transform:translateY(-50%)}
+}
+
+/* La barre système est déjà réservée par Android ; aucun second retrait. */
+@media(max-width:600px){
+ html.native-android body.apple-sheet main{padding-top:0!important}
+ html.native-android .apple-sheet #back{top:0!important}
+ .apple-sheet header.apple-page-header{padding-top:0;min-height:40px}
+}

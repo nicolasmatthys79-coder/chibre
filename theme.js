@@ -1,3 +1,4 @@
+if(/Android/i.test(navigator.userAgent))document.documentElement.classList.add('native-android');
 (()=>{const KEY="chibre_dark_mode",root=document.documentElement;function apply(dark){root.dataset.theme=dark?"dark":"light";const b=document.getElementById("darkModeToggle");if(b)b.setAttribute("aria-checked",String(dark));const status=document.getElementById("darkModeStatus");if(status)status.textContent=dark?"ON":"OFF";}function read(){try{return localStorage.getItem(KEY)==="true";}catch(e){return false;}}apply(read());document.addEventListener("DOMContentLoaded",()=>{apply(read());const b=document.getElementById("darkModeToggle");if(b)b.addEventListener("click",()=>{const dark=root.dataset.theme!=="dark";try{localStorage.setItem(KEY,String(dark));}catch(e){}apply(dark);});});window.addEventListener("storage",e=>{if(e.key===KEY)apply(read());});window.addEventListener("pageshow",()=>apply(read()));})();
 
 /* Réglage partagé de la taille du texte, y compris les panneaux dynamiques. */
@@ -8,7 +9,7 @@
  function schedule(){if(!frame)frame=requestAnimationFrame(apply);}
  function apply(){
   frame=0;
-  const nodes=[...document.body.querySelectorAll('*')].filter(el=>!el.closest('#fontSizeDialog,#menuToggle,#languageFlag')&&!['SCRIPT','STYLE','OPTION'].includes(el.tagName)&&(el.matches('input,textarea,select')||[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())));
+  const nodes=[...document.body.querySelectorAll('*')].filter(el=>!el.closest('#fontSizeDialog,#menuToggle,#languageFlag,.apple-page-symbol,#markDialog .choice-symbol')&&!['SCRIPT','STYLE','OPTION'].includes(el.tagName)&&(el.matches('input,textarea,select')||[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())));
   if(lastScale===scale&&nodes.length===lastNodes.length&&nodes.every((el,i)=>el===lastNodes[i]))return;
   lastScale=scale;lastNodes=nodes;
   for(const el of nodes){if(!originals.has(el))originals.set(el,[el.style.getPropertyValue('font-size'),el.style.getPropertyPriority('font-size')]);const [value,priority]=originals.get(el);if(value)el.style.setProperty('font-size',value,priority);else el.style.removeProperty('font-size');}
