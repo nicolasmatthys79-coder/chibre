@@ -77,7 +77,7 @@
  .app .rounds{padding-top:7px}.app .rounds .rhead{padding-bottom:4px}
 }
 
-/* V4.215: compact phone headers; native Android keeps the system-bar inset. */
+/* V4.216: compact phone headers; native Android keeps the system-bar inset. */
 @media(max-width:600px){
  .app{padding-top:env(safe-area-inset-top,0px)!important}
  .app>header,.app .title-row{margin-top:0!important;padding-top:0!important}
@@ -521,3 +521,10 @@ body .slate-dialog .slate-toolbar,body.mise-page .slate-dialog .slate-toolbar{ma
 
 /* Le thème se choisit sur la page principale, pas dans les ardoises. */
 .slate-dialog .app-menu #darkModeToggle{display:none!important}
+
+/* Smartphone : le bloc des plis rejoint la barre de navigation système. */
+@media(max-width:600px){
+ html body .app{padding-bottom:0!important}
+ .app>.layout{margin-bottom:0;flex:1;min-height:0}
+ .app .rounds{margin-bottom:0;padding-bottom:2px}
+}
