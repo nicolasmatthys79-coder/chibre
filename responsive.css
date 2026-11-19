@@ -77,7 +77,7 @@
  .app .rounds{padding-top:7px}.app .rounds .rhead{padding-bottom:4px}
 }
 
-/* V4.212: compact phone headers; native Android keeps the system-bar inset. */
+/* V4.215: compact phone headers; native Android keeps the system-bar inset. */
 @media(max-width:600px){
  .app{padding-top:env(safe-area-inset-top,0px)!important}
  .app>header,.app .title-row{margin-top:0!important;padding-top:0!important}
@@ -375,3 +375,149 @@ html[data-theme="dark"] .apple-sheet .apple-header-actions button{background:#29
  html.native-android .apple-sheet #back{top:0!important}
  .apple-sheet header.apple-page-header{padding-top:0;min-height:40px}
 }
+
+/* Totaux centraux des ardoises : chiffres seuls, légèrement agrandis. */
+.slate-dialog #slateTotalA,.slate-dialog #slateTotalB{font-size:clamp(26px,6.2vw,36px)}
+@media(max-width:360px){.slate-dialog #slateTotalA,.slate-dialog #slateTotalB{font-size:24px}}
+
+/* Tablette : même organisation que sur ordinateur, à une échelle adaptée. */
+@media(min-width:601px) and (max-width:1100px){
+ .app{max-width:100%;width:100%;height:auto;min-height:100dvh;padding:10px;display:flex;flex-direction:column}
+ .app>header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+ .app>header>div:first-child{width:auto;min-width:0}
+ .app header h1,.app header .title-row h1{font-size:32px!important;line-height:1.1}
+ .app .header-actions{display:flex;flex-wrap:nowrap;align-items:center;gap:5px}
+ .app .header-actions button{font-size:13px;white-space:nowrap;padding:8px;min-height:40px}
+ .app .score-summary>.game-mode-row{padding:7px 65px!important;gap:10px;min-height:56px}
+ .app .game-mode-row button{font-size:17px;padding:6px 12px;min-height:38px}
+ .app .game-mode-row .mode-apple{width:58px;font-size:30px}
+ .app .head .team{padding:8px 14px}.app .head .name{font-size:21px}.app .head .total{font-size:34px}
+ .app .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr) minmax(0,1fr);gap:8px;flex:1;min-height:0;align-items:stretch;margin-top:10px}
+ .app .layout .ann,.app .layout .ann[hidden]{display:flex;flex-direction:column;order:0;min-width:0;padding:10px}
+ .app .layout .ann.a{grid-column:1;grid-row:1}.app .layout .rounds{grid-column:2;grid-row:1;order:0;min-width:0;padding:10px 8px;display:flex;flex-direction:column}
+ .app .layout .ann.b{grid-column:3;grid-row:1}
+ .app .rounds .rhead,.app .rounds .round{grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr)!important;gap:5px}
+ .app .rhead>span:first-child,.app .rhead>span:last-child,.app .round-ann-button{display:none!important}
+ .app .rounds .rhead{font-size:11px;padding-bottom:8px}
+ .app .rounds #rounds{flex:1;display:grid;grid-template-rows:repeat(var(--visible-rounds,9),minmax(40px,1fr));min-height:0}
+ .app .rounds .round{padding:4px 0;min-height:40px}
+ .app .rounds .score{height:40px;max-height:50px;min-height:32px;font-size:23px;border-radius:8px}
+ .app .rounds .num{width:26px;height:26px;font-size:14px}
+ .app .ann h2{font-size:17px;margin-bottom:8px}
+ .app .annrow{grid-template-columns:minmax(0,1fr) 34px 20px 34px;gap:3px;padding:9px 0;min-height:59px}
+ .app .annrow>strong{font-size:17px}
+ .app .annrow button{width:34px;height:38px;padding:0;font-size:24px;border-radius:7px}
+ .app .count{font-size:15px}
+ .app .ann-label-description,.app .ann-label-description:has(.ann-alternative){display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+ .app .ann-description,.app .ann-alternative,.app .ann-label-description:has(.ann-alternative) .ann-description,.app .ann-label-description:has(.ann-alternative) .ann-alternative{font-size:12px;line-height:1.25;white-space:normal;margin:0;padding:0;text-align:left}
+ .app .ann-description::before{content:none}
+ .app .ann-label-cards{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+ .app .nine-cards{display:grid;grid-template-columns:repeat(4,17px);gap:2px}
+ .app .nine-card{width:17px;height:25px;min-width:0;flex-basis:17px;font-size:9px;border-radius:2px}
+ .app .annsum{font-size:14px;gap:5px;flex-wrap:wrap}
+ .language-choices{max-width:calc(100vw - 24px)}
+}
+@media(min-width:601px) and (max-width:760px){
+ .app{padding:7px}.app>header{gap:7px}.app>header>div:first-child{width:100%}
+ .app .header-actions{width:100%;display:flex;justify-content:flex-end}
+ .app .layout{gap:5px;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr)}
+ .app .layout .ann{padding:6px}.app .layout .rounds{padding:8px 5px}
+ .app .annrow{grid-template-columns:minmax(0,1fr) 28px 17px 28px;gap:2px}.app .annrow button{width:28px;height:36px;font-size:21px}
+ .app .annrow>strong{font-size:15px}.app .ann-description,.app .ann-alternative{font-size:11px}
+ .app .nine-cards{grid-template-columns:repeat(2,18px)}.app .nine-card{width:18px;height:25px}
+ .app .rounds .score{font-size:20px}.app .rounds .rhead{font-size:10px}
+}
+
+/* Tablette compacte : aucune répartition artificielle sur toute la hauteur. */
+@media(min-width:601px) and (max-width:1100px){
+ .app{padding:8px;min-height:0}
+ .app>header{gap:6px;margin-bottom:6px}
+ .app .header-actions{gap:4px}
+ .app .header-actions button{min-height:36px;padding:6px 8px}
+ .app .score-summary>.game-mode-row{padding-top:4px!important;padding-bottom:4px!important;min-height:46px;gap:8px}
+ .app .game-mode-row button{min-height:34px;padding:4px 10px}
+ .app .head .team{padding:5px 12px}
+ .app .head .total{margin-top:0;line-height:1.05}
+ .app .layout{flex:0 0 auto;align-items:start;gap:6px;margin-top:6px}
+ .app .layout .ann{padding:8px}
+ .app .layout .rounds{padding:8px 6px}
+ .app .ann>div[id="annA"],.app .ann>div[id="annB"]{flex:0 0 auto;display:flex;flex-direction:column;justify-content:flex-start;gap:0}
+ .app .ann h2{margin-bottom:4px}
+ .app .annrow{padding:5px 0;min-height:46px}
+ .app .ann-label-description,.app .ann-label-description:has(.ann-alternative){gap:0}
+ .app .ann-label-cards{gap:3px}
+ .app .annsum{padding-top:7px;margin-top:5px}
+ .app .rounds .rhead{padding-bottom:5px}
+ .app .rounds #rounds{flex:0 0 auto;grid-template-rows:repeat(var(--visible-rounds,9),42px);grid-auto-rows:42px}
+ .app .rounds .round{min-height:0;padding:3px 0}
+ .app .rounds .score{height:35px;min-height:32px;max-height:35px}
+ .app .info{margin-top:6px;padding:6px 10px}
+}
+
+/* Tablette plein écran : l’espace disponible agrandit les cases, pas les intervalles. */
+@media(min-width:601px) and (max-width:1100px){
+ .app{height:100dvh;min-height:620px;padding:6px;gap:0}
+ .app>header,.app>.score-summary,.app>.info{flex-shrink:0}
+ .app>header{margin-bottom:5px}
+ .app .layout{flex:1 1 auto;min-height:0;align-items:stretch;margin-top:5px;gap:5px}
+ .app .layout .rounds,.app .layout .ann{min-height:0;padding:7px}
+ .app .rounds .rhead{flex-shrink:0;padding-bottom:4px}
+ .app .rounds #rounds{flex:1 1 auto;min-height:0;grid-template-rows:repeat(var(--visible-rounds,9),minmax(36px,1fr));grid-auto-rows:minmax(36px,1fr)}
+ .app .rounds .round{min-height:0;padding:2px 0;align-items:stretch}
+ .app .rounds .score{height:100%;min-height:32px;max-height:none;font-size:clamp(23px,2.9vw,30px)}
+ .app .rounds .num{align-self:center}
+ .app .ann h2{flex-shrink:0;margin-bottom:4px}
+ .app .ann>div[id="annA"],.app .ann>div[id="annB"]{flex:1 1 auto;min-height:0;justify-content:flex-start;gap:0}
+ .app .annrow{flex:1 1 0;min-height:44px;padding:3px 0;align-items:center}
+ .app .annrow button{height:clamp(38px,5.4dvh,60px);font-size:26px}
+ .app .annrow>strong{font-size:19px}
+ .app .ann-description,.app .ann-alternative{font-size:13px}
+ .app .annsum{flex-shrink:0;padding-top:6px;margin-top:4px}
+ .app .info{margin-top:4px;padding:4px 8px}
+}
+
+/* Tablette : annonces de chaque pli accessibles à côté des points. */
+@media(min-width:601px) and (max-width:1100px){
+ .app .rounds .rhead,.app .rounds .round{grid-template-columns:32px minmax(0,1fr) 26px minmax(0,1fr) 32px!important;gap:3px}
+ .app .rhead>span:first-child,.app .rhead>span:last-child{display:block!important}
+ .app .round .round-ann-button{display:grid!important;place-items:center;width:32px!important;min-width:0;min-height:32px;max-height:48px;height:100%;align-self:center;padding:2px 0;font-size:20px!important;line-height:1.1;border-radius:6px}
+ .app .round .round-ann-button.has-ann-total{font-size:13px!important;border:1.5px solid currentColor}
+ .app .round .round-ann-button.current-trick-ann{border:1.5px solid currentColor}
+ .app .round .round-ann-button.has-stock{padding-top:10px}
+ .app .rounds .score{font-size:clamp(18px,2.4vw,25px)}
+ .app .rounds .rhead{font-size:10px;overflow-wrap:anywhere}
+ .app .rounds .num{width:24px;height:26px;font-size:13px}
+ .app .round-ann-stock{font-size:9px;right:1px;top:1px}
+}
+
+.score-winner-trophy{display:inline-block;font-size:.78em;line-height:1;vertical-align:baseline;white-space:nowrap}.head .total{white-space:nowrap}
+
+/* Laisser visibles les lettres descendantes des prénoms au-dessus du score. */
+.app .head .team .total{margin-top:5px;padding-top:2px}
+
+/* Réserver le bas des lettres dans les noms, sans éloigner le total. */
+.app .head textarea.name{line-height:1.3;padding-bottom:3px}
+.app .head .team .total{margin-top:2px;padding-top:0}
+
+/* Total rapproché du prénom ; le champ conserve sa marge pour les descendantes. */
+.app .head .team .total{margin-top:0;padding-top:0;transform:translateY(-4px)}
+
+/* Réduire le vide sous les totaux, sans toucher aux prénoms. */
+.app .head .team{padding-bottom:1px}
+
+/* Réserver une zone libre à droite d’Historique sur les deux ardoises. */
+body .slate-dialog .slate-toolbar,body.mise-page .slate-dialog .slate-toolbar{margin-right:32px}
+
+/* Menu lisible en blanc sur le fond noir des ardoises. */
+html.slate-open #menuToggle,html.slate-open #menuToggle .menu-dots,.slate-dialog .app-menu-toggle,.slate-dialog .menu-dots{color:#fff!important;opacity:1}
+
+/* Le menu appartient à l’ardoise ouverte, au premier plan du dialogue. */
+body .slate-dialog .slate-toolbar,body.mise-page .slate-dialog .slate-toolbar{margin-right:0;gap:6px;overflow:visible}
+.slate-dialog .slate-toolbar .app-menu{position:relative;display:block;flex:0 0 32px;width:32px;z-index:20}
+.slate-dialog .slate-toolbar #menuToggle{display:grid;place-items:center;width:32px;height:32px;min-width:32px;min-height:32px;padding:0;border:0;background:transparent;color:#fff!important;cursor:pointer}
+.slate-dialog #menuToggle .menu-word{display:none!important}
+.slate-dialog #menuToggle .menu-dots{display:block!important;color:#fff!important;font-size:28px!important;line-height:1}
+.slate-dialog .language-choices{color:var(--ink,#17211b);background:var(--paper,#fffdf8);text-align:left;z-index:21}
+
+/* Le thème se choisit sur la page principale, pas dans les ardoises. */
+.slate-dialog .app-menu #darkModeToggle{display:none!important}

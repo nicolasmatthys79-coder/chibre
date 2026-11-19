@@ -5,7 +5,7 @@ if(/Android/i.test(navigator.userAgent))document.documentElement.classList.add('
 (()=>{
  const KEY='chibre_font_scale',labels={fr:['Taille de police','Plus petit','Plus grand'],de:['Schriftgrösse','Kleiner','Grösser'],it:['Dimensione del testo','Più piccolo','Più grande'],rm:['Grondezza da scrittira','Pli pitschen','Pli grond'],en:['Font size','Smaller','Larger']};
  let scale=1,frame=0,lastScale=null,lastNodes=[];const originals=new WeakMap();
- try{const value=Number(localStorage.getItem(KEY));if(value>=.8&&value<=1.25)scale=value;}catch(e){}
+ try{const value=Number(localStorage.getItem(KEY));if(value>=.7&&value<=1.25)scale=value;}catch(e){}
  function schedule(){if(!frame)frame=requestAnimationFrame(apply);}
  function apply(){
   frame=0;
@@ -15,12 +15,13 @@ if(/Android/i.test(navigator.userAgent))document.documentElement.classList.add('
   for(const el of nodes){if(!originals.has(el))originals.set(el,[el.style.getPropertyValue('font-size'),el.style.getPropertyPriority('font-size')]);const [value,priority]=originals.get(el);if(value)el.style.setProperty('font-size',value,priority);else el.style.removeProperty('font-size');}
   const sizes=nodes.map(el=>parseFloat(getComputedStyle(el).fontSize));
   if(scale!==1)nodes.forEach((el,i)=>{if(Number.isFinite(sizes[i]))el.style.setProperty('font-size',(sizes[i]*scale)+'px','important');});
+  if(typeof fitTeamNames==='function')fitTeamNames();
  }
  document.addEventListener('DOMContentLoaded',()=>{
   const options=document.getElementById('appOptions');
   if(options){
    const button=document.createElement('button');button.type='button';button.className='font-size-choice';button.innerHTML='<span><span data-i18n="font_size">Taille de police</span> <span class="font-size-percent"></span></span><span aria-hidden="true" class="font-size-icon">A<small>a</small></span>';options.appendChild(button);
-   const dialog=document.createElement('dialog');dialog.id='fontSizeDialog';dialog.className='language-dialog';dialog.innerHTML='<h2 data-i18n="font_size">Taille de police</h2><div class="font-size-range"><small>a</small><input type="range" min="80" max="125" step="5"><strong>A</strong></div><output></output><button type="button">OK</button>';document.body.appendChild(dialog);
+   const dialog=document.createElement('dialog');dialog.id='fontSizeDialog';dialog.className='language-dialog';dialog.innerHTML='<h2 data-i18n="font_size">Taille de police</h2><div class="font-size-range"><small>a</small><input type="range" min="70" max="125" step="5"><strong>A</strong></div><output></output><button type="button">OK</button>';document.body.appendChild(dialog);
    const input=dialog.querySelector('input'),output=dialog.querySelector('output');input.value=Math.round(scale*100);output.textContent=input.value+' %';
    function translate(){const lang=document.documentElement.lang.split('-')[0],text=labels[lang]||labels.fr;button.querySelector('[data-i18n=font_size]').textContent=text[0];button.querySelector('.font-size-percent').textContent=Math.round(scale*100)+' %';dialog.querySelector('h2').textContent=text[0];input.setAttribute('aria-label',text[0]);}
    button.onclick=()=>{translate();if(typeof closeLanguageMenu==='function')closeLanguageMenu();dialog.showModal();};
@@ -30,5 +31,5 @@ if(/Android/i.test(navigator.userAgent))document.documentElement.classList.add('
   }
   new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});schedule();
  });
- window.addEventListener('resize',()=>{lastScale=null;schedule();});window.addEventListener('storage',event=>{if(event.key===KEY){const value=Number(event.newValue);scale=value>=.8&&value<=1.25?value:1;schedule();}});
+ window.addEventListener('resize',()=>{lastScale=null;schedule();});window.addEventListener('storage',event=>{if(event.key===KEY){const value=Number(event.newValue);scale=value>=.7&&value<=1.25?value:1;schedule();}});
 })();
