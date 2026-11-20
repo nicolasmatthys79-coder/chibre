@@ -77,7 +77,7 @@
  .app .rounds{padding-top:7px}.app .rounds .rhead{padding-bottom:4px}
 }
 
-/* V4.216: compact phone headers; native Android keeps the system-bar inset. */
+/* V4.217: compact phone headers; native Android keeps the system-bar inset. */
 @media(max-width:600px){
  .app{padding-top:env(safe-area-inset-top,0px)!important}
  .app>header,.app .title-row{margin-top:0!important;padding-top:0!important}
@@ -527,4 +527,48 @@ body .slate-dialog .slate-toolbar,body.mise-page .slate-dialog .slate-toolbar{ma
  html body .app{padding-bottom:0!important}
  .app>.layout{margin-bottom:0;flex:1;min-height:0}
  .app .rounds{margin-bottom:0;padding-bottom:2px}
+}
+
+.language-choices .display-double-choice:disabled{opacity:.4;cursor:not-allowed}
+
+/* Interrupteur du menu plus compact. */
+.language-choices .dark-mode-switch{flex-basis:52px;width:52px;height:24px;padding:0 5px;font-size:9px;border-radius:14px}
+.language-choices .dark-mode-knob{left:3px;top:3px;width:18px;height:18px}
+.language-choices #darkModeToggle[aria-checked="true"] .dark-mode-knob{transform:translateX(28px)}
+
+.language-choices .enter-double-choice:disabled{opacity:.4;cursor:not-allowed}
+
+.double-entry-mode-choice .double-entry-symbol{font-size:19px;letter-spacing:1px;white-space:nowrap;flex-shrink:0}
+
+/* Deux modes visibles ; seul le mode choisi est coloré. */
+.language-choices .double-mode-options{display:grid;gap:4px;margin:4px 0}
+.language-choices .double-entry-mode-choice{border:1px solid var(--line,#d8d4c8);border-radius:7px;padding:8px;min-width:0;opacity:1;cursor:pointer}
+.language-choices .double-entry-mode-choice[aria-pressed="true"]{background:#c8e6d5!important;color:#174c3c!important;border-color:#174c3c}
+html[data-theme="dark"] .language-choices .double-entry-mode-choice[aria-pressed="true"]{background:#325e4c!important;color:#fff!important;border-color:#a8d5bd}
+
+/* Smartphone : les équipes sont déjà nommées dans le bandeau des totaux. */
+@media(max-width:600px){.app .rounds .rhead{display:none!important}}
+
+/* Cases de points plus rapprochées sur smartphone. */
+@media(max-width:600px){.app .rounds .round{padding-top:1px;padding-bottom:1px;column-gap:3px!important}.app .rounds{padding-left:5px;padding-right:5px}}
+
+/* Smartphone : jonction droite et sans espace entre totaux et plis. */
+@media(max-width:600px){
+ .app>.score-summary{margin-bottom:0!important;border-bottom-left-radius:0;border-bottom-right-radius:0;box-shadow:none}
+ .app>.layout{margin-top:0!important}
+ .app .layout>.rounds{border-top-left-radius:0;border-top-right-radius:0;border-top:0}
+}
+
+/* Supprimer aussi le retrait intérieur au-dessus de la première case. */
+@media(max-width:600px){
+ html body .app>.score-summary{margin-bottom:0!important}
+ html body .app>.layout{margin-top:-1px!important;row-gap:0}
+ html body .app .layout>.rounds{padding-top:0!important;border-top:0;border-top-left-radius:0;border-top-right-radius:0}
+ .app .rounds #rounds>.round:first-child{padding-top:0;border-top:0}
+}
+
+/* Même petit intervalle que celui des lignes de points, sans coins arrondis. */
+@media(max-width:600px){
+ html body .app>.score-summary{margin-bottom:0!important}
+ html body .app>.layout{margin-top:3px!important}
 }
