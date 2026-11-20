@@ -77,7 +77,7 @@
  .app .rounds{padding-top:7px}.app .rounds .rhead{padding-bottom:4px}
 }
 
-/* V4.217: compact phone headers; native Android keeps the system-bar inset. */
+/* V4.218: compact phone headers; native Android keeps the system-bar inset. */
 @media(max-width:600px){
  .app{padding-top:env(safe-area-inset-top,0px)!important}
  .app>header,.app .title-row{margin-top:0!important;padding-top:0!important}
